@@ -64,7 +64,7 @@ docs/
 
 - One URL = one directory containing an `index.html`: `https://codebase.watch/releases/<language>/<vendor>/<package>/<version>/`.
 - Links are absolute from the site root (`/releases/<language>/`, `/assets/css/main.css`), never relative.
-  The site cannot be browsed through `file://`: run `bin/dev/start.py` (http://localhost:25050, served in the
+  The site cannot be browsed through `file://`: run `bin/dev/start.py` (http://localhost:25100, served in the
   background by the `codebase-server` container), stop it with `bin/dev/stop.py`.
 - Links to another site (GitHub, documentation, blog posts...) open in a new tab: `target="_blank" rel="noopener"`.
   Links inside the site do not.
@@ -101,7 +101,6 @@ Use `docs/releases/php/symfony/options-resolver/8.0/index.html` as the template:
    - `dependencies`, title `Dependencies`: changes of the required version of the language, of its extensions or of
      other packages (the language skill says where they are declared).
    - `other`, title `Other`: everything else (bugfixes, deprecations, tests, coding standards, documentation, CI...).
-   A commit is displayed on the page only if the version is in its `pages`.
    Each group shows its number of commits. **A group without any commit is not displayed at all.**
    If there is no commit at all, display an `empty` block instead of the groups.
    Each commit shows its message, its author and its date (no hash: the commit is reached through its icon).
@@ -142,8 +141,15 @@ The page is built from this file: never classify a commit only in the page.
     "commits": {
         "df4804a0650e6177d2fa85df6d97b88471173968": {
             "message": "Add an option to ...",
-            "pages": ["8.0"],
-            "section": "new-features"
+            "section": "new-features",
+            "pullRequest": "https://github.com/<owner>/<repository>/pull/<number>",
+            "links": [],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "new-option"
+                }
+            ]
         }
     }
 }
@@ -151,7 +157,6 @@ The page is built from this file: never classify a commit only in the page.
 
 - Key: the full hash of the commit.
 - `message`: first line of the commit message, only to make the file readable.
-- `pages`: the versions whose page displays the commit. An empty array hides the commit from every page.
 - `section`: `bc-breaks`, `new-features`, `improvements`, `dependencies` or `other`.
 - `pullRequest`: full URL of the pull request that merged the commit (e.g. `https://github.com/<owner>/<repository>/pull/<number>`),
   `null` when the commit was pushed directly.
@@ -160,7 +165,12 @@ The page is built from this file: never classify a commit only in the page.
 - `links`: other pages that talk about the commit or its pull request, as `{"title": "...", "url": "..."}` objects,
   `[]` if none. Always search the sources listed by the vendor skill (blog...); other articles are welcome.
   The title is shown as the tooltip of the icon, in the format given by the vendor skill.
-- `examples` (optional): slugs of the example pages of the commit, see [Example pages](#example-pages).
+- `pages`: the pages our site builds for the commit, `[]` if none. Each page has a `type` and a `slug`
+  (its directory, lowercase words separated by `-`). The only type for now is `example`,
+  see [Example pages](#example-pages).
+
+The version whose page displays a commit is not stored: it is the version in which `git log` finds the commit
+(see [Finding the commits](#finding-the-commits)).
 
 Before building the page:
 
@@ -169,14 +179,13 @@ Before building the page:
 3. If there are some, classify each of them yourself (read its diff when the message is not enough), then ask the user
    to confirm with the `AskUserQuestion` tool, 4 commits per call: one question per commit, its header being the short
    hash, the question showing the message, and the options being your proposed section first (marked `(Recommended)`)
-   then the 3 next most likely sections (the user can pick the 5th one or `hide` through "Other").
-   `hide` means `pages: []`. Otherwise `pages` is `["<version>"]`.
+   then the 3 next most likely sections (the user can pick the 5th one through "Other"). Their `pages` is `[]`.
 4. Write the answers in the settings file, keeping the commits sorted by date, oldest first, then build the page.
-5. Commits already in the file are never asked again: their `pages` and `section` are used as they are.
+5. Commits already in the file are never asked again: their settings are used as they are.
 
 ## Example pages
 
-A commit can have example pages, listed in its `examples` setting and stored in
+A commit can have example pages, listed in its `pages` setting with the `example` type, and stored in
 `docs/releases/<language>/<vendor>/<package>/<version>/<slug>/index.html`.
 Use `docs/releases/php/symfony/options-resolver/8.0/nested-options/index.html` as the template:
 
