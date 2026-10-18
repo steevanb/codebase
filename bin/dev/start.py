@@ -9,7 +9,7 @@ read its logs with `docker logs -f codebase-server`. Running this script again r
 import subprocess
 from pathlib import Path
 
-PORT = 25050
+PORT = 25100
 PROJECT_DIR = Path(__file__).resolve().parents[2]
 CONTAINER = 'codebase-server'
 NGINX_IMAGE = 'nginx:1.30.6-alpine'
@@ -17,13 +17,11 @@ DOCKER_IMAGES = {
     'codebase-python': PROJECT_DIR / 'docker' / 'python',
 }
 
-
 def build_docker_images():
     for image, context in DOCKER_IMAGES.items():
         print(f'Building Docker image {image}', flush=True)
         subprocess.run(['docker', 'build', '--quiet', '--tag', image, str(context)], check=True,
                        stdout=subprocess.DEVNULL)
-
 
 def start_server():
     subprocess.run(['docker', 'rm', '--force', CONTAINER], capture_output=True)
@@ -41,11 +39,9 @@ def start_server():
     )
     print(f'Open http://localhost:{PORT} (stop with bin/dev/stop.py)')
 
-
 def main():
     build_docker_images()
     start_server()
-
 
 if __name__ == '__main__':
     main()

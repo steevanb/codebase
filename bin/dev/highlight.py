@@ -31,7 +31,6 @@ BLOCK = re.compile(r'(<pre class="code"><code class="language-(?!text")([\w+-]+)
 TAG = re.compile(r'</?(?:span|mark)[^>]*>')
 MARKS = {'removed': 'code-removed', 'added': 'code-added'}
 
-
 def run_in_docker():
     image_exists = subprocess.run(['docker', 'image', 'inspect', IMAGE], capture_output=True).returncode == 0
     if not image_exists:
@@ -47,7 +46,6 @@ def run_in_docker():
     ]
     sys.exit(subprocess.run(command).returncode)
 
-
 def mark(colored: str, opening_tag: str) -> str:
     for attribute, css_class in MARKS.items():
         names = re.search(rf'data-{attribute}="([^"]*)"', opening_tag)
@@ -59,7 +57,6 @@ def mark(colored: str, opening_tag: str) -> str:
             )
 
     return colored
-
 
 def process(path: Path) -> bool:
     from pygments import highlight
@@ -84,7 +81,6 @@ def process(path: Path) -> bool:
 
     return True
 
-
 def main():
     if os.environ.get('CODEBASE_DOCKER') != '1':
         run_in_docker()
@@ -93,7 +89,6 @@ def main():
     for path in paths:
         if process(path):
             print(f'Highlighted {path}')
-
 
 if __name__ == '__main__':
     main()
