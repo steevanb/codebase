@@ -1,0 +1,88 @@
+{
+    "commits": {
+        "df4804a0650e6177d2fa85df6d97b88471173968": {
+            "message": "Bump Symfony 8 to PHP >= 8.4",
+            "pages": ["8.0"],
+            "section": "dependencies",
+            "pullRequest": "https://github.com/symfony/symfony/pull/60639",
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #962",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-962-june-2-8-2025"
+                }
+            ]
+        },
+        "f1abd5c34b0346a480da9d409366abaf1acb3abc": {
+            "message": "Remove support for nested options definition via `setDefault()`, use `setOptions()` instead",
+            "pages": ["8.0"],
+            "section": "bc-breaks",
+            "pullRequest": "https://github.com/symfony/symfony/pull/60723",
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #962",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-962-june-2-8-2025"
+                }
+            ],
+            "examples": ["nested-options"]
+        },
+        "3390e00bbe493e799479258f0b736e7357e96dbd": {
+            "message": "[OptionsResolver] Remove BC layer for deprecatedNestedOptions in Symfony 8.0",
+            "pages": ["8.0"],
+            "section": "bc-breaks",
+            "pullRequest": "https://github.com/symfony/symfony/pull/60951",
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #966",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-966-june-30-july-6-2025"
+                }
+            ]
+        },
+        "60420b531fae72c4f9f68cd72bb571256cee6043": {
+            "message": "clean up remaining ExpectUserDeprecationMessageTrait usages",
+            "pages": ["8.0"],
+            "section": "other",
+            "pullRequest": "https://github.com/symfony/symfony/pull/61195",
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #969",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-969-july-21-27-2025"
+                }
+            ]
+        },
+        "6128512ec5903dd700a59f6fcae6a102490a4ccd": {
+            "message": "fix merge",
+            "pages": ["8.0"],
+            "section": "other",
+            "pullRequest": null,
+            "links": []
+        },
+        "3274fbccfb35f0ffeabcd831f01af953e9c1bc05": {
+            "message": "PHP CS Fixer: enable static_lambda",
+            "pages": ["8.1"],
+            "section": "other",
+            "pullRequest": "https://github.com/symfony/symfony/pull/62783",
+            "links": []
+        },
+        "3373aa5aa7683587f339095bf87fb63483e8d156": {
+            "message": "PHP CS Fixer: enable `@PHP8x1Migration:risky`",
+            "pages": ["8.1"],
+            "section": "other",
+            "pullRequest": "https://github.com/symfony/symfony/pull/63198",
+            "links": []
+        },
+        "53f2e8e2d86c8f5357ab2ed1374cc9d46536d6f4": {
+            "message": "Bump to php >= 8.4.1",
+            "pages": ["8.1"],
+            "section": "dependencies",
+            "pullRequest": "https://github.com/symfony/symfony/pull/63896",
+            "links": []
+        },
+        "c9a38d646c8951959ef8d649d21815f2eac96ee4": {
+            "message": "Add call to backers in README files",
+            "pages": ["8.1"],
+            "section": "other",
+            "pullRequest": "https://github.com/symfony/symfony/pull/64391",
+            "links": []
+        }
+    }
+}
