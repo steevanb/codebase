@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>symfony/options-resolver 8.0 · codebase.watch</title>
+    <meta name="description" content="New features and improvements of the symfony/options-resolver component in version 8.0, compared to 7.4.">
+    <link rel="canonical" href="https://codebase.watch/releases/symfony/options-resolver/8.0/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <a class="brand" href="/">
+                <span class="brand-glyph" aria-hidden="true">&lt;/&gt;</span>
+                <span class="brand-wordmark">
+                    <span class="brand-name">codebase<span>.watch</span></span>
+                    <span class="brand-sub">what is new in your dependencies</span>
+                </span>
+            </a>
+            <nav class="nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link nav-link-active" href="/releases/">Releases</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">codebase.watch</a> /
+            <a href="/releases/">releases</a> /
+            <a href="/releases/symfony/">symfony</a> /
+            <a href="/releases/symfony/options-resolver/">options-resolver</a> /
+            8.0
+        </nav>
+
+        <h1>symfony/options-resolver 8.0</h1>
+
+        <section id="overview" class="tone-amber">
+            <h2><span>At a <em>glance</em>.</span></h2>
+            <div class="stats">
+                <div class="stat stat-hero">
+                    <div class="stat-label">Compared versions</div>
+                    <div class="stat-value">7.4 → 8.0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">New features</div>
+                    <div class="stat-value">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Commits</div>
+                    <div class="stat-value">5</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Released (v8.0.0)</div>
+                    <div class="stat-value">2025-11-27</div>
+                </div>
+            </div>
+            <p class="section-note">Commits of <code>v8.0.0</code> touching <a href="/releases/symfony/options-resolver/">symfony/options-resolver</a> that are not in the <code>7.4</code> branch.</p>
+        </section>
+
+        <section id="bc-breaks" class="tone-rose">
+            <h2><span>BC <em>breaks</em>.</span><span class="count">1</span></h2>
+            <p class="section-note">Changes that can break existing code when upgrading from 7.4.</p>
+            <ul class="commits">
+                <li class="commit">
+                    <a class="commit-main" href="/releases/symfony/options-resolver/8.0/nested-options/">
+                        <span class="commit-message">Remove support for nested options definition via <code>setDefault()</code>, use <code>setOptions()</code> instead</span>
+                    </a>
+                    <div class="commit-links">
+                        <a class="icon-link" href="/releases/symfony/options-resolver/8.0/nested-options/" title="Example" aria-label="Example"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a>
+                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/f1abd5c34b0346a480da9d409366abaf1acb3abc" target="_blank" rel="noopener" title="Commit f1abd5c34b" aria-label="Commit f1abd5c34b"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg></a>
+                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/60723" target="_blank" rel="noopener" title="Pull request #60723" aria-label="Pull request #60723"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg></a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="dependencies" class="tone-violet">
+            <h2><span><em>Dependencies</em>.</span><span class="count">1</span></h2>
+            <p class="section-note">Changes of the required PHP version, extensions or packages.</p>
+            <ul class="commits">
+                <li class="commit">
+                    <div class="commit-main">
+                        <span class="commit-message">Bump Symfony 8 to PHP <code>&gt;= 8.4</code> (was <code>&gt;= 8.2</code>)</span>
+                    </div>
+                    <div class="commit-links">
+                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/df4804a0650e6177d2fa85df6d97b88471173968" target="_blank" rel="noopener" title="Commit df4804a065" aria-label="Commit df4804a065"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg></a>
+                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/60639" target="_blank" rel="noopener" title="Pull request #60639" aria-label="Pull request #60639"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg></a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sources">
+            <h2><span>The <em>sources</em>.</span></h2>
+            <ul class="sources">
+                <li><a href="https://github.com/symfony/options-resolver/compare/7.4...v8.0.0" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Comparison of 7.4 and v8.0.0</a></li>
+                <li><a href="https://symfony.com/doc/8.0/components/options_resolver.html" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">symfony/options-resolver documentation</a></li>
+                <li><a href="https://github.com/symfony/symfony/blob/v8.0.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">symfony/options-resolver CHANGELOG</a></li>
+            </ul>
+        </section>
+
+        <footer>
+            Last checked on 2026-10-18.
+        </footer>
+    </div>
+</body>
+</html>
