@@ -6,13 +6,29 @@
     <title>codebase.watch</title>
     <meta name="description" content="Examples for each new feature introduced in the releases of popular projects such as Symfony, Doctrine and more.">
     <link rel="canonical" href="https://codebase.watch/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <a class="brand" href="/">
+                <span class="brand-glyph" aria-hidden="true">&lt;/&gt;</span>
+                <span class="brand-wordmark">
+                    <span class="brand-name">codebase<span>.watch</span></span>
+                    <span class="brand-sub">what is new in your dependencies</span>
+                </span>
+            </a>
+            <nav class="nav">
+                <a class="nav-link nav-link-active" href="/" aria-current="page">Home</a>
+                <a class="nav-link" href="/releases/">Releases</a>
+            </nav>
+        </div>
+    </header>
     <div class="container">
         <header class="hero">
-            <p class="hero-logo">codebase<span>.watch</span></p>
-            <h1>What is new in your dependencies, with examples.</h1>
+            <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true">●</span> Release notes, with examples</p>
+            <h1>What is <em>new</em> in your dependencies, with examples.</h1>
             <p class="subtitle">
                 For each release of popular projects such as Symfony, Doctrine and more,
                 codebase.watch lists the new features and improvements, and shows how to use them.
@@ -20,29 +36,32 @@
             </p>
         </header>
 
-        <section id="how">
-            <h2>How it works</h2>
-            <div class="steps">
-                <div class="step">
+        <section id="how" class="tone-teal">
+            <h2><span>How it <em>works</em>.</span></h2>
+            <ol class="steps">
+                <li class="step">
+                    <span class="step-number">i.</span>
                     <div class="step-title">Compared to the previous version</div>
                     <p>Each page compares a release to the previous one, component by component.</p>
-                </div>
-                <div class="step">
+                </li>
+                <li class="step">
+                    <span class="step-number">ii.</span>
                     <div class="step-title">Features only</div>
                     <p>New features and improvements of existing ones. Bugfixes and internal changes are left out.</p>
-                </div>
-                <div class="step">
+                </li>
+                <li class="step">
+                    <span class="step-number">iii.</span>
                     <div class="step-title">From the source</div>
                     <p>Built from the commits and the changelogs of each project, with links to them.</p>
-                </div>
-            </div>
+                </li>
+            </ol>
         </section>
 
-        <section id="latest">
-            <h2>Latest releases</h2>
+        <section id="latest" class="tone-indigo">
+            <h2><span>Latest <em>releases</em>.</span></h2>
             <ul class="list">
                 <li>
-                    <a href="/releases/php/symfony/options-resolver/8.2/">
+                    <a href="/releases/symfony/options-resolver/8.2/">
                         <div class="list-title">symfony/options-resolver 8.2 <span class="badge">In development</span></div>
                         <div class="list-description">PHP · Compared to 8.1</div>
                     </a>
@@ -50,11 +69,11 @@
             </ul>
         </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
+        <section id="projects" class="tone-amber">
+            <h2><span>The <em>projects</em>.</span></h2>
             <ul class="list">
                 <li>
-                    <a href="/releases/php/symfony/">
+                    <a href="/releases/symfony/">
                         <div class="list-title">Symfony</div>
                         <div class="list-description">PHP · Components and bundles of the Symfony framework</div>
                     </a>

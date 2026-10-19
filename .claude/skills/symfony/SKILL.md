@@ -24,6 +24,7 @@ What `/app:release` needs to know about the `symfony/*` packages (components, bu
   | Contracts, e.g. `symfony/service-contracts` | `src/Symfony/Contracts/Service` |
 
   When in doubt, find the directory whose `composer.json` has `"name": "symfony/<package>"`.
+- The tests of a package are in the `Tests/` directory of its directory (e.g. `src/Symfony/Component/OptionsResolver/Tests`).
 - Link the commits and pull requests to the monorepo: `https://github.com/symfony/symfony/commit/<hash>`,
   `https://github.com/symfony/symfony/pull/<number>`.
 - The comparison link can use the split repository, it is easier to read:

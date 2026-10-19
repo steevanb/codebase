@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nested options with setOptions() · symfony/options-resolver 8.0 · codebase.watch</title>
+    <meta name="description" content="symfony/options-resolver 8.0 removes the definition of nested options through setDefault(): how it worked before, and how to use setOptions() now.">
+    <link rel="canonical" href="https://codebase.watch/releases/symfony/options-resolver/8.0/nested-options/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <a class="brand" href="/">
+                <span class="brand-glyph" aria-hidden="true">&lt;/&gt;</span>
+                <span class="brand-wordmark">
+                    <span class="brand-name">codebase<span>.watch</span></span>
+                    <span class="brand-sub">what is new in your dependencies</span>
+                </span>
+            </a>
+            <nav class="nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link nav-link-active" href="/releases/">Releases</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">codebase.watch</a> /
+            <a href="/releases/">releases</a> /
+            <a href="/releases/symfony/">symfony</a> /
+            <a href="/releases/symfony/options-resolver/">options-resolver</a> /
+            <a href="/releases/symfony/options-resolver/8.0/">8.0</a> /
+            nested-options
+        </nav>
+
+        <h1>Nested options: <code>setDefault()</code> → <code>setOptions()</code></h1>
+
+        <section id="overview" class="tone-amber">
+            <h2><span>At a <em>glance</em>.</span></h2>
+            <div class="stats">
+                <div class="stat tone-rose">
+                    <div class="stat-label">Type</div>
+                    <div class="stat-value">BC break</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label"><code>setOptions()</code> added</div>
+                    <div class="stat-value">7.3</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Old way deprecated</div>
+                    <div class="stat-value">7.3</div>
+                </div>
+                <div class="stat tone-rose">
+                    <div class="stat-label">Old way removed</div>
+                    <div class="stat-value">8.0</div>
+                </div>
+            </div>
+            <p class="section-note">Since <a href="/releases/symfony/options-resolver/8.0/">symfony/options-resolver 8.0</a>, nested options can no longer be defined by passing a closure to <code>setDefault()</code>: use <code>setOptions()</code>, available since 7.3.</p>
+        </section>
+
+        <section id="bc-break" class="tone-rose">
+            <h2><span><em>BC break</em></span></h2>
+            <p>Since 4.2, a nested option was declared with <code>setDefault()</code>, with a closure whose first argument is type-hinted <code>OptionsResolver</code>.</p>
+            <pre class="code"><code class="language-php" data-removed="setDefault" data-added="setOptions"><span class="tok-c1">// 4.2 – 7.4</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-removed"><span class="tok-na">setDefault</span></mark><span class="tok-p">(</span><span class="tok-s1">'spool'</span><span class="tok-p">,</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">OptionsResolver</span> <span class="tok-nv">$spoolResolver</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">void</span> <span class="tok-p">{});</span>
+<span class="tok-c1">// &gt;= 8.0</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptions</span></mark><span class="tok-p">(</span><span class="tok-s1">'spool'</span><span class="tok-p">,</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">OptionsResolver</span> <span class="tok-nv">$spoolResolver</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">void</span> <span class="tok-p">{});</span></code></pre>
+            <p>Since 5.1, the fluent configuration does the same with <code>default()</code>.</p>
+            <pre class="code"><code class="language-php" data-removed="default" data-added="options"><span class="tok-c1">// 5.1 – 7.4</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">define</span><span class="tok-p">(</span><span class="tok-s1">'spool'</span><span class="tok-p">)</span><span class="tok-o">-&gt;</span><mark class="code-removed"><span class="tok-na">default</span></mark><span class="tok-p">(</span><span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">OptionsResolver</span> <span class="tok-nv">$spoolResolver</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">void</span> <span class="tok-p">{});</span>
+<span class="tok-c1">// &gt;= 8.0</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">define</span><span class="tok-p">(</span><span class="tok-s1">'spool'</span><span class="tok-p">)</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">options</span></mark><span class="tok-p">(</span><span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">OptionsResolver</span> <span class="tok-nv">$spoolResolver</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">void</span> <span class="tok-p">{});</span></code></pre>
+        </section>
+
+        <section id="deprecated" class="tone-orange">
+            <h2><span><em>Deprecated</em> <code>7.3 – 7.4</code></span></h2>
+            <p>In 7.3 and 7.4, the code of <a href="#bc-break">BC break</a> still works, but triggers a deprecation:</p>
+            <pre class="code"><code class="language-text">Since symfony/options-resolver 7.3: Defining nested options via "Symfony\Component\OptionsResolver\OptionsResolver::setDefault()" is deprecated and will be removed in Symfony 8.0, use "setOptions()" method instead.</code></pre>
+        </section>
+
+        <section id="migration" class="tone-rose">
+            <h2><span><em>Migration</em></span></h2>
+            <div class="callout">
+                <p><strong><a href="/releases/symfony/options-resolver/8.0/">symfony/options-resolver 8.0</a> throws no error if the code is not migrated.</strong></p>
+                <p><code>setDefault()</code> now only treats a closure as special when its first argument is type-hinted <code>Options</code>.</p>
+                <p>A closure type-hinted <code>OptionsResolver</code> becomes a plain default value.</p>
+            </div>
+            <pre class="code"><code class="language-php" data-removed="setDefault"><span class="tok-c1">// symfony/options-resolver 8.0, code not migrated</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-removed"><span class="tok-na">setDefault</span></mark><span class="tok-p">(</span><span class="tok-s1">'spool'</span><span class="tok-p">,</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">OptionsResolver</span> <span class="tok-nv">$spoolResolver</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">void</span> <span class="tok-p">{</span>
+    <span class="tok-c1">// never called</span>
+<span class="tok-p">});</span>
+
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([]);</span> <span class="tok-c1">// ['spool' =&gt; Closure]</span></code></pre>
+            <p>The code then fails later, far from the cause, e.g. with <code>Cannot use object of type Closure as array</code> when reading <code>$options['spool']['type']</code>.</p>
+            <p>Fix every deprecation of 7.4 before upgrading: search for <code>setDefault(</code> calls whose closure takes an <code>OptionsResolver</code> argument.</p>
+        </section>
+
+        <section id="sources">
+            <h2><span>The <em>sources</em>.</span></h2>
+            <ul class="sources">
+                <li><a href="https://github.com/symfony/symfony/commit/f1abd5c34b0346a480da9d409366abaf1acb3abc" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit f1abd5c34b</a></li>
+                <li><a href="https://github.com/symfony/symfony/pull/59618" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Pull request #59618</a>: deprecate defining nested options via <code>setDefault()</code> (7.3)</li>
+                <li><a href="https://github.com/symfony/symfony/pull/60723" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Pull request #60723</a>: remove support for nested options definition via <code>setDefault()</code> (8.0)</li>
+                <li><a href="https://symfony.com/doc/8.0/components/options_resolver.html#nested-options" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony documentation: Nested Options</a></li>
+                <li><a href="https://symfony.com/blog/symfony-7-3-0-beta1-released" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: Symfony 7.3.0-BETA1 released</a>, which lists the deprecation</li>
+                <li><a href="https://symfony.com/blog/a-week-of-symfony-962-june-2-8-2025" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: A Week of Symfony #962</a>, which lists the removal</li>
+            </ul>
+        </section>
+
+        <footer>
+            Last checked on 2026-10-18.
+        </footer>
+    </div>
+</body>
+</html>
