@@ -30,6 +30,7 @@ docs/
 ├── index.html              home page
 ├── favicon.svg             icon of every page
 ├── assets/css/main.css     styles shared by every page
+├── assets/js/main.js       the only script: shows or hides the use statements of the blocks of code
 ├── assets/fonts/           Poppins and JetBrains Mono, self-hosted
 ├── assets/favicons/        favicons of the sites we link to, named <domain>.svg (or .png)
 └── releases/
@@ -76,13 +77,18 @@ They apply to every page, built by the script or written by hand.
   from the name of a package. Exceptions: titles (`<title>`, `h1`, `h2`, breadcrumb, `list-title`), quoted texts
   (commit and deprecation messages), and texts that are already a link (e.g. the links of `Sources`).
   Only the page of a package links its name to its repository on GitHub, in its subtitle. Never link a page to itself.
-- Every page is written in English, and uses only `/assets/css/main.css`: no inline style, no JavaScript, no external
-  dependency. Add the classes a page needs to `main.css` instead of duplicating styles.
+- Every page is written in English, and uses only `/assets/css/main.css`: no inline style, no external dependency.
+  Add the classes a page needs to `main.css` instead of duplicating styles.
+  No JavaScript, except `/assets/js/main.js`, linked by the example pages only, just after `main.css`
+  (`<script src="/assets/js/main.js"></script>`): it replaces the version of the language in the `code-meta` of each
+  block of code by a menu, opened by an icon, to choose the PHP version whose syntax the code is shown in (the newest
+  version offered by the package by default), then to show or hide the use statements (hidden by default), in every
+  block, the choices saved in the `localStorage`.
 - Every page links `/favicon.svg` in its `<head>`, before `main.css`, starts with the `masthead` header (logo,
   navigation with its mobile burger menu; the `Releases` link has `nav-link-active` on every page under `/releases/`),
   and has a breadcrumb linking each level: `codebase.watch / releases / <vendor> / <package> / <version>`.
 - Every `section` is a card. Its title is `<h2><span>...</span></h2>`, with one key word in `<em>` (shown with a
-  gradient) and a final period, e.g. `<h2><span>New <em>features</em>.</span></h2>`. The `<span>` is required.
+  gradient), without a final period, e.g. `<h2><span>New <em>features</em></span></h2>`. The `<span>` is required.
   The chapter number (`I`, `II`...) is added by the CSS: never write it.
   Its background color is given by a `tone-<color>` class: `indigo`, `emerald`, `amber`, `rose`, `blue`, `orange`,
   `violet`, `teal`, `slate`. `The sources.` is always white (no class).
@@ -156,15 +162,27 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   `Allowed values` (`violet`). Each section shows the normal case first, then its errors and variants, each one with
   its `<h3>` title.
 - Code: **only the code that changed**, a few lines: never a full implementation (no class, no unrelated options).
+  Test values are `foo`, `bar` and `baz` whenever the value does not matter (e.g. `'foo'`, `foo@bar.com`,
+  `FOO@BAR.COM`, `foo.com`); keep a meaningful value only when the example needs it (e.g. `'male'` and `'female'`
+  as allowed values). Each block starts with `foo`, whatever the other blocks use: `bar`, then `baz`, only when the
+  same block needs a second, then a third different value (e.g. `'host' => 'foo.com', 'url' => '/bar'`).
+  Numbers: `42`, then `3`, `18` and `21` when the same block needs more, in the order they appear in the code; any
+  other number beyond. A number the example computes (e.g. the result of `count()`) is left as it is.
+  Show only the code of the released version (its tag): never a name or a behavior that changed before the release
+  (see the `changes` skill), neither in the code nor in the texts.
   Every block is complete: it creates everything it uses (e.g. `$resolver = new OptionsResolver();`) and calls no
   function it does not define, never relying on the code of another block.
+  It starts with the import of every class it uses (the language skill gives the syntax), followed by an empty line:
+  `bin/dev/highlight.py` wraps them in `<span class="code-uses">`, shown or hidden by `/assets/js/main.js`.
   Old and new code side by side in the same block, one block per syntax (see `BC break`).
   Give the versions where a line works in a comment only when the block compares versions (e.g. the old and the new
   code of a BC break), never when the page is about a single version (e.g. a new feature).
   A comment showing the value of a variable (e.g. the result of a call) goes on its own line, just above the line
   that sets the variable, never below it nor at the end of the line.
-  Write the code with the syntax of the minimum version of the language required by the package in the version shown
-  (its `dependencies`), following the language skill (syntax of each version, how to write the code).
+  Write the code with the syntax of the newest version of the language allowed by the package in the version shown
+  (its `dependencies`), typed as much as this version allows, following the language skill (syntax of each version,
+  how to write the code): the code of the older versions of the language, down to the minimum version of the package,
+  chosen in a menu, is derived by `bin/dev/highlight.py` (see the language skill).
   Write code as `<pre class="code"><code class="language-<Pygments lexer>">` (the language skill gives the lexer;
   other text as `language-text`), inside a `code-block` whose `code-meta` (top right corner) holds the links to the
   documentation of what the block shows, then the version of the language whose syntax it uses (the language skill
@@ -185,15 +203,29 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   PHPDoc (e.g. `.../blob/v2.1.0/src/.../OptionsResolverInterface.php#L44-L57`; the interface when it holds the PHPDoc;
   one per version when the block compares versions), titled
   `Declaration of <Class>::<method>() in <tag>`, its icon `<svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
-  <path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg>`.
+  <path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg>`. A link to an interface comes first, followed by a link to each
+  implementation of the method in the package, from its PHPDoc to the end of its body.
+  Only one icon of each kind is visible: when there are several links to the documentation or to GitHub, the icon
+  opens a menu listing them, without JavaScript (it closes on a click anywhere):
+
+  ```html
+  <details class="code-menu"><summary title="Code" aria-label="Code"><svg class="icon" ...>...</svg></summary><ul><li><a href="..." target="_blank" rel="noopener">OptionsResolverInterface::resolve() in v2.1.0</a></li><li><a href="..." target="_blank" rel="noopener">OptionsResolver::resolve() in v2.1.0</a></li></ul></details>
+  ```
+
+  The summary of the documentation menu is titled `Documentation`, its links named like the title of a single link.
   A `language-text` block has no `code-meta`.
   Then run `bin/dev/highlight.py <page>`: it colors the code blocks
   with Pygments in the HTML itself (no JavaScript, no flicker on load), inside the `codebase-python` Docker image built
   by `bin/dev/start.py` (run it first). It rebuilds every block from its text, so it can be run again.
   Show what changed by listing the names (methods, classes, options...) on the `<code>` tag, separated by spaces:
   `data-removed="oldMethod"` (red) and `data-added="newMethod"` (green).
-  Mark the strings the example is about (e.g. `data-added="'firstName'"` for an unknown or missing option, the given
-  value of an option): `bin/dev/highlight.py` marks them in the code and in the comments showing a result or an
+  Mark the values the example changes (e.g. a default value replaced by the given one, a value normalized).
+  Colors: red (`data-removed`) for what is an error, i.e. the values causing the exception a block shows, and the old
+  code removed by a BC break; green (`data-added`) for everything else, methods included in a block showing an
+  exception.
+  Mark the strings the example is about (e.g. `data-added="'firstName'"` for an unknown or missing option, the value
+  given to `resolve()` and, when it is transformed, the value it becomes): `bin/dev/highlight.py` marks them in the
+  code and in the comments showing a result or an
   exception message (`// The option "firstName" does not exist.`).
   When the paragraph above a block explains one part of its code (e.g. an argument, a variable), mark this part with
   `data-added`, name it in the paragraph and use it in the code (e.g. `data-added="$previousValue"` for "A second

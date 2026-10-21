@@ -24,13 +24,19 @@
     ],
     "checkedOn": "2026-10-19",
     "changes": {
-        "8fcafa72-ded8-491a-b5ee-036f65e9d9ad": {
-            "message": "Update the `dev-master` branch alias to `2.3-dev` in `composer.json`",
+        "a9a279dc-3894-4167-8494-1f5a6091760e": {
+            "message": "Build the exception messages of `Options` with `sprintf()`",
             "section": "other",
             "commits": [
                 {
-                    "hash": "d0aaf625573254b5aff0a89cf12063d53067d81a",
-                    "pullRequest": null
+                    "hash": "e655120f052d9ccb4bc5a379da902d36d5247a8c",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/7620"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #328",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-328-8-14-april-2013"
                 }
             ],
             "validated": false
@@ -46,19 +52,13 @@
             ],
             "validated": false
         },
-        "a9a279dc-3894-4167-8494-1f5a6091760e": {
-            "message": "Build the exception messages of `Options` with `sprintf()`",
+        "8fcafa72-ded8-491a-b5ee-036f65e9d9ad": {
+            "message": "Update the `dev-master` branch alias to `2.3-dev` in `composer.json`",
             "section": "other",
             "commits": [
                 {
-                    "hash": "e655120f052d9ccb4bc5a379da902d36d5247a8c",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/7620"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #328",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-328-8-14-april-2013"
+                    "hash": "d0aaf625573254b5aff0a89cf12063d53067d81a",
+                    "pullRequest": null
                 }
             ],
             "validated": false

@@ -74,6 +74,7 @@
     --rule: #e5e7eb;
     --rule-strong: #d1d5db;
     --code-bg: #f3f4f6;
+    --code-meta-bg: #e5e7eb;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     --radius-sm: 1.5px;
@@ -126,6 +127,7 @@
         --rule: #1f2937;
         --rule-strong: #374151;
         --code-bg: #0b0f19;
+        --code-meta-bg: #1f2937;
         --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.4);
         --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
         --gradient: linear-gradient(90deg, #818cf8 0%, #34d399 100%);
@@ -893,16 +895,29 @@ ul.sources li + li {
     margin: 16px 0 0;
 }
 
+/* Same shape as the number of the chapter (section > h2::before), in grey */
 .count {
     display: inline-block;
     min-width: 1.8em;
     font: 600 0.75rem var(--font-mono);
     text-align: center;
-    color: var(--ink-muted);
-    background: var(--bg);
-    border: 1px solid var(--rule);
-    padding: 2px 9px;
-    border-radius: 999px;
+    color: var(--surface);
+    background: var(--slate);
+    padding: 4px 9px;
+    border-radius: var(--radius-sm);
+}
+
+/* Title of a group of changes (e.g. a class), above its list */
+.commits-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+section > .section-note + .commits-group {
+    margin-top: 20px;
 }
 
 .commits {
@@ -912,7 +927,25 @@ ul.sources li + li {
     background: var(--surface);
     border: 1px solid var(--rule);
     border-radius: var(--radius-lg);
-    overflow: hidden;
+}
+
+/* No overflow: hidden on .commits, so that the menus of the links can go out of it: round the corners of the rows */
+.commit:first-child > :first-child {
+    border-top-left-radius: var(--radius-lg);
+}
+
+.commit:first-child .commit-links > :last-child,
+.commit:first-child .commit-links > :last-child > summary {
+    border-top-right-radius: var(--radius-lg);
+}
+
+.commit:last-child > :first-child {
+    border-bottom-left-radius: var(--radius-lg);
+}
+
+.commit:last-child .commit-links > :last-child,
+.commit:last-child .commit-links > :last-child > summary {
+    border-bottom-right-radius: var(--radius-lg);
 }
 
 .commit + .commit {
@@ -965,6 +998,21 @@ a.commit-main:hover {
     display: none;
 }
 
+/* Several links of the same kind in a row: a menu (see .code-menu) */
+.icon-menu {
+    display: flex;
+}
+
+.icon-menu summary {
+    display: flex;
+}
+
+.icon-menu summary:hover,
+.icon-menu[open] summary {
+    color: var(--primary);
+    background: var(--primary-50);
+}
+
 @media (max-width: 600px) {
     .commit {
         flex-wrap: wrap;
@@ -1000,6 +1048,25 @@ a.commit-main:hover {
 
     .icon-link-label {
         display: inline;
+    }
+
+    .icon-menu {
+        flex-direction: column;
+    }
+
+    .icon-link + .icon-menu,
+    .icon-menu + .icon-link,
+    .icon-menu + .icon-menu {
+        border-top: 1px solid var(--rule);
+    }
+
+    .icon-menu ul {
+        position: relative;
+        top: 0;
+        border: 0;
+        border-top: 1px solid var(--rule);
+        border-radius: 0;
+        box-shadow: none;
     }
 }
 
@@ -1057,8 +1124,9 @@ pre.code code {
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 0 6px;
-    background: var(--code-bg);
+    padding: 2px 8px;
+    background: var(--code-meta-bg);
+    border-radius: var(--radius);
     color: var(--ink-muted);
     font-size: 0.72rem;
 }
@@ -1077,19 +1145,121 @@ pre.code code {
     height: 15px;
 }
 
-/* Separator between the links to the documentation and the version of the language */
-.code-meta a + span {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+/* The icons are clickable a few pixels around them, on the sides too, without touching each other */
+.code-meta > a,
+.code-meta > .code-menu > summary {
+    position: relative;
 }
 
-.code-meta a + span::before {
+.code-meta > a::after,
+.code-meta > .code-menu > summary::after {
     content: "";
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: currentColor;
+    position: absolute;
+    inset: -6px -6px;
+}
+
+/* The use statements at the start of a block, shown or hidden from the menu of its code-meta (/assets/js/main.js) */
+.uses-hidden .code-uses {
+    display: none;
+}
+
+/* Several links of the same kind: a menu opened by a click on the icon, without JavaScript */
+.code-menu {
+    position: relative;
+    display: inline-flex;
+}
+
+.code-menu summary {
+    display: inline-flex;
+    cursor: pointer;
+    list-style: none;
+}
+
+.code-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+/* An open menu closes on a click anywhere: a layer covering the page, part of the summary, toggles it */
+.code-menu[open] summary::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    cursor: default;
+}
+
+.code-menu summary:hover,
+.code-menu[open] summary {
+    color: var(--ink);
+}
+
+.code-menu ul {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 10;
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+}
+
+.code-menu li a,
+.code-menu li button {
+    display: block;
+    width: 100%;
+    padding: 4px 12px;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font: 0.78rem var(--font-mono);
+    text-align: left;
+    cursor: pointer;
+}
+
+.code-menu li a:hover,
+.code-menu li button:hover {
+    background: var(--code-bg);
+}
+
+/* A choice of the display menu of a block (/assets/js/main.js), checked when it applies */
+.code-menu li button {
+    position: relative;
+    padding-left: 26px;
+}
+
+.code-menu li button[aria-pressed="true"] {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.code-menu li button[aria-pressed="true"]::before {
+    content: "\2713";
+    position: absolute;
+    left: 10px;
+}
+
+.code-menu li.code-menu-separated {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--rule);
+}
+
+/* The code of a block in the syntax of each PHP version (<pre data-php>, see bin/dev/highlight.py): the first one,
+   the minimum version of the package, unless /assets/js/main.js shows the chosen one */
+.code-block pre.code ~ pre.code {
+    display: none;
+}
+
+/* Separator between the elements of the header ("use" button, links, version of the language): a dot drawn as
+   a background, so that it is never part of a link or of a menu */
+.code-meta > * + * {
+    padding-left: 9px;
+    background: radial-gradient(circle closest-side, var(--ink-muted) 95%, transparent) left center / 3px 3px no-repeat;
 }
 
 /* On mobile, the links and the version are on their own line, above the code, so that they never hide it */
@@ -1097,7 +1267,7 @@ pre.code code {
     .code-meta {
         position: static;
         justify-content: flex-end;
-        padding: 6px 12px 0;
+        padding: 6px 12px;
         border: 1px solid var(--rule);
         border-bottom: 0;
         border-radius: var(--radius-lg) var(--radius-lg) 0 0;

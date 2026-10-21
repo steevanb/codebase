@@ -16,6 +16,8 @@ Builds (and overwrites):
 - the "Latest releases" and "Projects" lists of docs/index.html
 
 Example pages (docs/releases/<vendor>/<package>/<version>/<slug>/) are written by hand: they are never touched.
+In a section of a release page, the changes with the same "group" (e.g. a class) are listed under its title, unless all
+the changes of the section have the same group.
 Only uses the standard library: runs without Docker.
 
 Usage: bin/dev/site.py
@@ -34,15 +36,14 @@ DOCS_DIR = ROOT_DIR / 'docs'
 TODAY = date.today().isoformat()
 
 SECTIONS = [
-    ('bc-breaks', 'tone-rose', 'BC <em>breaks</em>.'),
-    ('new-features', 'tone-emerald', 'New <em>features</em>.'),
-    ('improvements', 'tone-indigo', '<em>Improvements</em>.'),
-    ('dependencies', 'tone-violet', '<em>Dependencies</em>.'),
-    ('other', 'tone-slate', '<em>Other</em> changes.'),
+    ('bc-breaks', 'tone-rose', 'BC <em>breaks</em>'),
+    ('new-features', 'tone-emerald', 'New <em>features</em>'),
+    ('improvements', 'tone-indigo', '<em>Improvements</em>'),
+    ('dependencies', 'tone-violet', '<em>Dependencies</em>'),
+    ('other', 'tone-slate', '<em>Other</em> changes'),
 ]
 
 ICON_EXAMPLE = '<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg>'
-ICON_COMMIT = '<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg>'
 ICON_PR = '<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg>'
 
 def escape(text: str) -> str:
@@ -159,13 +160,40 @@ class Vendor:
             key=lambda package: package.name,
         )
 
+def icon_links(links: list, icon: str, single_title: str | None, plural: str) -> str:
+    """One icon link, or a menu opened by the icon when there are several links (without JavaScript)."""
+    if not links:
+        return ''
+    if len(links) == 1:
+        url, title, external = links[0]
+        title = single_title or title
+        target = ' target="_blank" rel="noopener"' if external else ''
+
+        return f'                        <a class="icon-link" href="{url}"{target} title="{title}" aria-label="{title}">{icon}<span class="icon-link-label">{title}</span></a>'
+
+    title = f'{len(links)} {plural}'
+    items = ''.join(
+        f'<li><a href="{url}"' + (' target="_blank" rel="noopener"' if external else '') + f'>{label}</a></li>'
+        for url, label, external in links
+    )
+
+    return (
+        f'                        <details class="code-menu icon-menu"><summary class="icon-link" title="{title}" aria-label="{title}">'
+        f'{icon}<span class="icon-link-label">{title}</span></summary><ul>{items}</ul></details>'
+    )
+
+def example_url(version: Version, page: dict) -> str:
+    anchor = f'#{page["anchor"]}' if 'anchor' in page else ''
+
+    return f'{version.url}{page["slug"]}/{anchor}'
+
 def commit_row(version: Version, change: dict) -> str:
     examples = [page for page in change.get('pages', []) if page['type'] == 'example']
     message = f'<span class="commit-message">{markdown(change["message"])}</span>'
     lines = ['                <li class="commit">']
     if examples:
         lines += [
-            f'                    <a class="commit-main" href="{version.url}{examples[0]["slug"]}/">',
+            f'                    <a class="commit-main" href="{example_url(version, examples[0])}">',
             f'                        {message}',
             '                    </a>',
         ]
@@ -181,26 +209,43 @@ def commit_row(version: Version, change: dict) -> str:
         f'                    <label class="commit-burger burger" for="{menu}" aria-hidden="true"><span></span></label>',
         '                    <div class="commit-links">',
     ]
-    for page in examples:
-        lines.append(f'                        <a class="icon-link" href="{version.url}{page["slug"]}/" title="Example" aria-label="Example">{ICON_EXAMPLE}<span class="icon-link-label">Example</span></a>')
-    for commit in change['commits']:
-        title = f'Commit {commit["hash"][:10]}'
-        lines.append(f'                        <a class="icon-link" href="{version.package.settings["history"]}/commit/{commit["hash"]}" target="_blank" rel="noopener" title="{title}" aria-label="{title}">{ICON_COMMIT}<span class="icon-link-label">{title}</span></a>')
-        if commit.get('pullRequest'):
-            title = f'Pull request #{commit["pullRequest"].rsplit("/", 1)[1]}'
-            lines.append(f'                        <a class="icon-link" href="{commit["pullRequest"]}" target="_blank" rel="noopener" title="{title}" aria-label="{title}">{ICON_PR}<span class="icon-link-label">{title}</span></a>')
+    examples_links = [(example_url(version, page), f'Example: {page["slug"]}', False) for page in examples]
+    lines.append(icon_links(examples_links, ICON_EXAMPLE, 'Example', 'examples'))
+    pull_requests = [
+        (url, f'Pull request #{url.rsplit("/", 1)[1]}', True)
+        for url in dict.fromkeys(commit['pullRequest'] for commit in change['commits'] if commit.get('pullRequest'))
+    ]
+    lines.append(icon_links(pull_requests, ICON_PR, None, 'pull requests'))
+    lines = [line for line in lines if line]
     lines += ['                    </div>', '                </li>']
 
     return '\n'.join(lines)
 
+def change_lists(changes: list) -> str:
+    """The rows of the changes without a group, then a list per group under its title, unless there is a single group."""
+    groups = {}
+    for change in changes:
+        groups.setdefault(change.get('group'), []).append(change['row'])
+    if len(groups) == 1:
+        groups = {None: [change['row'] for change in changes]}
+
+    lists = []
+    for group, rows in sorted(groups.items(), key=lambda item: item[0] is not None):
+        if group is not None:
+            lists.append(f'            <h3 class="commits-group"><span>{markdown(group)}</span><span class="count">{len(rows)}</span></h3>')
+        lists.append(f'            <ul class="commits">\n{chr(10).join(rows)}\n            </ul>')
+
+    return '\n'.join(lists)
+
+# The note under the title of a section, when its title does not say enough
 def section_note(section: str, version: Version) -> str:
-    return {
+    note = {
         'bc-breaks': f'Changes that can break existing code when upgrading from {version.previous}.',
-        'new-features': 'New capabilities added by this version.',
         'improvements': 'Enhancements of existing features.',
-        'dependencies': f'Changes of the required {version.package.vendor.settings["language"]} version, extensions or packages.',
         'other': 'No impact on your code.',
-    }[section]
+    }.get(section)
+
+    return '' if note is None else f'\n            <p class="section-note">{note}</p>'
 
 def stat(label: str, value: str, css_class: str = 'stat') -> str:
     return f'''                <div class="{css_class}">
@@ -238,7 +283,7 @@ def release_page(version: Version) -> str:
     rows = {key: [] for key, _, _ in SECTIONS}
     for change in version.changes:
         if not change.get('hidden', False):
-            rows[change['section']].append(commit_row(version, change))
+            rows[change['section']].append({'group': change.get('group'), 'row': commit_row(version, change)})
     features = len(rows['new-features']) + len(rows['improvements'])
     ref = version.release['ref']
     package_link = f'<a href="{package.url}">{package.name}</a>'
@@ -268,11 +313,8 @@ def release_page(version: Version) -> str:
     for key, tone, title in SECTIONS:
         if rows[key]:
             sections.append(f'''        <section id="{key}" class="{tone}">
-            <h2><span>{title}</span><span class="count">{len(rows[key])}</span></h2>
-            <p class="section-note">{section_note(key, version)}</p>
-            <ul class="commits">
-{chr(10).join(rows[key])}
-            </ul>
+            <h2><span>{title}</span><span class="count">{len(rows[key])}</span></h2>{section_note(key, version)}
+{change_lists(rows[key])}
         </section>
 ''')
     if not version.commits():
@@ -281,7 +323,7 @@ def release_page(version: Version) -> str:
         else:
             empty = f'The <code>{ref}</code> branch contains no commit touching {package_link} that is not already in <code>{version.previous}</code>.'
         sections.append(f'''        <section id="commits" class="tone-teal">
-            <h2><span>The <em>commits</em>.</span></h2>
+            <h2><span>The <em>commits</em></span></h2>
             <div class="empty">
                 <strong>No commit.</strong>
                 {empty}
@@ -300,7 +342,7 @@ def release_page(version: Version) -> str:
         <h1>{package.name} {version.number}</h1>
 
         <section id="overview" class="tone-amber">
-            <h2><span>At a <em>glance</em>.</span></h2>
+            <h2><span>At a <em>glance</em></span></h2>
             <div class="stats">
 {stats_html}
             </div>
@@ -308,7 +350,7 @@ def release_page(version: Version) -> str:
 
 {chr(10).join(sections)}
         <section id="sources">
-            <h2><span>The <em>sources</em>.</span></h2>
+            <h2><span>The <em>sources</em></span></h2>
             <ul class="sources">
 {sources}
             </ul>

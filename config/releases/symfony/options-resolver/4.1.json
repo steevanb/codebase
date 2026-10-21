@@ -40,36 +40,15 @@
             "validated": false
         },
         "e0730764-c761-4fb7-8da2-a567f4d6466d": {
-            "message": "Make `ExceptionInterface` extend `\\Throwable` (reverted before the 4.1 release)",
-            "section": "other",
+            "hidden": true,
             "commits": [
                 {
-                    "hash": "b2d879290823669f9e0af003b483231d7533b8a0",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/26702"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: Symfony 4.1.0-BETA1 released",
-                    "url": "https://symfony.com/blog/symfony-4-1-0-beta1-released"
+                    "hash": "b2d879290823669f9e0af003b483231d7533b8a0"
                 },
                 {
-                    "title": "Symfony blog: A Week of Symfony #588",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-588-2-8-april-2018"
+                    "hash": "2ddb89b7a3ba0dd0c5b067d6dcfa80bfd1287c86"
                 }
-            ],
-            "validated": false
-        },
-        "c32aec0b-548e-4027-8a86-73280944b715": {
-            "message": "Revert: `ExceptionInterface` no longer extends `\\Throwable`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "2ddb89b7a3ba0dd0c5b067d6dcfa80bfd1287c86",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/27420"
-                }
-            ],
-            "validated": false
+            ]
         }
     }
 }

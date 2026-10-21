@@ -39,7 +39,7 @@
         <h1>symfony/options-resolver 6.0</h1>
 
         <section id="overview" class="tone-amber">
-            <h2><span>At a <em>glance</em>.</span></h2>
+            <h2><span>At a <em>glance</em></span></h2>
             <div class="stats">
                 <div class="stat stat-hero">
                     <div class="stat-label">Compared versions</div>
@@ -73,28 +73,26 @@
         </section>
 
         <section id="bc-breaks" class="tone-rose">
-            <h2><span>BC <em>breaks</em>.</span><span class="count">7</span></h2>
+            <h2><span>BC <em>breaks</em></span><span class="count">7</span></h2>
             <p class="section-note">Changes that can break existing code when upgrading from 5.4.</p>
             <ul class="commits">
                 <li class="commit">
                     <div class="commit-main">
-                        <span class="commit-message">Remove <code>OptionsResolverIntrospector::getDeprecationMessage()</code>, use <code>getDeprecation()</code> instead</span>
+                        <span class="commit-message">Make the <code>$package</code> and <code>$version</code> arguments of <code>setDeprecated()</code> mandatory</span>
                     </div>
                     <input class="commit-toggle" id="links-906e757f79-1" type="checkbox" aria-label="Links">
                     <label class="commit-burger burger" for="links-906e757f79-1" aria-hidden="true"><span></span></label>
                     <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/906e757f7910a34846392b43c139aed7205269c5" target="_blank" rel="noopener" title="Commit 906e757f79" aria-label="Commit 906e757f79"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit 906e757f79</span></a>
                         <a class="icon-link" href="https://github.com/symfony/symfony/pull/41316" target="_blank" rel="noopener" title="Pull request #41316" aria-label="Pull request #41316"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #41316</span></a>
                     </div>
                 </li>
                 <li class="commit">
                     <div class="commit-main">
-                        <span class="commit-message">Make the <code>$package</code> and <code>$version</code> arguments of <code>setDeprecated()</code> mandatory</span>
+                        <span class="commit-message">Remove <code>OptionsResolverIntrospector::getDeprecationMessage()</code>, use <code>getDeprecation()</code> instead</span>
                     </div>
                     <input class="commit-toggle" id="links-906e757f79-2" type="checkbox" aria-label="Links">
                     <label class="commit-burger burger" for="links-906e757f79-2" aria-hidden="true"><span></span></label>
                     <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/906e757f7910a34846392b43c139aed7205269c5" target="_blank" rel="noopener" title="Commit 906e757f79" aria-label="Commit 906e757f79"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit 906e757f79</span></a>
                         <a class="icon-link" href="https://github.com/symfony/symfony/pull/41316" target="_blank" rel="noopener" title="Pull request #41316" aria-label="Pull request #41316"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #41316</span></a>
                     </div>
                 </li>
@@ -105,30 +103,7 @@
                     <input class="commit-toggle" id="links-feeeaf5295-1" type="checkbox" aria-label="Links">
                     <label class="commit-burger burger" for="links-feeeaf5295-1" aria-hidden="true"><span></span></label>
                     <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/feeeaf5295f4a42477262ed7143c76d886ba0f55" target="_blank" rel="noopener" title="Commit feeeaf5295" aria-label="Commit feeeaf5295"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit feeeaf5295</span></a>
                         <a class="icon-link" href="https://github.com/symfony/symfony/pull/41884" target="_blank" rel="noopener" title="Pull request #41884" aria-label="Pull request #41884"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #41884</span></a>
-                    </div>
-                </li>
-                <li class="commit">
-                    <div class="commit-main">
-                        <span class="commit-message">Add the <code>mixed</code> return type to <code>OptionsResolverIntrospector::getDefault()</code></span>
-                    </div>
-                    <input class="commit-toggle" id="links-fd05e68d9a-1" type="checkbox" aria-label="Links">
-                    <label class="commit-burger burger" for="links-fd05e68d9a-1" aria-hidden="true"><span></span></label>
-                    <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/fd05e68d9a6b5594a38fa9a07c8208f86afa64fe" target="_blank" rel="noopener" title="Commit fd05e68d9a" aria-label="Commit fd05e68d9a"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit fd05e68d9a</span></a>
-                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/42064" target="_blank" rel="noopener" title="Pull request #42064" aria-label="Pull request #42064"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #42064</span></a>
-                    </div>
-                </li>
-                <li class="commit">
-                    <div class="commit-main">
-                        <span class="commit-message">Replace <code>#[\ReturnTypeWillChange]</code> with real return types on <code>offsetGet()</code> (<code>mixed</code>), <code>offsetExists()</code> (<code>bool</code>), <code>offsetSet()</code> and <code>offsetUnset()</code> (<code>void</code>) and <code>count()</code> (<code>int</code>)</span>
-                    </div>
-                    <input class="commit-toggle" id="links-2d3e1edc8d-1" type="checkbox" aria-label="Links">
-                    <label class="commit-burger burger" for="links-2d3e1edc8d-1" aria-hidden="true"><span></span></label>
-                    <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/2d3e1edc8d6ae9f2b35f99b96c55495b970106a4" target="_blank" rel="noopener" title="Commit 2d3e1edc8d" aria-label="Commit 2d3e1edc8d"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit 2d3e1edc8d</span></a>
-                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/42378" target="_blank" rel="noopener" title="Pull request #42378" aria-label="Pull request #42378"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #42378</span></a>
                     </div>
                 </li>
                 <li class="commit">
@@ -138,7 +113,6 @@
                     <input class="commit-toggle" id="links-00f08e4b9d-1" type="checkbox" aria-label="Links">
                     <label class="commit-burger burger" for="links-00f08e4b9d-1" aria-hidden="true"><span></span></label>
                     <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/00f08e4b9d88a23ae162e3b8c58df9e56e577e34" target="_blank" rel="noopener" title="Commit 00f08e4b9d" aria-label="Commit 00f08e4b9d"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit 00f08e4b9d</span></a>
                         <a class="icon-link" href="https://github.com/symfony/symfony/pull/42509" target="_blank" rel="noopener" title="Pull request #42509" aria-label="Pull request #42509"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #42509</span></a>
                     </div>
                 </li>
@@ -149,15 +123,33 @@
                     <input class="commit-toggle" id="links-fac9055a98-1" type="checkbox" aria-label="Links">
                     <label class="commit-burger burger" for="links-fac9055a98-1" aria-hidden="true"><span></span></label>
                     <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/fac9055a983fabede0f862947cbc0078ba3188f2" target="_blank" rel="noopener" title="Commit fac9055a98" aria-label="Commit fac9055a98"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit fac9055a98</span></a>
+                    </div>
+                </li>
+                <li class="commit">
+                    <div class="commit-main">
+                        <span class="commit-message">Replace <code>#[\ReturnTypeWillChange]</code> with real return types on <code>offsetGet()</code> (<code>mixed</code>), <code>offsetExists()</code> (<code>bool</code>), <code>offsetSet()</code> and <code>offsetUnset()</code> (<code>void</code>) and <code>count()</code> (<code>int</code>)</span>
+                    </div>
+                    <input class="commit-toggle" id="links-2d3e1edc8d-1" type="checkbox" aria-label="Links">
+                    <label class="commit-burger burger" for="links-2d3e1edc8d-1" aria-hidden="true"><span></span></label>
+                    <div class="commit-links">
+                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/42378" target="_blank" rel="noopener" title="Pull request #42378" aria-label="Pull request #42378"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #42378</span></a>
+                    </div>
+                </li>
+                <li class="commit">
+                    <div class="commit-main">
+                        <span class="commit-message">Add the <code>mixed</code> return type to <code>OptionsResolverIntrospector::getDefault()</code></span>
+                    </div>
+                    <input class="commit-toggle" id="links-fd05e68d9a-1" type="checkbox" aria-label="Links">
+                    <label class="commit-burger burger" for="links-fd05e68d9a-1" aria-hidden="true"><span></span></label>
+                    <div class="commit-links">
+                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/42064" target="_blank" rel="noopener" title="Pull request #42064" aria-label="Pull request #42064"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #42064</span></a>
                     </div>
                 </li>
             </ul>
         </section>
 
         <section id="dependencies" class="tone-violet">
-            <h2><span><em>Dependencies</em>.</span><span class="count">3</span></h2>
-            <p class="section-note">Changes of the required PHP version, extensions or packages.</p>
+            <h2><span><em>Dependencies</em></span><span class="count">3</span></h2>
             <ul class="commits">
                 <li class="commit">
                     <div class="commit-main">
@@ -166,18 +158,6 @@
                     <input class="commit-toggle" id="links-afca900f23-1" type="checkbox" aria-label="Links">
                     <label class="commit-burger burger" for="links-afca900f23-1" aria-hidden="true"><span></span></label>
                     <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/afca900f23b458ccb1340e52a9a588b8ef371933" target="_blank" rel="noopener" title="Commit afca900f23" aria-label="Commit afca900f23"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit afca900f23</span></a>
-                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/41282" target="_blank" rel="noopener" title="Pull request #41282" aria-label="Pull request #41282"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #41282</span></a>
-                    </div>
-                </li>
-                <li class="commit">
-                    <div class="commit-main">
-                        <span class="commit-message">Remove <code>symfony/polyfill-php73</code> and <code>symfony/polyfill-php80</code> requirements (was <code>~1.0</code> and <code>^1.16</code>)</span>
-                    </div>
-                    <input class="commit-toggle" id="links-afca900f23-2" type="checkbox" aria-label="Links">
-                    <label class="commit-burger burger" for="links-afca900f23-2" aria-hidden="true"><span></span></label>
-                    <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/afca900f23b458ccb1340e52a9a588b8ef371933" target="_blank" rel="noopener" title="Commit afca900f23" aria-label="Commit afca900f23"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit afca900f23</span></a>
                         <a class="icon-link" href="https://github.com/symfony/symfony/pull/41282" target="_blank" rel="noopener" title="Pull request #41282" aria-label="Pull request #41282"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #41282</span></a>
                     </div>
                 </li>
@@ -188,28 +168,26 @@
                     <input class="commit-toggle" id="links-44b1a7a57e-1" type="checkbox" aria-label="Links">
                     <label class="commit-burger burger" for="links-44b1a7a57e-1" aria-hidden="true"><span></span></label>
                     <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/44b1a7a57eec2a80f94950a7b1a4271f09d94ee9" target="_blank" rel="noopener" title="Commit 44b1a7a57e" aria-label="Commit 44b1a7a57e"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit 44b1a7a57e</span></a>
                         <a class="icon-link" href="https://github.com/symfony/symfony/pull/42088" target="_blank" rel="noopener" title="Pull request #42088" aria-label="Pull request #42088"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #42088</span></a>
+                    </div>
+                </li>
+                <li class="commit">
+                    <div class="commit-main">
+                        <span class="commit-message">Remove <code>symfony/polyfill-php73</code> and <code>symfony/polyfill-php80</code> requirements (was <code>~1.0</code> and <code>^1.16</code>)</span>
+                    </div>
+                    <input class="commit-toggle" id="links-afca900f23-2" type="checkbox" aria-label="Links">
+                    <label class="commit-burger burger" for="links-afca900f23-2" aria-hidden="true"><span></span></label>
+                    <div class="commit-links">
+                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/41282" target="_blank" rel="noopener" title="Pull request #41282" aria-label="Pull request #41282"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #41282</span></a>
                     </div>
                 </li>
             </ul>
         </section>
 
         <section id="other" class="tone-slate">
-            <h2><span><em>Other</em> changes.</span><span class="count">3</span></h2>
+            <h2><span><em>Other</em> changes</span><span class="count">2</span></h2>
             <p class="section-note">No impact on your code.</p>
             <ul class="commits">
-                <li class="commit">
-                    <div class="commit-main">
-                        <span class="commit-message">Update <code>phpunit.xml.dist</code> for PHPUnit <code>&gt;= 9.3</code></span>
-                    </div>
-                    <input class="commit-toggle" id="links-45b0dbff26-1" type="checkbox" aria-label="Links">
-                    <label class="commit-burger burger" for="links-45b0dbff26-1" aria-hidden="true"><span></span></label>
-                    <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/45b0dbff2610a6d8a610282767b5b123c17f0efd" target="_blank" rel="noopener" title="Commit 45b0dbff26" aria-label="Commit 45b0dbff26"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit 45b0dbff26</span></a>
-                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/41518" target="_blank" rel="noopener" title="Pull request #41518" aria-label="Pull request #41518"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #41518</span></a>
-                    </div>
-                </li>
                 <li class="commit">
                     <div class="commit-main">
                         <span class="commit-message">Change the return type of <code>OptionConfigurator</code> methods from <code>self</code> to <code>static</code></span>
@@ -217,26 +195,24 @@
                     <input class="commit-toggle" id="links-d67a927659-1" type="checkbox" aria-label="Links">
                     <label class="commit-burger burger" for="links-d67a927659-1" aria-hidden="true"><span></span></label>
                     <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/d67a927659f7915a9061dd53a2d38e2419f014e2" target="_blank" rel="noopener" title="Commit d67a927659" aria-label="Commit d67a927659"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit d67a927659</span></a>
-                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/42213" target="_blank" rel="noopener" title="Pull request #42213" aria-label="Pull request #42213"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #42213</span></a>
+                        <details class="code-menu icon-menu"><summary class="icon-link" title="2 pull requests" aria-label="2 pull requests"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">2 pull requests</span></summary><ul><li><a href="https://github.com/symfony/symfony/pull/42213" target="_blank" rel="noopener">Pull request #42213</a></li><li><a href="https://github.com/symfony/symfony/pull/42714" target="_blank" rel="noopener">Pull request #42714</a></li></ul></details>
                     </div>
                 </li>
                 <li class="commit">
                     <div class="commit-main">
-                        <span class="commit-message">Add back <code>@return $this</code> annotations on <code>OptionConfigurator</code> methods</span>
+                        <span class="commit-message">Update <code>phpunit.xml.dist</code> for PHPUnit <code>&gt;= 9.3</code></span>
                     </div>
-                    <input class="commit-toggle" id="links-7fafe834df-1" type="checkbox" aria-label="Links">
-                    <label class="commit-burger burger" for="links-7fafe834df-1" aria-hidden="true"><span></span></label>
+                    <input class="commit-toggle" id="links-45b0dbff26-1" type="checkbox" aria-label="Links">
+                    <label class="commit-burger burger" for="links-45b0dbff26-1" aria-hidden="true"><span></span></label>
                     <div class="commit-links">
-                        <a class="icon-link" href="https://github.com/symfony/symfony/commit/7fafe834dfd8f1e5a1c04b214f1a1292796a020b" target="_blank" rel="noopener" title="Commit 7fafe834df" aria-label="Commit 7fafe834df"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.75"/><path d="M1 8h4.25M10.75 8H15"/></svg><span class="icon-link-label">Commit 7fafe834df</span></a>
-                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/42714" target="_blank" rel="noopener" title="Pull request #42714" aria-label="Pull request #42714"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #42714</span></a>
+                        <a class="icon-link" href="https://github.com/symfony/symfony/pull/41518" target="_blank" rel="noopener" title="Pull request #41518" aria-label="Pull request #41518"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg><span class="icon-link-label">Pull request #41518</span></a>
                     </div>
                 </li>
             </ul>
         </section>
 
         <section id="sources">
-            <h2><span>The <em>sources</em>.</span></h2>
+            <h2><span>The <em>sources</em></span></h2>
             <ul class="sources">
                 <li><a href="https://github.com/symfony/options-resolver/compare/5.4...v6.0.0" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Comparison of 5.4 and v6.0.0</a></li>
                 <li><a href="https://symfony.com/doc/6.0/components/options_resolver.html" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">symfony/options-resolver documentation</a></li>

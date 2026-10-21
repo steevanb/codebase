@@ -72,23 +72,16 @@
                 {
                     "hash": "21cd8521cc2b7db8d835493b789a611048a069a1",
                     "pullRequest": "https://github.com/symfony/symfony/pull/49608"
+                },
+                {
+                    "hash": "61279d4bdb689ac2c5d579f4d85c1ff8a5d797ed",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/50305"
                 }
             ],
             "links": [
                 {
                     "title": "Symfony blog: A Week of Symfony #853",
                     "url": "https://symfony.com/blog/a-week-of-symfony-853-1-7-may-2023"
-                }
-            ],
-            "validated": false
-        },
-        "d1dd277e-c9e5-4633-be57-1489be5ece83": {
-            "message": "Fix the CHANGELOG entry about `setIgnoreUndefined()` and `OptionConfigurator::ignoreUndefined()`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "61279d4bdb689ac2c5d579f4d85c1ff8a5d797ed",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/50305"
                 }
             ],
             "validated": false

@@ -45,17 +45,6 @@
             ],
             "validated": false
         },
-        "0723c83e-b0b2-4c2a-b939-52d98eec3692": {
-            "message": "Update the `dev-master` branch alias to `2.2-dev` in `composer.json`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "4dc197c3e1ea227e36cab7ea93877fa44ecc569b",
-                    "pullRequest": null
-                }
-            ],
-            "validated": false
-        },
         "89d0c530-c730-4e37-94d1-79c6612f7120": {
             "message": "Make the PSR-0 autoload prefix in `composer.json` more specific (`Symfony\\Component\\OptionsResolver\\`) to reduce stat calls",
             "section": "other",
@@ -84,6 +73,17 @@
             ],
             "validated": false
         },
+        "d8408171-6437-4d8c-9eb3-6c98fccb2039": {
+            "message": "Update the copyright year in `LICENSE` to 2013",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "18856428b6c0e4be97b529438e185964c2fe13ff",
+                    "pullRequest": null
+                }
+            ],
+            "validated": false
+        },
         "e37a2e2a-bcd1-4fbf-8de6-a62ecc26c66f": {
             "hidden": true,
             "commits": [
@@ -92,12 +92,12 @@
                 }
             ]
         },
-        "d8408171-6437-4d8c-9eb3-6c98fccb2039": {
-            "message": "Update the copyright year in `LICENSE` to 2013",
+        "0723c83e-b0b2-4c2a-b939-52d98eec3692": {
+            "message": "Update the `dev-master` branch alias to `2.2-dev` in `composer.json`",
             "section": "other",
             "commits": [
                 {
-                    "hash": "18856428b6c0e4be97b529438e185964c2fe13ff",
+                    "hash": "4dc197c3e1ea227e36cab7ea93877fa44ecc569b",
                     "pullRequest": null
                 }
             ],

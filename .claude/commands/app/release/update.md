@@ -106,8 +106,9 @@ config/releases/
     "checkedOn": "2026-10-19",
     "changes": {
         "0b6f3c1e-8a2d-4c5f-9e7b-1d4a6f8c2e90": {
-            "message": "Add the `foo` option",
+            "message": "Add `setFoo()` to define the `foo` option",
             "section": "new-features",
+            "group": "`OptionsResolver`",
             "commits": [
                 {
                     "hash": "df4804a0650e6177d2fa85df6d97b88471173968",
@@ -123,7 +124,8 @@ config/releases/
             "pages": [
                 {
                     "type": "example",
-                    "slug": "foo-option"
+                    "slug": "foo-option",
+                    "anchor": "set-foo"
                 }
             ],
             "validated": false
@@ -172,13 +174,15 @@ Keys whose value is the default are omitted: `"hidden": false`, `"validated": tr
 The entry point is the change (a modification of the package), not the commit: a commit is an information of the
 change, the one that made it. A commit doing several things gives several changes, a change made by several commits
 lists them all. `changes` is an object whose keys are the ids of the changes: a random UUID v4, generated once when
-the change is created and never changed. Changes are sorted by the date of their first commit, oldest first. Each
+the change is created and never changed. Changes are sorted in a logical order, see the `changes` skill. Each
 change has:
 
 - `message`: the label of the change shown in the pages, written from the diff and the commit message, following the
   `changes` skill, then the skills of the vendor and of the language.
 - `section`: the type of the change (`bc-breaks`, `new-features`, `improvements`, `dependencies` or `other`), see the
   `changes` skill.
+- `group`: the title of the sub-level of the section the change is listed in (e.g. its class), see the `changes` skill.
+  Omitted for a change on its own.
 - `hidden`: `true` to leave the change out of the pages. Hide the change of every commit that only changes tests in the
   directory of the package (the vendor skill says where they are): list its files with
   `git show --stat --format= <hash> -- <directory>`. Such a commit has a single, hidden change, holding only `hidden`
@@ -196,7 +200,8 @@ change has:
   They are shown in the sources of the example pages of the change, with the title in the format given by the vendor skill.
 - `pages`: the pages our site builds for the change, each with a `type` and a `slug` (its directory, lowercase words
   separated by `-`). The only type for now is `example`: a page showing the change with code, written by
-  `/app:site:update`. Add one only when the user asks for it.
+  `/app:site:update`. Add one only when the user asks for it. When the page shows several changes (e.g. the methods
+  of a class), `anchor` is the `id` of the section of the page about this change, which the release page links to.
 - `validated`: `false` until the user has checked the change (message, section, pages) with `/app:changes:review`,
   which removes it. Write `"validated": false` on every new change, except the hidden ones.
 
@@ -241,7 +246,7 @@ For each version to update (the one given, or all of them, oldest first):
    When a commit continues a change already in the file (e.g. a fix of a feature of the same version), add it to the
    `commits` of that change instead of creating a new one, and set its `"validated": false`: it has to be checked again.
    Commits that only change tests are not asked: write their change directly as `hidden`, and list them in the summary.
-5. Write the changes in the file of the version, keeping them sorted.
+5. Write the changes in the file of the version, keeping them in a logical order (see the `changes` skill).
 6. Changes already in a file are never asked again: they are kept as they are.
 
 ## Checks

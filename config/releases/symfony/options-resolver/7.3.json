@@ -27,61 +27,8 @@
     ],
     "checkedOn": "2026-10-19",
     "changes": {
-        "6a04ea1c-3a22-4d41-aa63-103fba656979": {
-            "message": "Support union types in `setAllowedTypes()`, e.g. `int|string` or `(int|string)[]`",
-            "section": "new-features",
-            "commits": [
-                {
-                    "hash": "69ec31d018b38f7c39e44c042f8357126a589af0",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/59354"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #941",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-941-6-12-january-2025"
-                },
-                {
-                    "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
-                    "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
-                },
-                {
-                    "title": "Symfony blog: New in Symfony 7.3: DX Improvements (part 1)",
-                    "url": "https://symfony.com/blog/new-in-symfony-7-3-dx-improvements-part-1"
-                }
-            ],
-            "validated": false
-        },
-        "a2d27fc8-0ba3-49f0-b8ff-68a7a559c7d7": {
-            "message": "Allow whitespace around `|` in union types passed to `setAllowedTypes()`, e.g. `string | int`",
-            "section": "improvements",
-            "commits": [
-                {
-                    "hash": "887757ef9b188b8ee34c8c4fa19aa28e23576c8b",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/59441"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #941",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-941-6-12-january-2025"
-                }
-            ],
-            "validated": false
-        },
-        "5d681853-4bff-4502-a97b-d297d43e2e77": {
-            "message": "Add the missing union type support entry to the CHANGELOG",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "946278f9f8cd1bc40c075d37b1d6c2a289c8eb4c",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/59483"
-                }
-            ],
-            "validated": false
-        },
         "79d11d63-ce26-45e9-93b5-b74b9892effa": {
-            "message": "Add `OptionsResolver::setOptions()` and `OptionConfigurator::options()` to define nested options",
+            "message": "Add `OptionsResolver::setOptions()` and `OptionConfigurator::options()` to define nested options, which can also have a lazy default value",
             "section": "new-features",
             "commits": [
                 {
@@ -122,23 +69,35 @@
             ],
             "validated": false
         },
-        "9c30e79a-25a3-49d1-839f-19dd2a4b1f80": {
-            "message": "Allow an option defined with `setOptions()` to also have a lazy default value: lazy closures are now resolved before nested options",
-            "section": "improvements",
+        "6a04ea1c-3a22-4d41-aa63-103fba656979": {
+            "message": "Support union types in `setAllowedTypes()`, e.g. `int|string`, `string | int` or `(int|string)[]`",
+            "section": "new-features",
             "commits": [
                 {
-                    "hash": "b0bb9a12ccca440554dbc6e584a2e28cf3b0762d",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/59618"
+                    "hash": "69ec31d018b38f7c39e44c042f8357126a589af0",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59354"
+                },
+                {
+                    "hash": "887757ef9b188b8ee34c8c4fa19aa28e23576c8b",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59441"
+                },
+                {
+                    "hash": "946278f9f8cd1bc40c075d37b1d6c2a289c8eb4c",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59483"
                 }
             ],
             "links": [
                 {
-                    "title": "Symfony blog: A Week of Symfony #948",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-948-24-february-2-march-2025"
+                    "title": "Symfony blog: A Week of Symfony #941",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-941-6-12-january-2025"
                 },
                 {
                     "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: New in Symfony 7.3: DX Improvements (part 1)",
+                    "url": "https://symfony.com/blog/new-in-symfony-7-3-dx-improvements-part-1"
                 }
             ],
             "validated": false
