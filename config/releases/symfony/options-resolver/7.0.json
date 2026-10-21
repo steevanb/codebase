@@ -8,6 +8,9 @@
         "bugFixesUntil": "2024-07",
         "securityFixesUntil": "2024-07"
     },
+    "php": {
+        "min": "8.2"
+    },
     "sources": [
         {
             "title": "Comparison of 6.4 and v7.0.0",
@@ -23,9 +26,9 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
-            "message": "Require PHP `>= 8.2` (was `>= 8.1`)",
+    "changes": {
+        "f6715c81-25b0-46ee-b95d-02567c50df89": {
+            "message": "Bump to PHP `>= 8.2` (was `>= 8.1`)",
             "section": "dependencies",
             "commits": [
                 {
@@ -42,9 +45,10 @@
                     "title": "Symfony blog: Symfony 7.0.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-7-0-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "500e385e-4b0f-4b51-8192-613c2d32d523": {
             "message": "Add a native `static` return type to `setNormalizer()`, `setAllowedValues()`, `addAllowedValues()`, `setAllowedTypes()` and `addAllowedTypes()` of `OptionsResolver`",
             "section": "bc-breaks",
             "commits": [
@@ -62,7 +66,8 @@
                     "title": "Symfony blog: Symfony 7.0.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-7-0-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

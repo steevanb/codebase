@@ -9,6 +9,9 @@
         "bugFixesUntil": "2020-11",
         "securityFixesUntil": "2021-11"
     },
+    "php": {
+        "min": "5.5"
+    },
     "sources": [
         {
             "title": "Comparison of 3.3 and v3.4.0",
@@ -24,8 +27,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "80661453-d8de-4c98-bd24-ba1fffeaeeb8": {
             "message": "Update the branch alias to `3.4-dev`",
             "section": "other",
             "commits": [
@@ -33,9 +36,10 @@
                     "hash": "7b59412301f6c2f98d0f1b0d694c5369ee998f41",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "23ae5b90-89c5-4392-afc1-c15eb60abeec": {
             "message": "Add `OptionsResolverIntrospector` (with `NoConfigurationException`) to inspect the default value, lazy closures, allowed types/values and normalizer of an option",
             "section": "new-features",
             "commits": [
@@ -61,9 +65,10 @@
                     "title": "Symfony blog: A Week of Symfony #563",
                     "url": "https://symfony.com/blog/a-week-of-symfony-563-9-15-october-2017"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "fe213f83-b269-4922-91ba-233d17cd3ffd": {
             "message": "Support arrays of types in allowed types (e.g. `int[]`, `string[][]`) with `setAllowedTypes()` / `addAllowedTypes()`",
             "section": "new-features",
             "commits": [
@@ -85,7 +90,8 @@
                     "title": "Symfony blog: A Week of Symfony #563",
                     "url": "https://symfony.com/blog/a-week-of-symfony-563-9-15-october-2017"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

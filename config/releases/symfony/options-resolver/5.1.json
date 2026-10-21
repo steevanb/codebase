@@ -8,6 +8,9 @@
         "bugFixesUntil": "2021-01",
         "securityFixesUntil": "2021-01"
     },
+    "php": {
+        "min": "7.2"
+    },
     "sources": [
         {
             "title": "Comparison of 5.0 and v5.1.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "00082c8d-c2f7-4443-b11e-e28939718f68": {
             "message": "Update the `dev-master` branch alias to `5.1-dev`",
             "section": "other",
             "commits": [
@@ -32,9 +35,10 @@
                     "hash": "e60a876201b5b306d0c81a24d9a3db997192079c",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "82dabfb0-6048-49b6-bb24-c6a861971389": {
             "message": "Add `OptionsResolver::define()` returning a new `OptionConfigurator` to configure an option with a fluent interface (`required()`, `default()`, `allowedTypes()`, `allowedValues()`, `normalize()`, `deprecated()`)",
             "section": "new-features",
             "commits": [
@@ -56,9 +60,10 @@
                     "title": "Symfony blog: A Week of Symfony #684",
                     "url": "https://symfony.com/blog/a-week-of-symfony-684-3-9-february-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "0a520bcb-0195-41bd-b826-f89501d1435c": {
             "message": "Trigger option deprecations with `trigger_deprecation()` instead of `@trigger_error()`",
             "section": "other",
             "commits": [
@@ -76,9 +81,10 @@
                     "title": "Symfony blog: A Week of Symfony #684",
                     "url": "https://symfony.com/blog/a-week-of-symfony-684-3-9-february-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "bd2becd9-ebf8-4c30-b33a-0f40db8b1515": {
             "message": "Require `symfony/deprecation-contracts` `^2.1` (was not required)",
             "section": "dependencies",
             "commits": [
@@ -96,9 +102,10 @@
                     "title": "Symfony blog: A Week of Symfony #684",
                     "url": "https://symfony.com/blog/a-week-of-symfony-684-3-9-february-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "6a80cd22-c954-4801-866d-33affdeca515": {
             "message": "Add `setInfo()` and `getInfo()` to `OptionsResolver` and `info()` to `OptionConfigurator` to attach an info message to an option, appended to invalid value error messages",
             "section": "new-features",
             "commits": [
@@ -120,9 +127,10 @@
                     "title": "Symfony blog: A Week of Symfony #685",
                     "url": "https://symfony.com/blog/a-week-of-symfony-685-10-16-february-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "e0d09f93-3805-4461-ba63-8beb754773e5": {
             "message": "Use `get_debug_type()` in error messages: types are now reported as `bool`, `int`, `float`, `null`, `resource (stream)` instead of `boolean`, `integer`, `double`, `NULL`, `resource`",
             "section": "improvements",
             "commits": [
@@ -136,9 +144,10 @@
                     "title": "Symfony blog: A Week of Symfony #690",
                     "url": "https://symfony.com/blog/a-week-of-symfony-690-16-22-march-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c1dcaa6c-0b51-4716-ba71-06677ecb98a1": {
             "message": "Require `symfony/polyfill-php80` `^1.15` (was not required)",
             "section": "dependencies",
             "commits": [
@@ -152,9 +161,10 @@
                     "title": "Symfony blog: A Week of Symfony #690",
                     "url": "https://symfony.com/blog/a-week-of-symfony-690-16-22-march-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "4d34c47b-7898-4282-88f7-0fc9d8dff1c0": {
             "message": "Add `$package` and `$version` arguments to `setDeprecated()` and `OptionConfigurator::deprecated()`, passed to `trigger_deprecation()` so deprecation messages are prefixed with `Since <package> <version>:`",
             "section": "new-features",
             "commits": [
@@ -172,9 +182,10 @@
                     "title": "Symfony blog: A Week of Symfony #693",
                     "url": "https://symfony.com/blog/a-week-of-symfony-693-6-12-april-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "fcd99542-6bfe-4aa3-ba65-340cf0c209d5": {
             "message": "Add `OptionsResolverIntrospector::getDeprecation()` returning the package, version and message of a deprecated option",
             "section": "new-features",
             "commits": [
@@ -192,9 +203,10 @@
                     "title": "Symfony blog: A Week of Symfony #693",
                     "url": "https://symfony.com/blog/a-week-of-symfony-693-6-12-april-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "3865a50e-cc03-41ee-a001-d9de1e1fe4a1": {
             "message": "Deprecate calling `setDeprecated()` without the `$package` and `$version` arguments, and `OptionsResolverIntrospector::getDeprecationMessage()` in favor of `getDeprecation()`",
             "section": "other",
             "commits": [
@@ -212,9 +224,10 @@
                     "title": "Symfony blog: A Week of Symfony #693",
                     "url": "https://symfony.com/blog/a-week-of-symfony-693-6-12-april-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "3d653d02-76bd-4831-bc34-d87413009ccb": {
             "message": "Remove the BC layer of `OptionConfigurator::deprecated()` (added in the same version), making `$package` and `$version` arguments mandatory",
             "section": "other",
             "commits": [
@@ -228,9 +241,10 @@
                     "title": "Symfony blog: A Week of Symfony #695",
                     "url": "https://symfony.com/blog/a-week-of-symfony-695-20-26-april-2020"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "1c6b5067-8522-4d6f-b891-5031f0d34494": {
             "message": "Fix the typo in the `define()` exception message: `The option \"%s\" is already defined.`",
             "section": "other",
             "commits": [
@@ -244,7 +258,8 @@
                     "title": "Symfony blog: A Week of Symfony #695",
                     "url": "https://symfony.com/blog/a-week-of-symfony-695-20-26-april-2020"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

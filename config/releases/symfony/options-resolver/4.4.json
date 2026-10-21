@@ -9,6 +9,10 @@
         "bugFixesUntil": "2022-11",
         "securityFixesUntil": "2023-11"
     },
+    "php": {
+        "min": "7.1",
+        "max": "7.4"
+    },
     "sources": [
         {
             "title": "Comparison of 4.3 and v4.4.0",
@@ -24,8 +28,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "5d978b8f-5c46-4501-aa53-ed7477a8eb3c": {
             "message": "Update the branch alias to `4.4-dev`",
             "section": "other",
             "commits": [
@@ -33,9 +37,10 @@
                     "hash": "387207f6c4ed4e481887d4b0121b910226b7984b",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "4dc53070-d7a8-4500-b7ee-1a9953b9411f": {
             "message": "Display the full nested option path (e.g. `foo[bar]`) in exception messages",
             "section": "improvements",
             "commits": [
@@ -53,9 +58,10 @@
                     "title": "Symfony blog: A Week of Symfony #662",
                     "url": "https://symfony.com/blog/a-week-of-symfony-662-2-8-september-2019"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "9fdd6648-776b-4b24-b86c-ed048d029fa6": {
             "message": "Add a `.gitattributes` file to exclude `Tests` and `phpunit.xml.dist` from the package archive",
             "section": "other",
             "commits": [
@@ -73,9 +79,10 @@
                     "title": "Symfony blog: New in Symfony 4.4: Misc. improvements (Part 1)",
                     "url": "https://symfony.com/blog/new-in-symfony-4-4-misc-improvements-part-1"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "82717cf1-bf5b-4d80-af17-8c5aa347aeb3": {
             "message": "Exclude `.gitignore` from the package archive in `.gitattributes`",
             "section": "other",
             "commits": [
@@ -83,7 +90,8 @@
                     "hash": "246c5fdf43a3771ad89d97d55c9877283499e434",
                     "pullRequest": "https://github.com/symfony/symfony/pull/33963"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

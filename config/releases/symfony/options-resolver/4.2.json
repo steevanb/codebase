@@ -8,6 +8,10 @@
         "bugFixesUntil": "2019-07",
         "securityFixesUntil": "2020-01"
     },
+    "php": {
+        "min": "7.1",
+        "max": "7.4"
+    },
     "sources": [
         {
             "title": "Comparison of 4.1 and v4.2.0",
@@ -23,8 +27,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "3f2e793e-e19d-49cc-b0bc-1ed4d34e0959": {
             "message": "Update the branch alias to `4.2-dev`",
             "section": "other",
             "commits": [
@@ -32,9 +36,10 @@
                     "hash": "016d5562628af6935bbf76e2eb3fb99683f7cf7b",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "3e4950a1-f986-49f8-a861-b51816318326": {
             "message": "Add `setDeprecated()` and `isDeprecated()` to deprecate options, with a static message or a closure depending on the value",
             "section": "new-features",
             "commits": [
@@ -52,9 +57,10 @@
                     "title": "Symfony blog: A Week of Symfony #599",
                     "url": "https://symfony.com/blog/a-week-of-symfony-599-18-24-june-2018"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "8dfbc4b8-c8bf-45d3-82ac-a68a413093f6": {
             "message": "Make `ExceptionInterface` extend `\\Throwable`",
             "section": "improvements",
             "commits": [
@@ -68,9 +74,10 @@
                     "title": "Symfony blog: A Week of Symfony #610",
                     "url": "https://symfony.com/blog/a-week-of-symfony-610-3-9-september-2018"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "5a1bb138-b9ea-4cbe-a57c-92caa912d5b6": {
             "message": "Add `OptionsResolverIntrospector::getDeprecationMessage()` to get the deprecation message of an option",
             "section": "new-features",
             "commits": [
@@ -88,9 +95,10 @@
                     "title": "Symfony blog: A Week of Symfony #610",
                     "url": "https://symfony.com/blog/a-week-of-symfony-610-3-9-september-2018"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "65546be5-6149-419c-829c-38c66759b79a": {
             "message": "Support nested options definition: `setDefault()` accepts a closure taking an `OptionsResolver` (and optionally the parent `Options`), and add `isNested()`",
             "section": "new-features",
             "commits": [
@@ -108,9 +116,10 @@
                     "title": "Symfony blog: A Week of Symfony #615",
                     "url": "https://symfony.com/blog/a-week-of-symfony-615-8-14-october-2018"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "58dfa674-f325-439e-b965-3df0ac2104cd": {
             "message": "Pass the `Options` instance as first argument to the deprecation message closure of `setDeprecated()`",
             "section": "improvements",
             "commits": [
@@ -128,9 +137,10 @@
                     "title": "Symfony blog: A Week of Symfony #615",
                     "url": "https://symfony.com/blog/a-week-of-symfony-615-8-14-october-2018"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "7ecda02b-e144-4ffb-bfb9-fa6b0d4679e4": {
             "message": "Remove the `BEGIN`/`END` comments around nested options resolution",
             "section": "other",
             "commits": [
@@ -138,9 +148,10 @@
                     "hash": "c01359e00eeb3dce5e475296c674346d49b950d6",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "8b480cd0-4f02-48ad-aba2-72216e6fb2ee": {
             "message": "Trigger an option deprecation only when the option is given by the user or read from a lazy option or normalizer",
             "section": "other",
             "commits": [
@@ -154,9 +165,10 @@
                     "title": "Symfony blog: A Week of Symfony #617",
                     "url": "https://symfony.com/blog/a-week-of-symfony-617-22-28-october-2018"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "2241a3f2-f46f-4680-ade8-11faee6e0a79": {
             "message": "Add a `$triggerDeprecation` argument to `OptionsResolver::offsetGet()` to read a deprecated option without triggering its deprecation",
             "section": "improvements",
             "commits": [
@@ -170,9 +182,10 @@
                     "title": "Symfony blog: A Week of Symfony #617",
                     "url": "https://symfony.com/blog/a-week-of-symfony-617-22-28-october-2018"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c6969969-47cb-4c96-b883-6d042d91ac26": {
             "message": "Do not trigger the deprecation of an already resolved option read with `offsetGet($option, false)` when it was not given by the user",
             "section": "other",
             "commits": [
@@ -180,9 +193,10 @@
                     "hash": "8398947c9c1c1266aad0bea773d0b524e0d81643",
                     "pullRequest": "https://github.com/symfony/symfony/pull/28968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "4d742950-8a0f-41b7-bef2-db630707800d": {
             "message": "Speed up option resolution (`isset()` before `array_key_exists()`, simpler recursive check of array types)",
             "section": "improvements",
             "commits": [
@@ -196,7 +210,8 @@
                     "title": "Symfony blog: A Week of Symfony #619",
                     "url": "https://symfony.com/blog/a-week-of-symfony-619-5-11-november-2018"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

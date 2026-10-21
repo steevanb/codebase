@@ -5,7 +5,7 @@ description: Knowledge about the Symfony project (symfony/* packages) for codeba
 
 # Symfony
 
-What `/app:release:update` and `/app:site:update` need to know about the `symfony/*` packages (components, bundles, bridges, contracts).
+What `/app:release:update`, `/app:changes:review` and `/app:site:update` need to know about the `symfony/*` packages (components, bundles, bridges, contracts).
 
 ## Repository and history
 
@@ -77,25 +77,36 @@ The status changes over time: fetch it again for every version each time the pag
 
 ## Labels of the changes
 
-The `message` of a change in the settings file, written from the diff and the commit message:
+The general rules are in the `changes` skill. Specific to Symfony:
 
 - Remove the tag of the component, bundle or bridge that starts the commit message (e.g. `[OptionsResolver]`,
   `[Form]`): the page is already about the package.
-- Start with a capital letter, with a verb when possible (`Add`, `Remove`, `Make`, `Require`...).
-- Write code between backticks: methods with their parentheses (`setDefault()`), classes, options, versions.
-- Remove the class name when it is redundant: name it once instead of before each method.
-  E.g. ``Add `OptionsResolver::isKnown()` and `OptionsResolver::isRequired()` `` becomes
-  ``Add `isKnown()` and `isRequired()` to `OptionsResolver` ``.
-  Keep `Class::method()` when the label names a single method and the class is needed to know which one.
-- Two changes of the same commit have different labels.
-- For a `dependencies` change, end with the previous requirement, in backticks:
-  ``Require PHP `>= 8.2` (was `>= 8.1`)``. When the same version changes a requirement twice, the second change gives
-  the value it replaces.
 
 ## Documentation
 
 - Component page: `https://symfony.com/doc/<version>/components/<package_with_underscores>.html`,
-  e.g. `https://symfony.com/doc/8.0/components/options_resolver.html` (sections have anchors, e.g. `#nested-options`). Not every package has a component page: search `https://symfony.com/doc/<version>/`.
+  e.g. `https://symfony.com/doc/8.0/components/options_resolver.html` (sections have anchors, e.g. `#nested-options`).
+  Not every package has a component page: search `https://symfony.com/doc/<version>/`.
+- Old versions are grouped by major version: `https://symfony.com/doc/2.1/...` redirects to
+  `https://symfony.com/doc/2.x/...` (the documentation of the last minor version of the major, e.g. 2.8). Link the final URL, found with
+  `curl -sL -o /dev/null -w '%{url_effective}' <url>`, and check that the section still documents the code shown.
+- Link to the documentation of a block of code (the `code-meta` of the example pages): find the section that
+  documents it, the closest heading before the methods used in the code:
+
+  ```bash
+  curl -sL <url> | python3 -c "
+  import re, sys
+  page = re.sub(r'</?span[^>]*>', '', sys.stdin.read())
+  headings = [(m.start(), m.group(1)) for m in re.finditer(r'<h[23][^>]*id=\"([^\"]+)\"', page)]
+  for name in sys.argv[1:]:
+      print(name, {next((h for p, h in reversed(headings) if p < m.start()), None) for m in re.finditer(re.escape(name), page)})
+  " 'setDefault(' 'setRequired('
+  ```
+
+  Use the anchor of the section (`#<id>`), several links when the code uses several sections (e.g. `#usage`,
+  `#required-options` and `#value-validation` for `setDefaults()`, `setRequired()` and `setAllowedValues()`).
+  Its title: `Symfony <version> documentation: <title of the section>`, e.g.
+  `Symfony 8.0 documentation: Nested Options`.
 - CHANGELOG: `https://github.com/symfony/symfony/blob/v<version>.0/src/Symfony/.../<Package>/CHANGELOG.md`
   (`blob/<branch>/...` when in development).
 

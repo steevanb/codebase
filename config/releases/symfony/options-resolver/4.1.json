@@ -8,6 +8,10 @@
         "bugFixesUntil": "2019-01",
         "securityFixesUntil": "2019-07"
     },
+    "php": {
+        "min": "7.1",
+        "max": "7.4"
+    },
     "sources": [
         {
             "title": "Comparison of 4.0 and v4.1.0",
@@ -23,8 +27,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "e42bb588-79cf-4156-ba26-cee1e7764666": {
             "message": "Update the branch alias to `4.1-dev`",
             "section": "other",
             "commits": [
@@ -32,9 +36,10 @@
                     "hash": "c37b6beb73b08c92774b27320c074f67f613fb62",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "e0730764-c761-4fb7-8da2-a567f4d6466d": {
             "message": "Make `ExceptionInterface` extend `\\Throwable` (reverted before the 4.1 release)",
             "section": "other",
             "commits": [
@@ -52,9 +57,10 @@
                     "title": "Symfony blog: A Week of Symfony #588",
                     "url": "https://symfony.com/blog/a-week-of-symfony-588-2-8-april-2018"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c32aec0b-548e-4027-8a86-73280944b715": {
             "message": "Revert: `ExceptionInterface` no longer extends `\\Throwable`",
             "section": "other",
             "commits": [
@@ -62,7 +68,8 @@
                     "hash": "2ddb89b7a3ba0dd0c5b067d6dcfa80bfd1287c86",
                     "pullRequest": "https://github.com/symfony/symfony/pull/27420"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

@@ -8,6 +8,10 @@
         "bugFixesUntil": "2020-01",
         "securityFixesUntil": "2020-07"
     },
+    "php": {
+        "min": "7.1",
+        "max": "7.4"
+    },
     "sources": [
         {
             "title": "Comparison of 4.2 and v4.3.0",
@@ -23,8 +27,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "eacb29ec-c1ca-42b3-bf43-043edd979b4f": {
             "message": "Update the branch alias to `4.3-dev`",
             "section": "other",
             "commits": [
@@ -32,9 +36,10 @@
                     "hash": "534b83f08056129e3043589849dab564830c5d9a",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "2305f7bf-7ec2-4570-8e2a-f88d59b2f0c3": {
             "message": "Add `OptionsResolver::addNormalizer()` to add several normalizers to an option, appended or prepended with `$forcePrepend`",
             "section": "new-features",
             "commits": [
@@ -48,9 +53,10 @@
                     "title": "Symfony blog: Symfony 4.3.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-4-3-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "5ee387ae-6417-4b6b-87e8-b9c82c2825e6": {
             "message": "Add `OptionsResolverIntrospector::getNormalizers()` to get all the normalizers of an option",
             "section": "new-features",
             "commits": [
@@ -64,7 +70,8 @@
                     "title": "Symfony blog: Symfony 4.3.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-4-3-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

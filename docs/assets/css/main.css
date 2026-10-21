@@ -634,6 +634,17 @@ h2 {
     margin: 0 0 20px;
 }
 
+/* Title of an example, when a section has several */
+section > h3 {
+    margin: 28px 0 10px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+section > h2 + h3 {
+    margin-top: 0;
+}
+
 section > h2::before {
     counter-increment: chapter;
     content: counter(chapter, upper-roman);
@@ -1026,6 +1037,78 @@ pre.code code {
     background: none;
     color: var(--ink);
     font-size: inherit;
+}
+
+/* A block of code with, in its top right corner, links to the documentation and the version of the language,
+   over the end of the first line if it is long */
+.code-block {
+    position: relative;
+    margin: 0 0 16px;
+}
+
+.code-block pre.code {
+    margin: 0;
+}
+
+.code-meta {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 6px;
+    background: var(--code-bg);
+    color: var(--ink-muted);
+    font-size: 0.72rem;
+}
+
+.code-meta a {
+    display: inline-flex;
+    color: var(--ink-muted);
+}
+
+.code-meta a:hover {
+    color: var(--ink);
+}
+
+.code-meta .icon {
+    width: 15px;
+    height: 15px;
+}
+
+/* Separator between the links to the documentation and the version of the language */
+.code-meta a + span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.code-meta a + span::before {
+    content: "";
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* On mobile, the links and the version are on their own line, above the code, so that they never hide it */
+@media (max-width: 600px) {
+    .code-meta {
+        position: static;
+        justify-content: flex-end;
+        padding: 6px 12px 0;
+        border: 1px solid var(--rule);
+        border-bottom: 0;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .code-block pre.code {
+        padding-top: 4px;
+        border-top: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
 }
 
 .callout {

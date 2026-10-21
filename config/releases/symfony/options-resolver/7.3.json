@@ -8,6 +8,9 @@
         "bugFixesUntil": "2026-01",
         "securityFixesUntil": "2026-01"
     },
+    "php": {
+        "min": "8.2"
+    },
     "sources": [
         {
             "title": "Comparison of 7.2 and v7.3.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "6a04ea1c-3a22-4d41-aa63-103fba656979": {
             "message": "Support union types in `setAllowedTypes()`, e.g. `int|string` or `(int|string)[]`",
             "section": "new-features",
             "commits": [
@@ -46,9 +49,10 @@
                     "title": "Symfony blog: New in Symfony 7.3: DX Improvements (part 1)",
                     "url": "https://symfony.com/blog/new-in-symfony-7-3-dx-improvements-part-1"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "a2d27fc8-0ba3-49f0-b8ff-68a7a559c7d7": {
             "message": "Allow whitespace around `|` in union types passed to `setAllowedTypes()`, e.g. `string | int`",
             "section": "improvements",
             "commits": [
@@ -62,9 +66,10 @@
                     "title": "Symfony blog: A Week of Symfony #941",
                     "url": "https://symfony.com/blog/a-week-of-symfony-941-6-12-january-2025"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "5d681853-4bff-4502-a97b-d297d43e2e77": {
             "message": "Add the missing union type support entry to the CHANGELOG",
             "section": "other",
             "commits": [
@@ -72,9 +77,10 @@
                     "hash": "946278f9f8cd1bc40c075d37b1d6c2a289c8eb4c",
                     "pullRequest": "https://github.com/symfony/symfony/pull/59483"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "79d11d63-ce26-45e9-93b5-b74b9892effa": {
             "message": "Add `OptionsResolver::setOptions()` and `OptionConfigurator::options()` to define nested options",
             "section": "new-features",
             "commits": [
@@ -92,9 +98,10 @@
                     "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "72546557-d618-4211-9e0b-5d3128c37857": {
             "message": "Add `OptionsResolverIntrospector::getNestedOptions()` to get the nested options closures of an option",
             "section": "new-features",
             "commits": [
@@ -112,9 +119,10 @@
                     "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "9c30e79a-25a3-49d1-839f-19dd2a4b1f80": {
             "message": "Allow an option defined with `setOptions()` to also have a lazy default value: lazy closures are now resolved before nested options",
             "section": "improvements",
             "commits": [
@@ -132,9 +140,10 @@
                     "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "ed1fffa2-538b-4054-90be-75824190e98e": {
             "message": "Deprecate defining nested options via `setDefault()`, use `setOptions()` instead",
             "section": "other",
             "commits": [
@@ -152,9 +161,10 @@
                     "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "fad0c6d9-7d15-43c4-80bf-a5c834015c02": {
             "hidden": true,
             "commits": [
                 {
@@ -162,7 +172,7 @@
                 }
             ]
         },
-        {
+        "90f1ff38-55c8-4e7b-8361-9b272a5fa5f1": {
             "hidden": true,
             "commits": [
                 {
@@ -170,5 +180,5 @@
                 }
             ]
         }
-    ]
+    }
 }

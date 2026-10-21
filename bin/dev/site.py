@@ -142,7 +142,7 @@ class Version:
         self.release = self.settings['release']
         self.released = 'date' in self.release
         self.maintenance = self.settings['maintenance']
-        self.changes = self.settings['changes']
+        self.changes = list(self.settings['changes'].values())
         self.url = f'{package.url}{self.number}/'
 
     def commits(self) -> set:
@@ -210,14 +210,19 @@ def stat(label: str, value: str, css_class: str = 'stat') -> str:
 
 def maintenance_stats(version: Version) -> list:
     stats = []
-    for label, key, tone in (('Bug fixes', 'bugFixesUntil', 'emerald'), ('Security fixes', 'securityFixesUntil', 'amber')):
+    # Two neighbouring stats never share a tone, even when both maintenances ended
+    tones = (('Bug fixes', 'bugFixesUntil', 'emerald', 'orange'), ('Security fixes', 'securityFixesUntil', 'amber', 'rose'))
+    for label, key, tone, ended_tone in tones:
         until = version.maintenance[key]
         if is_maintained(until):
             stats.append(stat(label, f'Until {until}', f'stat tone-{tone}'))
         else:
-            stats.append(stat(label, f'Ended {until}', 'stat tone-rose'))
+            stats.append(stat(label, f'Ended {until}', f'stat tone-{ended_tone}'))
 
     return stats
+
+def php_versions(php: dict) -> str:
+    return f'{php["min"]} – {php["max"]}' if 'max' in php else f'&gt;= {php["min"]}'
 
 def favicon(url: str) -> str:
     domain = urlparse(url).hostname
@@ -245,10 +250,17 @@ def release_page(version: Version) -> str:
         description = f'First version of the {package.name} {package.settings["type"]}, created in {version.number}.'
         hero = stat('First version', version.number, 'stat stat-hero')
     if version.released:
-        when = stat(f'Released ({ref})', version.release['date'])
+        when = stat(f'Released ({ref})', version.release['date'], 'stat tone-blue')
     else:
-        when = stat('Status', version.release['version'])
-    stats = [hero, stat('New features', str(features)), stat('Commits', str(len(version.commits()))), when]
+        when = stat('Status', version.release['version'], 'stat tone-blue')
+    stats = [
+        hero,
+        stat('New features', str(features), 'stat tone-emerald'),
+        stat('Commits', str(len(version.commits())), 'stat tone-teal'),
+        when,
+    ]
+    if package.vendor.settings['language'] == 'PHP' and 'php' in version.settings:
+        stats.append(stat('PHP', php_versions(version.settings['php']), 'stat tone-violet'))
     stats += maintenance_stats(version)
     stats_html = '\n'.join(stats)
 

@@ -8,6 +8,9 @@
         "bugFixesUntil": "2016-07",
         "securityFixesUntil": "2017-01"
     },
+    "php": {
+        "min": "5.5"
+    },
     "sources": [
         {
             "title": "Comparison of 2.8 and v3.0.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "b7857ed8-a564-4927-8fe3-18c5075b488c": {
             "message": "Update the branch alias to `3.0-dev`",
             "section": "other",
             "commits": [
@@ -32,9 +35,10 @@
                     "hash": "d8f839d7a1f712a8748b875df566bcbf52ad5d84",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c1ef41ac-3d5d-432b-870c-71cfa5ef6fba": {
             "hidden": true,
             "commits": [
                 {
@@ -42,8 +46,8 @@
                 }
             ]
         },
-        {
-            "message": "Require PHP `>=5.5.9` (was `>=5.3.9`)",
+        "3af67568-c548-4441-accf-02256a99ef0f": {
+            "message": "Bump to PHP `>=5.5.9` (was `>=5.3.9`)",
             "section": "dependencies",
             "commits": [
                 {
@@ -56,9 +60,10 @@
                     "title": "Symfony blog: A Week of Symfony #418",
                     "url": "https://symfony.com/blog/a-week-of-symfony-418-29-december-2014-04-january-2015"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "7b825ff8-2c11-4667-aa1d-1fac06ab27ac": {
             "message": "Remove the deprecated `OptionsResolverInterface` (use `OptionsResolver` instead)",
             "section": "bc-breaks",
             "commits": [
@@ -72,9 +77,10 @@
                     "title": "Symfony blog: A Week of Symfony #423",
                     "url": "https://symfony.com/blog/a-week-of-symfony-423-02-08-february-2015"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "a5202aca-88a9-40bf-952a-6b4d7e3e8405": {
             "message": "Remove the deprecated `set()`, `replace()`, `overload()`, `get()`, `has()`, `replaceDefaults()`, `setOptional()` and `isKnown()` methods of `OptionsResolver`",
             "section": "bc-breaks",
             "commits": [
@@ -88,9 +94,10 @@
                     "title": "Symfony blog: A Week of Symfony #427",
                     "url": "https://symfony.com/blog/a-week-of-symfony-427-02-08-march-2015"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "87dde828-3967-4a4d-8f08-a7b49cff6978": {
             "message": "Remove the deprecated `OptionsResolver::setNormalizers()` method (use `setNormalizer()`)",
             "section": "bc-breaks",
             "commits": [
@@ -104,9 +111,10 @@
                     "title": "Symfony blog: A Week of Symfony #427",
                     "url": "https://symfony.com/blog/a-week-of-symfony-427-02-08-march-2015"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "28d1b37e-b117-4ece-a0b7-60de29cff23c": {
             "message": "Remove the deprecated array-of-options signature of `setAllowedValues()`, `addAllowedValues()`, `setAllowedTypes()` and `addAllowedTypes()`: the second argument is now required",
             "section": "bc-breaks",
             "commits": [
@@ -120,9 +128,10 @@
                     "title": "Symfony blog: A Week of Symfony #427",
                     "url": "https://symfony.com/blog/a-week-of-symfony-427-02-08-march-2015"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "1a58980c-fe1b-4684-8a7c-4aa162556ad6": {
             "message": "Remove the legacy tests of the deprecated API",
             "section": "other",
             "commits": [
@@ -136,9 +145,10 @@
                     "title": "Symfony blog: A Week of Symfony #427",
                     "url": "https://symfony.com/blog/a-week-of-symfony-427-02-08-march-2015"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "666406bb-eaee-4ed0-8a03-e816f71cdc84": {
             "message": "Require `symfony/phpunit-bridge` `~2.8|~3.0` in `require-dev`",
             "section": "other",
             "commits": [
@@ -146,9 +156,10 @@
                     "hash": "4dedb97266b00d5a7e7fa5954becc4bb02bfb00e",
                     "pullRequest": "https://github.com/symfony/symfony/pull/14296"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "370f977c-da32-4055-9a60-478c4d3f3357": {
             "message": "Remove the internal `OptionsResolver::OPTIONS_INTERFACE` constant in favor of `Options::class`",
             "section": "other",
             "commits": [
@@ -156,9 +167,10 @@
                     "hash": "a68389131e8061eabddf7056511f8fb4192927fc",
                     "pullRequest": "https://github.com/symfony/symfony/pull/14390"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "277e4d2e-707f-49b7-b641-647ced210f27": {
             "message": "Use `try`/`finally` to clean up the cyclic call guard when resolving lazy options and normalizers",
             "section": "other",
             "commits": [
@@ -166,7 +178,8 @@
                     "hash": "49edef252bd9f9a88150e9235161c96bb3a31ffc",
                     "pullRequest": "https://github.com/symfony/symfony/pull/15949"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

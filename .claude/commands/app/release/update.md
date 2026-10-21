@@ -25,21 +25,24 @@ in a single call.
 
 ## Project knowledge
 
-This command is common to every vendor and every language. What is specific comes from two skills,
-to load with the `Skill` tool before anything else:
+This command is common to every vendor and every language. Load these skills with the `Skill` tool before anything
+else:
 
+- **The `changes` skill**: how to write the labels of the changes and choose their section, whatever the vendor and
+  the language.
 - **The skill of the vendor**, named after the GitHub account (e.g. `symfony`):
   - which repository holds the history (e.g. a monorepo) and the directory of the package in it,
   - how versions, branches and tags work, and what the previous version of a version is,
   - where the maintenance of a version comes from (LTS, end of bug fixes and of security fixes),
   - where to find the changelog, the documentation and the articles (blog...) about a change,
-  - how to classify the commits (commit message conventions...) and how to write the labels of the changes,
+  - how to classify the commits (commit message conventions...) and what its labels of the changes add to the
+    `changes` skill,
   - how to name the project and the package.
 - **The skill of the language** of the repository, named after it (e.g. `php`, given by the `language` of
   `vendor.json`, or found in the repository): package names, where the dependencies are declared,
-  how deprecations and BC breaks look.
+  how deprecations and BC breaks look, how to write the name of the language.
 
-If one of them does not exist, find the answers (in the repository for a vendor: README, CONTRIBUTING, branches, tags,
+If the skill of the vendor or of the language does not exist, find the answers (in the repository for a vendor: README, CONTRIBUTING, branches, tags,
 changelog), ask the user what you cannot find, then create the skill in `.claude/skills/<name>/SKILL.md`
 with the same sections as the `php` or `symfony` skill, so the next run does not have to look again.
 
@@ -101,8 +104,8 @@ config/releases/
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "0b6f3c1e-8a2d-4c5f-9e7b-1d4a6f8c2e90": {
             "message": "Add the `foo` option",
             "section": "new-features",
             "commits": [
@@ -122,9 +125,10 @@ config/releases/
                     "type": "example",
                     "slug": "foo-option"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "5e2a9d47-3b1c-4f86-a0d5-7c9e1b3f6a24": {
             "message": "Deprecate the `bar` option, use `foo` instead",
             "section": "other",
             "commits": [
@@ -134,7 +138,7 @@ config/releases/
                 }
             ]
         },
-        {
+        "c81f4b6a-2e9d-4a73-b5c0-6d3e8f1a9b57": {
             "hidden": true,
             "commits": [
                 {
@@ -142,11 +146,12 @@ config/releases/
                 }
             ]
         }
-    ]
+    }
 }
 ```
 
-Keys whose value is the default are omitted: `"hidden": false`, `"lts": false`, `"links": []`, `"pages": []`.
+Keys whose value is the default are omitted: `"hidden": false`, `"validated": true`, `"lts": false`, `"links": []`,
+`"pages": []`.
 
 - `previous`: the version it is compared to, given by the vendor skill; omitted for the first version of the package.
 - `release`: `ref` is the tag of the first release (`v8.1.0`) and `date` its date (`YYYY-MM-DD`). For a version in
@@ -159,26 +164,21 @@ Keys whose value is the default are omitted: `"hidden": false`, `"lts": false`, 
   documentation of the package (`<package> documentation`), changelog of the version (`<package> CHANGELOG`) when it
   exists. Check that each URL answers `200` (`curl -sL`) and prefer the final URL of a redirection.
 - `checkedOn`: today (`YYYY-MM-DD`), each time the file is checked.
+- Other keys can be given by the skill of the language (e.g. `php`, the PHP versions allowed by the version).
 - `changes`: see [Changes](#changes).
 
 ## Changes
 
 The entry point is the change (a modification of the package), not the commit: a commit is an information of the
 change, the one that made it. A commit doing several things gives several changes, a change made by several commits
-lists them all. Changes are sorted by the date of their first commit, oldest first. Each change has:
+lists them all. `changes` is an object whose keys are the ids of the changes: a random UUID v4, generated once when
+the change is created and never changed. Changes are sorted by the date of their first commit, oldest first. Each
+change has:
 
 - `message`: the label of the change shown in the pages, written from the diff and the commit message, following the
-  label rules of the vendor skill. It starts with a capital letter. Write code between backticks.
-  Two changes of the same commit have different labels.
-  For a `dependencies` change, add the previous requirement at the end (e.g. ``Require PHP `>= 8.4` (was `>= 8.2`)``).
-- `section`: the type of the change:
-  - `bc-breaks`: can break existing code when upgrading (removed features or BC layers, changed signatures or
-    behaviors...). A dependency change is never a BC break;
-  - `new-features`: new capabilities;
-  - `improvements`: enhancements of existing features;
-  - `dependencies`: changes of the required version of the language, of its extensions or of other packages
-    (the language skill says where they are declared);
-  - `other`: everything else (bugfixes, deprecations, tests, coding standards, documentation, CI...).
+  `changes` skill, then the skills of the vendor and of the language.
+- `section`: the type of the change (`bc-breaks`, `new-features`, `improvements`, `dependencies` or `other`), see the
+  `changes` skill.
 - `hidden`: `true` to leave the change out of the pages. Hide the change of every commit that only changes tests in the
   directory of the package (the vendor skill says where they are): list its files with
   `git show --stat --format= <hash> -- <directory>`. Such a commit has a single, hidden change, holding only `hidden`
@@ -197,10 +197,11 @@ lists them all. Changes are sorted by the date of their first commit, oldest fir
 - `pages`: the pages our site builds for the change, each with a `type` and a `slug` (its directory, lowercase words
   separated by `-`). The only type for now is `example`: a page showing the change with code, written by
   `/app:site:update`. Add one only when the user asks for it.
+- `validated`: `false` until the user has checked the change (message, section, pages) with `/app:changes:review`,
+  which removes it. Write `"validated": false` on every new change, except the hidden ones.
 
 ### What counts as a new feature
 
-Only new features and improvements of existing features: never bugfixes, deprecations, tests, coding standards or CI.
 The commits are the starting point: they list every modification of the version. The changelog of the version helps
 to find the features, but never replaces the commits.
 
@@ -228,8 +229,8 @@ Every commit of the version is in at least one change.
 For each version to update (the one given, or all of them, oldest first):
 
 1. Create `vendor.json` and `package.json` if they do not exist.
-2. Create the file of the version if it does not exist, with `"changes": []`, and update its `previous`, `release`,
-   `maintenance`, `sources` and `checkedOn`.
+2. Create the file of the version if it does not exist, with `"changes": {}`, and update its `previous`, `release`,
+   `maintenance`, the keys of the language skill, `sources` and `checkedOn`.
 3. List the commits of the version (see [Finding the commits](#finding-the-commits)) that are in no change of its file yet.
 4. If there are some, read the diff of each of them, write its changes (label and type of each) yourself, then ask the
    user to confirm with the `AskUserQuestion` tool, 4 changes per call: one question per change, its header being the
@@ -238,7 +239,7 @@ For each version to update (the one given, or all of them, oldest first):
    one through "Other"). When there are many commits (e.g. every version of a repository), ask the user first whether
    to confirm each change or to classify them yourself.
    When a commit continues a change already in the file (e.g. a fix of a feature of the same version), add it to the
-   `commits` of that change instead of creating a new one.
+   `commits` of that change instead of creating a new one, and set its `"validated": false`: it has to be checked again.
    Commits that only change tests are not asked: write their change directly as `hidden`, and list them in the summary.
 5. Write the changes in the file of the version, keeping them sorted.
 6. Changes already in a file are never asked again: they are kept as they are.

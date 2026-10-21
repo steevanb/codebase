@@ -8,6 +8,9 @@
         "bugFixesUntil": "2017-07",
         "securityFixesUntil": "2018-01"
     },
+    "php": {
+        "min": "5.5"
+    },
     "sources": [
         {
             "title": "Comparison of 3.1 and v3.2.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "1c137402-64c1-4465-85e8-b5727f907876": {
             "message": "Update the branch alias to `3.2-dev`",
             "section": "other",
             "commits": [
@@ -32,7 +35,8 @@
                     "hash": "88cf98625a0731288c0c827089515e15bd4ca00a",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

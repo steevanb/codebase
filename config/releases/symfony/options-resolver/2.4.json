@@ -8,6 +8,9 @@
         "bugFixesUntil": "2014-07",
         "securityFixesUntil": "2015-01"
     },
+    "php": {
+        "min": "5.3"
+    },
     "sources": [
         {
             "title": "Comparison of 2.3 and v2.4.0",
@@ -19,8 +22,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "2d216937-848f-4b81-9c0b-ee6c802b6147": {
             "message": "Update the `dev-master` branch alias to `2.4-dev` in `composer.json`",
             "section": "other",
             "commits": [
@@ -28,7 +31,8 @@
                     "hash": "485802de9495b1db87c5f07c804320fea8020bcd",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

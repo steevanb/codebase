@@ -8,6 +8,9 @@
         "bugFixesUntil": "2022-01",
         "securityFixesUntil": "2022-01"
     },
+    "php": {
+        "min": "7.2"
+    },
     "sources": [
         {
             "title": "Comparison of 5.2 and v5.3.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "30d4cb77-0fb9-48c3-9b45-73bc56aabd46": {
             "message": "Add `setPrototype()` and `isPrototype()` to define a nested option as a prototype: each element of the array is resolved with the nested definition",
             "section": "new-features",
             "commits": [
@@ -42,7 +45,8 @@
                     "title": "Symfony blog: A Week of Symfony #748",
                     "url": "https://symfony.com/blog/a-week-of-symfony-748-26-april-2-may-2021"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

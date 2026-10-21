@@ -9,6 +9,9 @@
         "bugFixesUntil": "2024-11",
         "securityFixesUntil": "2029-02"
     },
+    "php": {
+        "min": "7.2"
+    },
     "sources": [
         {
             "title": "Comparison of 5.3 and v5.4.0",
@@ -24,8 +27,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "2f15a905-cb22-41a8-8a01-4ffd595a6abd": {
             "message": "Remove descriptions from `@return` annotations of `OptionsResolver`",
             "section": "other",
             "commits": [
@@ -39,9 +42,10 @@
                     "title": "Symfony blog: A Week of Symfony #764",
                     "url": "https://symfony.com/blog/a-week-of-symfony-764-16-22-august-2021"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "6c309dc3-4e4f-41b9-8d3d-9778738071ec": {
             "message": "Add the missing `@return $this` annotation on `setDeprecated()`",
             "section": "other",
             "commits": [
@@ -49,9 +53,10 @@
                     "hash": "cd81aecde2cdfed31057034c16333c2ed3645d91",
                     "pullRequest": "https://github.com/symfony/symfony/pull/42954"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "de7d8849-0fed-45d1-87d3-1c84ece12618": {
             "hidden": true,
             "commits": [
                 {
@@ -59,8 +64,8 @@
                 }
             ]
         },
-        {
-            "message": "Allow `symfony/deprecation-contracts` `^3` (was `^2.1`)",
+        "03b59b6b-3ec9-411f-8371-79794c2a8941": {
+            "message": "Bump to `symfony/deprecation-contracts` `^3` (was `^2.1`)",
             "section": "dependencies",
             "commits": [
                 {
@@ -73,7 +78,8 @@
                     "title": "Symfony blog: A Week of Symfony #778",
                     "url": "https://symfony.com/blog/a-week-of-symfony-778-22-28-november-2021"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }
