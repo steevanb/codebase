@@ -51,6 +51,7 @@
     --secondary-600: #059669;
     --secondary-50: #ecfdf5;
     --accent: #f59e0b;
+    --warning: #d97706;
     --accent-50: #fffbeb;
     --violet: #7c3aed;
     --orange: #ea580c;
@@ -84,13 +85,16 @@
     --gradient: linear-gradient(90deg, #4f46e5 0%, #10b981 100%);
     --font-ui: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    --tok-keyword: #a626a4;
-    --tok-class: #c18401;
-    --tok-function: #4078f2;
-    --tok-variable: #e45649;
-    --tok-string: #50a14f;
-    --tok-number: #986801;
-    --tok-comment: #8a8a90;
+    /* Colors of the code: the default Light color scheme of PhpStorm (new UI) */
+    --tok-text: #080808;
+    --tok-keyword: #0033b3;
+    --tok-class: #080808;
+    --tok-function: #080808;
+    --tok-variable: #871094;
+    --tok-string: #067d17;
+    --tok-number: #1750eb;
+    --tok-comment: #8c8c8c;
+    --tok-comment-style: italic;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -104,6 +108,7 @@
         --secondary-600: #6ee7b7;
         --secondary-50: #064e3b;
         --accent: #fbbf24;
+        --warning: #f59e0b;
         --accent-50: #451a03;
         --violet: #a78bfa;
         --orange: #fb923c;
@@ -131,13 +136,16 @@
         --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.4);
         --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
         --gradient: linear-gradient(90deg, #818cf8 0%, #34d399 100%);
-        --tok-keyword: #c678dd;
-        --tok-class: #e5c07b;
-        --tok-function: #61afef;
-        --tok-variable: #e06c75;
-        --tok-string: #98c379;
-        --tok-number: #d19a66;
-        --tok-comment: #7f848e;
+        /* The default Dark color scheme of PhpStorm (new UI) */
+        --tok-text: #bcbec4;
+        --tok-keyword: #cf8e6d;
+        --tok-class: #bcbec4;
+        --tok-function: #57aaf7;
+        --tok-variable: #c77dbb;
+        --tok-string: #6aab73;
+        --tok-number: #2aacb8;
+        --tok-comment: #7a7e85;
+        --tok-comment-style: normal;
     }
 }
 
@@ -647,6 +655,41 @@ section > h2 + h3 {
     margin-top: 0;
 }
 
+/* What the code of an example shows (see bin/dev/highlight.py): OK, a surprising behavior or an exception, shaped
+   like the chapter number */
+section > h3.example-ok,
+section > h3.example-warning,
+section > h3.example-exception {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+section > h3.example-ok::before,
+section > h3.example-warning::before,
+section > h3.example-exception::before {
+    font: 600 0.75rem var(--font-mono);
+    color: var(--surface);
+    padding: 4px 9px;
+    border-radius: var(--radius-sm);
+}
+
+section > h3.example-ok::before {
+    content: "OK";
+    background: var(--secondary-600);
+}
+
+section > h3.example-warning::before {
+    content: "Warning";
+    background: var(--warning);
+}
+
+section > h3.example-exception::before {
+    content: "Exception";
+    background: var(--danger);
+}
+
 section > h2::before {
     counter-increment: chapter;
     content: counter(chapter, upper-roman);
@@ -929,6 +972,24 @@ section > .section-note + .commits-group {
     border-radius: var(--radius-lg);
 }
 
+/* A column on the left of the changes of a release page, with the color of their section */
+#bc-breaks .commits {
+    border-left: 5px solid var(--danger);
+}
+
+#new-features .commits,
+#dependencies .commits {
+    border-left: 5px solid var(--blue);
+}
+
+#improvements .commits {
+    border-left: 5px solid var(--secondary);
+}
+
+#other .commits {
+    border-left: 5px solid var(--slate);
+}
+
 /* No overflow: hidden on .commits, so that the menus of the links can go out of it: round the corners of the rows */
 .commit:first-child > :first-child {
     border-top-left-radius: var(--radius-lg);
@@ -1102,7 +1163,7 @@ pre.code:has(code.language-text) {
 pre.code code {
     padding: 0;
     background: none;
-    color: var(--ink);
+    color: var(--tok-text);
     font-size: inherit;
 }
 
@@ -1308,7 +1369,8 @@ pre.code code {
     color: var(--tok-class);
 }
 
-.tok-nf, .tok-fm, .tok-na, .tok-nb, .tok-bp {
+/* Method calls; the calls of functions (.tok-nb) keep the color of the text, as in PhpStorm */
+.tok-nf, .tok-fm, .tok-na, .tok-bp {
     color: var(--tok-function);
 }
 
@@ -1326,7 +1388,7 @@ pre.code code {
 
 .tok-c, .tok-c1, .tok-cm, .tok-cp, .tok-cs, .tok-ch {
     color: var(--tok-comment);
-    font-style: italic;
+    font-style: var(--tok-comment-style);
 }
 
 mark.code-removed,
@@ -1344,4 +1406,18 @@ mark.code-removed {
 mark.code-added {
     background: var(--secondary-50);
     box-shadow: inset 0 -2px 0 var(--secondary);
+}
+
+/* The method or the function an example is about: in bold blue, the values it changes keeping their mark */
+mark.code-added:has(> .tok-na),
+mark.code-added:has(> .tok-nb) {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    font-weight: 700;
+}
+
+mark.code-added > .tok-na,
+mark.code-added > .tok-nb {
+    color: var(--blue);
 }

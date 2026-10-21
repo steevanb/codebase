@@ -57,7 +57,7 @@
 
         <section id="is-known" class="tone-emerald">
             <h2><span><em>Known</em> option <code>isKnown()</code></span></h2>
-            <h3>Option unknown</h3>
+            <h3 class="example-ok">Option unknown</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Code" aria-label="Code"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L170-L180" target="_blank" rel="noopener">OptionsResolverInterface::isKnown() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L198-L204" target="_blank" rel="noopener">OptionsResolver::isKnown() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
                 <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-added="isKnown"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
@@ -67,7 +67,7 @@
 <span class="tok-c1">// false</span>
 <span class="tok-nv">$isKnown</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isKnown</span></mark><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">);</span></code></pre>
             </div>
-            <h3>Option with a default value</h3>
+            <h3 class="example-ok">Option with a default value</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Code" aria-label="Code"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L170-L180" target="_blank" rel="noopener">OptionsResolverInterface::isKnown() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L198-L204" target="_blank" rel="noopener">OptionsResolver::isKnown() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
                 <pre class="code" data-php="5.3"><code class="language-php" data-added="isKnown"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
@@ -90,7 +90,7 @@
 <span class="tok-c1">// true</span>
 <span class="tok-nv">$isKnown</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isKnown</span></mark><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">);</span></code></pre>
             </div>
-            <h3>Required option</h3>
+            <h3 class="example-ok">Required option</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Code" aria-label="Code"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L170-L180" target="_blank" rel="noopener">OptionsResolverInterface::isKnown() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L198-L204" target="_blank" rel="noopener">OptionsResolver::isKnown() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
                 <pre class="code" data-php="5.3"><code class="language-php" data-added="isKnown"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
@@ -113,7 +113,7 @@
 <span class="tok-c1">// true</span>
 <span class="tok-nv">$isKnown</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isKnown</span></mark><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">);</span></code></pre>
             </div>
-            <h3>Optional option</h3>
+            <h3 class="example-ok">Optional option</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Code" aria-label="Code"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L170-L180" target="_blank" rel="noopener">OptionsResolverInterface::isKnown() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L198-L204" target="_blank" rel="noopener">OptionsResolver::isKnown() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
                 <pre class="code" data-php="5.3"><code class="language-php" data-added="isKnown"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>

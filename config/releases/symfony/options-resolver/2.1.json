@@ -287,8 +287,7 @@
                     "type": "example",
                     "slug": "set-optional"
                 }
-            ],
-            "validated": false
+            ]
         },
         "a102c332-ccf9-4de8-ae5e-5b611e01719c": {
             "message": "Add `setRequired()` to define options that must be given",
@@ -347,8 +346,7 @@
                     "type": "example",
                     "slug": "set-required"
                 }
-            ],
-            "validated": false
+            ]
         },
         "ff4b511b-1eec-4104-a771-f69af2a704fc": {
             "message": "Add `setAllowedValues()` to restrict the values of options",
@@ -407,8 +405,7 @@
                     "type": "example",
                     "slug": "set-allowed-values"
                 }
-            ],
-            "validated": false
+            ]
         },
         "6924d111-f311-4a8b-b313-6e267644330b": {
             "message": "Add `addAllowedValues()` to add allowed values to the previous ones",
