@@ -1,0 +1,91 @@
+{
+    "previous": "7.3",
+    "release": {
+        "ref": "v7.4.0",
+        "date": "2025-11-27"
+    },
+    "maintenance": {
+        "lts": true,
+        "bugFixesUntil": "2028-11",
+        "securityFixesUntil": "2029-11"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 7.3 and v7.4.0",
+            "url": "https://github.com/symfony/options-resolver/compare/7.3...v7.4.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/7.4/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v7.4.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Speed up union type parsing of allowed types by rewriting `splitOutsideParenthesis()` with a regex (about 5.9x faster)",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "b568fef5d2e810fa67e17cda83c014bafd79c8fb",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/61239"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #970",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-970-july-28-august-3-2025"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "9002c0eaf2fbe9b036b8f20242bf9a0afe8aea66"
+                }
+            ]
+        },
+        {
+            "message": "Run tests using PHPUnit 11.5",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "652ba2eb5799453b9f1dbd36335cadaaa66ad594",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/58370"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "982f89c61b9b94aa103731ba658993fc1622b23a"
+                }
+            ]
+        },
+        {
+            "message": "PHP CS Fixer: indent heredoc content as of PHP 7.3",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "4a25a6a5785dc5beb3b11c7811880485bd8d0714",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/61373"
+                }
+            ]
+        },
+        {
+            "message": "PHP CS Fixer: update heredoc handling",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "f9956227bb662deb7842f31a2d3296b6d1b8781c",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/61372"
+                }
+            ]
+        }
+    ]
+}

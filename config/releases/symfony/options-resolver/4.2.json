@@ -1,0 +1,202 @@
+{
+    "previous": "4.1",
+    "release": {
+        "ref": "v4.2.0",
+        "date": "2018-11-30"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2019-07",
+        "securityFixesUntil": "2020-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 4.1 and v4.2.0",
+            "url": "https://github.com/symfony/options-resolver/compare/4.1...v4.2.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/4.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v4.2.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Update the branch alias to `4.2-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "016d5562628af6935bbf76e2eb3fb99683f7cf7b",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Add `setDeprecated()` and `isDeprecated()` to deprecate options, with a static message or a closure depending on the value",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "f8746ce8bd7d3707c291fb7bf175c5c880ce3cdb",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/27277"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 4.2.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-2-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #599",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-599-18-24-june-2018"
+                }
+            ]
+        },
+        {
+            "message": "Make `ExceptionInterface` extend `\\Throwable`",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "17c3675226691fa47ff3fd45d108c874fca4f5ac",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28307"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #610",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-610-3-9-september-2018"
+                }
+            ]
+        },
+        {
+            "message": "Add `OptionsResolverIntrospector::getDeprecationMessage()` to get the deprecation message of an option",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "87c209d7418542e40fcb5f1a146cfc742f30f36b",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/27667"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 4.2.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-2-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #610",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-610-3-9-september-2018"
+                }
+            ]
+        },
+        {
+            "message": "Support nested options definition: `setDefault()` accepts a closure taking an `OptionsResolver` (and optionally the parent `Options`), and add `isNested()`",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "d04e40be5ab82415b979e047c06d6c76182fcdb2",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/27291"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 4.2.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-2-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #615",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-615-8-14-october-2018"
+                }
+            ]
+        },
+        {
+            "message": "Pass the `Options` instance as first argument to the deprecation message closure of `setDeprecated()`",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "29360510db26953f61fbcbaf438439b3228b6217",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28738"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 4.2.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-2-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #615",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-615-8-14-october-2018"
+                }
+            ]
+        },
+        {
+            "message": "Remove the `BEGIN`/`END` comments around nested options resolution",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "c01359e00eeb3dce5e475296c674346d49b950d6",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Trigger an option deprecation only when the option is given by the user or read from a lazy option or normalizer",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "1af23c9a74e2a2a2405ab51148f742c677c8b7a5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28878"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #617",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-617-22-28-october-2018"
+                }
+            ]
+        },
+        {
+            "message": "Add a `$triggerDeprecation` argument to `OptionsResolver::offsetGet()` to read a deprecated option without triggering its deprecation",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "1af23c9a74e2a2a2405ab51148f742c677c8b7a5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28878"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #617",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-617-22-28-october-2018"
+                }
+            ]
+        },
+        {
+            "message": "Do not trigger the deprecation of an already resolved option read with `offsetGet($option, false)` when it was not given by the user",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "8398947c9c1c1266aad0bea773d0b524e0d81643",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28968"
+                }
+            ]
+        },
+        {
+            "message": "Speed up option resolution (`isset()` before `array_key_exists()`, simpler recursive check of array types)",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "24c2213b3d76d4924f52ab404582daef33c95b00",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/29065"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #619",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-619-5-11-november-2018"
+                }
+            ]
+        }
+    ]
+}

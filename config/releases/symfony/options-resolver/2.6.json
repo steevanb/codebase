@@ -1,0 +1,316 @@
+{
+    "previous": "2.5",
+    "release": {
+        "ref": "v2.6.0",
+        "date": "2014-11-28"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2015-07",
+        "securityFixesUntil": "2016-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 2.5 and v2.6.0",
+            "url": "https://github.com/symfony/options-resolver/compare/2.5...v2.6.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/2.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v2.6.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Update the `dev-master` branch alias to `2.6-dev` in `composer.json`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "a11645c63740c29c10f49af961c9856676778349",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Validate the allowed types of options before their allowed values in `resolve()`",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "a4f208b95b609ba6ca8380097d3bb6634d820822",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/11501"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #400",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-400-25-31-august-2014"
+                }
+            ]
+        },
+        {
+            "message": "Add a light-weight static API to resolve options: `resolve()`, `validateNames()`, `validateRequired()`, `validateTypes()` and `validateValues()` of `Options`, and a new `OptionsConfig` class (reverted before 2.6.0)",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "90660255a21ea9a47191ff30c65e84d3a78c072c",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/11716"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "ea6ce1c8afcee328a80bf12bc0f2c0faa756b219"
+                }
+            ]
+        },
+        {
+            "message": "Revert the light-weight static API (`Options::resolve()`, `Options::validate*()` and `OptionsConfig`) added earlier during 2.6 development",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "453882cd03dd30c4fb4b4465772f84583948e81b",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Merge `Options` into `OptionsResolver` with a new per-option API: `setDefault()`, `hasDefault()`, `setNormalizer()`, `setDefined()`, `isDefined()`, `getDefinedOptions()`, `getRequiredOptions()`, `isMissing()`, `getMissingOptions()`, `remove()` and `clear()`",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "642c119e0c3654ed5dfe9b698ef0323a08eb6800",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12156"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #408",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-408-20-26-october-2014"
+                }
+            ]
+        },
+        {
+            "message": "Allow `setAllowedValues()`, `addAllowedValues()`, `setAllowedTypes()` and `addAllowedTypes()` to take a single option name with its allowed values or types, and allow closures as allowed values",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "642c119e0c3654ed5dfe9b698ef0323a08eb6800",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12156"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #408",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-408-20-26-october-2014"
+                }
+            ]
+        },
+        {
+            "message": "Turn `Options` into an interface implemented by `OptionsResolver`: `Options::all()` and `Traversable` are removed and option values can only be read within lazy options and normalizers",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "642c119e0c3654ed5dfe9b698ef0323a08eb6800",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12156"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #408",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-408-20-26-october-2014"
+                }
+            ]
+        },
+        {
+            "message": "Remove the `array` type hint from `setRequired()`, `setAllowedValues()`, `addAllowedValues()`, `setAllowedTypes()` and `addAllowedTypes()` of `OptionsResolverInterface`",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "642c119e0c3654ed5dfe9b698ef0323a08eb6800",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12156"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #408",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-408-20-26-october-2014"
+                }
+            ]
+        },
+        {
+            "message": "Make `isRequired()` return `true` for a required option that has a default value",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "642c119e0c3654ed5dfe9b698ef0323a08eb6800",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12156"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #408",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-408-20-26-october-2014"
+                }
+            ]
+        },
+        {
+            "message": "Make `OptionDefinitionException` extend `LogicException` instead of `RuntimeException`",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "642c119e0c3654ed5dfe9b698ef0323a08eb6800",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12156"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #408",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-408-20-26-october-2014"
+                }
+            ]
+        },
+        {
+            "message": "Normalizers are no longer executed for unset options and now run after the options are validated",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "642c119e0c3654ed5dfe9b698ef0323a08eb6800",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12156"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #408",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-408-20-26-october-2014"
+                }
+            ]
+        },
+        {
+            "message": "Throw `UndefinedOptionsException` instead of `InvalidOptionsException` when non-existing options are passed",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "642c119e0c3654ed5dfe9b698ef0323a08eb6800",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12156"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #408",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-408-20-26-october-2014"
+                }
+            ]
+        },
+        {
+            "message": "Deprecate `OptionsResolverInterface`, `replaceDefaults()`, `setOptional()` (use `setDefined()`), `isKnown()` (use `isDefined()`) and the former `Options` methods `set()`, `get()`, `has()`, `replace()` and `overload()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "642c119e0c3654ed5dfe9b698ef0323a08eb6800",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12156"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #408",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-408-20-26-october-2014"
+                }
+            ]
+        },
+        {
+            "message": "Fix `count()` on `Options` within lazy options and normalizers to return the number of set options",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "6c2130f578181dd4d788ac02ad8740875930ee59",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12294"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #409",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-409-27-october-2-november-2014"
+                }
+            ]
+        },
+        {
+            "message": "Fix the formatting of invalid value exception messages: allowed types joined with \"or\" and accepted values correctly listed",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "dc1250c2b8e39699a753a64c45f06034b37ef3e6",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12294"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #409",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-409-27-october-2-november-2014"
+                }
+            ]
+        },
+        {
+            "message": "Fix calling `resolve()` from within a lazy option or normalizer: it now throws an `AccessException`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "8bcbcc3fd790889e1eb42409e4aba104fc6d7615",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12294"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #409",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-409-27-october-2-november-2014"
+                }
+            ]
+        },
+        {
+            "message": "Throw a new `NoSuchOptionException` (extends `OutOfBoundsException`) when a lazy option or normalizer reads an undefined or unset option, with a clearer message",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "b93c4c072c1151672253ca180859a35eccd1a901",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12294"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #409",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-409-27-october-2-november-2014"
+                }
+            ]
+        },
+        {
+            "message": "Make the `AccessException` messages specific to the called method (e.g. \"Default values cannot be set from a lazy option or normalizer.\")",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "b93c4c072c1151672253ca180859a35eccd1a901",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12294"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #409",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-409-27-october-2-november-2014"
+                }
+            ]
+        },
+        {
+            "message": "Document in the `CHANGELOG` the BC break of `UndefinedOptionsException` replacing `InvalidOptionsException` for non-existing options",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "0b0bfc03d5447e1577320a3a67ccb2f50bdd5b00",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12384"
+                }
+            ]
+        }
+    ]
+}

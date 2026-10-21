@@ -1,0 +1,172 @@
+{
+    "previous": "2.8",
+    "release": {
+        "ref": "v3.0.0",
+        "date": "2015-11-30"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2016-07",
+        "securityFixesUntil": "2017-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 2.8 and v3.0.0",
+            "url": "https://github.com/symfony/options-resolver/compare/2.8...v3.0.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/3.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v3.0.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Update the branch alias to `3.0-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "d8f839d7a1f712a8748b875df566bcbf52ad5d84",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "7b33d1a06074bce5c24a758eb53832cc1eb2b9c3"
+                }
+            ]
+        },
+        {
+            "message": "Require PHP `>=5.5.9` (was `>=5.3.9`)",
+            "section": "dependencies",
+            "commits": [
+                {
+                    "hash": "fddcb86c31a7bde7b70bad8c3e3d2c45bf8588c5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12522"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #418",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-418-29-december-2014-04-january-2015"
+                }
+            ]
+        },
+        {
+            "message": "Remove the deprecated `OptionsResolverInterface` (use `OptionsResolver` instead)",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "9b9158b4da5fd7d6a857e8abbd2a5b938cdf106f",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13407"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #423",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-423-02-08-february-2015"
+                }
+            ]
+        },
+        {
+            "message": "Remove the deprecated `set()`, `replace()`, `overload()`, `get()`, `has()`, `replaceDefaults()`, `setOptional()` and `isKnown()` methods of `OptionsResolver`",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "295bba297e3ff2eefd2bd238b411b3e553021f9b",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13808"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #427",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-427-02-08-march-2015"
+                }
+            ]
+        },
+        {
+            "message": "Remove the deprecated `OptionsResolver::setNormalizers()` method (use `setNormalizer()`)",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "295bba297e3ff2eefd2bd238b411b3e553021f9b",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13808"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #427",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-427-02-08-march-2015"
+                }
+            ]
+        },
+        {
+            "message": "Remove the deprecated array-of-options signature of `setAllowedValues()`, `addAllowedValues()`, `setAllowedTypes()` and `addAllowedTypes()`: the second argument is now required",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "295bba297e3ff2eefd2bd238b411b3e553021f9b",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13808"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #427",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-427-02-08-march-2015"
+                }
+            ]
+        },
+        {
+            "message": "Remove the legacy tests of the deprecated API",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "295bba297e3ff2eefd2bd238b411b3e553021f9b",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13808"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #427",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-427-02-08-march-2015"
+                }
+            ]
+        },
+        {
+            "message": "Require `symfony/phpunit-bridge` `~2.8|~3.0` in `require-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "4dedb97266b00d5a7e7fa5954becc4bb02bfb00e",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/14296"
+                }
+            ]
+        },
+        {
+            "message": "Remove the internal `OptionsResolver::OPTIONS_INTERFACE` constant in favor of `Options::class`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "a68389131e8061eabddf7056511f8fb4192927fc",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/14390"
+                }
+            ]
+        },
+        {
+            "message": "Use `try`/`finally` to clean up the cyclic call guard when resolving lazy options and normalizers",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "49edef252bd9f9a88150e9235161c96bb3a31ffc",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/15949"
+                }
+            ]
+        }
+    ]
+}

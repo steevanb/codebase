@@ -1,0 +1,48 @@
+{
+    "previous": "7.1",
+    "release": {
+        "ref": "v7.2.0",
+        "date": "2024-11-29"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2025-07",
+        "securityFixesUntil": "2025-07"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 7.1 and v7.2.0",
+            "url": "https://github.com/symfony/options-resolver/compare/7.1...v7.2.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/7.2/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v7.2.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Prefix all `sprintf()` calls with a backslash",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "6ce530c5e90397d88e3a76a56db266c74d651584",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/57461"
+                }
+            ]
+        },
+        {
+            "message": "Export-ignore all `.git*` files in `.gitattributes`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "bbddc2c358565dd9088f9d1857808bedef9c08f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/57666"
+                }
+            ]
+        }
+    ]
+}

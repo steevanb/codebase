@@ -1,0 +1,91 @@
+{
+    "previous": "3.3",
+    "release": {
+        "ref": "v3.4.0",
+        "date": "2017-11-30"
+    },
+    "maintenance": {
+        "lts": true,
+        "bugFixesUntil": "2020-11",
+        "securityFixesUntil": "2021-11"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 3.3 and v3.4.0",
+            "url": "https://github.com/symfony/options-resolver/compare/3.3...v3.4.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/3.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v3.4.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Update the branch alias to `3.4-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "7b59412301f6c2f98d0f1b0d694c5369ee998f41",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Add `OptionsResolverIntrospector` (with `NoConfigurationException`) to inspect the default value, lazy closures, allowed types/values and normalizer of an option",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "d6d187d26e0921a428c7ecc423d4f915c8f72c14",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/24208"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 3.4.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-3-4-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: Symfony 4.0.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-0-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: New in Symfony 3.4: debug:form command",
+                    "url": "https://symfony.com/blog/new-in-symfony-3-4-debug-form-command"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #563",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-563-9-15-october-2017"
+                }
+            ]
+        },
+        {
+            "message": "Support arrays of types in allowed types (e.g. `int[]`, `string[][]`) with `setAllowedTypes()` / `addAllowedTypes()`",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "d066a238607e86e882ec8e80786bc722c3f0f9c9",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/23112"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 3.4.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-3-4-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: Symfony 4.0.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-0-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #563",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-563-9-15-october-2017"
+                }
+            ]
+        }
+    ]
+}

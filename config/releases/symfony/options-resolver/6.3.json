@@ -1,0 +1,90 @@
+{
+    "previous": "6.2",
+    "release": {
+        "ref": "v6.3.0",
+        "date": "2023-05-30"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2024-01",
+        "securityFixesUntil": "2024-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 6.2 and v6.3.0",
+            "url": "https://github.com/symfony/options-resolver/compare/6.2...v6.3.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/6.3/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v6.3.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Require `symfony/deprecation-contracts` `^2.5|^3` (was `^2.1|^3`)",
+            "section": "dependencies",
+            "commits": [
+                {
+                    "hash": "8671ad52f1ec24baa4b96aabed2bf0d54e74db81",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/48810"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 6.3.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-6-3-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #835",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-835-26-december-2022-1-january-2023"
+                }
+            ]
+        },
+        {
+            "message": "Use arrow functions for closures",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "f5802d3a2adb6eddf100cc63c016a2f76f68f49c",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/48793"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #837",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-837-9-15-january-2023"
+                }
+            ]
+        },
+        {
+            "message": "Add `OptionsResolver::setIgnoreUndefined()` and `OptionConfigurator::ignoreUndefined()` to silently ignore undefined options while resolving instead of throwing `UndefinedOptionsException`",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "21cd8521cc2b7db8d835493b789a611048a069a1",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/49608"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #853",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-853-1-7-may-2023"
+                }
+            ]
+        },
+        {
+            "message": "Fix the CHANGELOG entry about `setIgnoreUndefined()` and `OptionConfigurator::ignoreUndefined()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "61279d4bdb689ac2c5d579f4d85c1ff8a5d797ed",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/50305"
+                }
+            ]
+        }
+    ]
+}

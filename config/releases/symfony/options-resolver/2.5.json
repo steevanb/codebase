@@ -1,0 +1,23 @@
+{
+    "previous": "2.4",
+    "release": {
+        "ref": "v2.5.0",
+        "date": "2014-05-31"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2015-01",
+        "securityFixesUntil": "2015-07"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 2.4 and v2.5.0",
+            "url": "https://github.com/symfony/options-resolver/compare/2.4...v2.5.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/2.x/components/options_resolver.html"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": []
+}
