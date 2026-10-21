@@ -57,7 +57,7 @@
 
         <section id="get" class="tone-emerald">
             <h2><span><em>Read</em> an option <code>get()</code></span></h2>
-            <h3>Option set</h3>
+            <h3 class="example-ok">Option set</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L209-L222" target="_blank" rel="noopener" title="Declaration of Options::get() in v2.1.0" aria-label="Declaration of Options::get() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
                 <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-added="get"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
@@ -68,7 +68,7 @@
 <span class="tok-c1">// 'foo'</span>
 <span class="tok-nv">$key</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">get</span></mark><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">);</span></code></pre>
             </div>
-            <h3>Option missing</h3>
+            <h3 class="example-exception">Option missing</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L209-L222" target="_blank" rel="noopener" title="Declaration of Options::get() in v2.1.0" aria-label="Declaration of Options::get() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
                 <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-removed="'key'" data-added="get"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>

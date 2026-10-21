@@ -11,6 +11,11 @@ The names listed in the data-removed and data-added attributes of the <code> tag
 wrapped in <mark class="code-removed"> and <mark class="code-added">, to show what changed between two versions:
 <pre class="code"><code class="language-php" data-added="setOptions">
 A string ('firstName') is also marked in the comments, between ' or ": // The option "firstName" does not exist.
+So is a constant (null, true, false) or a number, as a whole word: // ['key' => null]
+The title of an example (<h3> followed by its block) gets the class example-exception when its code throws an
+exception (a comment starting with its class: // InvalidOptionsException: ...), example-ok otherwise, unless it is
+example-warning, written by hand for a surprising behavior: the CSS shows "OK", "Exception" or "Warning" before it.
+The examples of a section are sorted: OK, then warnings, then exceptions.
 When a marked name is the type of a parameter of a function or a method, its parameter is marked with it, in the
 same <mark>, and its uses in the body of the function are marked too:
 function (Options $options) { return $options['a']; } marks "Options $options" and "$options".
@@ -23,7 +28,8 @@ allows. The code-meta gives the minimum PHP version of the package (<span>PHP 5.
 one and the last minor version of each newer major version of PHP allowed by the package (5.6, 7.4, 8.4, up to the
 php.max of its settings file). The code of the older versions is derived from the newest one, removing what they do
 not support: new without parentheses (8.4), mixed and union types (8.0), arrow functions (7.4), void, nullable and
-iterable types (7.1), scalar and return types (7.0), [] arrays and calls on new (5.4).
+iterable types (7.1), scalar and return types (7.0), [] arrays and calls on new (5.4). The messages shown in the
+comments are the ones of each version: the warning of an undefined array key is a notice before PHP 8.0.
 One <pre class="code" data-php="<versions>"> per different code, from the oldest version to the newest one, the
 last one being the source of the others (the same <pre> for every version when the code does not change).
 The versions are listed on the code-block (data-php-versions), /assets/js/main.js shows the chosen one.
@@ -62,6 +68,8 @@ NEW_WITHOUT_PARENTHESES = re.compile(r'^(\$\w+ = )new (\w+\([^()\n]*\))(?=->|\n(
 MIXED_PARAMETER = re.compile(r'(\(|, )mixed (\$\w+)')
 UNION_PARAMETER = re.compile(r'(\(|, )\??[\w\\]+(?:\|[\w\\]+)+ (\$\w+)')
 MIXED_OR_UNION_RETURN = re.compile(r'\): (?:mixed|static|[\w\\?]+(?:\|[\w\\]+)+)(?= \{| =>)')
+# PHP 8.0: the warning of an undefined key of an array, a notice before
+UNDEFINED_KEY = re.compile(r'// Warning: Undefined array key "([^"]*)"')
 # PHP 7.4: an arrow function, its parameters and its return type
 ARROW_FUNCTION = re.compile(r'\bfn (\([^()]*\)(?:: \??[\w\\]+)?) => ')
 # PHP 7.1: void, iterable and nullable types
@@ -88,6 +96,20 @@ TYPED_PARAMETER_MARKED = re.compile(
 )
 PUNCTUATION = re.compile(r'<span class="tok-p">([^<]*)</span>')
 COMMENT = re.compile(r'<span class="tok-c1">(?:[^<]|</?mark[^>]*>)*</span>')
+# The title of an example (<h3>), followed by its paragraphs and its block of code
+EXAMPLE_TITLE = re.compile(
+    r'<h3(?: class="([^"]*)")?>(.*?</h3>(?:\s*<p>.*?</p>)*\s*<div class="code-block".*?</pre>\s*</div>)',
+    re.DOTALL,
+)
+# The examples of a section, after its title and its paragraphs, and an example in it
+SECTION_EXAMPLES = re.compile(
+    r'(<section[^>]*>\s*<h2>[^\n]*</h2>(?:\s*<p>.*?</p>)*)((?:\s*<h3 class="example-[\w-]+">.*?</pre>\s*</div>)+)(\s*</section>)',
+    re.DOTALL,
+)
+EXAMPLE = re.compile(r'\s*<h3 class="example-[\w-]+">.*?</h3>(?:\s*<p>.*?</p>)*\s*<div class="code-block".*?</pre>\s*</div>', re.DOTALL)
+EXAMPLE_ORDER = ['example-ok', 'example-warning', 'example-exception']
+# The short name of the class of an exception thrown by the next line, at the start of a comment
+EXCEPTION = re.compile(r'<span class="tok-c1">// \w+(?:Exception|Error):')
 # The use statements at the start of a block, and the empty lines following them
 USES = re.compile(r'(?:use [^\n]+;\n)+\n*')
 
@@ -122,6 +144,16 @@ def mark(colored: str, opening_tag: str) -> str:
                     lambda comment: re.sub(
                         rf'([\'"]){re.escape(string.group(1))}\1',
                         lambda quoted: f'<mark class="{css_class}">{quoted.group(0)}</mark>',
+                        comment.group(0),
+                    ),
+                    colored,
+                )
+            # A constant (null, true, false) or a number is also marked in the comments, as a whole word
+            elif re.fullmatch(r'null|true|false|\d+(?:\.\d+)?', name):
+                colored = COMMENT.sub(
+                    lambda comment: re.sub(
+                        rf'(?<![\w.\'"]){re.escape(name)}(?![\w.\'"])',
+                        lambda word: f'<mark class="{css_class}">{word.group(0)}</mark>',
                         comment.group(0),
                     ),
                     colored,
@@ -267,6 +299,7 @@ def php_syntax(code: str, php: str) -> str:
         code = MIXED_PARAMETER.sub(r'\1\2', code)
         code = UNION_PARAMETER.sub(r'\1\2', code)
         code = MIXED_OR_UNION_RETURN.sub(')', code)
+        code = UNDEFINED_KEY.sub(r'// Notice: Undefined index: \1', code)
     if version(php) < (7, 4):
         code = closures(code)
     if version(php) < (7, 1):
@@ -318,6 +351,22 @@ def php_variants(match: re.Match, maximum: str | None) -> str:
 
     return f'{match.group(1)} data-php-versions="{" ".join(versions)}"{match.group(2)}{pres}{indentation[:-4]}{match.group(6)}'
 
+def example_title(match: re.Match) -> str:
+    """The title of an example says whether its code throws an exception, unless it is a warning (written by hand)."""
+    if match.group(1) == 'example-warning':
+        return match.group(0)
+
+    return f'<h3 class="example-{"exception" if EXCEPTION.search(match.group(2)) else "ok"}">{match.group(2)}'
+
+def sort_examples(match: re.Match) -> str:
+    """The examples of a section, in this order: OK, then warnings, then exceptions, keeping their order otherwise."""
+    examples = EXAMPLE.findall(match.group(2))
+    if ''.join(examples) != match.group(2):
+        return match.group(0)
+    examples.sort(key=lambda example: EXAMPLE_ORDER.index(re.match(r'\s*<h3 class="([\w-]+)"', example).group(1)))
+
+    return match.group(1) + ''.join(examples) + match.group(3)
+
 def process(path: Path) -> bool:
     from pygments import highlight
     from pygments.formatters import HtmlFormatter
@@ -341,6 +390,7 @@ def process(path: Path) -> bool:
 
     maximum = php_max(path)
     updated = BLOCK.sub(replace, PHP_BLOCK.sub(lambda match: php_variants(match, maximum), content))
+    updated = SECTION_EXAMPLES.sub(sort_examples, EXAMPLE_TITLE.sub(example_title, updated))
     if updated == content:
         return False
     path.write_text(updated)

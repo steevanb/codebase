@@ -13,9 +13,12 @@ What the example pages of `symfony/options-resolver` need, in addition to the sk
   just above it, written with the syntax of the block:
 
   ```php
-  // array('gender' => 'male', 'firstName' => 'John')
-  $options = $resolver->resolve(array('firstName' => 'John'));
+  // array('key' => 'foo', 'firstName' => 'bar')
+  $options = $resolver->resolve(array('firstName' => 'bar'));
   ```
+
+- Define an option with `setRequired()` when its value is given to `resolve()` and its default value plays no part
+  in the example: `setDefaults()` only when the example is about the default value (or about `setDefaults()`).
 
 - The result is the one the version gives, keys in their order: check it by running the code with the version of the
   package (clone `https://github.com/symfony/options-resolver` at its tag in the scratchpad directory, then run the

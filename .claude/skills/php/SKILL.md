@@ -66,7 +66,9 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
   `// 4.2 – 7.4`, `// >= 8.0`.
 - A block starts with a `use` statement for each class it uses in its code (`new`, types of the parameters,
   `instanceof`, `::`...), even when it only compares versions, sorted alphabetically, one per line, followed by an
-  empty line. Not for a class only named in a comment (e.g. an exception shown as a result).
+  empty line. Also for a class only named in a comment (e.g. an exception shown as a result:
+  `// InvalidOptionsException: ...` needs `use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;`),
+  except a class of the global namespace (e.g. `OutOfBoundsException`).
 
   ```php
   use Symfony\Component\OptionsResolver\Options;
@@ -93,6 +95,7 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
 - Type as much as the newest version allows: the parameters and the return type of every closure (e.g.
   `fn (Options $options, string $value): string => strtolower($value)`), `mixed` when any value is possible.
   A closure only returning an expression is an arrow function (`fn`).
+- In an array of values, `null` always comes first, before the other values: `[null, 'foo']`, never `['foo', null]`.
 - Chain as many calls as the API allows in the version shown (methods returning `$this`: check it in the code of
   the version), from the creation of the object, one chained method per line when there are several (a single one
   on the line of `new`, see above):

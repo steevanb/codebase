@@ -159,12 +159,17 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
 - The example page of the first version of a package shows what the package does, one section per concept, in this
   order when they apply (e.g. for `symfony/options-resolver`): `Minimal configuration` (`slate`, the package used
   without any configuration), `Required option` (`blue`), `Default value` (`emerald`), `Optional option` (`indigo`),
-  `Allowed values` (`violet`). Each section shows the normal case first, then its errors and variants, each one with
-  its `<h3>` title.
+  `Allowed values` (`violet`). Each section shows the normal case first, then its errors and variants.
+- Every example has its `<h3>` title, even when it is alone in its section: the title, then the paragraphs about
+  the example, then its block of code (a callout of the section comes before the title).
+- The `<h3>` of an example is labelled by `bin/dev/highlight.py`: `OK`, or `Exception` when its code throws one, and
+  the examples of a section are sorted: `OK`, then `Warning`, then `Exception`. Write
+  `<h3 class="example-warning">` by hand for a surprising behavior (e.g. a call silently ignored), whether it throws
+  an exception or not: its only label is then `Warning`.
 - Code: **only the code that changed**, a few lines: never a full implementation (no class, no unrelated options).
   Test values are `foo`, `bar` and `baz` whenever the value does not matter (e.g. `'foo'`, `foo@bar.com`,
-  `FOO@BAR.COM`, `foo.com`); keep a meaningful value only when the example needs it (e.g. `'male'` and `'female'`
-  as allowed values). Each block starts with `foo`, whatever the other blocks use: `bar`, then `baz`, only when the
+  `FOO@BAR.COM`, `foo.com`); keep a meaningful value only when the example needs it (e.g. a type, `'int'`, given
+  to `setAllowedTypes()`), never for allowed values. Each block starts with `foo`, whatever the other blocks use: `bar`, then `baz`, only when the
   same block needs a second, then a third different value (e.g. `'host' => 'foo.com', 'url' => '/bar'`).
   Numbers: `42`, then `3`, `18` and `21` when the same block needs more, in the order they appear in the code; any
   other number beyond. A number the example computes (e.g. the result of `count()`) is left as it is.
@@ -219,12 +224,15 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   by `bin/dev/start.py` (run it first). It rebuilds every block from its text, so it can be run again.
   Show what changed by listing the names (methods, classes, options...) on the `<code>` tag, separated by spaces:
   `data-removed="oldMethod"` (red) and `data-added="newMethod"` (green).
+  Mark every call of the method (or function) the page is about, in every block: it is shown in bold blue.
   Mark the values the example changes (e.g. a default value replaced by the given one, a value normalized).
   Colors: red (`data-removed`) for what is an error, i.e. the values causing the exception a block shows, and the old
   code removed by a BC break; green (`data-added`) for everything else, methods included in a block showing an
   exception.
-  Mark the strings the example is about (e.g. `data-added="'firstName'"` for an unknown or missing option, the value
-  given to `resolve()` and, when it is transformed, the value it becomes): `bin/dev/highlight.py` marks them in the
+  Mark the strings the example is about (e.g. `data-added="'firstName'"` for an unknown or missing option, the key of
+  an option given to `resolve()`, not its value, unless the example is about the value (e.g. an allowed value, a
+  value transformed and the value it becomes)):
+  `bin/dev/highlight.py` marks them in the
   code and in the comments showing a result or an
   exception message (`// The option "firstName" does not exist.`).
   When the paragraph above a block explains one part of its code (e.g. an argument, a variable), mark this part with
