@@ -1,0 +1,79 @@
+{
+    "previous": "5.3",
+    "release": {
+        "ref": "v5.4.0",
+        "date": "2021-11-29"
+    },
+    "maintenance": {
+        "lts": true,
+        "bugFixesUntil": "2024-11",
+        "securityFixesUntil": "2029-02"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 5.3 and v5.4.0",
+            "url": "https://github.com/symfony/options-resolver/compare/5.3...v5.4.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/5.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v5.4.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Remove descriptions from `@return` annotations of `OptionsResolver`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "8f36bbdd74739f035f1fd1cd6ba92175327c8a5f",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/42499"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #764",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-764-16-22-august-2021"
+                }
+            ]
+        },
+        {
+            "message": "Add the missing `@return $this` annotation on `setDeprecated()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "cd81aecde2cdfed31057034c16333c2ed3645d91",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/42954"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "057716c6a24ab77b4b6ce5e0dd1b20804cefdf3d"
+                }
+            ]
+        },
+        {
+            "message": "Allow `symfony/deprecation-contracts` `^3` (was `^2.1`)",
+            "section": "dependencies",
+            "commits": [
+                {
+                    "hash": "e171a3e51ee9b763601d5629d1aeaa3abe6923b0",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/44209"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #778",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-778-22-28-november-2021"
+                }
+            ]
+        }
+    ]
+}

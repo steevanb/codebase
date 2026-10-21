@@ -1,0 +1,76 @@
+{
+    "previous": "6.1",
+    "release": {
+        "ref": "v6.2.0",
+        "date": "2022-11-30"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2023-07",
+        "securityFixesUntil": "2023-07"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 6.1 and v6.2.0",
+            "url": "https://github.com/symfony/options-resolver/compare/6.1...v6.2.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/6.2/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v6.2.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Use `$value::class` instead of `get_class()` in `formatValue()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "675601b8f73364d5451ed6a61bc8c37e6f1f764a",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/47401"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #818",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-818-29-august-4-september-2022"
+                }
+            ]
+        },
+        {
+            "message": "Use the `??=` operator in `addNormalizer()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "e681bd50210ef06c2ecec341edcd6b14b986875a",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/47649"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #821",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-821-19-25-september-2022"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "689385a83f33ba266a012f4d1ab65b1101661147"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "aa96ed8047fed0711e4de94dc20437983f8d1c44"
+                }
+            ]
+        }
+    ]
+}

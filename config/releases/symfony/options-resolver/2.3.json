@@ -1,0 +1,61 @@
+{
+    "previous": "2.2",
+    "release": {
+        "ref": "v2.3.0",
+        "date": "2013-06-03"
+    },
+    "maintenance": {
+        "lts": true,
+        "bugFixesUntil": "2016-05",
+        "securityFixesUntil": "2017-05"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 2.2 and v2.3.0",
+            "url": "https://github.com/symfony/options-resolver/compare/2.2...v2.3.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/2.x/components/options_resolver.html"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Update the `dev-master` branch alias to `2.3-dev` in `composer.json`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "d0aaf625573254b5aff0a89cf12063d53067d81a",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Remove the spaces around the concatenation operator (CS)",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "7c47e34928c39e4797edc841423237a16588395e",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/7546"
+                }
+            ]
+        },
+        {
+            "message": "Build the exception messages of `Options` with `sprintf()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "e655120f052d9ccb4bc5a379da902d36d5247a8c",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/7620"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #328",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-328-8-14-april-2013"
+                }
+            ]
+        }
+    ]
+}

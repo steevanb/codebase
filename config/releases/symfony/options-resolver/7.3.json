@@ -1,0 +1,174 @@
+{
+    "previous": "7.2",
+    "release": {
+        "ref": "v7.3.0",
+        "date": "2025-05-29"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2026-01",
+        "securityFixesUntil": "2026-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 7.2 and v7.3.0",
+            "url": "https://github.com/symfony/options-resolver/compare/7.2...v7.3.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/7.3/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v7.3.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Support union types in `setAllowedTypes()`, e.g. `int|string` or `(int|string)[]`",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "69ec31d018b38f7c39e44c042f8357126a589af0",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59354"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #941",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-941-6-12-january-2025"
+                },
+                {
+                    "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: New in Symfony 7.3: DX Improvements (part 1)",
+                    "url": "https://symfony.com/blog/new-in-symfony-7-3-dx-improvements-part-1"
+                }
+            ]
+        },
+        {
+            "message": "Allow whitespace around `|` in union types passed to `setAllowedTypes()`, e.g. `string | int`",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "887757ef9b188b8ee34c8c4fa19aa28e23576c8b",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59441"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #941",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-941-6-12-january-2025"
+                }
+            ]
+        },
+        {
+            "message": "Add the missing union type support entry to the CHANGELOG",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "946278f9f8cd1bc40c075d37b1d6c2a289c8eb4c",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59483"
+                }
+            ]
+        },
+        {
+            "message": "Add `OptionsResolver::setOptions()` and `OptionConfigurator::options()` to define nested options",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "b0bb9a12ccca440554dbc6e584a2e28cf3b0762d",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59618"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #948",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-948-24-february-2-march-2025"
+                },
+                {
+                    "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
+                }
+            ]
+        },
+        {
+            "message": "Add `OptionsResolverIntrospector::getNestedOptions()` to get the nested options closures of an option",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "b0bb9a12ccca440554dbc6e584a2e28cf3b0762d",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59618"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #948",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-948-24-february-2-march-2025"
+                },
+                {
+                    "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
+                }
+            ]
+        },
+        {
+            "message": "Allow an option defined with `setOptions()` to also have a lazy default value: lazy closures are now resolved before nested options",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "b0bb9a12ccca440554dbc6e584a2e28cf3b0762d",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59618"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #948",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-948-24-february-2-march-2025"
+                },
+                {
+                    "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
+                }
+            ]
+        },
+        {
+            "message": "Deprecate defining nested options via `setDefault()`, use `setOptions()` instead",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "b0bb9a12ccca440554dbc6e584a2e28cf3b0762d",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/59618"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #948",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-948-24-february-2-march-2025"
+                },
+                {
+                    "title": "Symfony blog: Symfony 7.3.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-7-3-0-beta1-released"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "6550cb815e338106a334f6cb7273acd4edba260e"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "8a53faef1b752f3d02c5faaf90eacc4e16713d6a"
+                }
+            ]
+        }
+    ]
+}

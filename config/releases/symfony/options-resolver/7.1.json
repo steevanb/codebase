@@ -1,0 +1,38 @@
+{
+    "previous": "7.0",
+    "release": {
+        "ref": "v7.1.0",
+        "date": "2024-05-31"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2025-01",
+        "securityFixesUntil": "2025-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 7.0 and v7.1.0",
+            "url": "https://github.com/symfony/options-resolver/compare/7.0...v7.1.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/7.1/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v7.1.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Use constructor property promotion in `OptionConfigurator`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "c4e4843f5286ab4402d4844b1b8b7a41908fd921",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/53966"
+                }
+            ]
+        }
+    ]
+}

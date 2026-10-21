@@ -1,0 +1,64 @@
+{
+    "previous": "8.0",
+    "release": {
+        "ref": "v8.1.0",
+        "date": "2026-05-29"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2027-01",
+        "securityFixesUntil": "2027-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 8.0 and v8.1.0",
+            "url": "https://github.com/symfony/options-resolver/compare/8.0...v8.1.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/8.1/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v8.1.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "3274fbccfb35f0ffeabcd831f01af953e9c1bc05"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "3373aa5aa7683587f339095bf87fb63483e8d156"
+                }
+            ]
+        },
+        {
+            "message": "Bump to php `>= 8.4.1` (was `>= 8.4`)",
+            "section": "dependencies",
+            "commits": [
+                {
+                    "hash": "53f2e8e2d86c8f5357ab2ed1374cc9d46536d6f4",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/63896"
+                }
+            ]
+        },
+        {
+            "message": "Add a Sponsor section to the README, looking for a backer",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "c9a38d646c8951959ef8d649d21815f2eac96ee4",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/64391"
+                }
+            ]
+        }
+    ]
+}

@@ -1,11 +1,11 @@
 ---
 name: php
-description: Knowledge about PHP packages for codebase.watch - package names, where dependencies are declared, how deprecations look, how to write and color PHP code in the pages. Load it before working on a page of the php language, e.g. from /app:release.
+description: Knowledge about PHP packages for codebase.watch - package names, where dependencies are declared, how deprecations look, how to write and color PHP code in the pages. Load it before working on a page of the php language, e.g. from /app:release:update or /app:site:update.
 ---
 
 # PHP
 
-What `/app:release` needs to know about the packages of the `php` language, whatever their project.
+What `/app:release:update` and `/app:site:update` need to know about the packages of the `php` language, whatever their project.
 What is specific to a project (Symfony, Doctrine...) is in the skill of its vendor.
 
 ## Packages

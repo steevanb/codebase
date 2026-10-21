@@ -1,0 +1,59 @@
+{
+    "previous": "2.7",
+    "release": {
+        "ref": "v2.8.0",
+        "date": "2015-11-30"
+    },
+    "maintenance": {
+        "lts": true,
+        "bugFixesUntil": "2018-11",
+        "securityFixesUntil": "2019-11"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 2.7 and v2.8.0",
+            "url": "https://github.com/symfony/options-resolver/compare/2.7...v2.8.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/2.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v2.8.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Allow `symfony/phpunit-bridge` `~3.0.0` in `require-dev` again",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "ebe0889a38a4eda0252fd9feb2843e152890fd83",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Update the branch alias to `2.8-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "38374f983cae994750abc52d79fb13222096da0a",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Remove the explicit `SkippedTestsListener` registration from `phpunit.xml.dist` (the PHPUnit bridge listener is now auto-registered)",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "9e2bb0082f670ac4a2d6d7c5d59eccc471770f55",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/16197"
+                }
+            ]
+        }
+    ]
+}

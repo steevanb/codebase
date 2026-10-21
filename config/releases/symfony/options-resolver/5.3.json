@@ -1,0 +1,48 @@
+{
+    "previous": "5.2",
+    "release": {
+        "ref": "v5.3.0",
+        "date": "2021-05-31"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2022-01",
+        "securityFixesUntil": "2022-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 5.2 and v5.3.0",
+            "url": "https://github.com/symfony/options-resolver/compare/5.2...v5.3.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/5.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v5.3.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Add `setPrototype()` and `isPrototype()` to define a nested option as a prototype: each element of the array is resolved with the nested definition",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "29d41b1970e30313158b61750e83ee73d7dc596c",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/39913"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: New in Symfony 5.3: Prototype Options",
+                    "url": "https://symfony.com/blog/new-in-symfony-5-3-prototype-options"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #748",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-748-26-april-2-may-2021"
+                }
+            ]
+        }
+    ]
+}

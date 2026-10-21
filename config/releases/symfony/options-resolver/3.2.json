@@ -1,0 +1,38 @@
+{
+    "previous": "3.1",
+    "release": {
+        "ref": "v3.2.0",
+        "date": "2016-11-30"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2017-07",
+        "securityFixesUntil": "2018-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 3.1 and v3.2.0",
+            "url": "https://github.com/symfony/options-resolver/compare/3.1...v3.2.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/3.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v3.2.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Update the branch alias to `3.2-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "88cf98625a0731288c0c827089515e15bd4ca00a",
+                    "pullRequest": null
+                }
+            ]
+        }
+    ]
+}

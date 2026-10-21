@@ -1,0 +1,90 @@
+{
+    "previous": "7.4",
+    "release": {
+        "ref": "v8.0.0",
+        "date": "2025-11-27"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2026-07",
+        "securityFixesUntil": "2026-07"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 7.4 and v8.0.0",
+            "url": "https://github.com/symfony/options-resolver/compare/7.4...v8.0.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/8.0/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v8.0.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Bump Symfony 8 to PHP `>= 8.4` (was `>= 8.2`)",
+            "section": "dependencies",
+            "commits": [
+                {
+                    "hash": "df4804a0650e6177d2fa85df6d97b88471173968",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/60639"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #962",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-962-june-2-8-2025"
+                }
+            ]
+        },
+        {
+            "message": "Remove support for nested options definition via `setDefault()`, use `setOptions()` instead",
+            "section": "bc-breaks",
+            "commits": [
+                {
+                    "hash": "f1abd5c34b0346a480da9d409366abaf1acb3abc",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/60723"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #962",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-962-june-2-8-2025"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "nested-options"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "3390e00bbe493e799479258f0b736e7357e96dbd"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "60420b531fae72c4f9f68cd72bb571256cee6043"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "6128512ec5903dd700a59f6fcae6a102490a4ccd"
+                }
+            ]
+        }
+    ]
+}

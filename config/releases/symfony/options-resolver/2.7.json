@@ -1,0 +1,271 @@
+{
+    "previous": "2.6",
+    "release": {
+        "ref": "v2.7.0",
+        "date": "2015-05-30"
+    },
+    "maintenance": {
+        "lts": true,
+        "bugFixesUntil": "2018-05",
+        "securityFixesUntil": "2019-05"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 2.6 and v2.7.0",
+            "url": "https://github.com/symfony/options-resolver/compare/2.6...v2.7.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/2.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v2.7.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Update the `dev-master` branch alias to `2.7-dev` in `composer.json`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "d94d837e9ea75d76eeb0a43e0535a5e7a7a01542",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Hide `E_USER_DEPRECATED` notices in `phpunit.xml.dist` until 3.0",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "11ba901fec9354912a37731586600819ecfa85c4",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12705"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #413",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-413-24-30-november-2014"
+                }
+            ]
+        },
+        {
+            "message": "Trigger a deprecation notice when `OptionsResolverInterface` is loaded",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "1b42e32f09a2d8803ffa5d78a0bb42e0f7325d3e",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12749"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #413",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-413-24-30-november-2014"
+                }
+            ]
+        },
+        {
+            "message": "Normalize the `@deprecated` annotation of `OptionsResolverInterface`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "a541fafe9a1d204a2c97b138857005b2adc8cd74",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13164"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #418",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-418-29-december-2014-04-january-2015"
+                },
+                {
+                    "title": "Symfony blog: Symfony 2.7.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-2-7-0-beta1-released"
+                }
+            ]
+        },
+        {
+            "message": "Accept the `boolean`, `integer` and `double` type aliases in allowed types",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "ae544e5d8fe1aab1ad54dc764677471be1848033",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12602"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #418",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-418-29-december-2014-04-january-2015"
+                },
+                {
+                    "title": "Symfony blog: Symfony 2.7.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-2-7-0-beta1-released"
+                }
+            ]
+        },
+        {
+            "message": "Trigger deprecation notices when calling `replaceDefaults()`, `replace()`, `overload()`, `set()`, `get()`, `has()`, `setOptional()` and `isKnown()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "86b9f6b0c6a94a0b9a9233a58c909f1f09cae142",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13060"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #419",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-419-5-11-january-2015"
+                }
+            ]
+        },
+        {
+            "message": "Stop triggering a deprecation notice when `OptionsResolverInterface` is loaded, to avoid breaking third-party implementations",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "6f57b7b552e77a12f8116460671d78a3eb0ddbb9",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13060"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "39cfd4744eca41736206b13d539b4036cf50a1d4"
+                }
+            ]
+        },
+        {
+            "message": "Normalize the `@deprecated` annotations of `OptionsResolver` methods",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "fd9c7bb39f4753746b1c77ea45c5d726be42df19",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13060"
+                }
+            ]
+        },
+        {
+            "message": "Require PHP `>= 5.3.9` (was `>= 5.3.3`)",
+            "section": "dependencies",
+            "commits": [
+                {
+                    "hash": "6dc897931b95e58e3684b8f3f68ebd1ffd1a322e",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13338"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #419",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-419-5-11-january-2015"
+                }
+            ]
+        },
+        {
+            "message": "Say \"Defined options are\" instead of \"Known options are\" in exception messages about undefined options",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "5e5ba393f15906fa7f55eaff42474c69ed126b9b",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/12546"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #421",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-421-19-25-january-2015"
+                }
+            ]
+        },
+        {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "48265c9ab28c0c1cab2289c5733d301ddb4c830b"
+                }
+            ]
+        },
+        {
+            "message": "Require `symfony/phpunit-bridge` in `require-dev` and report all errors including deprecations in `phpunit.xml.dist`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "acac734d080734147946061b18f1f0d64b99e8e5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13398"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #425",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-425-16-22-february-2015"
+                },
+                {
+                    "title": "Symfony blog: Symfony 2.7.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-2-7-0-beta1-released"
+                }
+            ]
+        },
+        {
+            "message": "Remove the duplicate `@deprecated` annotation of `OptionsResolverInterface`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "469e70d5be8c0792de029b25f6f5396d6efc005e",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Trigger deprecation notices when calling `setNormalizers()` and when passing an array of options to `setAllowedValues()`, `addAllowedValues()`, `setAllowedTypes()` and `addAllowedTypes()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "7e9d2e618b6d513fb88076cf62739393dc806173",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13809"
+                }
+            ]
+        },
+        {
+            "message": "Fix the wording of the deprecation message of the array signature of `setAllowedValues()`, `addAllowedValues()`, `setAllowedTypes()` and `addAllowedTypes()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "9607e82c7881e80b83a93b067cbc8d8dddae3cc5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/13809"
+                }
+            ]
+        },
+        {
+            "message": "Remove the `~3.0.0` constraint of `symfony/phpunit-bridge` from `require-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "5503804cf91f4ede81b94b34609653c013139038",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/14295"
+                }
+            ]
+        },
+        {
+            "message": "Use PSR-4 instead of PSR-0 autoloading in `composer.json` and remove `target-dir`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "4e859013807277d356a5daab2fe30e569b78dc33",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/14323"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #432",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-432-6-12-april-2015"
+                }
+            ]
+        }
+    ]
+}

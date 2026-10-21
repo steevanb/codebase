@@ -1,0 +1,250 @@
+{
+    "previous": "5.0",
+    "release": {
+        "ref": "v5.1.0",
+        "date": "2020-05-31"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2021-01",
+        "securityFixesUntil": "2021-01"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 5.0 and v5.1.0",
+            "url": "https://github.com/symfony/options-resolver/compare/5.0...v5.1.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/5.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v5.1.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Update the `dev-master` branch alias to `5.1-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "e60a876201b5b306d0c81a24d9a3db997192079c",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Add `OptionsResolver::define()` returning a new `OptionConfigurator` to configure an option with a fluent interface (`required()`, `default()`, `allowedTypes()`, `allowedValues()`, `normalize()`, `deprecated()`)",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "1ff56407e149023932822ba9433f656ff70f2d70",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/33848"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: New in Symfony 5.1: OptionsResolver improvements",
+                    "url": "https://symfony.com/blog/new-in-symfony-5-1-optionsresolver-improvements"
+                },
+                {
+                    "title": "Symfony blog: Symfony 5.1.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-5-1-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #684",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-684-3-9-february-2020"
+                }
+            ]
+        },
+        {
+            "message": "Trigger option deprecations with `trigger_deprecation()` instead of `@trigger_error()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "3e35d8e9e3d4357e8ea26b718529d8eb78749e49",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/35550"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 5.1.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-5-1-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #684",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-684-3-9-february-2020"
+                }
+            ]
+        },
+        {
+            "message": "Require `symfony/deprecation-contracts` `^2.1` (was not required)",
+            "section": "dependencies",
+            "commits": [
+                {
+                    "hash": "3e35d8e9e3d4357e8ea26b718529d8eb78749e49",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/35550"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 5.1.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-5-1-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #684",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-684-3-9-february-2020"
+                }
+            ]
+        },
+        {
+            "message": "Add `setInfo()` and `getInfo()` to `OptionsResolver` and `info()` to `OptionConfigurator` to attach an info message to an option, appended to invalid value error messages",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "0477a06d8a39346b17ea4f5e72f1828eb2060faa",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/35400"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: New in Symfony 5.1: OptionsResolver improvements",
+                    "url": "https://symfony.com/blog/new-in-symfony-5-1-optionsresolver-improvements"
+                },
+                {
+                    "title": "Symfony blog: Symfony 5.1.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-5-1-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #685",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-685-10-16-february-2020"
+                }
+            ]
+        },
+        {
+            "message": "Use `get_debug_type()` in error messages: types are now reported as `bool`, `int`, `float`, `null`, `resource (stream)` instead of `boolean`, `integer`, `double`, `NULL`, `resource`",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "daf1c6605eb3571e2176c46281acba36b37cf536",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/35945"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #690",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-690-16-22-march-2020"
+                }
+            ]
+        },
+        {
+            "message": "Require `symfony/polyfill-php80` `^1.15` (was not required)",
+            "section": "dependencies",
+            "commits": [
+                {
+                    "hash": "daf1c6605eb3571e2176c46281acba36b37cf536",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/35945"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #690",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-690-16-22-march-2020"
+                }
+            ]
+        },
+        {
+            "message": "Add `$package` and `$version` arguments to `setDeprecated()` and `OptionConfigurator::deprecated()`, passed to `trigger_deprecation()` so deprecation messages are prefixed with `Since <package> <version>:`",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "c3f5e2c1c8772ed4612aad0dbd625eeffcc31be2",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/36345"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 5.1.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-5-1-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #693",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-693-6-12-april-2020"
+                }
+            ]
+        },
+        {
+            "message": "Add `OptionsResolverIntrospector::getDeprecation()` returning the package, version and message of a deprecated option",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "c3f5e2c1c8772ed4612aad0dbd625eeffcc31be2",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/36345"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 5.1.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-5-1-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #693",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-693-6-12-april-2020"
+                }
+            ]
+        },
+        {
+            "message": "Deprecate calling `setDeprecated()` without the `$package` and `$version` arguments, and `OptionsResolverIntrospector::getDeprecationMessage()` in favor of `getDeprecation()`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "c3f5e2c1c8772ed4612aad0dbd625eeffcc31be2",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/36345"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 5.1.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-5-1-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #693",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-693-6-12-april-2020"
+                }
+            ]
+        },
+        {
+            "message": "Remove the BC layer of `OptionConfigurator::deprecated()` (added in the same version), making `$package` and `$version` arguments mandatory",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "1452619a520a1bcc337852dd930a0ec40eb492f0",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/36509"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #695",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-695-20-26-april-2020"
+                }
+            ]
+        },
+        {
+            "message": "Fix the typo in the `define()` exception message: `The option \"%s\" is already defined.`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "1452619a520a1bcc337852dd930a0ec40eb492f0",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/36509"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #695",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-695-20-26-april-2020"
+                }
+            ]
+        }
+    ]
+}

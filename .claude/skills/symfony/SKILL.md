@@ -1,17 +1,17 @@
 ---
 name: symfony
-description: Knowledge about the Symfony project (symfony/* packages) for codebase.watch - where their history lives, how versions work, where to find their changelog, documentation and blog posts, how to name them. Load it before working on a page about a symfony/* package, e.g. from /app:release.
+description: Knowledge about the Symfony project (symfony/* packages) for codebase.watch - where their history lives, how versions work, where to find their changelog, documentation and blog posts, how to name them. Load it before working on a page about a symfony/* package, e.g. from /app:release:update or /app:site:update.
 ---
 
 # Symfony
 
-What `/app:release` needs to know about the `symfony/*` packages (components, bundles, bridges, contracts).
+What `/app:release:update` and `/app:site:update` need to know about the `symfony/*` packages (components, bundles, bridges, contracts).
 
 ## Repository and history
 
 - Every `symfony/<package>` repository is a **read-only subtree split** of the monorepo `symfony/symfony`:
   never read the history from the split repository, its hashes are rewritten and it has no pull request.
-- Clone `https://github.com/symfony/symfony.git` (without blobs, see `/app:release`).
+- Clone `https://github.com/symfony/symfony.git` (without blobs, see `/app:release:update`).
 - Directory of a package in the monorepo, from its name:
 
   | Package | Directory |
@@ -42,6 +42,29 @@ What `/app:release` needs to know about the `symfony/*` packages (components, bu
   branch (`git log <previous branch>..<tag>`), never between two tags, or the bugfixes of the previous branch come in.
 - The feature freeze of a minor version happens about 2 months before its release.
 
+## Maintenance status
+
+The status of each version (shown as badges on the page of a package) comes from the Symfony release API:
+`curl -s https://symfony.com/releases/<X.Y>.json`, e.g. `https://symfony.com/releases/7.4.json`
+(the same data as the "Releases" page, `https://symfony.com/releases/<X.Y>`).
+Call it with `curl`: it answers `403 Forbidden` to the default user agent of Python's `urllib`
+(from a script, run `curl -sf <url>` with `subprocess`, or send a browser-like `User-Agent` header).
+
+| API | Badge |
+|---|---|
+| version without a `vX.Y.0` tag (see Versions) | `In development` |
+| otherwise | `Released` |
+| `is_eomed: false` | `Bug fixes` and `Security fixes`: bugs and security issues are still fixed |
+| `is_eomed: true`, `is_eoled: false` | `Security fixes`: only security issues are fixed (e.g. 5.4) |
+| `is_eoled: true` | `Unmaintained` |
+| `is_lts: true` | `LTS` (in addition to the maintenance badge) |
+
+The same API gives the end dates, as `MM/YYYY`: `eom` (end of bug fixes) and `eol` (end of security fixes).
+Store them in the `maintenance` of the settings file of the version, as `YYYY-MM`: `lts` from `is_lts` (omitted when `false`),
+`bugFixesUntil` from `eom`, `securityFixesUntil` from `eol`.
+
+The status changes over time: fetch it again for every version each time the page of the package is updated.
+
 ## Classifying the commits
 
 - The merge commit of a pull request starts with its type: `feature #<number>` (new feature, improvement or
@@ -51,6 +74,23 @@ What `/app:release` needs to know about the `symfony/*` packages (components, bu
 - `src/.../<Package>/CHANGELOG.md` has a section per minor version (`8.2`, then `---`): the main source of the
   new features. `UPGRADE-X.Y.md` at the root of the monorepo lists the deprecations and BC breaks of each version.
 - A deprecation message has the form `Since symfony/<package> X.Y: ...`.
+
+## Labels of the changes
+
+The `message` of a change in the settings file, written from the diff and the commit message:
+
+- Remove the tag of the component, bundle or bridge that starts the commit message (e.g. `[OptionsResolver]`,
+  `[Form]`): the page is already about the package.
+- Start with a capital letter, with a verb when possible (`Add`, `Remove`, `Make`, `Require`...).
+- Write code between backticks: methods with their parentheses (`setDefault()`), classes, options, versions.
+- Remove the class name when it is redundant: name it once instead of before each method.
+  E.g. ``Add `OptionsResolver::isKnown()` and `OptionsResolver::isRequired()` `` becomes
+  ``Add `isKnown()` and `isRequired()` to `OptionsResolver` ``.
+  Keep `Class::method()` when the label names a single method and the class is needed to know which one.
+- Two changes of the same commit have different labels.
+- For a `dependencies` change, end with the previous requirement, in backticks:
+  ``Require PHP `>= 8.2` (was `>= 8.1`)``. When the same version changes a requirement twice, the second change gives
+  the value it replaces.
 
 ## Documentation
 

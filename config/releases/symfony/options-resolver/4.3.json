@@ -1,0 +1,70 @@
+{
+    "previous": "4.2",
+    "release": {
+        "ref": "v4.3.0",
+        "date": "2019-05-30"
+    },
+    "maintenance": {
+        "bugFixesUntil": "2020-01",
+        "securityFixesUntil": "2020-07"
+    },
+    "sources": [
+        {
+            "title": "Comparison of 4.2 and v4.3.0",
+            "url": "https://github.com/symfony/options-resolver/compare/4.2...v4.3.0"
+        },
+        {
+            "title": "symfony/options-resolver documentation",
+            "url": "https://symfony.com/doc/4.x/components/options_resolver.html"
+        },
+        {
+            "title": "symfony/options-resolver CHANGELOG",
+            "url": "https://github.com/symfony/symfony/blob/v4.3.0/src/Symfony/Component/OptionsResolver/CHANGELOG.md"
+        }
+    ],
+    "checkedOn": "2026-10-19",
+    "changes": [
+        {
+            "message": "Update the branch alias to `4.3-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "534b83f08056129e3043589849dab564830c5d9a",
+                    "pullRequest": null
+                }
+            ]
+        },
+        {
+            "message": "Add `OptionsResolver::addNormalizer()` to add several normalizers to an option, appended or prepended with `$forcePrepend`",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "cf41254223e076e9ae89017c13514f6441de7083",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/30371"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 4.3.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-3-0-beta1-released"
+                }
+            ]
+        },
+        {
+            "message": "Add `OptionsResolverIntrospector::getNormalizers()` to get all the normalizers of an option",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "cf41254223e076e9ae89017c13514f6441de7083",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/30371"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 4.3.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-3-0-beta1-released"
+                }
+            ]
+        }
+    ]
+}
