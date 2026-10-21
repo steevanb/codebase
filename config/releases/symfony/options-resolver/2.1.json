@@ -139,8 +139,7 @@
                     "type": "example",
                     "slug": "options-methods"
                 }
-            ],
-            "validated": false
+            ]
         },
         "68857d5b-c830-4176-8f54-5115e10a2510": {
             "message": "Fix `Options::replace()` not turning closures into lazy options",
@@ -223,7 +222,12 @@
                     "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
                 }
             ],
-            "validated": false
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "known-and-required-options"
+                }
+            ]
         },
         "a883ef92-65a6-4d94-9004-1f0f64c65d5f": {
             "message": "Fix PHPDoc `@param` alignment",
