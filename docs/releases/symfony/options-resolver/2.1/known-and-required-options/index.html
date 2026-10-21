@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>isKnown() and isRequired() · symfony/options-resolver 2.1 · codebase.watch</title>
+    <meta name="description" content="symfony/options-resolver 2.1 adds isKnown() and isRequired() to OptionsResolver, to check how an option is declared.">
+    <link rel="canonical" href="https://codebase.watch/releases/symfony/options-resolver/2.1/known-and-required-options/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <a class="brand" href="/">
+                <span class="brand-glyph" aria-hidden="true">&lt;/&gt;</span>
+                <span class="brand-wordmark">
+                    <span class="brand-name">codebase<span>.watch</span></span>
+                    <span class="brand-sub">what is new in your dependencies</span>
+                </span>
+            </a>
+            <input class="nav-toggle" id="nav-toggle" type="checkbox" aria-label="Menu">
+            <label class="nav-burger burger" for="nav-toggle" aria-hidden="true"><span></span></label>
+            <nav class="nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link nav-link-active" href="/releases/">Releases</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">codebase.watch</a> /
+            <a href="/releases/">releases</a> /
+            <a href="/releases/symfony/">symfony</a> /
+            <a href="/releases/symfony/options-resolver/">options-resolver</a> /
+            <a href="/releases/symfony/options-resolver/2.1/">2.1</a> /
+            known-and-required-options
+        </nav>
+
+        <h1><code>isKnown()</code> and <code>isRequired()</code></h1>
+
+        <section id="overview" class="tone-amber">
+            <h2><span>At a <em>glance</em>.</span></h2>
+            <div class="stats">
+                <div class="stat tone-emerald">
+                    <div class="stat-label">Type</div>
+                    <div class="stat-value">New feature</div>
+                </div>
+                <div class="stat tone-blue">
+                    <div class="stat-label">Methods added</div>
+                    <div class="stat-value">2.1</div>
+                </div>
+            </div>
+            <p class="section-note">Since <a href="/releases/symfony/options-resolver/2.1/">symfony/options-resolver 2.1</a>, <code>OptionsResolver</code> tells whether an option is known (declared with a default value, as required or as optional) and whether it is required.</p>
+        </section>
+
+        <section id="is-known" class="tone-emerald">
+            <h2><span><em>Known</em> option <code>isKnown()</code></span></h2>
+            <h3>Option unknown</h3>
+            <div class="code-block">
+                <div class="code-meta"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L170-L180" target="_blank" rel="noopener" title="Declaration of OptionsResolverInterface::isKnown() in v2.1.0" aria-label="Declaration of OptionsResolverInterface::isKnown() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
+                <pre class="code"><code class="language-php" data-added="isKnown"><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// false</span>
+<span class="tok-nv">$isKnown</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isKnown</span></mark><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3>Option with a default value</h3>
+            <div class="code-block">
+                <div class="code-meta"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L170-L180" target="_blank" rel="noopener" title="Declaration of OptionsResolverInterface::isKnown() in v2.1.0" aria-label="Declaration of OptionsResolverInterface::isKnown() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
+                <pre class="code"><code class="language-php" data-added="isKnown"><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'gender'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'female'</span><span class="tok-p">));</span>
+
+<span class="tok-c1">// true</span>
+<span class="tok-nv">$isKnown</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isKnown</span></mark><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3>Required option</h3>
+            <div class="code-block">
+                <div class="code-meta"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L170-L180" target="_blank" rel="noopener" title="Declaration of OptionsResolverInterface::isKnown() in v2.1.0" aria-label="Declaration of OptionsResolverInterface::isKnown() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
+                <pre class="code"><code class="language-php" data-added="isKnown"><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">));</span>
+
+<span class="tok-c1">// true</span>
+<span class="tok-nv">$isKnown</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isKnown</span></mark><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3>Optional option</h3>
+            <div class="code-block">
+                <div class="code-meta"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L170-L180" target="_blank" rel="noopener" title="Declaration of OptionsResolverInterface::isKnown() in v2.1.0" aria-label="Declaration of OptionsResolverInterface::isKnown() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
+                <pre class="code"><code class="language-php" data-added="isKnown"><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">setOptional</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">));</span>
+
+<span class="tok-c1">// true</span>
+<span class="tok-nv">$isKnown</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isKnown</span></mark><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">);</span></code></pre>
+            </div>
+        </section>
+
+        <section id="is-required" class="tone-blue">
+            <h2><span><em>Required</em> option <code>isRequired()</code></span></h2>
+            <h3>Option unknown</h3>
+            <div class="code-block">
+                <div class="code-meta"><a href="https://symfony.com/doc/2.x/components/options_resolver.html#required-options" target="_blank" rel="noopener" title="Symfony 2.x documentation: Required Options" aria-label="Symfony 2.x documentation: Required Options"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 4C6.5 3 4.5 2.5 1.5 2.5v10c3 0 5 .5 6.5 1.5 1.5-1 3.5-1.5 6.5-1.5v-10c-3 0-5 .5-6.5 1.5zM8 4v10"/></svg></a><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L182-L193" target="_blank" rel="noopener" title="Declaration of OptionsResolverInterface::isRequired() in v2.1.0" aria-label="Declaration of OptionsResolverInterface::isRequired() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
+                <pre class="code"><code class="language-php" data-added="isRequired"><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// false</span>
+<span class="tok-nv">$isRequired</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isRequired</span></mark><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3>Required option</h3>
+            <div class="code-block">
+                <div class="code-meta"><a href="https://symfony.com/doc/2.x/components/options_resolver.html#required-options" target="_blank" rel="noopener" title="Symfony 2.x documentation: Required Options" aria-label="Symfony 2.x documentation: Required Options"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 4C6.5 3 4.5 2.5 1.5 2.5v10c3 0 5 .5 6.5 1.5 1.5-1 3.5-1.5 6.5-1.5v-10c-3 0-5 .5-6.5 1.5zM8 4v10"/></svg></a><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L182-L193" target="_blank" rel="noopener" title="Declaration of OptionsResolverInterface::isRequired() in v2.1.0" aria-label="Declaration of OptionsResolverInterface::isRequired() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
+                <pre class="code"><code class="language-php" data-added="isRequired"><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">));</span>
+
+<span class="tok-c1">// true</span>
+<span class="tok-nv">$isRequired</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isRequired</span></mark><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3>Required option with a default value</h3>
+            <div class="code-block">
+                <div class="code-meta"><a href="https://symfony.com/doc/2.x/components/options_resolver.html#required-options" target="_blank" rel="noopener" title="Symfony 2.x documentation: Required Options" aria-label="Symfony 2.x documentation: Required Options"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 4C6.5 3 4.5 2.5 1.5 2.5v10c3 0 5 .5 6.5 1.5 1.5-1 3.5-1.5 6.5-1.5v-10c-3 0-5 .5-6.5 1.5zM8 4v10"/></svg></a><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L182-L193" target="_blank" rel="noopener" title="Declaration of OptionsResolverInterface::isRequired() in v2.1.0" aria-label="Declaration of OptionsResolverInterface::isRequired() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
+                <pre class="code"><code class="language-php" data-added="isRequired"><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
+<span class="tok-nv">$resolver</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">))</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'gender'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'female'</span><span class="tok-p">));</span>
+
+<span class="tok-c1">// false</span>
+<span class="tok-nv">$isRequired</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isRequired</span></mark><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3>Optional option</h3>
+            <div class="code-block">
+                <div class="code-meta"><a href="https://symfony.com/doc/2.x/components/options_resolver.html#required-options" target="_blank" rel="noopener" title="Symfony 2.x documentation: Required Options" aria-label="Symfony 2.x documentation: Required Options"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 4C6.5 3 4.5 2.5 1.5 2.5v10c3 0 5 .5 6.5 1.5 1.5-1 3.5-1.5 6.5-1.5v-10c-3 0-5 .5-6.5 1.5zM8 4v10"/></svg></a><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L182-L193" target="_blank" rel="noopener" title="Declaration of OptionsResolverInterface::isRequired() in v2.1.0" aria-label="Declaration of OptionsResolverInterface::isRequired() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
+                <pre class="code"><code class="language-php" data-added="isRequired"><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">setOptional</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">));</span>
+
+<span class="tok-c1">// false</span>
+<span class="tok-nv">$isRequired</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isRequired</span></mark><span class="tok-p">(</span><span class="tok-s1">'gender'</span><span class="tok-p">);</span></code></pre>
+            </div>
+        </section>
+
+        <section id="sources">
+            <h2><span>The <em>sources</em>.</span></h2>
+            <ul class="sources">
+                <li><a href="https://github.com/symfony/symfony/commit/d2c162d842ee16924d2c83b65ed6d3870634d656" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit d2c162d842</a></li>
+                <li><a href="https://github.com/symfony/symfony/pull/4292" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Pull request #4292</a></li>
+                <li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#required-options" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony documentation: Required Options</a></li>
+                <li><a href="https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: A Week of Symfony #281</a></li>
+            </ul>
+        </section>
+
+        <footer>
+            Last checked on 2026-10-21.
+        </footer>
+    </div>
+</body>
+</html>
