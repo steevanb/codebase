@@ -27,13 +27,23 @@
     ],
     "checkedOn": "2026-10-19",
     "changes": {
-        "00082c8d-c2f7-4443-b11e-e28939718f68": {
-            "message": "Update the `dev-master` branch alias to `5.1-dev`",
+        "3865a50e-cc03-41ee-a001-d9de1e1fe4a1": {
+            "message": "Deprecate calling `setDeprecated()` without the `$package` and `$version` arguments, and `OptionsResolverIntrospector::getDeprecationMessage()` in favor of `getDeprecation()`",
             "section": "other",
             "commits": [
                 {
-                    "hash": "e60a876201b5b306d0c81a24d9a3db997192079c",
-                    "pullRequest": null
+                    "hash": "c3f5e2c1c8772ed4612aad0dbd625eeffcc31be2",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/36345"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 5.1.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-5-1-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #693",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-693-6-12-april-2020"
                 }
             ],
             "validated": false
@@ -45,6 +55,10 @@
                 {
                     "hash": "1ff56407e149023932822ba9433f656ff70f2d70",
                     "pullRequest": "https://github.com/symfony/symfony/pull/33848"
+                },
+                {
+                    "hash": "1452619a520a1bcc337852dd930a0ec40eb492f0",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/36509"
                 }
             ],
             "links": [
@@ -59,6 +73,10 @@
                 {
                     "title": "Symfony blog: A Week of Symfony #684",
                     "url": "https://symfony.com/blog/a-week-of-symfony-684-3-9-february-2020"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #695",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-695-20-26-april-2020"
                 }
             ],
             "validated": false
@@ -171,6 +189,10 @@
                 {
                     "hash": "c3f5e2c1c8772ed4612aad0dbd625eeffcc31be2",
                     "pullRequest": "https://github.com/symfony/symfony/pull/36345"
+                },
+                {
+                    "hash": "1452619a520a1bcc337852dd930a0ec40eb492f0",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/36509"
                 }
             ],
             "links": [
@@ -181,6 +203,10 @@
                 {
                     "title": "Symfony blog: A Week of Symfony #693",
                     "url": "https://symfony.com/blog/a-week-of-symfony-693-6-12-april-2020"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #695",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-695-20-26-april-2020"
                 }
             ],
             "validated": false
@@ -206,57 +232,13 @@
             ],
             "validated": false
         },
-        "3865a50e-cc03-41ee-a001-d9de1e1fe4a1": {
-            "message": "Deprecate calling `setDeprecated()` without the `$package` and `$version` arguments, and `OptionsResolverIntrospector::getDeprecationMessage()` in favor of `getDeprecation()`",
+        "00082c8d-c2f7-4443-b11e-e28939718f68": {
+            "message": "Update the `dev-master` branch alias to `5.1-dev`",
             "section": "other",
             "commits": [
                 {
-                    "hash": "c3f5e2c1c8772ed4612aad0dbd625eeffcc31be2",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/36345"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: Symfony 5.1.0-BETA1 released",
-                    "url": "https://symfony.com/blog/symfony-5-1-0-beta1-released"
-                },
-                {
-                    "title": "Symfony blog: A Week of Symfony #693",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-693-6-12-april-2020"
-                }
-            ],
-            "validated": false
-        },
-        "3d653d02-76bd-4831-bc34-d87413009ccb": {
-            "message": "Remove the BC layer of `OptionConfigurator::deprecated()` (added in the same version), making `$package` and `$version` arguments mandatory",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "1452619a520a1bcc337852dd930a0ec40eb492f0",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/36509"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #695",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-695-20-26-april-2020"
-                }
-            ],
-            "validated": false
-        },
-        "1c6b5067-8522-4d6f-b891-5031f0d34494": {
-            "message": "Fix the typo in the `define()` exception message: `The option \"%s\" is already defined.`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "1452619a520a1bcc337852dd930a0ec40eb492f0",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/36509"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #695",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-695-20-26-april-2020"
+                    "hash": "e60a876201b5b306d0c81a24d9a3db997192079c",
+                    "pullRequest": null
                 }
             ],
             "validated": false

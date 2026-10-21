@@ -23,9 +23,13 @@
     "checkedOn": "2026-10-19",
     "changes": {
         "2d54897f-ea24-4434-8749-ce7c0af43bf5": {
-            "message": "Add the OptionsResolver component: `OptionsResolver` with default, optional and required options and allowed values, and `Options` with lazy options",
+            "message": "Create the `symfony/options-resolver` package",
             "section": "new-features",
             "commits": [
+                {
+                    "hash": "b9d053edb25b60d0af9cdb54a0fe1cdf7743a4c2",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
                 {
                     "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
@@ -35,6 +39,58 @@
                 {
                     "title": "Symfony blog: A Week of Symfony #281",
                     "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ]
+        },
+        "b8442802-46e6-424e-8529-d9463dc919e6": {
+            "message": "Add `OptionsResolverInterface`, implemented by `OptionsResolver`",
+            "section": "new-features",
+            "commits": [
+                {
+                    "hash": "dc2fa9dc69217687f2fa0f33d3f7c95ef9fa3dc0",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4387"
+                },
+                {
+                    "hash": "8cae3282d838ffb5fb0f0596e51d4e85b7ee4c48",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4387"
+                },
+                {
+                    "hash": "e673a041be9afe7baabd772884a8f65be62a645e",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4418"
+                },
+                {
+                    "hash": "d100ffaf761b46acdb2440c04602378b87b0d610",
+                    "pullRequest": null
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
                 },
                 {
                     "title": "Symfony blog: Form Goodness in Symfony 2.1",
@@ -44,85 +100,31 @@
             "pages": [
                 {
                     "type": "example",
-                    "slug": "first-version"
+                    "slug": "options-resolver-interface"
                 }
             ]
         },
-        "3636cbb3-1d25-45cc-a283-3b93a37fae6e": {
-            "message": "Require PHP `>= 5.3.2`",
-            "section": "dependencies",
+        "e17cd06f-a1ad-4e31-b4c6-15eb219a46e4": {
+            "message": "Add `setDefaults()` to define options with a default value",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
             "commits": [
                 {
                     "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #281",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
                 },
-                {
-                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
-                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
-                }
-            ],
-            "validated": false
-        },
-        "c248f2f2-aec5-4cc8-94e9-cc93d4257c7e": {
-            "message": "Fix typos in the README and the PHPDoc of `setDefaults()` and `replaceDefaults()`",
-            "section": "other",
-            "commits": [
                 {
                     "hash": "95454f5f6b7a3c929cdb6ff8c838f3f436d281ac",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "validated": false
-        },
-        "c26f0b3e-5bf2-4682-aef0-fe138270daa1": {
-            "message": "Return `$this` from `OptionsResolver` setters to allow a fluent interface",
-            "section": "improvements",
-            "commits": [
+                },
                 {
                     "hash": "876fd9ba1745e5fcb863cea19ffde26502f61df9",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "links": [
+                },
                 {
-                    "title": "Symfony blog: A Week of Symfony #281",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
-                }
-            ],
-            "validated": false
-        },
-        "481c0d41-d0c4-4285-ad38-abc7bf8e6e0c": {
-            "message": "Use `{@inheritdoc}` on `Options` iterator methods and simplify exception throwing in `OptionsResolver` validation",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "9c76750cb8aea89ea51b28fbda8fb6081a50f434",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "validated": false
-        },
-        "a7146b01-b072-42ad-83c2-353f331e7a6b": {
-            "message": "Remove a reference to the non-existing `allowedValues` property in `Options::offsetUnset()`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "6ce68b1b05e7da6b2f7f495e03b0d2915bc9a719",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "validated": false
-        },
-        "86844843-681d-4051-9369-bd2ab7207de1": {
-            "message": "Add `set()`, `overload()`, `replace()`, `get()`, `has()`, `remove()`, `clear()` and `all()` methods to `Options` and make it implement `Countable`",
-            "section": "new-features",
-            "commits": [
+                    "hash": "104dcf251dcfd97a5035b57b9248a6b0c4e258e6",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                },
                 {
                     "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
@@ -132,203 +134,382 @@
                 {
                     "title": "Symfony blog: A Week of Symfony #281",
                     "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
                 }
             ],
             "pages": [
                 {
                     "type": "example",
-                    "slug": "options-methods"
+                    "slug": "set-defaults"
                 }
             ]
         },
-        "68857d5b-c830-4176-8f54-5115e10a2510": {
-            "message": "Fix `Options::replace()` not turning closures into lazy options",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "2b46975e322b55e255f5cc7bb1148c8d90a53458",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "validated": false
-        },
-        "6aa7e357-1cef-449d-83a4-2c5c61522a55": {
-            "message": "Fix `remove()` and `clear()` of `Options` not resetting lazy option flags and locks",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "d60626efd5a17fcca018e8d6edeb693de90f53ef",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "validated": false
-        },
-        "e4ae061b-cac0-4a38-a5b9-c562ed35761c": {
-            "message": "Mention that options are required in `MissingOptionsException` messages",
-            "section": "improvements",
-            "commits": [
-                {
-                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "validated": false
-        },
-        "370d5dfb-2b9b-49ac-b7cc-fada8f9dbb89": {
-            "message": "Fix the lazy flag and lock of an option not being reset when overloading it with a non-lazy value in `Options`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "validated": false
-        },
-        "d9c56ed6-94c6-484b-b93a-d88d2e215336": {
-            "message": "Use fully qualified global class names in `Options`, fix the README title and add keywords to composer.json",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "validated": false
-        },
-        "e0815106-79b2-4889-a441-1490181c58f0": {
-            "message": "Bump to PHP `>= 5.3.3` (was `>= 5.3.2`)",
-            "section": "dependencies",
-            "commits": [
-                {
-                    "hash": "95727ff5e72b84065a24da94d6ffdb2543ba5471",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "validated": false
-        },
-        "60aad0a4-f841-4c2c-ad8a-d1050c3487ec": {
-            "message": "Add `isKnown()` and `isRequired()` to `OptionsResolver`",
+        "53104ea1-1fb1-4faf-a526-346b656cc8c1": {
+            "message": "Add `replaceDefaults()` to replace default values without passing the previous ones to the closures",
             "section": "new-features",
+            "group": "`OptionsResolver`",
             "commits": [
                 {
-                    "hash": "d2c162d842ee16924d2c83b65ed6d3870634d656",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4292"
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "95454f5f6b7a3c929cdb6ff8c838f3f436d281ac",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "876fd9ba1745e5fcb863cea19ffde26502f61df9",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "104dcf251dcfd97a5035b57b9248a6b0c4e258e6",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
             ],
             "links": [
                 {
                     "title": "Symfony blog: A Week of Symfony #281",
                     "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
                 }
             ],
             "pages": [
                 {
                     "type": "example",
-                    "slug": "known-and-required-options"
+                    "slug": "replace-defaults"
                 }
             ]
         },
-        "a883ef92-65a6-4d94-9004-1f0f64c65d5f": {
-            "message": "Fix PHPDoc `@param` alignment",
-            "section": "other",
+        "a27a405d-9a02-410f-9c13-d030ef870b01": {
+            "message": "Add `setOptional()` to define options without a default value",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
             "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "876fd9ba1745e5fcb863cea19ffde26502f61df9",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
                 {
                     "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
                     "pullRequest": null
-                }
-            ],
-            "validated": false
-        },
-        "3e8e639d-eb4a-40aa-8b1c-00f8b2ad446a": {
-            "message": "Fix CS of a closure in `Options`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "1407f112fcfb6565e69b8040c7ceaae810a8acb3",
-                    "pullRequest": null
-                }
-            ],
-            "validated": false
-        },
-        "5db77f9b-7573-400a-9ca2-ee248381ba84": {
-            "message": "Improve the performance of option names validation in `OptionsResolver`",
-            "section": "improvements",
-            "commits": [
-                {
-                    "hash": "37a3a29c5991fd980d5d1e47d155426b7c9fab48",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #282",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
-                }
-            ],
-            "validated": false
-        },
-        "2d367796-7c64-4bc4-9521-d83dd489e5eb": {
-            "hidden": true,
-            "commits": [
-                {
-                    "hash": "1bfcff4fab44dab9698105630ad6b6695dd7d072"
-                }
-            ]
-        },
-        "64329b93-c34d-467b-a9c1-c15b59998c19": {
-            "message": "Fix `resolve()` throwing a `MissingOptionsException` for required options that have a default value",
-            "section": "other",
-            "commits": [
+                },
                 {
                     "hash": "104dcf251dcfd97a5035b57b9248a6b0c4e258e6",
                     "pullRequest": "https://github.com/symfony/symfony/pull/4388"
                 }
             ],
-            "validated": false
-        },
-        "4eb398a3-e752-410f-9c97-181dcb65d0c2": {
-            "message": "Micro-optimize `Options::overload()`",
-            "section": "other",
-            "commits": [
+            "links": [
                 {
-                    "hash": "a54ea1b6b24c15476211b8648ce1095241cd596e",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "set-optional"
                 }
             ],
             "validated": false
         },
-        "bccea661-3171-40b8-b648-7697067f0e5d": {
-            "message": "Use the fully qualified `\\Closure` class name in `LazyOption`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "bad4a1f76cb990be742f9dc16cfdb3c1a52c27ab",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
-                }
-            ],
-            "validated": false
-        },
-        "e1b36b1c-8e37-4a5d-849b-d805d3ca08c1": {
-            "message": "Add `OptionsResolver::setFilters()` to transform the resolved option values with closures",
+        "a102c332-ccf9-4de8-ae5e-5b611e01719c": {
+            "message": "Add `setRequired()` to define options that must be given",
             "section": "new-features",
+            "group": "`OptionsResolver`",
             "commits": [
                 {
-                    "hash": "0af5f06703c66d6a075ee682d5d33778d2b1bea2",
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "876fd9ba1745e5fcb863cea19ffde26502f61df9",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "104dcf251dcfd97a5035b57b9248a6b0c4e258e6",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "set-required"
+                }
+            ],
+            "validated": false
+        },
+        "ff4b511b-1eec-4104-a771-f69af2a704fc": {
+            "message": "Add `setAllowedValues()` to restrict the values of options",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "876fd9ba1745e5fcb863cea19ffde26502f61df9",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "37a3a29c5991fd980d5d1e47d155426b7c9fab48",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                },
+                {
+                    "hash": "104dcf251dcfd97a5035b57b9248a6b0c4e258e6",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "set-allowed-values"
+                }
+            ],
+            "validated": false
+        },
+        "6924d111-f311-4a8b-b313-6e267644330b": {
+            "message": "Add `addAllowedValues()` to add allowed values to the previous ones",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "876fd9ba1745e5fcb863cea19ffde26502f61df9",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "37a3a29c5991fd980d5d1e47d155426b7c9fab48",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                },
+                {
+                    "hash": "104dcf251dcfd97a5035b57b9248a6b0c4e258e6",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "add-allowed-values"
+                }
+            ],
+            "validated": false
+        },
+        "fe529259-d518-4178-885d-6f93c2112c33": {
+            "message": "Add `setAllowedTypes()` to restrict the types of options",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
+            "commits": [
+                {
+                    "hash": "97de0041a1994a5242f584c28a794b676a06b07b",
                     "pullRequest": "https://github.com/symfony/symfony/pull/4387"
+                },
+                {
+                    "hash": "c6a9638adb4079572f61429e5ff32582c35af3e1",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5132"
+                },
+                {
+                    "hash": "aa890aedfcaa471251a49788e730d6f114efcaf5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5132"
                 }
             ],
             "links": [
                 {
                     "title": "Symfony blog: A Week of Symfony #282",
                     "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "set-allowed-types"
                 }
             ],
             "validated": false
         },
-        "fe529259-d518-4178-885d-6f93c2112c33": {
-            "message": "Add `setAllowedTypes()` and `addAllowedTypes()` to `OptionsResolver` to validate option types",
+        "6a2c610d-8aab-40c2-a7fc-9dad44ab1648": {
+            "message": "Add `addAllowedTypes()` to add allowed types to the previous ones",
             "section": "new-features",
+            "group": "`OptionsResolver`",
             "commits": [
                 {
                     "hash": "97de0041a1994a5242f584c28a794b676a06b07b",
@@ -345,7 +526,972 @@
                     "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
                 }
             ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "add-allowed-types"
+                }
+            ],
             "validated": false
+        },
+        "e1b36b1c-8e37-4a5d-849b-d805d3ca08c1": {
+            "message": "Add `setNormalizers()` to transform the resolved option values with closures",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
+            "commits": [
+                {
+                    "hash": "0af5f06703c66d6a075ee682d5d33778d2b1bea2",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4387"
+                },
+                {
+                    "hash": "3075fa6b39e49de7e8d9a941000fc3984a1207e8",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5002"
+                },
+                {
+                    "hash": "e659f0e39daafd3c0e75733cb1e32bd091fb9af8",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "normalizers"
+                }
+            ],
+            "validated": false
+        },
+        "60aad0a4-f841-4c2c-ad8a-d1050c3487ec": {
+            "message": "Add `isKnown()` to check whether an option is defined",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
+            "commits": [
+                {
+                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "d2c162d842ee16924d2c83b65ed6d3870634d656",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4292"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "is-known"
+                }
+            ],
+            "validated": false
+        },
+        "ed4a6977-7782-40cd-83a5-7b55eb5ca68a": {
+            "message": "Add `isRequired()` to check whether an option is required without a default value",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
+            "commits": [
+                {
+                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "104dcf251dcfd97a5035b57b9248a6b0c4e258e6",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                },
+                {
+                    "hash": "d2c162d842ee16924d2c83b65ed6d3870634d656",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4292"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "is-required"
+                }
+            ],
+            "validated": false
+        },
+        "5c1cbfd5-e19d-42e5-9beb-c27ed98d2461": {
+            "message": "Add `resolve()` to merge the given options with the default ones and validate them",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "95454f5f6b7a3c929cdb6ff8c838f3f436d281ac",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "9c76750cb8aea89ea51b28fbda8fb6081a50f434",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "37a3a29c5991fd980d5d1e47d155426b7c9fab48",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                },
+                {
+                    "hash": "104dcf251dcfd97a5035b57b9248a6b0c4e258e6",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "resolve"
+                }
+            ],
+            "validated": false
+        },
+        "7eff69b7-b59e-4356-b991-fbfb0ffffaeb": {
+            "message": "Make `OptionsResolver` clonable",
+            "section": "new-features",
+            "group": "`OptionsResolver`",
+            "commits": [
+                {
+                    "hash": "a924dabd57b476f00204203c39aa020a23497339",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4881"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "clone"
+                }
+            ]
+        },
+        "f094c93d-9103-442f-9bd8-0c8e07898327": {
+            "message": "Evaluate the closures typed with `Options` as lazy options, when the option is read",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "1407f112fcfb6565e69b8040c7ceaae810a8acb3",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "bad4a1f76cb990be742f9dc16cfdb3c1a52c27ab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                },
+                {
+                    "hash": "77839690d9e50c5ffdf714dc5908b50d59185f90",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "610c602b0644e95acc237e92104b54e8d687236f",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4945"
+                },
+                {
+                    "hash": "d858f7bdf3a99817f822a03d4f68aade0073d3b4",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
+                },
+                {
+                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "lazy-options"
+                }
+            ],
+            "validated": false
+        },
+        "86844843-681d-4051-9369-bd2ab7207de1": {
+            "message": "Add `set()` to set the value of an option",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-set"
+                }
+            ],
+            "validated": false
+        },
+        "3fd87524-2e00-4fe5-9db4-1b498d510de4": {
+            "message": "Add `overload()` to set the value of an option, its closure receiving the previous value",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "610c602b0644e95acc237e92104b54e8d687236f",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4945"
+                },
+                {
+                    "hash": "d858f7bdf3a99817f822a03d4f68aade0073d3b4",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
+                },
+                {
+                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "a54ea1b6b24c15476211b8648ce1095241cd596e",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-overload"
+                }
+            ],
+            "validated": false
+        },
+        "e804e813-2283-47f3-a50a-46f8937b3926": {
+            "message": "Add `replace()` to replace all the options",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "2b46975e322b55e255f5cc7bb1148c8d90a53458",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "d60626efd5a17fcca018e8d6edeb693de90f53ef",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "8a338cb6fa08fe977db9594dcff613b6a62268a0",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-replace"
+                }
+            ],
+            "validated": false
+        },
+        "fcd7db24-0fb9-4da4-9b0c-dd25777c045e": {
+            "message": "Add `get()` to read the value of an option",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-get"
+                }
+            ],
+            "validated": false
+        },
+        "b29f5672-53ba-4393-a10a-82929333dfbd": {
+            "message": "Add `has()` to check whether an option is set",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "a47922b4bf5ccd26bb9b933fbc6bdc59bf4b0158",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5110"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-has"
+                }
+            ],
+            "validated": false
+        },
+        "052ee8e3-bf69-4fbf-9317-a489640fa5b3": {
+            "message": "Add `all()` to read the values of all the options",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "610c602b0644e95acc237e92104b54e8d687236f",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4945"
+                },
+                {
+                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-all"
+                }
+            ],
+            "validated": false
+        },
+        "faa0cb74-ad7e-4405-92ec-41d651443971": {
+            "message": "Implement `Countable` to count the options",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-count"
+                }
+            ],
+            "validated": false
+        },
+        "30885320-d0e9-489d-9689-483a5110759f": {
+            "message": "Add `remove()` to remove an option",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "d60626efd5a17fcca018e8d6edeb693de90f53ef",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-remove"
+                }
+            ],
+            "validated": false
+        },
+        "7f48e1c1-b866-4e3f-9a6c-3345f70680e1": {
+            "message": "Add `clear()` to remove all the options",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "d60626efd5a17fcca018e8d6edeb693de90f53ef",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-clear"
+                }
+            ],
+            "validated": false
+        },
+        "384e4435-a627-48a1-b789-76c9ebc14542": {
+            "message": "Implement `ArrayAccess` to read and write the options as an array",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "6ce68b1b05e7da6b2f7f495e03b0d2915bc9a719",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "validated": false
+        },
+        "59cbe315-6e36-482d-babe-068c8ee631f7": {
+            "message": "Implement `Iterator` to loop over the options",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "9c76750cb8aea89ea51b28fbda8fb6081a50f434",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "610c602b0644e95acc237e92104b54e8d687236f",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4945"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #292",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
+                }
+            ],
+            "validated": false
+        },
+        "abbb65b3-02bb-4e5d-b970-602b30c62fbf": {
+            "message": "Add `setNormalizer()` to transform the value of an option with a closure",
+            "section": "new-features",
+            "group": "`Options`",
+            "commits": [
+                {
+                    "hash": "e659f0e39daafd3c0e75733cb1e32bd091fb9af8",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-normalizer"
+                }
+            ]
+        },
+        "d0c514a8-576c-4510-9712-f5d35adb8949": {
+            "message": "Add `ExceptionInterface`, implemented by all the exceptions of the package",
+            "section": "new-features",
+            "group": "Exceptions",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "d60626efd5a17fcca018e8d6edeb693de90f53ef",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "validated": false
+        },
+        "32323141-3652-4c9a-925c-4f8fd37ce4c6": {
+            "message": "Add `InvalidOptionsException`, thrown for an unknown option or a value not allowed",
+            "section": "new-features",
+            "group": "Exceptions",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "validated": false
+        },
+        "b0fcbf84-6595-4a1c-b79a-02cc307aef03": {
+            "message": "Add `MissingOptionsException`, thrown when a required option is missing",
+            "section": "new-features",
+            "group": "Exceptions",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "validated": false
+        },
+        "fe874c12-e33c-4b39-b645-558f7fe7c4e5": {
+            "message": "Add `OptionDefinitionException`, thrown when options are defined in a wrong way",
+            "section": "new-features",
+            "group": "Exceptions",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #282",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #290",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #291",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #295",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
+                }
+            ],
+            "validated": false
+        },
+        "3636cbb3-1d25-45cc-a283-3b93a37fae6e": {
+            "message": "Require PHP `>= 5.3.3`",
+            "section": "dependencies",
+            "commits": [
+                {
+                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "95727ff5e72b84065a24da94d6ffdb2543ba5471",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "2dcc44897ef1ceec2721bbf616c4744131340657",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "cd24e6ea8fc56e9421bf6e5cecde98574ec40e21",
+                    "pullRequest": null
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #281",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
+                },
+                {
+                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
+                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #289",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
+                }
+            ],
+            "validated": false
+        },
+        "2d367796-7c64-4bc4-9521-d83dd489e5eb": {
+            "hidden": true,
+            "commits": [
+                {
+                    "hash": "1bfcff4fab44dab9698105630ad6b6695dd7d072"
+                }
+            ]
         },
         "c01eaf82-0a0f-4bc6-b897-b19201715eb3": {
             "hidden": true,
@@ -355,77 +1501,6 @@
                 }
             ]
         },
-        "b8442802-46e6-424e-8529-d9463dc919e6": {
-            "message": "Add `OptionsResolverInterface`, implemented by `OptionsResolver`",
-            "section": "new-features",
-            "commits": [
-                {
-                    "hash": "dc2fa9dc69217687f2fa0f33d3f7c95ef9fa3dc0",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4387"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #282",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
-                },
-                {
-                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
-                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
-                }
-            ],
-            "validated": false
-        },
-        "65745294-d10c-4820-9bea-e117923a74d0": {
-            "message": "Rename the recommended configuration method to `setDefaultOptions()` in the README",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "1ecddbc545db884998a928d07b1f065de891eb6e",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4387"
-                }
-            ],
-            "validated": false
-        },
-        "10c6f2e4-86d9-4b86-be12-6399907cd004": {
-            "message": "Type-hint `OptionsResolverInterface` in the `setDefaultOptions()` examples of the README",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "8cae3282d838ffb5fb0f0596e51d4e85b7ee4c48",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4387"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #282",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
-                }
-            ],
-            "validated": false
-        },
-        "1c449b34-7a91-4f78-baa4-0568a30fe1a9": {
-            "message": "Fix a typo in the README",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "8e128fc64409418ff032f72b6d47c2b23a87ec16",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4387"
-                }
-            ],
-            "validated": false
-        },
-        "6b451fdd-2bc0-4b8e-9155-93a113a27936": {
-            "message": "Clarify the PHPDoc of `setOptional()` and `setAllowedValues()` in `OptionsResolverInterface`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "e673a041be9afe7baabd772884a8f65be62a645e",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4418"
-                }
-            ],
-            "validated": false
-        },
         "0f065c48-2bbe-4a30-8755-d0c73e761727": {
             "hidden": true,
             "commits": [
@@ -434,191 +1509,6 @@
                 }
             ]
         },
-        "3a94c832-c532-4d28-aa0d-6c64ff6efb2b": {
-            "message": "Read the `name` property instead of calling `getName()` on `ReflectionClass` in `Options` to work around a PHP bug",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "77839690d9e50c5ffdf714dc5908b50d59185f90",
-                    "pullRequest": null
-                }
-            ],
-            "validated": false
-        },
-        "0e6fcd5b-20de-4501-b2e6-e22f8ad6ec3c": {
-            "message": "Add the missing `use` statement for `OptionsResolverInterface` in the README",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "0a43d7d27c84989d0f90525c0f98003f47f6b203",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4765"
-                }
-            ],
-            "validated": false
-        },
-        "7dc5ecec-7994-4c2c-9a31-22db8f289c55": {
-            "message": "Fix CS: add `public` visibility to `OptionsResolverInterface` methods",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "d100ffaf761b46acdb2440c04602378b87b0d610",
-                    "pullRequest": null
-                }
-            ],
-            "validated": false
-        },
-        "7eff69b7-b59e-4356-b991-fbfb0ffffaeb": {
-            "message": "Make `OptionsResolver` clonable",
-            "section": "new-features",
-            "commits": [
-                {
-                    "hash": "a924dabd57b476f00204203c39aa020a23497339",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4881"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #289",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
-                }
-            ],
-            "validated": false
-        },
-        "7168f498-4189-4683-9564-fb8be5bc7fb6": {
-            "message": "Make the `$options` argument of `OptionsResolver::resolve()` optional",
-            "section": "improvements",
-            "commits": [
-                {
-                    "hash": "a924dabd57b476f00204203c39aa020a23497339",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4881"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #289",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
-                }
-            ],
-            "validated": false
-        },
-        "c1828668-4db6-4bd6-bf9e-7ab54e670098": {
-            "message": "Bump to PHP `>= 5.3.4` (was `>= 5.3.3`)",
-            "section": "dependencies",
-            "commits": [
-                {
-                    "hash": "2dcc44897ef1ceec2721bbf616c4744131340657",
-                    "pullRequest": null
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #289",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
-                }
-            ],
-            "validated": false
-        },
-        "de7db8e2-fb2a-46e1-835a-632805bf78f9": {
-            "message": "Lower to PHP `>= 5.3.3` (was `>= 5.3.4`)",
-            "section": "dependencies",
-            "commits": [
-                {
-                    "hash": "cd24e6ea8fc56e9421bf6e5cecde98574ec40e21",
-                    "pullRequest": null
-                }
-            ],
-            "validated": false
-        },
-        "641d65c6-946d-4b39-9469-0d273687b8cc": {
-            "message": "Improve the performance of lazy options detection and evaluation in `Options`",
-            "section": "improvements",
-            "commits": [
-                {
-                    "hash": "610c602b0644e95acc237e92104b54e8d687236f",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4945"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #290",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
-                }
-            ],
-            "validated": false
-        },
-        "55cb9365-6482-449a-9797-d9d97a39a6e1": {
-            "message": "Rename `setFilters()` to `setNormalizers()` in `OptionsResolver` and `OptionsResolverInterface`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "3075fa6b39e49de7e8d9a941000fc3984a1207e8",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5002"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #290",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
-                }
-            ],
-            "validated": false
-        },
-        "4b9b8502-7ffe-48d0-bac8-812859a02546": {
-            "message": "Improve the performance of normalizers by storing them only once in the default `Options`",
-            "section": "improvements",
-            "commits": [
-                {
-                    "hash": "e659f0e39daafd3c0e75733cb1e32bd091fb9af8",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #291",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
-                }
-            ],
-            "validated": false
-        },
-        "abbb65b3-02bb-4e5d-b970-602b30c62fbf": {
-            "message": "Add `Options::setNormalizer()`",
-            "section": "new-features",
-            "commits": [
-                {
-                    "hash": "e659f0e39daafd3c0e75733cb1e32bd091fb9af8",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #291",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
-                }
-            ],
-            "validated": false
-        },
-        "19c55281-c6ab-4281-8398-ce5cceeb044f": {
-            "message": "Micro-optimize `Options::replace()` by calling `overload()` instead of `set()`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "8a338cb6fa08fe977db9594dcff613b6a62268a0",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
-                }
-            ],
-            "validated": false
-        },
-        "61fd0de5-047a-45c2-b6af-4352b1ccd2e2": {
-            "message": "Do not evaluate the previous value of a lazy option when its closure has no second argument",
-            "section": "improvements",
-            "commits": [
-                {
-                    "hash": "d858f7bdf3a99817f822a03d4f68aade0073d3b4",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
-                }
-            ],
-            "validated": false
-        },
         "29d03781-b932-4f65-80cb-0e547886fd54": {
             "hidden": true,
             "commits": [
@@ -626,79 +1516,6 @@
                     "hash": "6ac8e7308dd3730c50662a70e635dccab1394560"
                 }
             ]
-        },
-        "4f04e12f-6d33-4a05-8e0f-fe08130d37f0": {
-            "message": "Remove the internal `LazyOption` class and store lazy closures in `Options` to improve performance",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #291",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
-                }
-            ],
-            "validated": false
-        },
-        "bf57fba4-b60f-4ce5-810d-d5968c9084f5": {
-            "message": "Fix `Options::has()` returning `false` for an option set to `null`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "a47922b4bf5ccd26bb9b933fbc6bdc59bf4b0158",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5110"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #292",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
-                }
-            ],
-            "validated": false
-        },
-        "a27c7b8c-d9ee-4ee0-8048-1c83617e179f": {
-            "message": "Fix type validation failing for optional options not passed to `resolve()`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "c6a9638adb4079572f61429e5ff32582c35af3e1",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5132"
-                }
-            ],
-            "validated": false
-        },
-        "53d696f0-ee10-443a-904a-d43f6050a1db": {
-            "message": "Fix type validation being skipped for options passed with a `null` value",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "aa890aedfcaa471251a49788e730d6f114efcaf5",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5132"
-                }
-            ],
-            "validated": false
-        },
-        "dc7b8d65-0f20-4eb4-817d-34e32e93d014": {
-            "message": "Add `minimum-stability` `dev` to composer.json",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "933e82149678d8f9ae98f0a0b53a6ca52b301b0b",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5318"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #295",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
-                }
-            ],
-            "validated": false
         }
     }
 }

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Options implements Countable · symfony/options-resolver 2.1 · codebase.watch</title>
+    <meta name="description" content="symfony/options-resolver 2.1 makes Options implement Countable, to count the options.">
+    <link rel="canonical" href="https://codebase.watch/releases/symfony/options-resolver/2.1/options-count/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <a class="brand" href="/">
+                <span class="brand-glyph" aria-hidden="true">&lt;/&gt;</span>
+                <span class="brand-wordmark">
+                    <span class="brand-name">codebase<span>.watch</span></span>
+                    <span class="brand-sub">what is new in your dependencies</span>
+                </span>
+            </a>
+            <input class="nav-toggle" id="nav-toggle" type="checkbox" aria-label="Menu">
+            <label class="nav-burger burger" for="nav-toggle" aria-hidden="true"><span></span></label>
+            <nav class="nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link nav-link-active" href="/releases/">Releases</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">codebase.watch</a> /
+            <a href="/releases/">releases</a> /
+            <a href="/releases/symfony/">symfony</a> /
+            <a href="/releases/symfony/options-resolver/">options-resolver</a> /
+            <a href="/releases/symfony/options-resolver/2.1/">2.1</a> /
+            options-count
+        </nav>
+
+        <h1><code>Options</code> implements <code>Countable</code></h1>
+
+        <section id="overview" class="tone-amber">
+            <h2><span>At a <em>glance</em></span></h2>
+            <div class="stats">
+                <div class="stat tone-emerald">
+                    <div class="stat-label">Type</div>
+                    <div class="stat-value">New feature</div>
+                </div>
+                <div class="stat tone-blue">
+                    <div class="stat-label"><code>Countable</code> added</div>
+                    <div class="stat-value">2.1</div>
+                </div>
+            </div>
+            <p class="section-note">Since <a href="/releases/symfony/options-resolver/2.1/">symfony/options-resolver 2.1</a>, <code>Options</code> implements <code>Countable</code>: <code>count()</code> gives the number of options.</p>
+        </section>
+
+        <section id="count" class="tone-emerald">
+            <h2><span><em>Count</em> the options <code>count()</code></span></h2>
+            <p><code>Options</code> implements <code>Countable</code>.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener" title="Declaration of Options::count() in v2.1.0" aria-label="Declaration of Options::count() in v2.1.0"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></a><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-added="count"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'firstName'</span><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// 2</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-added"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+        </section>
+
+        <section id="sources">
+            <h2><span>The <em>sources</em></span></h2>
+            <ul class="sources">
+                <li><a href="https://github.com/symfony/symfony/commit/16f7d20dff9ff70418e7c4c19cefe02c8329f6f5" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 16f7d20dff</a></li>
+                <li><a href="https://github.com/symfony/symfony/pull/3968" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Pull request #3968</a></li>
+                <li><a href="https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: A Week of Symfony #281</a></li>
+                <li><a href="https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: A Week of Symfony #292</a></li>
+            </ul>
+        </section>
+
+        <footer>
+            Last checked on 2026-10-21.
+        </footer>
+    </div>
+</body>
+</html>

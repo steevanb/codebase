@@ -39,17 +39,6 @@
             ],
             "validated": false
         },
-        "01fc32cc-2175-4e97-b160-1c326c1e30f5": {
-            "message": "Update the branch alias to `2.8-dev`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "38374f983cae994750abc52d79fb13222096da0a",
-                    "pullRequest": null
-                }
-            ],
-            "validated": false
-        },
         "bbe445a8-3a74-4928-99e3-7e128390f500": {
             "message": "Remove the explicit `SkippedTestsListener` registration from `phpunit.xml.dist` (the PHPUnit bridge listener is now auto-registered)",
             "section": "other",
@@ -57,6 +46,17 @@
                 {
                     "hash": "9e2bb0082f670ac4a2d6d7c5d59eccc471770f55",
                     "pullRequest": "https://github.com/symfony/symfony/pull/16197"
+                }
+            ],
+            "validated": false
+        },
+        "01fc32cc-2175-4e97-b160-1c326c1e30f5": {
+            "message": "Update the branch alias to `2.8-dev`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "38374f983cae994750abc52d79fb13222096da0a",
+                    "pullRequest": null
                 }
             ],
             "validated": false

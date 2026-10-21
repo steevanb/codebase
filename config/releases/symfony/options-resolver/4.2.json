@@ -40,12 +40,20 @@
             "validated": false
         },
         "3e4950a1-f986-49f8-a861-b51816318326": {
-            "message": "Add `setDeprecated()` and `isDeprecated()` to deprecate options, with a static message or a closure depending on the value",
+            "message": "Add `setDeprecated()` and `isDeprecated()` to deprecate options, with a static message or a closure receiving the `Options` and the value, triggered only when the option is given by the user or read from a lazy option or normalizer",
             "section": "new-features",
             "commits": [
                 {
                     "hash": "f8746ce8bd7d3707c291fb7bf175c5c880ce3cdb",
                     "pullRequest": "https://github.com/symfony/symfony/pull/27277"
+                },
+                {
+                    "hash": "29360510db26953f61fbcbaf438439b3228b6217",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28738"
+                },
+                {
+                    "hash": "1af23c9a74e2a2a2405ab51148f742c677c8b7a5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28878"
                 }
             ],
             "links": [
@@ -56,23 +64,35 @@
                 {
                     "title": "Symfony blog: A Week of Symfony #599",
                     "url": "https://symfony.com/blog/a-week-of-symfony-599-18-24-june-2018"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #615",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-615-8-14-october-2018"
+                },
+                {
+                    "title": "Symfony blog: A Week of Symfony #617",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-617-22-28-october-2018"
                 }
             ],
             "validated": false
         },
-        "8dfbc4b8-c8bf-45d3-82ac-a68a413093f6": {
-            "message": "Make `ExceptionInterface` extend `\\Throwable`",
+        "2241a3f2-f46f-4680-ade8-11faee6e0a79": {
+            "message": "Add a `$triggerDeprecation` argument to `OptionsResolver::offsetGet()` to read a deprecated option without triggering its deprecation",
             "section": "improvements",
             "commits": [
                 {
-                    "hash": "17c3675226691fa47ff3fd45d108c874fca4f5ac",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/28307"
+                    "hash": "1af23c9a74e2a2a2405ab51148f742c677c8b7a5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28878"
+                },
+                {
+                    "hash": "8398947c9c1c1266aad0bea773d0b524e0d81643",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28968"
                 }
             ],
             "links": [
                 {
-                    "title": "Symfony blog: A Week of Symfony #610",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-610-3-9-september-2018"
+                    "title": "Symfony blog: A Week of Symfony #617",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-617-22-28-october-2018"
                 }
             ],
             "validated": false
@@ -105,93 +125,20 @@
                 {
                     "hash": "d04e40be5ab82415b979e047c06d6c76182fcdb2",
                     "pullRequest": "https://github.com/symfony/symfony/pull/27291"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: Symfony 4.2.0-BETA1 released",
-                    "url": "https://symfony.com/blog/symfony-4-2-0-beta1-released"
                 },
-                {
-                    "title": "Symfony blog: A Week of Symfony #615",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-615-8-14-october-2018"
-                }
-            ],
-            "validated": false
-        },
-        "58dfa674-f325-439e-b965-3df0ac2104cd": {
-            "message": "Pass the `Options` instance as first argument to the deprecation message closure of `setDeprecated()`",
-            "section": "improvements",
-            "commits": [
-                {
-                    "hash": "29360510db26953f61fbcbaf438439b3228b6217",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/28738"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: Symfony 4.2.0-BETA1 released",
-                    "url": "https://symfony.com/blog/symfony-4-2-0-beta1-released"
-                },
-                {
-                    "title": "Symfony blog: A Week of Symfony #615",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-615-8-14-october-2018"
-                }
-            ],
-            "validated": false
-        },
-        "7ecda02b-e144-4ffb-bfb9-fa6b0d4679e4": {
-            "message": "Remove the `BEGIN`/`END` comments around nested options resolution",
-            "section": "other",
-            "commits": [
                 {
                     "hash": "c01359e00eeb3dce5e475296c674346d49b950d6",
                     "pullRequest": null
                 }
             ],
-            "validated": false
-        },
-        "8b480cd0-4f02-48ad-aba2-72216e6fb2ee": {
-            "message": "Trigger an option deprecation only when the option is given by the user or read from a lazy option or normalizer",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "1af23c9a74e2a2a2405ab51148f742c677c8b7a5",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/28878"
-                }
-            ],
             "links": [
                 {
-                    "title": "Symfony blog: A Week of Symfony #617",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-617-22-28-october-2018"
-                }
-            ],
-            "validated": false
-        },
-        "2241a3f2-f46f-4680-ade8-11faee6e0a79": {
-            "message": "Add a `$triggerDeprecation` argument to `OptionsResolver::offsetGet()` to read a deprecated option without triggering its deprecation",
-            "section": "improvements",
-            "commits": [
+                    "title": "Symfony blog: Symfony 4.2.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-2-0-beta1-released"
+                },
                 {
-                    "hash": "1af23c9a74e2a2a2405ab51148f742c677c8b7a5",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/28878"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #617",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-617-22-28-october-2018"
-                }
-            ],
-            "validated": false
-        },
-        "c6969969-47cb-4c96-b883-6d042d91ac26": {
-            "message": "Do not trigger the deprecation of an already resolved option read with `offsetGet($option, false)` when it was not given by the user",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "8398947c9c1c1266aad0bea773d0b524e0d81643",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/28968"
+                    "title": "Symfony blog: A Week of Symfony #615",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-615-8-14-october-2018"
                 }
             ],
             "validated": false
@@ -209,6 +156,23 @@
                 {
                     "title": "Symfony blog: A Week of Symfony #619",
                     "url": "https://symfony.com/blog/a-week-of-symfony-619-5-11-november-2018"
+                }
+            ],
+            "validated": false
+        },
+        "8dfbc4b8-c8bf-45d3-82ac-a68a413093f6": {
+            "message": "Make `ExceptionInterface` extend `\\Throwable`",
+            "section": "improvements",
+            "commits": [
+                {
+                    "hash": "17c3675226691fa47ff3fd45d108c874fca4f5ac",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/28307"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: A Week of Symfony #610",
+                    "url": "https://symfony.com/blog/a-week-of-symfony-610-3-9-september-2018"
                 }
             ],
             "validated": false

@@ -27,13 +27,13 @@
     ],
     "checkedOn": "2026-10-19",
     "changes": {
-        "b7857ed8-a564-4927-8fe3-18c5075b488c": {
-            "message": "Update the branch alias to `3.0-dev`",
+        "277e4d2e-707f-49b7-b641-647ced210f27": {
+            "message": "Use `try`/`finally` to clean up the cyclic call guard when resolving lazy options and normalizers",
             "section": "other",
             "commits": [
                 {
-                    "hash": "d8f839d7a1f712a8748b875df566bcbf52ad5d84",
-                    "pullRequest": null
+                    "hash": "49edef252bd9f9a88150e9235161c96bb3a31ffc",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/15949"
                 }
             ],
             "validated": false
@@ -131,6 +131,17 @@
             ],
             "validated": false
         },
+        "370f977c-da32-4055-9a60-478c4d3f3357": {
+            "message": "Remove the internal `OptionsResolver::OPTIONS_INTERFACE` constant in favor of `Options::class`",
+            "section": "other",
+            "commits": [
+                {
+                    "hash": "a68389131e8061eabddf7056511f8fb4192927fc",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/14390"
+                }
+            ],
+            "validated": false
+        },
         "1a58980c-fe1b-4684-8a7c-4aa162556ad6": {
             "message": "Remove the legacy tests of the deprecated API",
             "section": "other",
@@ -159,24 +170,13 @@
             ],
             "validated": false
         },
-        "370f977c-da32-4055-9a60-478c4d3f3357": {
-            "message": "Remove the internal `OptionsResolver::OPTIONS_INTERFACE` constant in favor of `Options::class`",
+        "b7857ed8-a564-4927-8fe3-18c5075b488c": {
+            "message": "Update the branch alias to `3.0-dev`",
             "section": "other",
             "commits": [
                 {
-                    "hash": "a68389131e8061eabddf7056511f8fb4192927fc",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/14390"
-                }
-            ],
-            "validated": false
-        },
-        "277e4d2e-707f-49b7-b641-647ced210f27": {
-            "message": "Use `try`/`finally` to clean up the cyclic call guard when resolving lazy options and normalizers",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "49edef252bd9f9a88150e9235161c96bb3a31ffc",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/15949"
+                    "hash": "d8f839d7a1f712a8748b875df566bcbf52ad5d84",
+                    "pullRequest": null
                 }
             ],
             "validated": false

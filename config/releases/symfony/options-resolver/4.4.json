@@ -29,13 +29,27 @@
     ],
     "checkedOn": "2026-10-19",
     "changes": {
-        "5d978b8f-5c46-4501-aa53-ed7477a8eb3c": {
-            "message": "Update the branch alias to `4.4-dev`",
+        "9fdd6648-776b-4b24-b86c-ed048d029fa6": {
+            "message": "Add a `.gitattributes` file to exclude `Tests`, `phpunit.xml.dist` and `.gitignore` from the package archive",
             "section": "other",
             "commits": [
                 {
-                    "hash": "387207f6c4ed4e481887d4b0121b910226b7984b",
-                    "pullRequest": null
+                    "hash": "ac7dc24bcbc67ac1eb4ad6bfea9ba9cda9eb1eb5",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/33579"
+                },
+                {
+                    "hash": "246c5fdf43a3771ad89d97d55c9877283499e434",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/33963"
+                }
+            ],
+            "links": [
+                {
+                    "title": "Symfony blog: Symfony 4.4.0-BETA1 released",
+                    "url": "https://symfony.com/blog/symfony-4-4-0-beta1-released"
+                },
+                {
+                    "title": "Symfony blog: New in Symfony 4.4: Misc. improvements (Part 1)",
+                    "url": "https://symfony.com/blog/new-in-symfony-4-4-misc-improvements-part-1"
                 }
             ],
             "validated": false
@@ -61,34 +75,13 @@
             ],
             "validated": false
         },
-        "9fdd6648-776b-4b24-b86c-ed048d029fa6": {
-            "message": "Add a `.gitattributes` file to exclude `Tests` and `phpunit.xml.dist` from the package archive",
+        "5d978b8f-5c46-4501-aa53-ed7477a8eb3c": {
+            "message": "Update the branch alias to `4.4-dev`",
             "section": "other",
             "commits": [
                 {
-                    "hash": "ac7dc24bcbc67ac1eb4ad6bfea9ba9cda9eb1eb5",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/33579"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: Symfony 4.4.0-BETA1 released",
-                    "url": "https://symfony.com/blog/symfony-4-4-0-beta1-released"
-                },
-                {
-                    "title": "Symfony blog: New in Symfony 4.4: Misc. improvements (Part 1)",
-                    "url": "https://symfony.com/blog/new-in-symfony-4-4-misc-improvements-part-1"
-                }
-            ],
-            "validated": false
-        },
-        "82717cf1-bf5b-4d80-af17-8c5aa347aeb3": {
-            "message": "Exclude `.gitignore` from the package archive in `.gitattributes`",
-            "section": "other",
-            "commits": [
-                {
-                    "hash": "246c5fdf43a3771ad89d97d55c9877283499e434",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/33963"
+                    "hash": "387207f6c4ed4e481887d4b0121b910226b7984b",
+                    "pullRequest": null
                 }
             ],
             "validated": false

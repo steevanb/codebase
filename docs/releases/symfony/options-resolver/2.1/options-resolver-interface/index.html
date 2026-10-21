@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OptionsResolverInterface · symfony/options-resolver 2.1 · codebase.watch</title>
+    <meta name="description" content="symfony/options-resolver 2.1 adds OptionsResolverInterface, implemented by OptionsResolver.">
+    <link rel="canonical" href="https://codebase.watch/releases/symfony/options-resolver/2.1/options-resolver-interface/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <a class="brand" href="/">
+                <span class="brand-glyph" aria-hidden="true">&lt;/&gt;</span>
+                <span class="brand-wordmark">
+                    <span class="brand-name">codebase<span>.watch</span></span>
+                    <span class="brand-sub">what is new in your dependencies</span>
+                </span>
+            </a>
+            <input class="nav-toggle" id="nav-toggle" type="checkbox" aria-label="Menu">
+            <label class="nav-burger burger" for="nav-toggle" aria-hidden="true"><span></span></label>
+            <nav class="nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link nav-link-active" href="/releases/">Releases</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">codebase.watch</a> /
+            <a href="/releases/">releases</a> /
+            <a href="/releases/symfony/">symfony</a> /
+            <a href="/releases/symfony/options-resolver/">options-resolver</a> /
+            <a href="/releases/symfony/options-resolver/2.1/">2.1</a> /
+            options-resolver-interface
+        </nav>
+
+        <h1><code>OptionsResolverInterface</code></h1>
+
+        <section id="overview" class="tone-amber">
+            <h2><span>At a <em>glance</em></span></h2>
+            <div class="stats">
+                <div class="stat tone-emerald">
+                    <div class="stat-label">Type</div>
+                    <div class="stat-value">New feature</div>
+                </div>
+                <div class="stat tone-blue">
+                    <div class="stat-label"><code>OptionsResolverInterface</code> added</div>
+                    <div class="stat-value">2.1</div>
+                </div>
+            </div>
+            <p class="section-note">Since <a href="/releases/symfony/options-resolver/2.1/">symfony/options-resolver 2.1</a>, <code>OptionsResolver</code> implements <code>OptionsResolverInterface</code>, which declares all its public methods.</p>
+        </section>
+
+        <section id="interface" class="tone-emerald">
+            <h2><span><em>Implemented</em> interface <code>OptionsResolverInterface</code></span></h2>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Code" aria-label="Code"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L14-L210" target="_blank" rel="noopener">OptionsResolverInterface in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L19-L346" target="_blank" rel="noopener">OptionsResolver in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-added="OptionsResolverInterface"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+<span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolverInterface</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// true</span>
+<span class="tok-nv">$isResolver</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span> <span class="tok-nx">instanceof</span> <mark class="code-added"><span class="tok-nx">OptionsResolverInterface</span></mark><span class="tok-p">;</span></code></pre>
+            </div>
+        </section>
+
+        <section id="sources">
+            <h2><span>The <em>sources</em></span></h2>
+            <ul class="sources">
+                <li><a href="https://github.com/symfony/symfony/commit/dc2fa9dc69217687f2fa0f33d3f7c95ef9fa3dc0" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit dc2fa9dc69</a></li>
+                <li><a href="https://github.com/symfony/symfony/commit/8cae3282d838ffb5fb0f0596e51d4e85b7ee4c48" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 8cae3282d8</a></li>
+                <li><a href="https://github.com/symfony/symfony/commit/e673a041be9afe7baabd772884a8f65be62a645e" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit e673a041be</a></li>
+                <li><a href="https://github.com/symfony/symfony/commit/d100ffaf761b46acdb2440c04602378b87b0d610" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit d100ffaf76</a></li>
+                <li><a href="https://github.com/symfony/symfony/pull/4387" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Pull request #4387</a></li>
+                <li><a href="https://github.com/symfony/symfony/pull/4418" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Pull request #4418</a></li>
+                <li><a href="https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: A Week of Symfony #282</a></li>
+                <li><a href="https://symfony.com/blog/form-goodness-in-symfony-2-1" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: Form Goodness in Symfony 2.1</a></li>
+            </ul>
+        </section>
+
+        <footer>
+            Last checked on 2026-10-21.
+        </footer>
+    </div>
+</body>
+</html>

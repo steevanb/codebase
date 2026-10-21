@@ -64,15 +64,38 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
   function too, done by `bin/dev/highlight.py`.
 - Comment giving the versions where a line works (only when the block compares versions, see `/app:site:update`):
   `// 4.2 – 7.4`, `// >= 8.0`.
+- A block starts with a `use` statement for each class it uses in its code (`new`, types of the parameters,
+  `instanceof`, `::`...), even when it only compares versions, sorted alphabetically, one per line, followed by an
+  empty line. Not for a class only named in a comment (e.g. an exception shown as a result).
+
+  ```php
+  use Symfony\Component\OptionsResolver\Options;
+  use Symfony\Component\OptionsResolver\OptionsResolver;
+
+  $resolver = new OptionsResolver();
+  ```
 - Never write `// ...` for the code left out: leave it out. Write an empty body as `{}`.
 - An exception thrown by a line is shown like a result, in a comment just above it: the short name of its class, then
   its message copied exactly, e.g. `// MissingOptionsException: The required option "lastName" is  missing.`
 - Version of the language in the `code-meta` of a block: `PHP <major>.<minor>`, the minimum PHP version required by
   the oldest version of the package shown in the block (its `php.min`), e.g. `<span>PHP 5.3</span>` for 2.1.
-- Use the syntax of the minimum PHP version required by the package in the version shown (`require.php`), e.g. no
-  `[]` arrays before PHP 5.4 (write `array()`), also in the comments showing a result.
+- Write the code with the syntax of the newest PHP version offered: 8.4, or the `php.max` of the version shown when
+  it is lower (e.g. 7.4). `bin/dev/highlight.py` derives the code of the older versions offered (the minimum PHP
+  version of the package, 5.6, 7.4), chosen in a menu of the `code-meta`, removing what they do not support: `new`
+  without parentheses (8.4), `mixed` and union types (8.0), arrow functions (7.4), `void`, nullable and `iterable`
+  types (7.1), scalar and return types (7.0), `[]` arrays and calls on `new` (5.4), also in the comments showing a
+  result. Write this code as the last `<pre>` of the block (the other ones are rebuilt from it).
+  Chain from `new` every call returning `$this`. A single call goes on the line of `new`, a comment about it (e.g. an
+  exception) above the statement: `$resolver = new OptionsResolver()->setDefaults(['key' => 'foo']);`.
+  Several calls go one per line, `new` on its own line, a comment just above the call it is about.
+  Before PHP 5.4, a single call becomes a statement on the variable, its comment above it after an empty line
+  (`$resolver->setDefaults(array('key' => 'foo'));`), several calls are chained on the variable.
+- Type as much as the newest version allows: the parameters and the return type of every closure (e.g.
+  `fn (Options $options, string $value): string => strtolower($value)`), `mixed` when any value is possible.
+  A closure only returning an expression is an arrow function (`fn`).
 - Chain as many calls as the API allows in the version shown (methods returning `$this`: check it in the code of
-  the version), one chained method per line, from the creation of the object:
+  the version), from the creation of the object, one chained method per line when there are several (a single one
+  on the line of `new`, see above):
   - PHP >= 8.4: `new` without parentheses around it;
   - PHP 5.4 – 8.3: `(new OptionsResolver())`;
   - PHP < 5.4: no call on `new`, so create the object in its own statement, then chain on the variable.
