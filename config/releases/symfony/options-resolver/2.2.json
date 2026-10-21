@@ -8,6 +8,9 @@
         "bugFixesUntil": "2013-11",
         "securityFixesUntil": "2014-05"
     },
+    "php": {
+        "min": "5.3"
+    },
     "sources": [
         {
             "title": "Comparison of 2.1 and v2.2.0",
@@ -19,8 +22,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "73be7db9-b909-4ecf-9d50-e8177bcf6bff": {
             "message": "Fix `Options::replace()` keeping the normalizers of the replaced options",
             "section": "other",
             "commits": [
@@ -28,9 +31,10 @@
                     "hash": "5a53821ca34ea3f71c74be9985a24467bcdc77a6",
                     "pullRequest": "https://github.com/symfony/symfony/pull/5104"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c1114c03-d7e9-4b4b-bd83-9a42d9dcfd7f": {
             "message": "Fix a normalizer set on an option without value: it now receives `null` as previous value instead of triggering an undefined index notice",
             "section": "other",
             "commits": [
@@ -38,9 +42,10 @@
                     "hash": "e2a50ef4bc05c0c719d00d1cbbf680a3e8c1bb4a",
                     "pullRequest": "https://github.com/symfony/symfony/pull/5104"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "0723c83e-b0b2-4c2a-b939-52d98eec3692": {
             "message": "Update the `dev-master` branch alias to `2.2-dev` in `composer.json`",
             "section": "other",
             "commits": [
@@ -48,9 +53,10 @@
                     "hash": "4dc197c3e1ea227e36cab7ea93877fa44ecc569b",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "89d0c530-c730-4e37-94d1-79c6612f7120": {
             "message": "Make the PSR-0 autoload prefix in `composer.json` more specific (`Symfony\\Component\\OptionsResolver\\`) to reduce stat calls",
             "section": "other",
             "commits": [
@@ -64,9 +70,10 @@
                     "title": "Symfony blog: A Week of Symfony #300",
                     "url": "https://symfony.com/blog/a-week-of-symfony-300-24-30-september-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c62bb4f7-8a53-4fb8-962e-3de49d4770bb": {
             "message": "Run the standalone component tests with the Composer autoloader instead of a custom `Tests/bootstrap.php`, and add a `.gitignore`",
             "section": "other",
             "commits": [
@@ -74,9 +81,10 @@
                     "hash": "b27b7490252102a4943c939a8438c6cfd9ee25f3",
                     "pullRequest": "https://github.com/symfony/symfony/pull/5958"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "e37a2e2a-bcd1-4fbf-8de6-a62ecc26c66f": {
             "hidden": true,
             "commits": [
                 {
@@ -84,7 +92,7 @@
                 }
             ]
         },
-        {
+        "d8408171-6437-4d8c-9eb3-6c98fccb2039": {
             "message": "Update the copyright year in `LICENSE` to 2013",
             "section": "other",
             "commits": [
@@ -92,9 +100,10 @@
                     "hash": "18856428b6c0e4be97b529438e185964c2fe13ff",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "407450a5-3d5c-4bbe-99bf-0a6d74914856": {
             "hidden": true,
             "commits": [
                 {
@@ -102,5 +111,5 @@
                 }
             ]
         }
-    ]
+    }
 }

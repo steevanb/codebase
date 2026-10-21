@@ -9,6 +9,9 @@
         "bugFixesUntil": "2028-11",
         "securityFixesUntil": "2029-11"
     },
+    "php": {
+        "min": "8.2"
+    },
     "sources": [
         {
             "title": "Comparison of 7.3 and v7.4.0",
@@ -24,8 +27,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "c7626942-7a2c-489c-97de-4b6ceae187a0": {
             "message": "Speed up union type parsing of allowed types by rewriting `splitOutsideParenthesis()` with a regex (about 5.9x faster)",
             "section": "improvements",
             "commits": [
@@ -39,9 +42,10 @@
                     "title": "Symfony blog: A Week of Symfony #970",
                     "url": "https://symfony.com/blog/a-week-of-symfony-970-july-28-august-3-2025"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "42c5d5eb-74e1-413b-a5a6-995a2cbbc4f6": {
             "hidden": true,
             "commits": [
                 {
@@ -49,7 +53,7 @@
                 }
             ]
         },
-        {
+        "b78a4e13-27fa-4c8b-a968-29872442b303": {
             "message": "Run tests using PHPUnit 11.5",
             "section": "other",
             "commits": [
@@ -57,9 +61,10 @@
                     "hash": "652ba2eb5799453b9f1dbd36335cadaaa66ad594",
                     "pullRequest": "https://github.com/symfony/symfony/pull/58370"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "b1e25977-e2ef-4c8e-b3d2-873fd0b212b9": {
             "hidden": true,
             "commits": [
                 {
@@ -67,7 +72,7 @@
                 }
             ]
         },
-        {
+        "fbf82be7-14bd-4b33-860f-67523474311b": {
             "message": "PHP CS Fixer: indent heredoc content as of PHP 7.3",
             "section": "other",
             "commits": [
@@ -75,9 +80,10 @@
                     "hash": "4a25a6a5785dc5beb3b11c7811880485bd8d0714",
                     "pullRequest": "https://github.com/symfony/symfony/pull/61373"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "4208e5b8-94ac-4f76-b065-41bdee342d9c": {
             "message": "PHP CS Fixer: update heredoc handling",
             "section": "other",
             "commits": [
@@ -85,7 +91,8 @@
                     "hash": "f9956227bb662deb7842f31a2d3296b6d1b8781c",
                     "pullRequest": "https://github.com/symfony/symfony/pull/61372"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

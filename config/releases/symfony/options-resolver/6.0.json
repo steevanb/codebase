@@ -8,6 +8,9 @@
         "bugFixesUntil": "2023-01",
         "securityFixesUntil": "2023-01"
     },
+    "php": {
+        "min": "8.0"
+    },
     "sources": [
         {
             "title": "Comparison of 5.4 and v6.0.0",
@@ -23,9 +26,9 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
-            "message": "Require PHP `>=8.0.2` (was `>=7.2.5`)",
+    "changes": {
+        "96f1a856-4670-4500-930f-eb68745ef195": {
+            "message": "Bump to PHP `>=8.0.2` (was `>=7.2.5`)",
             "section": "dependencies",
             "commits": [
                 {
@@ -38,9 +41,10 @@
                     "title": "Symfony blog: Symfony 6.0.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-6-0-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "d4d455fb-0273-4199-9d4a-92f55d2fdad8": {
             "message": "Remove `symfony/polyfill-php73` and `symfony/polyfill-php80` requirements (was `~1.0` and `^1.16`)",
             "section": "dependencies",
             "commits": [
@@ -54,9 +58,10 @@
                     "title": "Symfony blog: Symfony 6.0.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-6-0-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "8c54b8ac-6757-48fa-a011-1778a5db5e92": {
             "message": "Remove `OptionsResolverIntrospector::getDeprecationMessage()`, use `getDeprecation()` instead",
             "section": "bc-breaks",
             "commits": [
@@ -70,9 +75,10 @@
                     "title": "Symfony blog: Symfony 6.0.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-6-0-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "45bcb3c9-77fa-43da-b17e-67cbe9ab07d6": {
             "message": "Make the `$package` and `$version` arguments of `setDeprecated()` mandatory",
             "section": "bc-breaks",
             "commits": [
@@ -86,9 +92,10 @@
                     "title": "Symfony blog: Symfony 6.0.0-BETA1 released",
                     "url": "https://symfony.com/blog/symfony-6-0-0-beta1-released"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "b72ba5f1-5799-4fd4-8603-0a99706e6557": {
             "message": "Update `phpunit.xml.dist` for PHPUnit `>= 9.3`",
             "section": "other",
             "commits": [
@@ -96,9 +103,10 @@
                     "hash": "45b0dbff2610a6d8a610282767b5b123c17f0efd",
                     "pullRequest": "https://github.com/symfony/symfony/pull/41518"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c4584381-af62-4a17-bb13-2b6b9b7a9e96": {
             "message": "Add union and `mixed` types to arguments of `OptionsResolver` methods (e.g. `string|array $optionNames` in `setRequired()`, `setDefined()`, `remove()`, `string|array $allowedTypes` in `setAllowedTypes()`, `string|\\Closure $message` in `setDeprecated()`) and `OptionConfigurator` methods",
             "section": "bc-breaks",
             "commits": [
@@ -112,9 +120,10 @@
                     "title": "Symfony blog: A Week of Symfony #757",
                     "url": "https://symfony.com/blog/a-week-of-symfony-757-28-june-4-july-2021"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "f55d6b87-13e4-4906-b398-3779874af9df": {
             "message": "Add the `mixed` return type to `OptionsResolverIntrospector::getDefault()`",
             "section": "bc-breaks",
             "commits": [
@@ -122,10 +131,11 @@
                     "hash": "fd05e68d9a6b5594a38fa9a07c8208f86afa64fe",
                     "pullRequest": "https://github.com/symfony/symfony/pull/42064"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Allow `symfony/deprecation-contracts` `^3.0` (was `^2.1`)",
+        "50093d88-168f-4502-9919-1978a269781e": {
+            "message": "Bump to `symfony/deprecation-contracts` `^3.0` (was `^2.1`)",
             "section": "dependencies",
             "commits": [
                 {
@@ -142,9 +152,10 @@
                     "title": "Symfony blog: A Week of Symfony #759",
                     "url": "https://symfony.com/blog/a-week-of-symfony-759-12-18-july-2021"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c4b89272-040f-444c-9ce1-fd014b201109": {
             "message": "Change the return type of `OptionConfigurator` methods from `self` to `static`",
             "section": "other",
             "commits": [
@@ -158,9 +169,10 @@
                     "title": "Symfony blog: A Week of Symfony #763",
                     "url": "https://symfony.com/blog/a-week-of-symfony-763-9-15-august-2021"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "1e183d4b-8631-4981-9f24-ae3196baa921": {
             "message": "Replace `#[\\ReturnTypeWillChange]` with real return types on `offsetGet()` (`mixed`), `offsetExists()` (`bool`), `offsetSet()` and `offsetUnset()` (`void`) and `count()` (`int`)",
             "section": "bc-breaks",
             "commits": [
@@ -174,9 +186,10 @@
                     "title": "Symfony blog: A Week of Symfony #763",
                     "url": "https://symfony.com/blog/a-week-of-symfony-763-9-15-august-2021"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "e5bb9b41-52ba-4684-9a97-0d44dbfaf8b2": {
             "message": "Add return types to `OptionsResolver` methods: `static` for `setDefault()`, `setDefaults()`, `setRequired()`, `setDefined()`, `remove()`, `clear()`, `addNormalizer()`, `setInfo()`, `setPrototype()`; `bool` for `hasDefault()`, `isRequired()`, `isMissing()`, `isDefined()`; `array` for `getRequiredOptions()`, `getMissingOptions()`, `getDefinedOptions()`, `resolve()`",
             "section": "bc-breaks",
             "commits": [
@@ -190,9 +203,10 @@
                     "title": "Symfony blog: A Week of Symfony #763",
                     "url": "https://symfony.com/blog/a-week-of-symfony-763-9-15-august-2021"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "8d85b41a-5216-405d-b071-053a74cdff90": {
             "message": "Add back `@return $this` annotations on `OptionConfigurator` methods",
             "section": "other",
             "commits": [
@@ -200,9 +214,10 @@
                     "hash": "7fafe834dfd8f1e5a1c04b214f1a1292796a020b",
                     "pullRequest": "https://github.com/symfony/symfony/pull/42714"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "b6907ec4-bfbf-4b2e-8112-188d493fe0b0": {
             "hidden": true,
             "commits": [
                 {
@@ -210,7 +225,7 @@
                 }
             ]
         },
-        {
+        "19a9289e-30f0-4a7f-bfa5-bc91c48b1c15": {
             "message": "Change the return type of `setDeprecated()` from `self` to `static`",
             "section": "bc-breaks",
             "commits": [
@@ -218,7 +233,8 @@
                     "hash": "fac9055a983fabede0f862947cbc0078ba3188f2",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

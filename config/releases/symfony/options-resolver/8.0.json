@@ -8,6 +8,9 @@
         "bugFixesUntil": "2026-07",
         "securityFixesUntil": "2026-07"
     },
+    "php": {
+        "min": "8.4"
+    },
     "sources": [
         {
             "title": "Comparison of 7.4 and v8.0.0",
@@ -23,9 +26,9 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
-            "message": "Bump Symfony 8 to PHP `>= 8.4` (was `>= 8.2`)",
+    "changes": {
+        "487673c4-ea87-498f-b436-677a4213fdb4": {
+            "message": "Bump to PHP `>= 8.4` (was `>= 8.2`)",
             "section": "dependencies",
             "commits": [
                 {
@@ -38,9 +41,10 @@
                     "title": "Symfony blog: A Week of Symfony #962",
                     "url": "https://symfony.com/blog/a-week-of-symfony-962-june-2-8-2025"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "09308f2a-9519-4245-82ac-89a9cf5cc9e1": {
             "message": "Remove support for nested options definition via `setDefault()`, use `setOptions()` instead",
             "section": "bc-breaks",
             "commits": [
@@ -60,9 +64,10 @@
                     "type": "example",
                     "slug": "nested-options"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "63064984-1b13-4e34-93dd-3584cb547e34": {
             "hidden": true,
             "commits": [
                 {
@@ -70,7 +75,7 @@
                 }
             ]
         },
-        {
+        "f30c353c-74f7-42da-95cb-b63fdd31a46c": {
             "hidden": true,
             "commits": [
                 {
@@ -78,7 +83,7 @@
                 }
             ]
         },
-        {
+        "27ac2fb9-1be4-4b59-b5dd-039f93e33530": {
             "hidden": true,
             "commits": [
                 {
@@ -86,5 +91,5 @@
                 }
             ]
         }
-    ]
+    }
 }

@@ -8,6 +8,9 @@
         "bugFixesUntil": "2021-07",
         "securityFixesUntil": "2021-07"
     },
+    "php": {
+        "min": "7.2"
+    },
     "sources": [
         {
             "title": "Comparison of 5.1 and v5.2.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "abc1aa88-88d0-4d07-ab64-97c0e9be199d": {
             "message": "Update the `dev-master` branch alias to `5.2-dev`",
             "section": "other",
             "commits": [
@@ -32,9 +35,10 @@
                     "hash": "25c4889c8eed8871b91b5fc5c6b4da47a4f7fa50",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "68806af4-202b-4039-8ab2-fc922fc21602": {
             "message": "Validate allowed types against an explicit map of `is_*()` functions (`bool`, `int`, `float`, `numeric`, `string`, `scalar`, `array`, `iterable`, `countable`, `callable`, `object`, `resource` and their aliases) instead of calling any existing `is_<type>()` function",
             "section": "other",
             "commits": [
@@ -42,9 +46,10 @@
                     "hash": "e8c9049a5ac2f6db229a9b70a1f4e70eff998203",
                     "pullRequest": "https://github.com/symfony/symfony/pull/36799"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "ddc540bd-6fbd-484c-8337-2f0921258a1e": {
             "message": "Require `symfony/polyfill-php73` `~1.0` (was not required)",
             "section": "dependencies",
             "commits": [
@@ -52,7 +57,8 @@
                     "hash": "e8c9049a5ac2f6db229a9b70a1f4e70eff998203",
                     "pullRequest": "https://github.com/symfony/symfony/pull/36799"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

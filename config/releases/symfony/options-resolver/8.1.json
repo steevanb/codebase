@@ -8,6 +8,9 @@
         "bugFixesUntil": "2027-01",
         "securityFixesUntil": "2027-01"
     },
+    "php": {
+        "min": "8.4"
+    },
     "sources": [
         {
             "title": "Comparison of 8.0 and v8.1.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "8e380591-dd67-4352-8dcb-66c5f9bb6800": {
             "hidden": true,
             "commits": [
                 {
@@ -32,7 +35,7 @@
                 }
             ]
         },
-        {
+        "a8ffee67-1b7b-4343-a633-dd45dcbee0ec": {
             "hidden": true,
             "commits": [
                 {
@@ -40,17 +43,18 @@
                 }
             ]
         },
-        {
-            "message": "Bump to php `>= 8.4.1` (was `>= 8.4`)",
+        "2da3ff42-8219-4144-86fa-f9d5e8b6af7f": {
+            "message": "Bump to PHP `>= 8.4.1` (was `>= 8.4`)",
             "section": "dependencies",
             "commits": [
                 {
                     "hash": "53f2e8e2d86c8f5357ab2ed1374cc9d46536d6f4",
                     "pullRequest": "https://github.com/symfony/symfony/pull/63896"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "f321f096-0fa2-4cf7-88b5-9bc51d0a990b": {
             "message": "Add a Sponsor section to the README, looking for a backer",
             "section": "other",
             "commits": [
@@ -58,7 +62,8 @@
                     "hash": "c9a38d646c8951959ef8d649d21815f2eac96ee4",
                     "pullRequest": "https://github.com/symfony/symfony/pull/64391"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

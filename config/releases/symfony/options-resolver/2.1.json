@@ -7,6 +7,9 @@
         "bugFixesUntil": "2013-05",
         "securityFixesUntil": "2013-11"
     },
+    "php": {
+        "min": "5.3"
+    },
     "sources": [
         {
             "title": "Commits of v2.1.0",
@@ -18,8 +21,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "2d54897f-ea24-4434-8749-ce7c0af43bf5": {
             "message": "Add the OptionsResolver component: `OptionsResolver` with default, optional and required options and allowed values, and `Options` with lazy options",
             "section": "new-features",
             "commits": [
@@ -37,9 +40,15 @@
                     "title": "Symfony blog: Form Goodness in Symfony 2.1",
                     "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
                 }
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "first-version"
+                }
             ]
         },
-        {
+        "3636cbb3-1d25-45cc-a283-3b93a37fae6e": {
             "message": "Require PHP `>= 5.3.2`",
             "section": "dependencies",
             "commits": [
@@ -57,19 +66,21 @@
                     "title": "Symfony blog: Form Goodness in Symfony 2.1",
                     "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Fix typos in the README and the phpdoc of `setDefaults()` and `replaceDefaults()`",
+        "c248f2f2-aec5-4cc8-94e9-cc93d4257c7e": {
+            "message": "Fix typos in the README and the PHPDoc of `setDefaults()` and `replaceDefaults()`",
             "section": "other",
             "commits": [
                 {
                     "hash": "95454f5f6b7a3c929cdb6ff8c838f3f436d281ac",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c26f0b3e-5bf2-4682-aef0-fe138270daa1": {
             "message": "Return `$this` from `OptionsResolver` setters to allow a fluent interface",
             "section": "improvements",
             "commits": [
@@ -83,9 +94,10 @@
                     "title": "Symfony blog: A Week of Symfony #281",
                     "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "481c0d41-d0c4-4285-ad38-abc7bf8e6e0c": {
             "message": "Use `{@inheritdoc}` on `Options` iterator methods and simplify exception throwing in `OptionsResolver` validation",
             "section": "other",
             "commits": [
@@ -93,9 +105,10 @@
                     "hash": "9c76750cb8aea89ea51b28fbda8fb6081a50f434",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "a7146b01-b072-42ad-83c2-353f331e7a6b": {
             "message": "Remove a reference to the non-existing `allowedValues` property in `Options::offsetUnset()`",
             "section": "other",
             "commits": [
@@ -103,9 +116,10 @@
                     "hash": "6ce68b1b05e7da6b2f7f495e03b0d2915bc9a719",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "86844843-681d-4051-9369-bd2ab7207de1": {
             "message": "Add `set()`, `overload()`, `replace()`, `get()`, `has()`, `remove()`, `clear()` and `all()` methods to `Options` and make it implement `Countable`",
             "section": "new-features",
             "commits": [
@@ -119,9 +133,16 @@
                     "title": "Symfony blog: A Week of Symfony #281",
                     "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
                 }
-            ]
+            ],
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-methods"
+                }
+            ],
+            "validated": false
         },
-        {
+        "68857d5b-c830-4176-8f54-5115e10a2510": {
             "message": "Fix `Options::replace()` not turning closures into lazy options",
             "section": "other",
             "commits": [
@@ -129,9 +150,10 @@
                     "hash": "2b46975e322b55e255f5cc7bb1148c8d90a53458",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "6aa7e357-1cef-449d-83a4-2c5c61522a55": {
             "message": "Fix `remove()` and `clear()` of `Options` not resetting lazy option flags and locks",
             "section": "other",
             "commits": [
@@ -139,9 +161,10 @@
                     "hash": "d60626efd5a17fcca018e8d6edeb693de90f53ef",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "e4ae061b-cac0-4a38-a5b9-c562ed35761c": {
             "message": "Mention that options are required in `MissingOptionsException` messages",
             "section": "improvements",
             "commits": [
@@ -149,9 +172,10 @@
                     "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "370d5dfb-2b9b-49ac-b7cc-fada8f9dbb89": {
             "message": "Fix the lazy flag and lock of an option not being reset when overloading it with a non-lazy value in `Options`",
             "section": "other",
             "commits": [
@@ -159,9 +183,10 @@
                     "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "d9c56ed6-94c6-484b-b93a-d88d2e215336": {
             "message": "Use fully qualified global class names in `Options`, fix the README title and add keywords to composer.json",
             "section": "other",
             "commits": [
@@ -169,19 +194,21 @@
                     "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Require PHP `>= 5.3.3` (was `>= 5.3.2`)",
+        "e0815106-79b2-4889-a441-1490181c58f0": {
+            "message": "Bump to PHP `>= 5.3.3` (was `>= 5.3.2`)",
             "section": "dependencies",
             "commits": [
                 {
                     "hash": "95727ff5e72b84065a24da94d6ffdb2543ba5471",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "60aad0a4-f841-4c2c-ad8a-d1050c3487ec": {
             "message": "Add `isKnown()` and `isRequired()` to `OptionsResolver`",
             "section": "new-features",
             "commits": [
@@ -195,19 +222,21 @@
                     "title": "Symfony blog: A Week of Symfony #281",
                     "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Fix phpdoc `@param` alignment",
+        "a883ef92-65a6-4d94-9004-1f0f64c65d5f": {
+            "message": "Fix PHPDoc `@param` alignment",
             "section": "other",
             "commits": [
                 {
                     "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "3e8e639d-eb4a-40aa-8b1c-00f8b2ad446a": {
             "message": "Fix CS of a closure in `Options`",
             "section": "other",
             "commits": [
@@ -215,9 +244,10 @@
                     "hash": "1407f112fcfb6565e69b8040c7ceaae810a8acb3",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "5db77f9b-7573-400a-9ca2-ee248381ba84": {
             "message": "Improve the performance of option names validation in `OptionsResolver`",
             "section": "improvements",
             "commits": [
@@ -231,9 +261,10 @@
                     "title": "Symfony blog: A Week of Symfony #282",
                     "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "2d367796-7c64-4bc4-9521-d83dd489e5eb": {
             "hidden": true,
             "commits": [
                 {
@@ -241,7 +272,7 @@
                 }
             ]
         },
-        {
+        "64329b93-c34d-467b-a9c1-c15b59998c19": {
             "message": "Fix `resolve()` throwing a `MissingOptionsException` for required options that have a default value",
             "section": "other",
             "commits": [
@@ -249,9 +280,10 @@
                     "hash": "104dcf251dcfd97a5035b57b9248a6b0c4e258e6",
                     "pullRequest": "https://github.com/symfony/symfony/pull/4388"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "4eb398a3-e752-410f-9c97-181dcb65d0c2": {
             "message": "Micro-optimize `Options::overload()`",
             "section": "other",
             "commits": [
@@ -259,9 +291,10 @@
                     "hash": "a54ea1b6b24c15476211b8648ce1095241cd596e",
                     "pullRequest": "https://github.com/symfony/symfony/pull/4388"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "bccea661-3171-40b8-b648-7697067f0e5d": {
             "message": "Use the fully qualified `\\Closure` class name in `LazyOption`",
             "section": "other",
             "commits": [
@@ -269,9 +302,10 @@
                     "hash": "bad4a1f76cb990be742f9dc16cfdb3c1a52c27ab",
                     "pullRequest": "https://github.com/symfony/symfony/pull/4388"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "e1b36b1c-8e37-4a5d-849b-d805d3ca08c1": {
             "message": "Add `OptionsResolver::setFilters()` to transform the resolved option values with closures",
             "section": "new-features",
             "commits": [
@@ -285,9 +319,10 @@
                     "title": "Symfony blog: A Week of Symfony #282",
                     "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "fe529259-d518-4178-885d-6f93c2112c33": {
             "message": "Add `setAllowedTypes()` and `addAllowedTypes()` to `OptionsResolver` to validate option types",
             "section": "new-features",
             "commits": [
@@ -305,9 +340,10 @@
                     "title": "Symfony blog: Form Goodness in Symfony 2.1",
                     "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "c01eaf82-0a0f-4bc6-b897-b19201715eb3": {
             "hidden": true,
             "commits": [
                 {
@@ -315,7 +351,7 @@
                 }
             ]
         },
-        {
+        "b8442802-46e6-424e-8529-d9463dc919e6": {
             "message": "Add `OptionsResolverInterface`, implemented by `OptionsResolver`",
             "section": "new-features",
             "commits": [
@@ -333,9 +369,10 @@
                     "title": "Symfony blog: Form Goodness in Symfony 2.1",
                     "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "65745294-d10c-4820-9bea-e117923a74d0": {
             "message": "Rename the recommended configuration method to `setDefaultOptions()` in the README",
             "section": "other",
             "commits": [
@@ -343,9 +380,10 @@
                     "hash": "1ecddbc545db884998a928d07b1f065de891eb6e",
                     "pullRequest": "https://github.com/symfony/symfony/pull/4387"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "10c6f2e4-86d9-4b86-be12-6399907cd004": {
             "message": "Type-hint `OptionsResolverInterface` in the `setDefaultOptions()` examples of the README",
             "section": "other",
             "commits": [
@@ -359,9 +397,10 @@
                     "title": "Symfony blog: A Week of Symfony #282",
                     "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "1c449b34-7a91-4f78-baa4-0568a30fe1a9": {
             "message": "Fix a typo in the README",
             "section": "other",
             "commits": [
@@ -369,19 +408,21 @@
                     "hash": "8e128fc64409418ff032f72b6d47c2b23a87ec16",
                     "pullRequest": "https://github.com/symfony/symfony/pull/4387"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Clarify the phpdoc of `setOptional()` and `setAllowedValues()` in `OptionsResolverInterface`",
+        "6b451fdd-2bc0-4b8e-9155-93a113a27936": {
+            "message": "Clarify the PHPDoc of `setOptional()` and `setAllowedValues()` in `OptionsResolverInterface`",
             "section": "other",
             "commits": [
                 {
                     "hash": "e673a041be9afe7baabd772884a8f65be62a645e",
                     "pullRequest": "https://github.com/symfony/symfony/pull/4418"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "0f065c48-2bbe-4a30-8755-d0c73e761727": {
             "hidden": true,
             "commits": [
                 {
@@ -389,7 +430,7 @@
                 }
             ]
         },
-        {
+        "3a94c832-c532-4d28-aa0d-6c64ff6efb2b": {
             "message": "Read the `name` property instead of calling `getName()` on `ReflectionClass` in `Options` to work around a PHP bug",
             "section": "other",
             "commits": [
@@ -397,9 +438,10 @@
                     "hash": "77839690d9e50c5ffdf714dc5908b50d59185f90",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "0e6fcd5b-20de-4501-b2e6-e22f8ad6ec3c": {
             "message": "Add the missing `use` statement for `OptionsResolverInterface` in the README",
             "section": "other",
             "commits": [
@@ -407,9 +449,10 @@
                     "hash": "0a43d7d27c84989d0f90525c0f98003f47f6b203",
                     "pullRequest": "https://github.com/symfony/symfony/pull/4765"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "7dc5ecec-7994-4c2c-9a31-22db8f289c55": {
             "message": "Fix CS: add `public` visibility to `OptionsResolverInterface` methods",
             "section": "other",
             "commits": [
@@ -417,9 +460,10 @@
                     "hash": "d100ffaf761b46acdb2440c04602378b87b0d610",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "7eff69b7-b59e-4356-b991-fbfb0ffffaeb": {
             "message": "Make `OptionsResolver` clonable",
             "section": "new-features",
             "commits": [
@@ -433,9 +477,10 @@
                     "title": "Symfony blog: A Week of Symfony #289",
                     "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "7168f498-4189-4683-9564-fb8be5bc7fb6": {
             "message": "Make the `$options` argument of `OptionsResolver::resolve()` optional",
             "section": "improvements",
             "commits": [
@@ -449,10 +494,11 @@
                     "title": "Symfony blog: A Week of Symfony #289",
                     "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Require PHP `>= 5.3.4` (was `>= 5.3.3`)",
+        "c1828668-4db6-4bd6-bf9e-7ab54e670098": {
+            "message": "Bump to PHP `>= 5.3.4` (was `>= 5.3.3`)",
             "section": "dependencies",
             "commits": [
                 {
@@ -465,19 +511,21 @@
                     "title": "Symfony blog: A Week of Symfony #289",
                     "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Require PHP `>= 5.3.3` again (was `>= 5.3.4`)",
+        "de7db8e2-fb2a-46e1-835a-632805bf78f9": {
+            "message": "Lower to PHP `>= 5.3.3` (was `>= 5.3.4`)",
             "section": "dependencies",
             "commits": [
                 {
                     "hash": "cd24e6ea8fc56e9421bf6e5cecde98574ec40e21",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "641d65c6-946d-4b39-9469-0d273687b8cc": {
             "message": "Improve the performance of lazy options detection and evaluation in `Options`",
             "section": "improvements",
             "commits": [
@@ -491,9 +539,10 @@
                     "title": "Symfony blog: A Week of Symfony #290",
                     "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "55cb9365-6482-449a-9797-d9d97a39a6e1": {
             "message": "Rename `setFilters()` to `setNormalizers()` in `OptionsResolver` and `OptionsResolverInterface`",
             "section": "other",
             "commits": [
@@ -507,9 +556,10 @@
                     "title": "Symfony blog: A Week of Symfony #290",
                     "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "4b9b8502-7ffe-48d0-bac8-812859a02546": {
             "message": "Improve the performance of normalizers by storing them only once in the default `Options`",
             "section": "improvements",
             "commits": [
@@ -523,9 +573,10 @@
                     "title": "Symfony blog: A Week of Symfony #291",
                     "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "abbb65b3-02bb-4e5d-b970-602b30c62fbf": {
             "message": "Add `Options::setNormalizer()`",
             "section": "new-features",
             "commits": [
@@ -539,9 +590,10 @@
                     "title": "Symfony blog: A Week of Symfony #291",
                     "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "19c55281-c6ab-4281-8398-ce5cceeb044f": {
             "message": "Micro-optimize `Options::replace()` by calling `overload()` instead of `set()`",
             "section": "other",
             "commits": [
@@ -549,9 +601,10 @@
                     "hash": "8a338cb6fa08fe977db9594dcff613b6a62268a0",
                     "pullRequest": "https://github.com/symfony/symfony/pull/5067"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "61fd0de5-047a-45c2-b6af-4352b1ccd2e2": {
             "message": "Do not evaluate the previous value of a lazy option when its closure has no second argument",
             "section": "improvements",
             "commits": [
@@ -559,9 +612,10 @@
                     "hash": "d858f7bdf3a99817f822a03d4f68aade0073d3b4",
                     "pullRequest": "https://github.com/symfony/symfony/pull/5067"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "29d03781-b932-4f65-80cb-0e547886fd54": {
             "hidden": true,
             "commits": [
                 {
@@ -569,7 +623,7 @@
                 }
             ]
         },
-        {
+        "4f04e12f-6d33-4a05-8e0f-fe08130d37f0": {
             "message": "Remove the internal `LazyOption` class and store lazy closures in `Options` to improve performance",
             "section": "other",
             "commits": [
@@ -583,9 +637,10 @@
                     "title": "Symfony blog: A Week of Symfony #291",
                     "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "bf57fba4-b60f-4ce5-810d-d5968c9084f5": {
             "message": "Fix `Options::has()` returning `false` for an option set to `null`",
             "section": "other",
             "commits": [
@@ -599,9 +654,10 @@
                     "title": "Symfony blog: A Week of Symfony #292",
                     "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "a27c7b8c-d9ee-4ee0-8048-1c83617e179f": {
             "message": "Fix type validation failing for optional options not passed to `resolve()`",
             "section": "other",
             "commits": [
@@ -609,9 +665,10 @@
                     "hash": "c6a9638adb4079572f61429e5ff32582c35af3e1",
                     "pullRequest": "https://github.com/symfony/symfony/pull/5132"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "53d696f0-ee10-443a-904a-d43f6050a1db": {
             "message": "Fix type validation being skipped for options passed with a `null` value",
             "section": "other",
             "commits": [
@@ -619,9 +676,10 @@
                     "hash": "aa890aedfcaa471251a49788e730d6f114efcaf5",
                     "pullRequest": "https://github.com/symfony/symfony/pull/5132"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "dc7b8d65-0f20-4eb4-817d-34e32e93d014": {
             "message": "Add `minimum-stability` `dev` to composer.json",
             "section": "other",
             "commits": [
@@ -635,7 +693,8 @@
                     "title": "Symfony blog: A Week of Symfony #295",
                     "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

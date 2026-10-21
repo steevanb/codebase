@@ -8,6 +8,9 @@
         "bugFixesUntil": "2023-07",
         "securityFixesUntil": "2023-07"
     },
+    "php": {
+        "min": "8.1"
+    },
     "sources": [
         {
             "title": "Comparison of 6.1 and v6.2.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "ea50f1e3-d175-4e46-806a-96ee30f628de": {
             "message": "Use `$value::class` instead of `get_class()` in `formatValue()`",
             "section": "other",
             "commits": [
@@ -38,9 +41,10 @@
                     "title": "Symfony blog: A Week of Symfony #818",
                     "url": "https://symfony.com/blog/a-week-of-symfony-818-29-august-4-september-2022"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "f6abd878-7e91-4855-a8ab-08d13fbc9ee3": {
             "message": "Use the `??=` operator in `addNormalizer()`",
             "section": "other",
             "commits": [
@@ -54,9 +58,10 @@
                     "title": "Symfony blog: A Week of Symfony #821",
                     "url": "https://symfony.com/blog/a-week-of-symfony-821-19-25-september-2022"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "4b9f6341-1510-406a-b89e-16dcdd9cbd02": {
             "hidden": true,
             "commits": [
                 {
@@ -64,7 +69,7 @@
                 }
             ]
         },
-        {
+        "b9de5fb9-695d-43ed-8962-2170ba9296a8": {
             "hidden": true,
             "commits": [
                 {
@@ -72,5 +77,5 @@
                 }
             ]
         }
-    ]
+    }
 }

@@ -8,6 +8,10 @@
         "bugFixesUntil": "2018-07",
         "securityFixesUntil": "2019-01"
     },
+    "php": {
+        "min": "7.1",
+        "max": "7.4"
+    },
     "sources": [
         {
             "title": "Comparison of 3.4 and v4.0.0",
@@ -23,8 +27,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "efeab136-9412-4c61-9d9a-f954c518a382": {
             "message": "Update the branch alias to `4.0-dev`",
             "section": "other",
             "commits": [
@@ -32,10 +36,11 @@
                     "hash": "d8594de9c64d3f84fd4c27053a9f7b06d3cb47e0",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Require PHP `^7.1.3` (was `^5.5.9|>=7.0.8`)",
+        "f9dfd71b-427c-418d-b4dc-cf382ae059bd": {
+            "message": "Bump to PHP `^7.1.3` (was `^5.5.9|>=7.0.8`)",
             "section": "dependencies",
             "commits": [
                 {
@@ -52,9 +57,10 @@
                     "title": "Symfony blog: A Week of Symfony #542",
                     "url": "https://symfony.com/blog/a-week-of-symfony-542-15-21-may-2017"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "fa9e7790-1e56-4bd8-a0e0-8ff8d5ab3bfb": {
             "message": "Add argument and return type hints to the methods of the `@final` `OptionsResolverIntrospector` class",
             "section": "other",
             "commits": [
@@ -68,9 +74,10 @@
                     "title": "Symfony blog: A Week of Symfony #565",
                     "url": "https://symfony.com/blog/a-week-of-symfony-565-23-29-october-2017"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "d11c880e-6b79-40e2-a607-3e1595376fc6": {
             "message": "Replace docblocks by type hints on private `formatTypeOf()`, `formatValue()` and `formatValues()` methods",
             "section": "other",
             "commits": [
@@ -78,7 +85,8 @@
                     "hash": "aaf2265203cfbefa006f0358077d8ade790ad203",
                     "pullRequest": "https://github.com/symfony/symfony/pull/24722"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

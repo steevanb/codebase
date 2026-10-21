@@ -8,6 +8,9 @@
         "bugFixesUntil": "2023-01",
         "securityFixesUntil": "2023-01"
     },
+    "php": {
+        "min": "8.1"
+    },
     "sources": [
         {
             "title": "Comparison of 6.0 and v6.1.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "486a4660-bf2f-4195-8861-aa9273aa3ece": {
             "message": "Use `str_ends_with()` instead of `substr()` in `verifyTypes()`",
             "section": "other",
             "commits": [
@@ -38,10 +41,11 @@
                     "title": "Symfony blog: A Week of Symfony #780",
                     "url": "https://symfony.com/blog/a-week-of-symfony-780-6-12-december-2021"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Require PHP `>=8.1` (was `>=8.0.2`)",
+        "5f0a1db2-4ebd-45fd-94de-86c1411068ee": {
+            "message": "Bump to PHP `>=8.1` (was `>=8.0.2`)",
             "section": "dependencies",
             "commits": [
                 {
@@ -58,7 +62,8 @@
                     "title": "Symfony blog: A Week of Symfony #791",
                     "url": "https://symfony.com/blog/a-week-of-symfony-791-21-27-february-2022"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

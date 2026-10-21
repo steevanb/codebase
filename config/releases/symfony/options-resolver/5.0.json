@@ -8,6 +8,10 @@
         "bugFixesUntil": "2020-07",
         "securityFixesUntil": "2020-07"
     },
+    "php": {
+        "min": "7.2",
+        "max": "7.4"
+    },
     "sources": [
         {
             "title": "Comparison of 4.4 and v5.0.0",
@@ -23,8 +27,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "8dfbac64-b9ca-4d55-ae9e-6886ac6c623e": {
             "message": "Update the `dev-master` branch alias to `5.0-dev`",
             "section": "other",
             "commits": [
@@ -32,19 +36,21 @@
                     "hash": "8869eb35218974f2ad64bf9e6cc5cfcfeadd76e2",
                     "pullRequest": null
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Require PHP `^7.2.9` (was `^7.1.3`)",
+        "f59854b2-6ab2-4f99-ba25-f4b5e37c3f27": {
+            "message": "Bump to PHP `^7.2.9` (was `^7.1.3`)",
             "section": "dependencies",
             "commits": [
                 {
                     "hash": "d94d9d792c445240cbaf80c7b413795b71aff718",
                     "pullRequest": "https://github.com/symfony/symfony/pull/31655"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "896544dc-f7f8-4842-b0af-f671f55a78db": {
             "message": "Add the real argument `bool $triggerDeprecation = true` to `OptionsResolver::offsetGet()`",
             "section": "bc-breaks",
             "commits": [
@@ -52,9 +58,10 @@
                     "hash": "39622488bb100a2ca4b59ae9b1abac61467ed113",
                     "pullRequest": "https://github.com/symfony/symfony/pull/31957"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "108decb9-d595-4a04-b50f-cc00a2ebcf31": {
             "message": "Remove the `func_get_arg()` fallback used to read `$triggerDeprecation` in `offsetGet()`",
             "section": "other",
             "commits": [
@@ -62,9 +69,10 @@
                     "hash": "7b99fb45bbdd13dacb2e2b5fecb169d83311c7aa",
                     "pullRequest": "https://github.com/symfony/symfony/pull/32160"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "6619388f-6a75-4e6d-8c4f-e4d2c10cbeea": {
             "message": "Add the `string` type to the `$option` argument of `setDefault()`, `hasDefault()`, `isRequired()`, `isMissing()`, `isDefined()`, `setNormalizer()`, `setAllowedValues()`, `addAllowedValues()`, `setAllowedTypes()` and `addAllowedTypes()`",
             "section": "bc-breaks",
             "commits": [
@@ -78,17 +86,19 @@
                     "title": "Symfony blog: A Week of Symfony #652",
                     "url": "https://symfony.com/blog/a-week-of-symfony-652-24-30-june-2019"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
-            "message": "Lower the required PHP version to `^7.2.5` (was `^7.2.9`)",
+        "a9d3bee6-9e11-41bc-96d8-4847b8aafa03": {
+            "message": "Lower to PHP `^7.2.5` (was `^7.2.9`)",
             "section": "dependencies",
             "commits": [
                 {
                     "hash": "6194c2a96c6c8c35de8929a95a3f498941cd1760",
                     "pullRequest": "https://github.com/symfony/symfony/pull/34443"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }

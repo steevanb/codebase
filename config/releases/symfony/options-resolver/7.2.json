@@ -8,6 +8,9 @@
         "bugFixesUntil": "2025-07",
         "securityFixesUntil": "2025-07"
     },
+    "php": {
+        "min": "8.2"
+    },
     "sources": [
         {
             "title": "Comparison of 7.1 and v7.2.0",
@@ -23,8 +26,8 @@
         }
     ],
     "checkedOn": "2026-10-19",
-    "changes": [
-        {
+    "changes": {
+        "9c831cb2-ee76-4d5f-b41f-e9640493a288": {
             "message": "Prefix all `sprintf()` calls with a backslash",
             "section": "other",
             "commits": [
@@ -32,9 +35,10 @@
                     "hash": "6ce530c5e90397d88e3a76a56db266c74d651584",
                     "pullRequest": "https://github.com/symfony/symfony/pull/57461"
                 }
-            ]
+            ],
+            "validated": false
         },
-        {
+        "547c0e79-19b1-4851-a63e-10f17c312345": {
             "message": "Export-ignore all `.git*` files in `.gitattributes`",
             "section": "other",
             "commits": [
@@ -42,7 +46,8 @@
                     "hash": "bbddc2c358565dd9088f9d1857808bedef9c08f5",
                     "pullRequest": "https://github.com/symfony/symfony/pull/57666"
                 }
-            ]
+            ],
+            "validated": false
         }
-    ]
+    }
 }
