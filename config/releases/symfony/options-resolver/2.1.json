@@ -464,8 +464,7 @@
                     "type": "example",
                     "slug": "add-allowed-values"
                 }
-            ],
-            "validated": false
+            ]
         },
         "fe529259-d518-4178-885d-6f93c2112c33": {
             "message": "Add `setAllowedTypes()` to restrict the types of options",
@@ -500,8 +499,7 @@
                     "type": "example",
                     "slug": "set-allowed-types"
                 }
-            ],
-            "validated": false
+            ]
         },
         "6a2c610d-8aab-40c2-a7fc-9dad44ab1648": {
             "message": "Add `addAllowedTypes()` to add allowed types to the previous ones",
@@ -528,8 +526,7 @@
                     "type": "example",
                     "slug": "add-allowed-types"
                 }
-            ],
-            "validated": false
+            ]
         },
         "e1b36b1c-8e37-4a5d-849b-d805d3ca08c1": {
             "message": "Add `setNormalizers()` to transform the resolved option values with closures",
@@ -568,8 +565,7 @@
                     "type": "example",
                     "slug": "normalizers"
                 }
-            ],
-            "validated": false
+            ]
         },
         "60aad0a4-f841-4c2c-ad8a-d1050c3487ec": {
             "message": "Add `isKnown()` to check whether an option is defined",
@@ -596,8 +592,7 @@
                     "type": "example",
                     "slug": "is-known"
                 }
-            ],
-            "validated": false
+            ]
         },
         "ed4a6977-7782-40cd-83a5-7b55eb5ca68a": {
             "message": "Add `isRequired()` to check whether an option is required without a default value",
@@ -628,8 +623,7 @@
                     "type": "example",
                     "slug": "is-required"
                 }
-            ],
-            "validated": false
+            ]
         },
         "5c1cbfd5-e19d-42e5-9beb-c27ed98d2461": {
             "message": "Add `resolve()` to merge the given options with the default ones and validate them",

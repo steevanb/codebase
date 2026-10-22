@@ -1,11 +1,12 @@
 ---
 name: symfony-options-resolver
-description: Knowledge about the symfony/options-resolver package for codebase.watch - how to write its examples. Load it before writing or reviewing an example page of symfony/options-resolver, e.g. from /app:site:update or /app:changes:review.
+description: Knowledge about the symfony/options-resolver package for codebase.watch - how to write its examples, where to check a validated change (issue #9). Load it before writing or reviewing an example page of symfony/options-resolver, or validating one of its changes, e.g. from /app:site:update or /app:changes:review.
 ---
 
 # symfony/options-resolver
 
-What the example pages of `symfony/options-resolver` need, in addition to the skills `symfony` and `php`.
+What the example pages and the validation of the changes of `symfony/options-resolver` need, in addition to the
+skills `symfony` and `php`.
 
 ## Examples
 
@@ -22,5 +23,17 @@ What the example pages of `symfony/options-resolver` need, in addition to the sk
 
 - The result is the one the version gives, keys in their order: check it by running the code with the version of the
   package (clone `https://github.com/symfony/options-resolver` at its tag in the scratchpad directory, then run the
-  code in the official `php` Docker image of the closest available PHP version, e.g. `php:5.6-cli` for 2.1).
+  code in the official `php` Docker image of each PHP version offered, with `.claude/skills/php/run-blocks.py`, see the
+  `php` skill).
   E.g. in 2.1, the given options come after the default ones in the result.
+
+## Validation of the changes
+
+The changes of `symfony/options-resolver` to validate are listed in the issue
+[#9](https://github.com/steevanb/codebase/issues/9), by version, one checkbox per change (hidden changes excluded),
+in the order of the settings file of the version.
+When a change is validated (its `"validated": false` removed), check its box in the issue: read its body with
+`gh issue view 9 --json body -q .body`, replace `- [ ] <message>` by `- [x] <message>`, and write it back with
+`gh issue edit 9 --body-file <file>`. A change missing from the issue is added at its place, with the links to its
+example pages:
+``- [x] <message> ([`<slug>`](https://codebase.watch/releases/symfony/options-resolver/<version>/<slug>/))``.

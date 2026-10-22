@@ -67,6 +67,7 @@
     --rose-50: #fff1f2;
     --danger: #dc2626;
     --danger-50: #fef2f2;
+    --warning-50: #fffbeb;
     --bg: #f9fafb;
     --surface: #ffffff;
     --ink: #111827;
@@ -124,6 +125,7 @@
         --rose-50: #4c0519;
         --danger: #f87171;
         --danger-50: #450a0a;
+        --warning-50: #451a03;
         --bg: #0b0f19;
         --surface: #111827;
         --ink: #f9fafb;
@@ -919,6 +921,13 @@ ul.sources li + li {
     margin-top: 6px;
 }
 
+/* A list of values accepted by a method (e.g. the types of setAllowedTypes()), before its examples */
+ul.types {
+    margin: 0 0 20px;
+    padding-left: 22px;
+    line-height: 1.7;
+}
+
 .favicon {
     width: 16px;
     height: 16px;
@@ -1185,7 +1194,7 @@ pre.code code {
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 2px 8px;
+    padding: 5px 10px;
     background: var(--code-meta-bg);
     border-radius: var(--radius);
     color: var(--ink-muted);
@@ -1224,7 +1233,7 @@ pre.code code {
     display: none;
 }
 
-/* Several links of the same kind: a menu opened by a click on the icon, without JavaScript */
+/* The links of a block: a menu opened by a click on its icon, without JavaScript */
 .code-menu {
     position: relative;
     display: inline-flex;
@@ -1280,6 +1289,19 @@ pre.code code {
     font: 0.78rem var(--font-mono);
     text-align: left;
     cursor: pointer;
+}
+
+/* A link starts with the favicon of the site it points to */
+.code-menu li a {
+    display: flex;
+    align-items: center;
+}
+
+.code-menu li .favicon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    vertical-align: 0;
 }
 
 .code-menu li a:hover,
@@ -1357,6 +1379,35 @@ pre.code code {
 
 .callout p + p {
     margin-top: 8px;
+}
+
+/* A behavior that depends on the PHP version, before an example: one line per range of versions */
+.callout-warning {
+    background: var(--warning-50);
+    border-color: var(--warning);
+}
+
+.callout-versions {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.callout-versions li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.callout-versions li + li {
+    margin-top: 6px;
+}
+
+.callout-versions .callout-version {
+    flex-shrink: 0;
+    min-width: 92px;
+    font: 600 0.75rem var(--font-mono);
+    color: var(--warning);
 }
 
 /* Pygments token classes, see bin/dev/highlight.py */
