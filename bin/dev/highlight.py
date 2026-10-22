@@ -29,7 +29,10 @@ one and the last minor version of each newer major version of PHP allowed by the
 php.max of its settings file). The code of the older versions is derived from the newest one, removing what they do
 not support: new without parentheses (8.4), mixed and union types (8.0), arrow functions (7.4), void, nullable and
 iterable types (7.1), scalar and return types (7.0), [] arrays and calls on new (5.4). The messages shown in the
-comments are the ones of each version: the warning of an undefined array key is a notice before PHP 8.0.
+comments are the ones of each version: the warning of an undefined array key is a notice before PHP 8.0, an Error is
+a fatal error before PHP 7.0, a TypeError a catchable fatal error (the message of a TypeError for an argument of
+the wrong class is worded differently before PHP 8.0, the TypeError of an illegal offset in isset() is a warning
+before PHP 8.0, isset() then giving false).
 One <pre class="code" data-php="<versions>"> per different code, from the oldest version to the newest one, the
 last one being the source of the others (the same <pre> for every version when the code does not change).
 The versions are listed on the code-block (data-php-versions), /assets/js/main.js shows the chosen one.
@@ -70,6 +73,13 @@ UNION_PARAMETER = re.compile(r'(\(|, )\??[\w\\]+(?:\|[\w\\]+)+ (\$\w+)')
 MIXED_OR_UNION_RETURN = re.compile(r'\): (?:mixed|static|[\w\\?]+(?:\|[\w\\]+)+)(?= \{| =>)')
 # PHP 8.0: the warning of an undefined key of an array, a notice before
 UNDEFINED_KEY = re.compile(r'// Warning: Undefined array key "([^"]*)"')
+# PHP 8.0: the message of a TypeError for an argument of the wrong class, worded differently before
+TYPE_ERROR_ARGUMENT = re.compile(r'(// TypeError: )([\w\\]+::\w+\(\)): Argument #(\d+) \(\$\w+\) must be of type ([\w\\]+), (\w+) given')
+# PHP 8.0: the TypeError of an illegal offset in isset(), a warning before, isset() then giving false
+ILLEGAL_OFFSET_ISSET = re.compile(r'// TypeError: Cannot access offset of type \w+ in isset or empty')
+# PHP 7.0: an Error thrown (e.g. instanceof on null), a fatal error before; a TypeError, a catchable fatal error
+UNCAUGHT_ERROR = re.compile(r'// Error: ')
+UNCAUGHT_TYPE_ERROR = re.compile(r'// TypeError: ')
 # PHP 7.4: an arrow function, its parameters and its return type
 ARROW_FUNCTION = re.compile(r'\bfn (\([^()]*\)(?:: \??[\w\\]+)?) => ')
 # PHP 7.1: void, iterable and nullable types
@@ -103,10 +113,14 @@ EXAMPLE_TITLE = re.compile(
 )
 # The examples of a section, after its title and its paragraphs, and an example in it
 SECTION_EXAMPLES = re.compile(
-    r'(<section[^>]*>\s*<h2>[^\n]*</h2>(?:\s*<p>.*?</p>)*)((?:\s*<h3 class="example-[\w-]+">.*?</pre>\s*</div>)+)(\s*</section>)',
+    r'(<section[^>]*>\s*<h2>[^\n]*</h2>(?:\s*<p>.*?</p>|\s*<ul[^>]*>.*?</ul>)*)((?:\s*<h3 class="example-[\w-]+">.*?</pre>\s*</div>)+)(\s*</section>)',
     re.DOTALL,
 )
-EXAMPLE = re.compile(r'\s*<h3 class="example-[\w-]+">.*?</h3>(?:\s*<p>.*?</p>)*\s*<div class="code-block".*?</pre>\s*</div>', re.DOTALL)
+EXAMPLE = re.compile(
+    r'\s*<h3 class="example-[\w-]+">.*?</h3>(?:\s*<p>.*?</p>|\s*<div class="callout[^"]*">.*?</div>)*'
+    r'\s*<div class="code-block".*?</pre>\s*</div>',
+    re.DOTALL,
+)
 EXAMPLE_ORDER = ['example-ok', 'example-warning', 'example-exception']
 # The short name of the class of an exception thrown by the next line, at the start of a comment
 EXCEPTION = re.compile(r'<span class="tok-c1">// \w+(?:Exception|Error):')
@@ -300,6 +314,8 @@ def php_syntax(code: str, php: str) -> str:
         code = UNION_PARAMETER.sub(r'\1\2', code)
         code = MIXED_OR_UNION_RETURN.sub(')', code)
         code = UNDEFINED_KEY.sub(r'// Notice: Undefined index: \1', code)
+        code = ILLEGAL_OFFSET_ISSET.sub('// Warning: Illegal offset type in isset or empty\n// false', code)
+        code = TYPE_ERROR_ARGUMENT.sub(r'\1Argument \3 passed to \2 must be an instance of \4, \5 given', code)
     if version(php) < (7, 4):
         code = closures(code)
     if version(php) < (7, 1):
@@ -312,6 +328,8 @@ def php_syntax(code: str, php: str) -> str:
     if version(php) < (7, 0):
         code = SCALAR_PARAMETER.sub(r'\1\2', code)
         code = RETURN_TYPE.sub(')', code)
+        code = UNCAUGHT_ERROR.sub('// Fatal error: ', code)
+        code = UNCAUGHT_TYPE_ERROR.sub('// Catchable fatal error: ', code)
     if version(php) < (5, 4):
         code = SINGLE_CALL_ON_NEW.sub(
             lambda match: f'{match.group(2)} = new {match.group(3)};\n'

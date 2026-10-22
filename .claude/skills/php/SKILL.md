@@ -79,6 +79,16 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
 - Never write `// ...` for the code left out: leave it out. Write an empty body as `{}`.
 - An exception thrown by a line is shown like a result, in a comment just above it: the short name of its class, then
   its message copied exactly, e.g. `// MissingOptionsException: The required option "lastName" is  missing.`
+  The end of a message giving a local path (where PHP ran the code) is cut, with the comma before it, e.g.
+  `, called in /package/OptionsResolver.php on line 192` or ` in /package/Options.php on line 506`: it depends on
+  the machine, not on the package.
+- When the code of a block behaves differently depending on the PHP version (e.g. a warning, then `false`, before
+  PHP 8.0, a `TypeError` since), the label of the example (`OK`, `Warning` or `Exception`) is the one of the newest
+  PHP version offered: `Exception` for the `TypeError` of PHP 8.4. A warning callout gives the behavior of each range
+  of versions (see `/app:site:update`).
+  A different level of PHP message is a different behavior too, even when the code goes on the same way: e.g. a
+  `Notice` before PHP 8.0 and a `Warning` since for an undefined array key, a fatal error before PHP 7.0 and an
+  `Error` since, a catchable fatal error before PHP 7.0 and a `TypeError` since.
 - Version of the language in the `code-meta` of a block: `PHP <major>.<minor>`, the minimum PHP version required by
   the oldest version of the package shown in the block (its `php.min`), e.g. `<span>PHP 5.3</span>` for 2.1.
 - Write the code with the syntax of the newest PHP version offered: 8.4, or the `php.max` of the version shown when
@@ -93,9 +103,11 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
   Before PHP 5.4, a single call becomes a statement on the variable, its comment above it after an empty line
   (`$resolver->setDefaults(array('key' => 'foo'));`), several calls are chained on the variable.
 - Type as much as the newest version allows: the parameters and the return type of every closure (e.g.
-  `fn (Options $options, string $value): string => strtolower($value)`), `mixed` when any value is possible.
+  `fn (Options $options, string $value): string => strtoupper($value)`), `mixed` when any value is possible.
   A closure only returning an expression is an arrow function (`fn`).
-- In an array of values, `null` always comes first, before the other values: `[null, 'foo']`, never `['foo', null]`.
+- In a list of values, `null` always comes first, before the other values: `[null, 'foo']`, never `['foo', null]`.
+  Also in a list of types: `'null'` first, e.g. `setAllowedTypes(['age' => ['null', 'int']])`, never
+  `['int', 'null']`.
 - Chain as many calls as the API allows in the version shown (methods returning `$this`: check it in the code of
   the version), from the creation of the object, one chained method per line when there are several (a single one
   on the line of `new`, see above):
@@ -121,3 +133,23 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
 - In the texts, a method is written `<code>setOptions()</code>`, a class `<code>OptionsResolver</code>`.
 - The Pygments PHP lexer does not color the classes used as types (`OptionsResolver $resolver`) nor `void`:
   this is expected.
+
+## Testing the code of the pages
+
+Run every block of a page with each PHP version it offers, after `bin/dev/highlight.py` (it writes the code of the
+older versions), and compare the output with the comment of the block (result or exception):
+
+```bash
+git clone -q --depth 1 -b v<version>.0 https://github.com/<vendor>/<package> <scratchpad>/<package>-<version>
+.claude/skills/php/run-blocks.py <page> <scratchpad>/<package>-<version> <scratchpad>/blocks
+```
+
+- Each `<pre data-php="...">` runs in the official `php:<version>-cli` Docker image of each of its versions, the
+  package installed with the `composer:2` image (`composer install`, its `vendor/` kept in the clone).
+- It prints `$options` at the end of the block (`var_export`), or the exception thrown, written like in the pages.
+- The images of PHP 5.3, 5.4 and 5.5 can no longer be pulled (manifest v1 refused by containerd >= 2.1, or a missing
+  layer): their code runs with PHP 5.6, which does not check that it only uses what these versions support (e.g.
+  `[]` arrays before 5.4): check it by reading the code.
+- The deprecations triggered by the package itself are left out (e.g. the return types of `ArrayAccess` with PHP 8.1+
+  in an old package); a deprecation, a notice or a warning triggered by the block is kept: show it in the page when
+  it is part of the example.

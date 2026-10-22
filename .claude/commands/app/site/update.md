@@ -71,6 +71,8 @@ They apply to every page, built by the script or written by hand.
 - A message read in the code (deprecation, exception, error...) is copied exactly as the code produces it:
   same words, same punctuation, on a single line if it is a single line, never wrapped nor reformatted.
   Only the placeholders are replaced by their values (e.g. `%s` by the method name), as the code does.
+  The end giving a local path (e.g. `, called in /package/OptionsResolver.php on line 192`) is cut: it depends
+  on the machine where the code ran (see the language skill).
 - Every time the name of a package is written, it links to our site: to the page of the version it talks about
   (`/releases/<vendor>/<package>/<version>/`), or to the page of the package (`/releases/<vendor>/<package>/`)
   when it talks about no version or we have no page for this version. Never link to GitHub nor to another site
@@ -166,11 +168,26 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   the examples of a section are sorted: `OK`, then `Warning`, then `Exception`. Write
   `<h3 class="example-warning">` by hand for a surprising behavior (e.g. a call silently ignored), whether it throws
   an exception or not: its only label is then `Warning`.
+- When an example behaves differently depending on the PHP version (e.g. a warning before PHP 8.0, a `TypeError`
+  since), its label is the one of the newest PHP version offered (see the language skill), and a warning callout
+  between its title and its block of code gives one line per range of versions, with the behavior. A different
+  level of PHP message (e.g. a `Notice` before PHP 8.0, a `Warning` since) is a different behavior too:
+
+  ```html
+  <div class="callout callout-warning">
+      <ul class="callout-versions">
+          <li><span class="callout-version">PHP 5.3 – 7.4</span><span>A warning, <code>Illegal offset type in isset or empty</code>, then <code>isKnown()</code> returns <code>false</code>.</span></li>
+          <li><span class="callout-version">PHP &gt;= 8.0</span><span>A <code>TypeError</code> is thrown: <code>Cannot access offset of type array in isset or empty</code>.</span></li>
+      </ul>
+  </div>
+  ```
 - Code: **only the code that changed**, a few lines: never a full implementation (no class, no unrelated options).
   Test values are `foo`, `bar` and `baz` whenever the value does not matter (e.g. `'foo'`, `foo@bar.com`,
   `FOO@BAR.COM`, `foo.com`); keep a meaningful value only when the example needs it (e.g. a type, `'int'`, given
   to `setAllowedTypes()`), never for allowed values. Each block starts with `foo`, whatever the other blocks use: `bar`, then `baz`, only when the
   same block needs a second, then a third different value (e.g. `'host' => 'foo.com', 'url' => '/bar'`).
+  A value whose case is changed is given in lowercase and becomes uppercase, never the opposite (e.g. a normalizer
+  calling `strtoupper()` on `'foo@bar.com'` gives `'FOO@BAR.COM'`, never `strtolower()` on `'FOO@BAR.COM'`).
   Numbers: `42`, then `3`, `18` and `21` when the same block needs more, in the order they appear in the code; any
   other number beyond. A number the example computes (e.g. the result of `count()`) is left as it is.
   Show only the code of the released version (its tag): never a name or a behavior that changed before the release
@@ -189,35 +206,28 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   how to write the code): the code of the older versions of the language, down to the minimum version of the package,
   chosen in a menu, is derived by `bin/dev/highlight.py` (see the language skill).
   Write code as `<pre class="code"><code class="language-<Pygments lexer>">` (the language skill gives the lexer;
-  other text as `language-text`), inside a `code-block` whose `code-meta` (top right corner) holds the links to the
-  documentation of what the block shows, then the version of the language whose syntax it uses (the language skill
-  says which one):
+  other text as `language-text`), inside a `code-block` whose `code-meta` (top right corner) holds a single icon, a
+  chain link, opening the menu of the links about the block (even when there is only one), then the version of the
+  language whose syntax it uses (the language skill says which one). The menu opens without JavaScript and closes on
+  a click anywhere:
 
   ```html
   <div class="code-block">
-      <div class="code-meta"><a href="https://symfony.com/doc/8.0/components/options_resolver.html#nested-options" target="_blank" rel="noopener" title="Symfony 8.0 documentation: Nested Options" aria-label="Symfony 8.0 documentation: Nested Options"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 4C6.5 3 4.5 2.5 1.5 2.5v10c3 0 5 .5 6.5 1.5 1.5-1 3.5-1.5 6.5-1.5v-10c-3 0-5 .5-6.5 1.5zM8 4v10"/></svg></a><span>PHP 8.4</span></div>
+      <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 9.5l3-3M7.5 4.5l1-1a2.5 2.5 0 0 1 3.5 3.5l-1 1M8.5 11.5l-1 1a2.5 2.5 0 0 1-3.5-3.5l1-1"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#value-validation" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Value Validation</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L105-L120" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::addAllowedValues() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L148-L158" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::addAllowedValues() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
       <pre class="code"><code class="language-php">...</code></pre>
   </div>
   ```
 
-  One link per page of documentation, as precise as possible: with the anchor of the section that documents the code
-  (the vendor skill says how to find it), one per version when the block compares versions. Its title is
-  `<Project> <version> documentation: <title of the section>`, its icon the book above, whatever the site.
-  After the links to the documentation, add a link to the declaration on GitHub of each method or class the block is
-  about (those it marks, or the method that throws the exception it shows), at the tag of the version shown, with its
-  PHPDoc (e.g. `.../blob/v2.1.0/src/.../OptionsResolverInterface.php#L44-L57`; the interface when it holds the PHPDoc;
-  one per version when the block compares versions), titled
-  `Declaration of <Class>::<method>() in <tag>`, its icon `<svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
-  <path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg>`. A link to an interface comes first, followed by a link to each
-  implementation of the method in the package, from its PHPDoc to the end of its body.
-  Only one icon of each kind is visible: when there are several links to the documentation or to GitHub, the icon
-  opens a menu listing them, without JavaScript (it closes on a click anywhere):
-
-  ```html
-  <details class="code-menu"><summary title="Code" aria-label="Code"><svg class="icon" ...>...</svg></summary><ul><li><a href="..." target="_blank" rel="noopener">OptionsResolverInterface::resolve() in v2.1.0</a></li><li><a href="..." target="_blank" rel="noopener">OptionsResolver::resolve() in v2.1.0</a></li></ul></details>
-  ```
-
-  The summary of the documentation menu is titled `Documentation`, its links named like the title of a single link.
+  The menu lists first the links to the documentation of what the block shows: one per page of documentation, as
+  precise as possible, with the anchor of the section that documents the code (the vendor skill says how to find it),
+  one per version when the block compares versions, named `<Project> <version> documentation: <title of the section>`.
+  Then, separated from them (`<li class="code-menu-separated">` on the first one), a link to the declaration on GitHub
+  of each method or class the block is about (those it marks, or the method that throws the exception it shows), at
+  the tag of the version shown, with its PHPDoc (e.g. `.../blob/v2.1.0/src/.../OptionsResolverInterface.php#L44-L57`;
+  the interface when it holds the PHPDoc; one per version when the block compares versions), named
+  `<Class>::<method>() in <tag>`. A link to an interface comes first, followed by a link to each implementation of the
+  method in the package, from its PHPDoc to the end of its body.
+  Every link of the menu starts with the favicon of the site it points to, like the sources (see [Rules](#rules)).
   A `language-text` block has no `code-meta`.
   Then run `bin/dev/highlight.py <page>`: it colors the code blocks
   with Pygments in the HTML itself (no JavaScript, no flicker on load), inside the `codebase-python` Docker image built
