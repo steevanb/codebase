@@ -11,12 +11,16 @@ The names listed in the data-removed and data-added attributes of the <code> tag
 wrapped in <mark class="code-removed"> and <mark class="code-added">, to show what changed between two versions:
 <pre class="code"><code class="language-php" data-added="setOptions">
 The names listed in data-other are wrapped in <mark class="code-other"> (blue), to tell them apart from the green ones
-(e.g. two options of the same example).
+(e.g. two options of the same example), and those listed in data-third in <mark class="code-third"> (amber), for a
+third one.
+A name followed by #<number> is only marked at this occurrence in the code (1 for the first), not in the comments:
+data-other="$previousValue#3" marks the third $previousValue only, array_merge([])#2 the array of the second call.
 A string ('firstName') is also marked in the comments, between ' or ": // The option "firstName" does not exist.
 So is a constant (null, true, false) or a number, as a whole word: // ['key' => null]
 A variable followed by a call ($clone->resolve) marks the variable only where this method is called on it.
 A call followed by ([]) marks the brackets of the array given to this call, not what is inside: resolve([]) marks
-the [ and ] of resolve(['foo']), or array( and ) before PHP 5.4.
+the [ and ] of resolve(['foo']), or array( and ) before PHP 5.4, also after a name: set('roles', ['foo']).
+fn([]) marks the array returned by a closure: fn (Options $options): array => ['foo'].
 The title of an example (<h3> followed by its block) gets the class example-exception when its code throws an
 exception (a comment starting with its class: // InvalidOptionsException: ...), example-ok otherwise, unless it is
 example-warning, written by hand for a surprising behavior: the CSS shows "OK", "Exception" or "Warning" before it.
@@ -24,6 +28,7 @@ The examples of a section are sorted: OK, then warnings, then exceptions.
 When a marked name is the type of a parameter of a function or a method, its parameter is marked with it, in the
 same <mark>, and its uses in the body of the function are marked too:
 function (Options $options) { return $options['a']; } marks "Options $options" and "$options".
+A marked class is not marked after new (new Options()).
 
 The use statements at the start of a block, with the empty line following them, are wrapped in
 <span class="code-uses">, which /assets/js/main.js shows or hides.
@@ -97,11 +102,13 @@ RETURN_TYPE = re.compile(r'\): \??[\w\\]+(?= \{)')
 # PHP 5.4: a call on new, the object being created in its own statement before
 CALL_ON_NEW = re.compile(r'^(\$\w+) = \(new (\w+\([^()\n]*\))\)\n(?=(?: *//[^\n]*\n)* +->)', re.MULTILINE)
 TAG = re.compile(r'</?(?:span|mark)[^>]*>')
-MARKS = {'removed': 'code-removed', 'added': 'code-added', 'other': 'code-other'}
+MARKS = {'removed': 'code-removed', 'added': 'code-added', 'other': 'code-other', 'third': 'code-third'}
 # A marked type in a parameter list (after "(" or ","), followed by its parameter
 TYPED_PARAMETER = re.compile(
     r'(<span class="tok-p">[^<]*[(,]</span>\s*(?:<span class="tok-o">\?</span>)?)'
-    r'<mark class="([\w-]+)">(<span class="tok-\w+">[^<]+</span>)</mark>(\s+<span class="tok-nv">\$\w+</span>)'
+    r'<mark class="([\w-]+)">(<span class="tok-\w+">[^<]+</span>)</mark>(\s+)'
+    # The parameter may be marked too (data-added="mixed $options#3"): one mark for both
+    r'(?:<mark class="\2">)?(<span class="tok-nv">\$\w+</span>)(?:</mark>)?'
 )
 # A type and its parameter once marked together, to find the parameter in the body of the function
 TYPED_PARAMETER_MARKED = re.compile(
@@ -149,14 +156,19 @@ def mark(colored: str, opening_tag: str) -> str:
     for attribute, css_class in MARKS.items():
         names = re.search(rf'data-{attribute}="([^"]*)"', opening_tag)
         for name in (html.unescape(names.group(1)).split() if names else []):
-            colored = re.sub(
-                rf'<span class="tok-\w+">{re.escape(name)}</span>',
+            # name#2: only the second occurrence of the name in the code, not in the comments
+            name, occurrence = re.fullmatch(r'(.+?)(?:#(\d+))?', name).groups()
+            occurrence = int(occurrence) if occurrence else None
+            # A class is not marked where it is created (new Options()): only where it is used
+            colored = sub_occurrence(
+                rf'(?<!<span class="tok-k">new</span> )<span class="tok-\w+">{re.escape(name)}</span>',
                 lambda token: f'<mark class="{css_class}">{token.group(0)}</mark>',
                 colored,
+                occurrence,
             )
             # A string is also marked in the comments (results, exception messages), between ' or "
             string = re.fullmatch(r"'([^']+)'", name)
-            if string:
+            if string and occurrence is None:
                 colored = COMMENT.sub(
                     lambda comment: re.sub(
                         rf'([\'"]){re.escape(string.group(1))}\1',
@@ -166,7 +178,7 @@ def mark(colored: str, opening_tag: str) -> str:
                     colored,
                 )
             # A constant (null, true, false) or a number is also marked in the comments, as a whole word
-            elif re.fullmatch(r'null|true|false|\d+(?:\.\d+)?', name):
+            elif occurrence is None and re.fullmatch(r'null|true|false|\d+(?:\.\d+)?', name):
                 colored = COMMENT.sub(
                     lambda comment: re.sub(
                         rf'(?<![\w.\'"]){re.escape(name)}(?![\w.\'"])',
@@ -188,11 +200,14 @@ def mark(colored: str, opening_tag: str) -> str:
             # The brackets of the array given to a call (resolve([])): [ and ], or array( and ), not what is inside
             call = re.fullmatch(r'(\w+)\(\[\]\)', name)
             if call:
-                colored = mark_ranges(colored, array_brackets(colored, call.group(1)), css_class)
+                ranges = array_brackets(colored, call.group(1))
+                if occurrence:
+                    ranges = ranges[2 * occurrence - 2:2 * occurrence]
+                colored = mark_ranges(colored, ranges, css_class)
 
     # One mark for the type and its parameter, so that the space between them is marked too
     colored = TYPED_PARAMETER.sub(
-        lambda match: f'{match.group(1)}<mark class="{match.group(2)}">{match.group(3)}{match.group(4)}</mark>',
+        lambda match: f'{match.group(1)}<mark class="{match.group(2)}">{match.group(3)}{match.group(4)}{match.group(5)}</mark>',
         colored,
     )
 
@@ -200,6 +215,17 @@ def mark(colored: str, opening_tag: str) -> str:
         colored = mark_in_body(colored, parameter.end(), parameter.group(2), parameter.group(1))
 
     return colored
+
+def sub_occurrence(pattern: str, replacement, colored: str, occurrence: int | None) -> str:
+    """re.sub, on every match, or only on the given one (1 for the first)."""
+    if occurrence is None:
+        return re.sub(pattern, replacement, colored)
+    matches = list(re.finditer(pattern, colored))
+    if len(matches) < occurrence:
+        return colored
+    match = matches[occurrence - 1]
+
+    return colored[:match.start()] + replacement(match) + colored[match.end():]
 
 def plain_text(colored: str) -> tuple[str, list[int]]:
     """The text of colored code, and the position in the colored code of each of its characters."""
@@ -215,7 +241,11 @@ def array_brackets(colored: str, function: str) -> list[tuple[int, int]]:
     """The positions in the text of the brackets of the arrays given to a function, outside the comments."""
     text, _ = plain_text(colored)
     ranges = []
-    for call in re.finditer(rf'(?<![\w$]){re.escape(function)}\((\[|array\()', text):
+    # The array is the first argument, or the second one after a name or a variable: set('roles', ['foo']);
+    # fn([]) is the array returned by a closure: fn (Options $options): array => ['foo'], or return array('foo');
+    pattern = (r'(?:=> |return )(\[|array\()' if function == 'fn'
+               else rf'(?<![\w$]){re.escape(function)}\((?:\'[^\']*\', |\$\w+, )?(\[|array\()')
+    for call in re.finditer(pattern, text):
         if '//' in text[text.rfind('\n', 0, call.start()) + 1:call.start()]:
             continue
         start = call.start(1)
