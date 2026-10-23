@@ -135,6 +135,8 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
       ->setDefaults(array('age' => null));
   ```
 - In the texts, a method is written `<code>setOptions()</code>`, a class `<code>OptionsResolver</code>`.
+  In a title (`h1`, `h2`, `h3`), a method is written with its full signature, as declared in the code of the version
+  shown: `<code>setDefault(string $option, mixed $value): static</code>` (see `/app:site:update`).
 - The Pygments PHP lexer does not color the classes used as types (`OptionsResolver $resolver`) nor `void`:
   this is expected.
 

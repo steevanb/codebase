@@ -149,8 +149,14 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   its result or its exception in a comment (the language skill gives the format). When a section has several
   examples, give each one an `<h3>` title saying the case it shows, never the name of a method (e.g.
   `<h3>Option missing</h3>`), followed by one sentence explaining it when the code alone is not enough (e.g. a
-  closure with a special argument). The main method of a section goes in its title, after the words, e.g.
-  `<h2><span><em>Required</em> option <code>setRequired()</code></span></h2>`.
+  closure with a special argument). The method a page is about is its main title (`h1`), e.g.
+  `<h1><code>setRequired(array $optionNames)</code></h1>`: the titles of its sections and examples never repeat it,
+  e.g. `<h2><span><em>Required</em> option</span></h2>`. Another method may be named in them when the section or the
+  example is about it, e.g. `<h3>Set after <code>has($option)</code></h3>`.
+  In a title (`h1`, `h2`, `h3`), a method is written with its full signature, as declared in the code of the version
+  shown (the class when it is part of the name, the parameters with their types and default values, the return type),
+  e.g. `<h1><code>Options::set($option, $value)</code></h1>`, `<code>resolve(array $options = array())</code>`,
+  `<code>setDefault(string $option, mixed $value): static</code>`. Not in the `<title>` of the page, nor in the texts.
 - Two neighbouring blocks never share a color: sections, stats (a stat without tone is white, like its neighbours
   without tone: give every stat a tone)... When two of them would, change the order or the tone.
 - Tones of the sections: a type of section always has the same tone. Two sections of a page can share a tone, as

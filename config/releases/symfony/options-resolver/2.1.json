@@ -840,8 +840,7 @@
                     "type": "example",
                     "slug": "options-set"
                 }
-            ],
-            "validated": false
+            ]
         },
         "3fd87524-2e00-4fe5-9db4-1b498d510de4": {
             "message": "Add `overload()` to set the value of an option, its closure receiving the previous value",

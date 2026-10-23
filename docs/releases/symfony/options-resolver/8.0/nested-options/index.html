@@ -38,7 +38,7 @@
             nested-options
         </nav>
 
-        <h1>Nested options: <code>setDefault()</code> → <code>setOptions()</code></h1>
+        <h1>Nested options: <code>setDefault(string $option, mixed $value): static</code> → <code>setOptions(string $option, \Closure $nested): static</code></h1>
 
         <section id="overview" class="tone-amber">
             <h2><span>At a <em>glance</em></span></h2>
@@ -65,7 +65,7 @@
 
         <section id="bc-break" class="tone-rose">
             <h2><span><em>BC break</em></span></h2>
-            <h3 class="example-ok"><code>setDefault()</code></h3>
+            <h3 class="example-ok"><code>setDefault(string $option, mixed $value): static</code></h3>
             <p>Since 4.2, a nested option was declared with <code>setDefault()</code>, with a closure whose first argument is type-hinted <code>OptionsResolver</code>.</p>
             <div class="code-block" data-php-versions="7.1 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/7.4/components/options_resolver.html#nested-options" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 7.4 documentation: Nested Options</a></li><li><a href="https://symfony.com/doc/8.0/components/options_resolver.html#nested-options" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 8.0 documentation: Nested Options</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v7.4.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L155-L192" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::setDefault() in v7.4.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v8.0.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L380-L387" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::setOptions() in v8.0.0</a></li></ul></details><span>PHP 7.1</span></div>
@@ -76,7 +76,7 @@
 <span class="tok-c1">// &gt;= 8.0</span>
 <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptions</span></mark><span class="tok-p">(</span><span class="tok-s1">'spool'</span><span class="tok-p">,</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">OptionsResolver</span> <span class="tok-nv">$spoolResolver</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">void</span> <span class="tok-p">{});</span></code></pre>
             </div>
-            <h3 class="example-ok">Fluent configuration <code>default()</code></h3>
+            <h3 class="example-ok">Fluent configuration <code>default(mixed $value): static</code></h3>
             <p>Since 5.1, the fluent configuration does the same with <code>default()</code>.</p>
             <div class="code-block" data-php-versions="7.2 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/7.4/components/options_resolver.html#chaining-option-configurations" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 7.4 documentation: Chaining Option Configurations</a></li><li><a href="https://symfony.com/doc/8.0/components/options_resolver.html#chaining-option-configurations" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 8.0 documentation: Chaining Option Configurations</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v7.4.0/src/Symfony/Component/OptionsResolver/OptionConfigurator.php#L55-L62" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionConfigurator::default() in v7.4.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v8.0.0/src/Symfony/Component/OptionsResolver/OptionConfigurator.php#L147-L154" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionConfigurator::options() in v8.0.0</a></li></ul></details><span>PHP 7.2</span></div>
