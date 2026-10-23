@@ -247,6 +247,9 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   exception message (`// The option "firstName" does not exist.`).
   When two marked names of a block must be told apart (e.g. two options whose order matters), mark the second one
   in blue with `data-other` (e.g. `data-added="'firstName'" data-other="'lastName'"`).
+  Mark a variable only where a method is called on it with `$<variable>-&gt;<method>` (`>` written `&gt;` in the
+  attribute): `data-added="$clone-&gt;resolve"` marks `$clone` in `$clone->resolve()`, not in
+  `$clone = clone $resolver;`.
   Mark the brackets of an array given to a call when the array itself is the example (e.g. an array given instead of
   a name, a list instead of an array), not what is inside: `data-removed="resolve([])"` marks the `[` and `]` of
   `resolve(['foo'])` (`array(` and `)` before PHP 5.4).
@@ -263,5 +266,5 @@ The release page links to its example pages from the row of the change (built by
 1. Run `bin/dev/start.py` (it returns once the server is up, leave it running for the user) and check with `curl` that
    every page of `docs/` answers `200`.
 2. Check with `curl -L` that the external links of the new or changed pages answer `200`.
-3. Do not commit.
+3. Git: see the `git` skill.
 4. Summarize to the user: pages built or changed (listed by `bin/dev/site.py`), example pages written.
