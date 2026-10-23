@@ -891,8 +891,7 @@
                     "type": "example",
                     "slug": "options-overload"
                 }
-            ],
-            "validated": false
+            ]
         },
         "e804e813-2283-47f3-a50a-46f8937b3926": {
             "message": "Add `replace()` to replace all the options",

@@ -288,12 +288,16 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
 <span class="tok-nv">$resolver</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">;</span>
-    <span class="tok-p">}))</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
-    <span class="tok-p">}));</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">;</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">))</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">));</span>
 
 <span class="tok-c1">// array('email' =&gt; <mark class="code-added">'FOO@BAR.COM'</mark>)</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
@@ -301,12 +305,16 @@
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">;</span>
-    <span class="tok-p">}])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
-    <span class="tok-p">}]);</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">;</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">])</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['email' =&gt; <mark class="code-added">'FOO@BAR.COM'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
@@ -314,8 +322,12 @@
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)]);</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">,</span>
+    <span class="tok-p">])</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['email' =&gt; <mark class="code-added">'FOO@BAR.COM'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
@@ -323,8 +335,12 @@
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)]);</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">,</span>
+    <span class="tok-p">])</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['email' =&gt; <mark class="code-added">'FOO@BAR.COM'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
@@ -339,9 +355,11 @@
 <span class="tok-nv">$resolver</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">))</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedValues</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-added"><span class="tok-s1">'FOO'</span></mark><span class="tok-p">)))</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
-    <span class="tok-p">}));</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">));</span>
 
 <span class="tok-c1">// array('key' =&gt; <mark class="code-added">'FOO'</mark>)</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">));</span></code></pre>
@@ -351,9 +369,11 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'key'</span><span class="tok-p">])</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedValues</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-p">[</span><mark class="code-added"><span class="tok-s1">'FOO'</span></mark><span class="tok-p">]])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
-    <span class="tok-p">}]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['key' =&gt; <mark class="code-added">'FOO'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span></code></pre>
@@ -363,7 +383,9 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'key'</span><span class="tok-p">])</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedValues</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-p">[</span><mark class="code-added"><span class="tok-s1">'FOO'</span></mark><span class="tok-p">]])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['key' =&gt; <mark class="code-added">'FOO'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span></code></pre>
@@ -373,7 +395,9 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'key'</span><span class="tok-p">])</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedValues</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-p">[</span><mark class="code-added"><span class="tok-s1">'FOO'</span></mark><span class="tok-p">]])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['key' =&gt; <mark class="code-added">'FOO'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span></code></pre>
@@ -388,9 +412,11 @@
 <span class="tok-nv">$resolver</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'age'</span><span class="tok-p">))</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedTypes</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'int'</span><span class="tok-p">))</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-p">(</span><span class="tok-nx">int</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
-    <span class="tok-p">}));</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-p">(</span><span class="tok-nx">int</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">));</span>
 
 <span class="tok-c1">// array('age' =&gt; <mark class="code-added">42</mark>)</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'42'</span></mark><span class="tok-p">));</span></code></pre>
@@ -400,9 +426,11 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'age'</span><span class="tok-p">])</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedTypes</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'int'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-p">(</span><span class="tok-nx">int</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
-    <span class="tok-p">}]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-p">(</span><span class="tok-nx">int</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['age' =&gt; <mark class="code-added">42</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'42'</span></mark><span class="tok-p">]);</span></code></pre>
@@ -412,7 +440,9 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'age'</span><span class="tok-p">])</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedTypes</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'int'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">int</span> <span class="tok-o">=&gt;</span> <span class="tok-p">(</span><span class="tok-nx">int</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">int</span> <span class="tok-o">=&gt;</span> <span class="tok-p">(</span><span class="tok-nx">int</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">,</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['age' =&gt; <mark class="code-added">42</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'42'</span></mark><span class="tok-p">]);</span></code></pre>
@@ -422,7 +452,9 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'age'</span><span class="tok-p">])</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedTypes</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'int'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">int</span> <span class="tok-o">=&gt;</span> <span class="tok-p">(</span><span class="tok-nx">int</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">int</span> <span class="tok-o">=&gt;</span> <span class="tok-p">(</span><span class="tok-nx">int</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">,</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['age' =&gt; <mark class="code-added">42</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'42'</span></mark><span class="tok-p">]);</span></code></pre>
@@ -443,9 +475,11 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
 <span class="tok-nv">$resolver</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setOptional</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">))</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
-    <span class="tok-p">}));</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">));</span>
 
 <span class="tok-c1">// Notice: Undefined index: email</span>
 <span class="tok-c1">// array('email' =&gt; <mark class="code-added">null</mark>)</span>
@@ -455,9 +489,11 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setOptional</span><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
-    <span class="tok-p">}]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// Notice: Undefined index: email</span>
 <span class="tok-c1">// ['email' =&gt; <mark class="code-added">null</mark>]</span>
@@ -467,7 +503,9 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setOptional</span><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span><span class="tok-p">,</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// Notice: Undefined index: email</span>
 <span class="tok-c1">// ['email' =&gt; <mark class="code-added">null</mark>]</span>
@@ -477,7 +515,9 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setOptional</span><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">mixed</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">mixed</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">mixed</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">mixed</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span><span class="tok-p">,</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// Warning: Undefined array key "email"</span>
 <span class="tok-c1">// ['email' =&gt; <mark class="code-added">null</mark>]</span>
@@ -492,13 +532,17 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
 <span class="tok-nv">$resolver</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">))</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
-    <span class="tok-p">}))</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">))</span>
     <span class="tok-c1">// Replaces the normalizer of the first call</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">trim</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
-    <span class="tok-p">}));</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">trim</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">));</span>
 
 <span class="tok-c1">// array('email' =&gt; 'foo@bar.com')</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">' foo@bar.com '</span><span class="tok-p">));</span></code></pre>
@@ -507,13 +551,17 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
-    <span class="tok-p">}])</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">])</span>
     <span class="tok-c1">// Replaces the normalizer of the first call</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">trim</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
-    <span class="tok-p">}]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">trim</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['email' =&gt; 'foo@bar.com']</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">' foo@bar.com '</span><span class="tok-p">]);</span></code></pre>
@@ -522,9 +570,13 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)])</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">),</span>
+    <span class="tok-p">])</span>
     <span class="tok-c1">// Replaces the normalizer of the first call</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">trim</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">trim</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['email' =&gt; 'foo@bar.com']</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">' foo@bar.com '</span><span class="tok-p">]);</span></code></pre>
@@ -533,9 +585,13 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)])</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">),</span>
+    <span class="tok-p">])</span>
     <span class="tok-c1">// Replaces the normalizer of the first call</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">trim</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">trim</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['email' =&gt; 'foo@bar.com']</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">' foo@bar.com '</span><span class="tok-p">]);</span></code></pre>
@@ -596,9 +652,11 @@
 <span class="tok-nv">$resolver</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'age'</span><span class="tok-p">))</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedTypes</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'int'</span><span class="tok-p">))</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-p">(</span><span class="tok-nx">string</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
-    <span class="tok-p">}));</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-p">(</span><span class="tok-nx">string</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">));</span>
 
 <span class="tok-c1">// InvalidOptionsException: The option "age" with value <mark class="code-removed">"42"</mark> is expected to be of type "int"</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-mi">42</span><span class="tok-p">));</span></code></pre>
@@ -609,9 +667,11 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'age'</span><span class="tok-p">])</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedTypes</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'int'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-p">(</span><span class="tok-nx">string</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
-    <span class="tok-p">}]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-p">(</span><span class="tok-nx">string</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// InvalidOptionsException: The option "age" with value <mark class="code-removed">"42"</mark> is expected to be of type "int"</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-mi">42</span><span class="tok-p">]);</span></code></pre>
@@ -622,7 +682,9 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'age'</span><span class="tok-p">])</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedTypes</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'int'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">int</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-p">(</span><span class="tok-nx">string</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">int</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-p">(</span><span class="tok-nx">string</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">,</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// InvalidOptionsException: The option "age" with value <mark class="code-removed">"42"</mark> is expected to be of type "int"</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-mi">42</span><span class="tok-p">]);</span></code></pre>
@@ -633,7 +695,9 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'age'</span><span class="tok-p">])</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setAllowedTypes</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'int'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">int</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-p">(</span><span class="tok-nx">string</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">int</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-p">(</span><span class="tok-nx">string</span><span class="tok-p">)</span> <span class="tok-nv">$value</span><span class="tok-p">,</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// InvalidOptionsException: The option "age" with value <mark class="code-removed">"42"</mark> is expected to be of type "int"</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><span class="tok-s1">'age'</span> <span class="tok-o">=&gt;</span> <span class="tok-mi">42</span><span class="tok-p">]);</span></code></pre>
@@ -714,9 +778,11 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
 <span class="tok-nv">$resolver</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">))</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
-    <span class="tok-p">}));</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">));</span>
 
 <span class="tok-c1">// OptionDefinitionException: The options <mark class="code-removed">"email"</mark> have a cyclic dependency.</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
@@ -726,9 +792,11 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
-    <span class="tok-p">}]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// OptionDefinitionException: The options <mark class="code-removed">"email"</mark> have a cyclic dependency.</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
@@ -738,7 +806,9 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark><span class="tok-p">])]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark><span class="tok-p">]),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// OptionDefinitionException: The options <mark class="code-removed">"email"</mark> have a cyclic dependency.</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
@@ -748,7 +818,9 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark><span class="tok-p">])]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizers</span></mark><span class="tok-p">([</span>
+        <mark class="code-removed"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-removed"><span class="tok-s1">'email'</span></mark><span class="tok-p">]),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// OptionDefinitionException: The options <mark class="code-removed">"email"</mark> have a cyclic dependency.</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>

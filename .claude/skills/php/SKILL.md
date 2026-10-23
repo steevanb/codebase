@@ -61,7 +61,7 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
 - Show the PHP names that changed with `data-removed` and `data-added`, e.g. `data-removed="setDefault"`.
   A marked class used as the type of a parameter of a function or a method marks its parameter too
   in the same mark (`function (Options $options)` marks `Options $options`), and its uses in the body of the
-  function too, done by `bin/dev/highlight.py`.
+  function too, done by `bin/dev/highlight.py`, but not after `new` (`new Options()` is not marked).
 - Comment giving the versions where a line works (only when the block compares versions, see `/app:site:update`):
   `// 4.2 – 7.4`, `// >= 8.0`.
 - A block starts with a `use` statement for each class it uses in its code (`new`, types of the parameters,
@@ -110,6 +110,19 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
 - Type as much as the newest version allows: the parameters and the return type of every closure (e.g.
   `fn (Options $options, string $value): string => strtoupper($value)`), `mixed` when any value is possible.
   A closure only returning an expression is an arrow function (`fn`).
+- A closure is always on its own line: given to a call with other arguments, each argument goes on its own line;
+  in an array, the array has one element per line.
+
+  ```php
+  $options->set(
+      'key',
+      fn (Options $options): string => 'foo'
+  );
+  $resolver = new OptionsResolver()
+      ->setDefaults([
+          'key' => fn (Options $options): string => 'foo',
+      ]);
+  ```
 - In a list of values, `null` always comes first, before the other values: `[null, 'foo']`, never `['foo', null]`.
   Also in a list of types: `'null'` first, e.g. `setAllowedTypes(['age' => ['null', 'int']])`, never
   `['int', 'null']`.

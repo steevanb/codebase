@@ -374,9 +374,11 @@
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
 <span class="tok-nv">$resolver</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'firstName'</span><span class="tok-p">))</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'displayName'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><span class="tok-s1">'firstName'</span><span class="tok-p">]);</span>
-    <span class="tok-p">}));</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span>
+        <span class="tok-s1">'displayName'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><span class="tok-s1">'firstName'</span><span class="tok-p">]);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">));</span>
 
 <span class="tok-c1">// array('displayName' =&gt; <mark class="code-added">'FOO'</mark>, 'firstName' =&gt; <mark class="code-added">'foo'</mark>)</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">resolve</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'firstName'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">));</span></code></pre>
@@ -385,9 +387,11 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'firstName'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'displayName'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
-        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><span class="tok-s1">'firstName'</span><span class="tok-p">]);</span>
-    <span class="tok-p">}]);</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span>
+        <span class="tok-s1">'displayName'</span> <span class="tok-o">=&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+            <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><span class="tok-s1">'firstName'</span><span class="tok-p">]);</span>
+        <span class="tok-p">},</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['displayName' =&gt; <mark class="code-added">'FOO'</mark>, 'firstName' =&gt; <mark class="code-added">'foo'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">resolve</span></mark><span class="tok-p">([</span><span class="tok-s1">'firstName'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span></code></pre>
@@ -396,7 +400,9 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'firstName'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'displayName'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><span class="tok-s1">'firstName'</span><span class="tok-p">])]);</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span>
+        <span class="tok-s1">'displayName'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><span class="tok-s1">'firstName'</span><span class="tok-p">]),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['displayName' =&gt; <mark class="code-added">'FOO'</mark>, 'firstName' =&gt; <mark class="code-added">'foo'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">resolve</span></mark><span class="tok-p">([</span><span class="tok-s1">'firstName'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span></code></pre>
@@ -405,7 +411,9 @@
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><span class="tok-s1">'firstName'</span><span class="tok-p">])</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'displayName'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><span class="tok-s1">'firstName'</span><span class="tok-p">])]);</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span>
+        <span class="tok-s1">'displayName'</span> <span class="tok-o">=&gt;</span> <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><span class="tok-s1">'firstName'</span><span class="tok-p">]),</span>
+    <span class="tok-p">]);</span>
 
 <span class="tok-c1">// ['displayName' =&gt; <mark class="code-added">'FOO'</mark>, 'firstName' =&gt; <mark class="code-added">'foo'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">resolve</span></mark><span class="tok-p">([</span><span class="tok-s1">'firstName'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span></code></pre>

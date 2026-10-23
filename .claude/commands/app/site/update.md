@@ -252,13 +252,20 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   code and in the comments showing a result or an
   exception message (`// The option "firstName" does not exist.`).
   When two marked names of a block must be told apart (e.g. two options whose order matters), mark the second one
-  in blue with `data-other` (e.g. `data-added="'firstName'" data-other="'lastName'"`).
+  in blue with `data-other` (e.g. `data-added="'firstName'" data-other="'lastName'"`), and a third one in amber with
+  `data-third`.
+  When the values of an example follow each other (e.g. a value, then the closures building on it), give each step
+  its own color, in this order: green, blue, amber; a `$previousValue` takes the color of the value it receives.
+  Mark a single occurrence of a name in the code with `<name>#<number>` (1 for the first, not in the comments):
+  `data-other="$previousValue#3"`, `array_merge([])#2`.
   Mark a variable only where a method is called on it with `$<variable>-&gt;<method>` (`>` written `&gt;` in the
   attribute): `data-added="$clone-&gt;resolve"` marks `$clone` in `$clone->resolve()`, not in
   `$clone = clone $resolver;`.
   Mark the brackets of an array given to a call when the array itself is the example (e.g. an array given instead of
   a name, a list instead of an array), not what is inside: `data-removed="resolve([])"` marks the `[` and `]` of
-  `resolve(['foo'])` (`array(` and `)` before PHP 5.4).
+  `resolve(['foo'])` (`array(` and `)` before PHP 5.4), also after a name or a variable (`set('roles', ['foo'])`,
+  `array_merge($previousValue, ['bar'])`); `fn([])` marks the array returned by a closure
+  (`fn (Options $options): array => ['foo']`).
   When the paragraph above a block explains one part of its code (e.g. an argument, a variable), mark this part with
   `data-added`, name it in the paragraph and use it in the code (e.g. `data-added="$previousValue"` for "A second
   argument, `$previousValue`, receives...").
