@@ -14,6 +14,7 @@ The names listed in data-other are wrapped in <mark class="code-other"> (blue), 
 (e.g. two options of the same example).
 A string ('firstName') is also marked in the comments, between ' or ": // The option "firstName" does not exist.
 So is a constant (null, true, false) or a number, as a whole word: // ['key' => null]
+A variable followed by a call ($clone->resolve) marks the variable only where this method is called on it.
 A call followed by ([]) marks the brackets of the array given to this call, not what is inside: resolve([]) marks
 the [ and ] of resolve(['foo']), or array( and ) before PHP 5.4.
 The title of an example (<h3> followed by its block) gets the class example-exception when its code throws an
@@ -147,7 +148,7 @@ def run_in_docker():
 def mark(colored: str, opening_tag: str) -> str:
     for attribute, css_class in MARKS.items():
         names = re.search(rf'data-{attribute}="([^"]*)"', opening_tag)
-        for name in (names.group(1).split() if names else []):
+        for name in (html.unescape(names.group(1)).split() if names else []):
             colored = re.sub(
                 rf'<span class="tok-\w+">{re.escape(name)}</span>',
                 lambda token: f'<mark class="{css_class}">{token.group(0)}</mark>',
@@ -175,6 +176,15 @@ def mark(colored: str, opening_tag: str) -> str:
                     colored,
                 )
 
+            # A variable only where a method is called on it ($clone->resolve): not its other uses
+            receiver = re.fullmatch(r'(\$\w+)->(\w+)', name)
+            if receiver:
+                colored = re.sub(
+                    rf'<span class="tok-nv">{re.escape(receiver.group(1))}</span>'
+                    rf'(?=<span class="tok-o">-&gt;</span>(?:<mark[^>]*>)?<span class="tok-na">{receiver.group(2)}</span>)',
+                    lambda token: f'<mark class="{css_class}">{token.group(0)}</mark>',
+                    colored,
+                )
             # The brackets of the array given to a call (resolve([])): [ and ], or array( and ), not what is inside
             call = re.fullmatch(r'(\w+)\(\[\]\)', name)
             if call:

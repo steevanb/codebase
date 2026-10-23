@@ -79,7 +79,7 @@ The user can stop the review at any time: the changes already answered stay writ
 
 1. Every file is valid JSON, with the same format: 4 spaces of indentation, non-ASCII characters kept as they are,
    a final newline.
-2. In `docs/`, only touch the example pages written and what `bin/dev/site.py` builds. Do not commit.
+2. In `docs/`, only touch the example pages written and what `bin/dev/site.py` builds. Git: see the `git` skill.
 3. Summarize to the user: changes validated, changes skipped, labels changed, sections changed, example pages
    written, changes left to validate. If a label or a section changed, tell them to run `/app:site:update` to build
    the pages.

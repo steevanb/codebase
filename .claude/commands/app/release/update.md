@@ -253,6 +253,6 @@ For each version to update (the one given, or all of them, oldest first):
 
 1. Every file is valid JSON, and every commit of each version is in a change of its file.
 2. Check with `curl -L` that the new URLs (sources, pull requests, links) answer `200`.
-3. Do not touch `docs/`, do not commit.
+3. Do not touch `docs/`. Git: see the `git` skill.
 4. Summarize to the user, per version: features found, changes by type, changes added (and the commits split in
    several changes), choices you made. Then tell them to run `/app:site:update` to build the pages.
