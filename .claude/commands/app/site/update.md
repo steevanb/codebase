@@ -213,7 +213,7 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
 
   ```html
   <div class="code-block">
-      <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 9.5l3-3M7.5 4.5l1-1a2.5 2.5 0 0 1 3.5 3.5l-1 1M8.5 11.5l-1 1a2.5 2.5 0 0 1-3.5-3.5l1-1"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#value-validation" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Value Validation</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L105-L120" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::addAllowedValues() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L148-L158" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::addAllowedValues() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+      <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#value-validation" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Value Validation</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L105-L120" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::addAllowedValues() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L148-L158" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::addAllowedValues() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
       <pre class="code"><code class="language-php">...</code></pre>
   </div>
   ```
@@ -245,6 +245,11 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   `bin/dev/highlight.py` marks them in the
   code and in the comments showing a result or an
   exception message (`// The option "firstName" does not exist.`).
+  When two marked names of a block must be told apart (e.g. two options whose order matters), mark the second one
+  in blue with `data-other` (e.g. `data-added="'firstName'" data-other="'lastName'"`).
+  Mark the brackets of an array given to a call when the array itself is the example (e.g. an array given instead of
+  a name, a list instead of an array), not what is inside: `data-removed="resolve([])"` marks the `[` and `]` of
+  `resolve(['foo'])` (`array(` and `)` before PHP 5.4).
   When the paragraph above a block explains one part of its code (e.g. an argument, a variable), mark this part with
   `data-added`, name it in the paragraph and use it in the code (e.g. `data-added="$previousValue"` for "A second
   argument, `$previousValue`, receives...").

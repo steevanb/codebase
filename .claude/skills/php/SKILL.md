@@ -97,9 +97,14 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
   without parentheses (8.4), `mixed` and union types (8.0), arrow functions (7.4), `void`, nullable and `iterable`
   types (7.1), scalar and return types (7.0), `[]` arrays and calls on `new` (5.4), also in the comments showing a
   result. Write this code as the last `<pre>` of the block (the other ones are rebuilt from it).
-  Chain from `new` every call returning `$this`. A single call goes on the line of `new`, a comment about it (e.g. an
-  exception) above the statement: `$resolver = new OptionsResolver()->setDefaults(['key' => 'foo']);`.
-  Several calls go one per line, `new` on its own line, a comment just above the call it is about.
+  Chain from `new` every call returning `$this`. `new` is always on its own line, every call (even a single one) on
+  the next lines, one per line, a comment (e.g. an exception) just above the call it is about:
+
+  ```php
+  $resolver = new OptionsResolver()
+      ->setDefaults(['key' => 'foo']);
+  ```
+
   Before PHP 5.4, a single call becomes a statement on the variable, its comment above it after an empty line
   (`$resolver->setDefaults(array('key' => 'foo'));`), several calls are chained on the variable.
 - Type as much as the newest version allows: the parameters and the return type of every closure (e.g.
@@ -109,8 +114,7 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
   Also in a list of types: `'null'` first, e.g. `setAllowedTypes(['age' => ['null', 'int']])`, never
   `['int', 'null']`.
 - Chain as many calls as the API allows in the version shown (methods returning `$this`: check it in the code of
-  the version), from the creation of the object, one chained method per line when there are several (a single one
-  on the line of `new`, see above):
+  the version), from the creation of the object, one chained method per line, below `new` (see above):
   - PHP >= 8.4: `new` without parentheses around it;
   - PHP 5.4 – 8.3: `(new OptionsResolver())`;
   - PHP < 5.4: no call on `new`, so create the object in its own statement, then chain on the variable.
