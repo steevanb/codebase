@@ -10,8 +10,12 @@ A block is always rebuilt from its plain text, so the script can be run again sa
 The names listed in the data-removed and data-added attributes of the <code> tag (separated by spaces) are
 wrapped in <mark class="code-removed"> and <mark class="code-added">, to show what changed between two versions:
 <pre class="code"><code class="language-php" data-added="setOptions">
+The names listed in data-other are wrapped in <mark class="code-other"> (blue), to tell them apart from the green ones
+(e.g. two options of the same example).
 A string ('firstName') is also marked in the comments, between ' or ": // The option "firstName" does not exist.
 So is a constant (null, true, false) or a number, as a whole word: // ['key' => null]
+A call followed by ([]) marks the brackets of the array given to this call, not what is inside: resolve([]) marks
+the [ and ] of resolve(['foo']), or array( and ) before PHP 5.4.
 The title of an example (<h3> followed by its block) gets the class example-exception when its code throws an
 exception (a comment starting with its class: // InvalidOptionsException: ...), example-ok otherwise, unless it is
 example-warning, written by hand for a surprising behavior: the CSS shows "OK", "Exception" or "Warning" before it.
@@ -65,7 +69,7 @@ PHP_PRE = re.compile(r'<pre class="code"[^>]*>(<code class="language-php"[^>]*>)
 # The last minor version of each major version of PHP, offered besides the minimum version of the package
 PHP_VERSIONS = ['5.6', '7.4', '8.4']
 SCALAR_TYPES = 'string|int|float|bool'
-# PHP 8.4: a call on new without parentheses around it, on the same line or chained on the next ones
+# PHP 8.4: a call on new without parentheses around it, chained on the next lines
 NEW_WITHOUT_PARENTHESES = re.compile(r'^(\$\w+ = )new (\w+\([^()\n]*\))(?=->|\n(?: *//[^\n]*\n)* +->)', re.MULTILINE)
 # PHP 8.0: mixed type and union types, of a parameter or returned
 MIXED_PARAMETER = re.compile(r'(\(|, )mixed (\$\w+)')
@@ -91,10 +95,8 @@ SCALAR_PARAMETER = re.compile(rf'(\(|, )(?:{SCALAR_TYPES}) (\$\w+)')
 RETURN_TYPE = re.compile(r'\): \??[\w\\]+(?= \{)')
 # PHP 5.4: a call on new, the object being created in its own statement before
 CALL_ON_NEW = re.compile(r'^(\$\w+) = \(new (\w+\([^()\n]*\))\)\n(?=(?: *//[^\n]*\n)* +->)', re.MULTILINE)
-# PHP 5.4: a single call on new, on the same line, with the comments above it
-SINGLE_CALL_ON_NEW = re.compile(r'^((?://[^\n]*\n)*)(\$\w+) = \(new (\w+\([^()\n]*\))\)->', re.MULTILINE)
 TAG = re.compile(r'</?(?:span|mark)[^>]*>')
-MARKS = {'removed': 'code-removed', 'added': 'code-added'}
+MARKS = {'removed': 'code-removed', 'added': 'code-added', 'other': 'code-other'}
 # A marked type in a parameter list (after "(" or ","), followed by its parameter
 TYPED_PARAMETER = re.compile(
     r'(<span class="tok-p">[^<]*[(,]</span>\s*(?:<span class="tok-o">\?</span>)?)'
@@ -173,6 +175,11 @@ def mark(colored: str, opening_tag: str) -> str:
                     colored,
                 )
 
+            # The brackets of the array given to a call (resolve([])): [ and ], or array( and ), not what is inside
+            call = re.fullmatch(r'(\w+)\(\[\]\)', name)
+            if call:
+                colored = mark_ranges(colored, array_brackets(colored, call.group(1)), css_class)
+
     # One mark for the type and its parameter, so that the space between them is marked too
     colored = TYPED_PARAMETER.sub(
         lambda match: f'{match.group(1)}<mark class="{match.group(2)}">{match.group(3)}{match.group(4)}</mark>',
@@ -183,6 +190,54 @@ def mark(colored: str, opening_tag: str) -> str:
         colored = mark_in_body(colored, parameter.end(), parameter.group(2), parameter.group(1))
 
     return colored
+
+def plain_text(colored: str) -> tuple[str, list[int]]:
+    """The text of colored code, and the position in the colored code of each of its characters."""
+    text, positions = '', []
+    for character in re.finditer(r'<[^>]+>|&[#\w]+;|[^<&]', colored):
+        if not character.group(0).startswith('<'):
+            text += html.unescape(character.group(0))
+            positions.append(character.start())
+
+    return text, positions
+
+def array_brackets(colored: str, function: str) -> list[tuple[int, int]]:
+    """The positions in the text of the brackets of the arrays given to a function, outside the comments."""
+    text, _ = plain_text(colored)
+    ranges = []
+    for call in re.finditer(rf'(?<![\w$]){re.escape(function)}\((\[|array\()', text):
+        if '//' in text[text.rfind('\n', 0, call.start()) + 1:call.start()]:
+            continue
+        start = call.start(1)
+        end = expression_end(text, call.end())
+        ranges += [(start, call.end()), (end, end + 1)]
+
+    return ranges
+
+def open_token(colored: str) -> str:
+    """The opening tag of the token still open at the end of colored code, or an empty string."""
+    tags = []
+    for tag in re.finditer(r'<span class="tok-\w+">|</span>', colored):
+        if tag.group(0) == '</span>':
+            tags.pop()
+        else:
+            tags.append(tag.group(0))
+
+    return tags[-1] if tags else ''
+
+def mark_ranges(colored: str, ranges: list[tuple[int, int]], css_class: str) -> str:
+    """Mark ranges of the text of colored code, splitting the tokens they start or end in."""
+    _, positions = plain_text(colored)
+    for start, end in sorted(ranges, reverse=True):
+        first = positions[start]
+        last = positions[end - 1] + len(re.match(r'&[#\w]+;|.', colored[positions[end - 1]:], re.DOTALL).group(0))
+        before, after = open_token(colored[:first]), open_token(colored[:last])
+        colored = (
+            colored[:first] + ('</span>' if before else '') + f'<mark class="{css_class}">' + before
+            + colored[first:last] + ('</span>' if after else '') + '</mark>' + after + colored[last:]
+        )
+
+    return re.sub(r'<span class="tok-\w+"></span>', '', colored)
 
 def mark_in_body(colored: str, start: int, variable: str, css_class: str) -> str:
     """Mark the uses of a parameter in the body of its function: from its first "{" to the matching "}"."""
@@ -331,11 +386,6 @@ def php_syntax(code: str, php: str) -> str:
         code = UNCAUGHT_ERROR.sub('// Fatal error: ', code)
         code = UNCAUGHT_TYPE_ERROR.sub('// Catchable fatal error: ', code)
     if version(php) < (5, 4):
-        code = SINGLE_CALL_ON_NEW.sub(
-            lambda match: f'{match.group(2)} = new {match.group(3)};\n'
-            + (f'\n{match.group(1)}' if match.group(1) else '') + f'{match.group(2)}->',
-            code,
-        )
         code = long_arrays(calls_on_variable(code))
 
     return code

@@ -658,19 +658,14 @@ section > h2 + h3 {
 }
 
 /* What the code of an example shows (see bin/dev/highlight.py): OK, a surprising behavior or an exception, shaped
-   like the chapter number */
-section > h3.example-ok,
-section > h3.example-warning,
-section > h3.example-exception {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
+   like the chapter number. Inline, not in a flex title: the text of a flex title is only as wide as itself, so a
+   selection dragged past its end, over the empty space of the title, jumps back to its start */
 section > h3.example-ok::before,
 section > h3.example-warning::before,
 section > h3.example-exception::before {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
     font: 600 0.75rem var(--font-mono);
     color: var(--surface);
     padding: 4px 9px;
@@ -1443,7 +1438,8 @@ pre.code code {
 }
 
 mark.code-removed,
-mark.code-added {
+mark.code-added,
+mark.code-other {
     color: inherit;
     padding: 1px 2px;
     border-radius: 1.5px;
@@ -1457,6 +1453,12 @@ mark.code-removed {
 mark.code-added {
     background: var(--secondary-50);
     box-shadow: inset 0 -2px 0 var(--secondary);
+}
+
+/* A second name marked beside the green ones, to tell them apart (e.g. two options) */
+mark.code-other {
+    background: var(--blue-50);
+    box-shadow: inset 0 -2px 0 var(--blue);
 }
 
 /* The method or the function an example is about: in bold blue, the values it changes keeping their mark */

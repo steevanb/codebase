@@ -698,8 +698,7 @@
                     "type": "example",
                     "slug": "resolve"
                 }
-            ],
-            "validated": false
+            ]
         },
         "7eff69b7-b59e-4356-b991-fbfb0ffffaeb": {
             "message": "Make `OptionsResolver` clonable",
