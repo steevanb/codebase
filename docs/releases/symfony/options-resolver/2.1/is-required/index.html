@@ -38,7 +38,7 @@
             is-required
         </nav>
 
-        <h1><code>isRequired()</code></h1>
+        <h1><code>isRequired($option)</code></h1>
 
         <section id="overview" class="tone-amber">
             <h2><span>At a <em>glance</em></span></h2>
@@ -56,7 +56,7 @@
         </section>
 
         <section id="is-required" class="tone-emerald">
-            <h2><span><em>Required</em> option <code>isRequired()</code></span></h2>
+            <h2><span><em>Required</em> option</span></h2>
             <h3 class="example-ok">Option unknown</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#required-options" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Required Options</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L182-L193" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::isRequired() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L206-L212" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::isRequired() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
@@ -329,7 +329,7 @@
 <span class="tok-c1">// true</span>
 <span class="tok-nv">$isRequired</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">isRequired</span></mark><span class="tok-p">(</span><mark class="code-added"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span></code></pre>
             </div>
-            <h3 class="example-ok">Option given to resolve()</h3>
+            <h3 class="example-ok">Option given to <code>resolve(array $options = array())</code></h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#required-options" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Required Options</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L182-L193" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::isRequired() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L206-L212" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::isRequired() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
                 <pre class="code" data-php="5.3"><code class="language-php" data-added="isRequired 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
