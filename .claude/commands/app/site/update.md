@@ -259,12 +259,16 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   Mark the strings the example is about (e.g. `data-mark-1="'firstName'"` for an unknown or missing option, the key of
   an option given to `resolve()`, not its value, unless the example is about the value (e.g. an allowed value, a
   value transformed and the value it becomes)):
-  `bin/dev/highlight.py` marks them in the
-  code and in the comments showing a result or an
-  exception message (`// The option "firstName" does not exist.`).
+  `bin/dev/highlight.py` marks them in the code, in the comments showing a result or an exception message
+  (`// The option "firstName" does not exist.`), and between `"` in the strings of the code (an exception message
+  given to `expectExceptionObject()`).
   When two marked names of a block must be told apart (e.g. two options whose order matters), mark the second one
   in blue with `data-mark-2` (e.g. `data-mark-1="'firstName'" data-mark-2="'lastName'"`), and a third one in amber with
   `data-mark-3`.
+  Show a name like the label of the title of an example with `data-label-warning` (amber, e.g. the assertion of a
+  surprising value: `data-label-warning="assertNull"`) or `data-label-exception` (red). The class of an exception
+  expected by PHPUnit (`expectExceptionObject(new InvalidOptionsException(...))`) is shown like the `Exception`
+  label by `bin/dev/highlight.py`, like the name starting a comment showing a PHP error or an exception.
   When the values of an example follow each other (e.g. a value, then the closures building on it), give each step
   its own color, in this order: green, blue, amber; a `$previousValue` takes the color of the value it receives.
   Mark a single occurrence of a name in the code with `<name>#<number>` (1 for the first, not in the comments):
@@ -277,8 +281,9 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   `resolve(['foo'])` (`array(` and `)` before PHP 5.4), also after a name or a variable (`set('roles', ['foo'])`,
   `array_merge($previousValue, ['bar'])`); `fn([])` marks the array returned by a closure
   (`fn (Options $options): array => ['foo']`). `[]` marks an empty array in the comments showing a result (`// []`,
-  `// array()` before PHP 5.4). A name with a parenthesis, written without spaces, marks this whole expression in
-  the code, not in the comments: `data-mark-3="strtoupper($value)"`.
+  `// array()` before PHP 5.4). A name with a parenthesis or `::`, written without spaces, marks this whole
+  expression in the code, not in the comments: `data-mark-3="strtoupper($value)"`,
+  `data-label-warning="Closure::class 'Closure'"` (`'Closure'` before PHP 5.5).
   When the paragraph above a block explains one part of its code (e.g. an argument, a variable), mark this part with
   `data-mark-1`, name it in the paragraph and use it in the code (e.g. `data-mark-1="$previousValue"` for "A second
   argument, `$previousValue`, receives...").

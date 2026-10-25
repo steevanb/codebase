@@ -10,6 +10,8 @@ A block is always rebuilt from its plain text, so the script can be run again sa
 The names listed in the data-removed and data-mark-1 attributes of the <code> tag (separated by spaces) are
 wrapped in <mark class="code-removed"> and <mark class="code-mark-1">, to show what changed between two versions:
 <pre class="code"><code class="language-php" data-mark-1="setOptions">
+The names listed in data-label-warning and data-label-exception are wrapped in <mark class="code-label
+code-label-warning"> and <mark class="code-label code-label-exception">, shown like the labels of the titles.
 The names listed in data-mark-2 are wrapped in <mark class="code-mark-2"> (blue), to tell them apart from the green ones
 (e.g. two options of the same example), and those listed in data-mark-3 in <mark class="code-mark-3"> (amber), for a
 third one.
@@ -38,11 +40,12 @@ allows. The code-meta gives the minimum PHP version of the package (<span>PHP 5.
 one and the last minor version of each newer major version of PHP allowed by the package (5.6, 7.4, 8.4, up to the
 php.max of its settings file). The code of the older versions is derived from the newest one, removing what they do
 not support: new without parentheses (8.4), mixed and union types (8.0), arrow functions (7.4), void, nullable and
-iterable types (7.1), scalar and return types (7.0), [] arrays and calls on new (5.4). The messages shown in the
-comments are the ones of each version, the PHP errors named by their constant: the E_WARNING of an undefined array
-key is an E_NOTICE before PHP 8.0, an Error is an E_ERROR before PHP 7.0, a TypeError an E_RECOVERABLE_ERROR (the
-message of a TypeError for an argument of the wrong class is worded differently before PHP 8.0, the TypeError of an
-illegal offset in isset() is an E_WARNING before PHP 8.0, isset() then giving false).
+iterable types (7.1), scalar and return types (7.0), ::class (5.5, the name of the class as a string), [] arrays and
+calls on new (5.4). The messages shown in the comments are the ones of each version, the PHP errors named by their
+constant: the E_WARNING of an undefined array key is an E_NOTICE before PHP 8.0, an Error is an E_ERROR before PHP
+7.0, a TypeError an E_RECOVERABLE_ERROR (the message of a TypeError for an argument of the wrong class is worded
+differently before PHP 8.0, the TypeError of an illegal offset in isset() is an E_WARNING before PHP 8.0, isset() then
+giving false).
 The name starting a comment that shows a PHP error or an exception (// E_WARNING: ..., // InvalidOptionsException: ...)
 is wrapped in <span class="code-label code-label-warning"> (E_NOTICE, E_WARNING, E_DEPRECATED) or
 <span class="code-label code-label-exception"> (an exception, an Error, E_ERROR, E_RECOVERABLE_ERROR), shown like the
@@ -80,6 +83,8 @@ PHP_PRE = re.compile(r'<pre class="code"[^>]*>(<code class="language-php"[^>]*>)
 PHP_VERSIONS = ['5.6', '7.4', '8.4']
 SCALAR_TYPES = 'string|int|float|bool'
 # PHP 8.4: a call on new without parentheses around it, chained on the next lines
+# PHP 5.5: the name of a class with ::class, a string before
+CLASS_CONSTANT = re.compile(r'\b([A-Z]\w*)::class\b')
 NEW_WITHOUT_PARENTHESES = re.compile(r'^(\$\w+ = )new (\w+\([^()\n]*\))(?=->|\n(?: *//[^\n]*\n)* +->)', re.MULTILINE)
 # PHP 8.0: mixed type and union types, of a parameter or returned
 MIXED_PARAMETER = re.compile(r'(\(|, )mixed (\$\w+)')
@@ -106,17 +111,21 @@ RETURN_TYPE = re.compile(r'\): \??[\w\\]+(?= \{)')
 # PHP 5.4: a call on new, the object being created in its own statement before
 CALL_ON_NEW = re.compile(r'^(\$\w+) = \(new (\w+\([^()\n]*\))\)\n(?=(?: *//[^\n]*\n)* +->)', re.MULTILINE)
 TAG = re.compile(r'</?(?:span|mark)[^>]*>')
-MARKS = {'removed': 'code-removed', 'mark-1': 'code-mark-1', 'mark-2': 'code-mark-2', 'mark-3': 'code-mark-3'}
+MARKS = {
+    'removed': 'code-removed', 'mark-1': 'code-mark-1', 'mark-2': 'code-mark-2', 'mark-3': 'code-mark-3',
+    # Shown like the label of the title of an example (e.g. the assertion of a surprising value: assertNull)
+    'label-warning': 'code-label code-label-warning', 'label-exception': 'code-label code-label-exception',
+}
 # A marked type in a parameter list (after "(" or ","), followed by its parameter
 TYPED_PARAMETER = re.compile(
     r'(<span class="tok-p">[^<]*[(,]</span>\s*(?:<span class="tok-o">\?</span>)?)'
-    r'<mark class="([\w-]+)">(<span class="tok-\w+">[^<]+</span>)</mark>(\s+)'
+    r'<mark class="([\w -]+)">(<span class="tok-\w+">[^<]+</span>)</mark>(\s+)'
     # The parameter may be marked too (data-mark-1="mixed $options#3"): one mark for both
     r'(?:<mark class="\2">)?(<span class="tok-nv">\$\w+</span>)(?:</mark>)?'
 )
 # A type and its parameter once marked together, to find the parameter in the body of the function
 TYPED_PARAMETER_MARKED = re.compile(
-    r'<mark class="([\w-]+)"><span class="tok-\w+">[^<]+</span>\s+<span class="tok-nv">(\$\w+)</span></mark>'
+    r'<mark class="([\w -]+)"><span class="tok-\w+">[^<]+</span>\s+<span class="tok-nv">(\$\w+)</span></mark>'
 )
 PUNCTUATION = re.compile(r'<span class="tok-p">([^<]*)</span>')
 COMMENT = re.compile(r'<span class="tok-c1">(?:[^<]|</?mark[^>]*>)*</span>')
@@ -138,9 +147,19 @@ EXAMPLE = re.compile(
 )
 EXAMPLE_ORDER = ['example-ok', 'example-warning', 'example-exception']
 # The short name of the class of an exception thrown by the next line, at the start of a comment (once labelled)
-EXCEPTION = re.compile(r'<span class="tok-c1">// <span class="code-label code-label-exception">\w*(?:Exception|Error)</span>:')
+# or an exception expected by PHPUnit ($this->expectExceptionObject(new InvalidOptionsException('...')))
+EXCEPTION = re.compile(
+    r'<span class="tok-c1">// <span class="code-label code-label-exception">\w*(?:Exception|Error)</span>:'
+    r'|<span class="tok-na">expectException(?:Object)?</span>'
+)
 # The PHP error or the exception at the start of a comment (// E_WARNING: ..., // InvalidOptionsException: ...)
 COMMENT_LABEL = re.compile(r'(<span class="tok-c1">// )(E_[A-Z_]+|\w*(?:Exception|Error))(?=:)')
+# The class of an exception expected by PHPUnit: expectExceptionObject(new InvalidOptionsException('...')),
+# expectException(InvalidOptionsException::class)
+EXPECTED_EXCEPTION = re.compile(
+    r'(<span class="tok-na">expectException(?:Object)?</span><span class="tok-p">\(</span>\s*'
+    r'(?:<span class="tok-k">new</span> )?)<span class="tok-nx">(\w+)</span>'
+)
 WARNING_LABELS = ('E_NOTICE', 'E_WARNING', 'E_DEPRECATED', 'E_USER_NOTICE', 'E_USER_WARNING', 'E_USER_DEPRECATED')
 # The use statements at the start of a block, and the empty lines following them
 USES = re.compile(r'(?:use [^\n]+;\n)+\n*')
@@ -187,6 +206,16 @@ def mark(colored: str, opening_tag: str) -> str:
                     ),
                     colored,
                 )
+                # And between " in a string of the code (an exception message given to expectExceptionObject())
+                colored = re.sub(
+                    r'<span class="tok-s1">(?:[^<]|</?mark[^>]*>)*</span>',
+                    lambda token: re.sub(
+                        rf'"{re.escape(string.group(1))}"',
+                        lambda quoted: f'<mark class="{css_class}">{quoted.group(0)}</mark>',
+                        token.group(0),
+                    ),
+                    colored,
+                )
             # A constant (null, true, false) or a number is also marked in the comments, as a whole word
             elif occurrence is None and re.fullmatch(r'null|true|false|\d+(?:\.\d+)?', name):
                 colored = COMMENT.sub(
@@ -224,8 +253,8 @@ def mark(colored: str, opening_tag: str) -> str:
                 if occurrence:
                     ranges = ranges[2 * occurrence - 2:2 * occurrence]
                 colored = mark_ranges(colored, ranges, css_class)
-            # An expression (strtoupper($value)): its whole text in the code, not in the comments
-            elif '(' in name:
+            # An expression (strtoupper($value), Closure::class): its whole text in the code, not in the comments
+            elif '(' in name or '::' in name:
                 text, _ = plain_text(colored)
                 ranges = [
                     (found.start(), found.end())
@@ -463,6 +492,8 @@ def php_syntax(code: str, php: str) -> str:
         code = RETURN_TYPE.sub(')', code)
         code = UNCAUGHT_ERROR.sub('// E_ERROR: ', code)
         code = UNCAUGHT_TYPE_ERROR.sub('// E_RECOVERABLE_ERROR: ', code)
+    if version(php) < (5, 5):
+        code = CLASS_CONSTANT.sub(r"'\1'", code)
     if version(php) < (5, 4):
         code = long_arrays(calls_on_variable(code))
 
@@ -537,6 +568,7 @@ def process(path: Path) -> bool:
             f'{"warning" if label.group(2) in WARNING_LABELS else "exception"}">{label.group(2)}</span>',
             colored,
         )
+        colored = EXPECTED_EXCEPTION.sub(r'\1<span class="code-label code-label-exception">\2</span>', colored)
 
         return opening_tag + colored + match.group(4)
 
