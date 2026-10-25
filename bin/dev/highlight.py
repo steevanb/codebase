@@ -7,14 +7,14 @@ Every <pre class="code"><code class="language-<name>"> block is colored with <sp
 The tags are written in the HTML itself: no JavaScript, no flicker when the page loads.
 A block is always rebuilt from its plain text, so the script can be run again safely.
 
-The names listed in the data-removed and data-added attributes of the <code> tag (separated by spaces) are
-wrapped in <mark class="code-removed"> and <mark class="code-added">, to show what changed between two versions:
-<pre class="code"><code class="language-php" data-added="setOptions">
-The names listed in data-other are wrapped in <mark class="code-other"> (blue), to tell them apart from the green ones
-(e.g. two options of the same example), and those listed in data-third in <mark class="code-third"> (amber), for a
+The names listed in the data-removed and data-mark-1 attributes of the <code> tag (separated by spaces) are
+wrapped in <mark class="code-removed"> and <mark class="code-mark-1">, to show what changed between two versions:
+<pre class="code"><code class="language-php" data-mark-1="setOptions">
+The names listed in data-mark-2 are wrapped in <mark class="code-mark-2"> (blue), to tell them apart from the green ones
+(e.g. two options of the same example), and those listed in data-mark-3 in <mark class="code-mark-3"> (amber), for a
 third one.
 A name followed by #<number> is only marked at this occurrence in the code (1 for the first), not in the comments:
-data-other="$previousValue#3" marks the third $previousValue only, array_merge([])#2 the array of the second call.
+data-mark-2="$previousValue#3" marks the third $previousValue only, array_merge([])#2 the array of the second call.
 A string ('firstName') is also marked in the comments, between ' or ": // The option "firstName" does not exist.
 So is a constant (null, true, false) or a number, as a whole word: // ['key' => null]
 A variable followed by a call ($clone->resolve) marks the variable only where this method is called on it.
@@ -39,10 +39,14 @@ one and the last minor version of each newer major version of PHP allowed by the
 php.max of its settings file). The code of the older versions is derived from the newest one, removing what they do
 not support: new without parentheses (8.4), mixed and union types (8.0), arrow functions (7.4), void, nullable and
 iterable types (7.1), scalar and return types (7.0), [] arrays and calls on new (5.4). The messages shown in the
-comments are the ones of each version: the warning of an undefined array key is a notice before PHP 8.0, an Error is
-a fatal error before PHP 7.0, a TypeError a catchable fatal error (the message of a TypeError for an argument of
-the wrong class is worded differently before PHP 8.0, the TypeError of an illegal offset in isset() is a warning
-before PHP 8.0, isset() then giving false).
+comments are the ones of each version, the PHP errors named by their constant: the E_WARNING of an undefined array
+key is an E_NOTICE before PHP 8.0, an Error is an E_ERROR before PHP 7.0, a TypeError an E_RECOVERABLE_ERROR (the
+message of a TypeError for an argument of the wrong class is worded differently before PHP 8.0, the TypeError of an
+illegal offset in isset() is an E_WARNING before PHP 8.0, isset() then giving false).
+The name starting a comment that shows a PHP error or an exception (// E_WARNING: ..., // InvalidOptionsException: ...)
+is wrapped in <span class="code-label code-label-warning"> (E_NOTICE, E_WARNING, E_DEPRECATED) or
+<span class="code-label code-label-exception"> (an exception, an Error, E_ERROR, E_RECOVERABLE_ERROR), shown like the
+labels of the titles of the examples.
 One <pre class="code" data-php="<versions>"> per different code, from the oldest version to the newest one, the
 last one being the source of the others (the same <pre> for every version when the code does not change).
 The versions are listed on the code-block (data-php-versions), /assets/js/main.js shows the chosen one.
@@ -81,13 +85,13 @@ NEW_WITHOUT_PARENTHESES = re.compile(r'^(\$\w+ = )new (\w+\([^()\n]*\))(?=->|\n(
 MIXED_PARAMETER = re.compile(r'(\(|, )mixed (\$\w+)')
 UNION_PARAMETER = re.compile(r'(\(|, )\??[\w\\]+(?:\|[\w\\]+)+ (\$\w+)')
 MIXED_OR_UNION_RETURN = re.compile(r'\): (?:mixed|static|[\w\\?]+(?:\|[\w\\]+)+)(?= \{| =>)')
-# PHP 8.0: the warning of an undefined key of an array, a notice before
-UNDEFINED_KEY = re.compile(r'// Warning: Undefined array key "([^"]*)"')
+# PHP 8.0: the E_WARNING of an undefined key of an array, an E_NOTICE before
+UNDEFINED_KEY = re.compile(r'// E_WARNING: Undefined array key "([^"]*)"')
 # PHP 8.0: the message of a TypeError for an argument of the wrong class, worded differently before
 TYPE_ERROR_ARGUMENT = re.compile(r'(// TypeError: )([\w\\]+::\w+\(\)): Argument #(\d+) \(\$\w+\) must be of type ([\w\\]+), (\w+) given')
-# PHP 8.0: the TypeError of an illegal offset in isset(), a warning before, isset() then giving false
+# PHP 8.0: the TypeError of an illegal offset in isset(), an E_WARNING before, isset() then giving false
 ILLEGAL_OFFSET_ISSET = re.compile(r'// TypeError: Cannot access offset of type \w+ in isset or empty')
-# PHP 7.0: an Error thrown (e.g. instanceof on null), a fatal error before; a TypeError, a catchable fatal error
+# PHP 7.0: an Error thrown (e.g. instanceof on null), an E_ERROR before; a TypeError, an E_RECOVERABLE_ERROR
 UNCAUGHT_ERROR = re.compile(r'// Error: ')
 UNCAUGHT_TYPE_ERROR = re.compile(r'// TypeError: ')
 # PHP 7.4: an arrow function, its parameters and its return type
@@ -102,12 +106,12 @@ RETURN_TYPE = re.compile(r'\): \??[\w\\]+(?= \{)')
 # PHP 5.4: a call on new, the object being created in its own statement before
 CALL_ON_NEW = re.compile(r'^(\$\w+) = \(new (\w+\([^()\n]*\))\)\n(?=(?: *//[^\n]*\n)* +->)', re.MULTILINE)
 TAG = re.compile(r'</?(?:span|mark)[^>]*>')
-MARKS = {'removed': 'code-removed', 'added': 'code-added', 'other': 'code-other', 'third': 'code-third'}
+MARKS = {'removed': 'code-removed', 'mark-1': 'code-mark-1', 'mark-2': 'code-mark-2', 'mark-3': 'code-mark-3'}
 # A marked type in a parameter list (after "(" or ","), followed by its parameter
 TYPED_PARAMETER = re.compile(
     r'(<span class="tok-p">[^<]*[(,]</span>\s*(?:<span class="tok-o">\?</span>)?)'
     r'<mark class="([\w-]+)">(<span class="tok-\w+">[^<]+</span>)</mark>(\s+)'
-    # The parameter may be marked too (data-added="mixed $options#3"): one mark for both
+    # The parameter may be marked too (data-mark-1="mixed $options#3"): one mark for both
     r'(?:<mark class="\2">)?(<span class="tok-nv">\$\w+</span>)(?:</mark>)?'
 )
 # A type and its parameter once marked together, to find the parameter in the body of the function
@@ -116,14 +120,15 @@ TYPED_PARAMETER_MARKED = re.compile(
 )
 PUNCTUATION = re.compile(r'<span class="tok-p">([^<]*)</span>')
 COMMENT = re.compile(r'<span class="tok-c1">(?:[^<]|</?mark[^>]*>)*</span>')
-# The title of an example (<h3>), followed by its paragraphs and its block of code
+# The title of an example (<h3>), followed by its paragraphs, its callouts and its block of code
 EXAMPLE_TITLE = re.compile(
-    r'<h3(?: class="([^"]*)")?>(.*?</h3>(?:\s*<p>.*?</p>)*\s*<div class="code-block".*?</pre>\s*</div>)',
+    r'<h3(?: class="([^"]*)")?>((?:(?!</h3>).)*</h3>(?:\s*<p>.*?</p>|\s*<div class="callout[^"]*">.*?</div>)*'
+    r'\s*<div class="code-block".*?</pre>\s*</div>)',
     re.DOTALL,
 )
-# The examples of a section, after its title and its paragraphs, and an example in it
+# The examples of a section, after its title, its paragraphs and its callouts, and an example in it
 SECTION_EXAMPLES = re.compile(
-    r'(<section[^>]*>\s*<h2>[^\n]*</h2>(?:\s*<p>.*?</p>|\s*<ul[^>]*>.*?</ul>)*)((?:\s*<h3 class="example-[\w-]+">.*?</pre>\s*</div>)+)(\s*</section>)',
+    r'(<section[^>]*>\s*<h2>[^\n]*</h2>(?:\s*<p>.*?</p>|\s*<ul[^>]*>.*?</ul>|\s*<div class="callout[^"]*">.*?</div>)*)((?:\s*<h3 class="example-[\w-]+">.*?</pre>\s*</div>)+)(\s*</section>)',
     re.DOTALL,
 )
 EXAMPLE = re.compile(
@@ -132,8 +137,11 @@ EXAMPLE = re.compile(
     re.DOTALL,
 )
 EXAMPLE_ORDER = ['example-ok', 'example-warning', 'example-exception']
-# The short name of the class of an exception thrown by the next line, at the start of a comment
-EXCEPTION = re.compile(r'<span class="tok-c1">// \w+(?:Exception|Error):')
+# The short name of the class of an exception thrown by the next line, at the start of a comment (once labelled)
+EXCEPTION = re.compile(r'<span class="tok-c1">// <span class="code-label code-label-exception">\w*(?:Exception|Error)</span>:')
+# The PHP error or the exception at the start of a comment (// E_WARNING: ..., // InvalidOptionsException: ...)
+COMMENT_LABEL = re.compile(r'(<span class="tok-c1">// )(E_[A-Z_]+|\w*(?:Exception|Error))(?=:)')
+WARNING_LABELS = ('E_NOTICE', 'E_WARNING', 'E_DEPRECATED', 'E_USER_NOTICE', 'E_USER_WARNING', 'E_USER_DEPRECATED')
 # The use statements at the start of a block, and the empty lines following them
 USES = re.compile(r'(?:use [^\n]+;\n)+\n*')
 
@@ -159,13 +167,15 @@ def mark(colored: str, opening_tag: str) -> str:
             # name#2: only the second occurrence of the name in the code, not in the comments
             name, occurrence = re.fullmatch(r'(.+?)(?:#(\d+))?', name).groups()
             occurrence = int(occurrence) if occurrence else None
-            # A class is not marked where it is created (new Options()): only where it is used
-            colored = sub_occurrence(
-                rf'(?<!<span class="tok-k">new</span> )<span class="tok-\w+">{re.escape(name)}</span>',
-                lambda token: f'<mark class="{css_class}">{token.group(0)}</mark>',
-                colored,
-                occurrence,
-            )
+            # A class is not marked where it is created (new Options()): only where it is used.
+            # [] is only marked in the comments: in the code, call([]) marks the array given to a call
+            if name != '[]':
+                colored = sub_occurrence(
+                    rf'(?<!<span class="tok-k">new</span> )<span class="tok-\w+">{re.escape(name)}</span>',
+                    lambda token: f'<mark class="{css_class}">{token.group(0)}</mark>',
+                    colored,
+                    occurrence,
+                )
             # A string is also marked in the comments (results, exception messages), between ' or "
             string = re.fullmatch(r"'([^']+)'", name)
             if string and occurrence is None:
@@ -197,12 +207,33 @@ def mark(colored: str, opening_tag: str) -> str:
                     lambda token: f'<mark class="{css_class}">{token.group(0)}</mark>',
                     colored,
                 )
+            # An empty array in the comments (a result): [] or array()
+            if name == '[]':
+                colored = COMMENT.sub(
+                    lambda comment: re.sub(
+                        r'(?<![\w\'"])(?:\[\]|array\(\))',
+                        lambda array: f'<mark class="{css_class}">{array.group(0)}</mark>',
+                        comment.group(0),
+                    ),
+                    colored,
+                )
             # The brackets of the array given to a call (resolve([])): [ and ], or array( and ), not what is inside
             call = re.fullmatch(r'(\w+)\(\[\]\)', name)
             if call:
                 ranges = array_brackets(colored, call.group(1))
                 if occurrence:
                     ranges = ranges[2 * occurrence - 2:2 * occurrence]
+                colored = mark_ranges(colored, ranges, css_class)
+            # An expression (strtoupper($value)): its whole text in the code, not in the comments
+            elif '(' in name:
+                text, _ = plain_text(colored)
+                ranges = [
+                    (found.start(), found.end())
+                    for found in re.finditer(re.escape(name), text)
+                    if '//' not in text[text.rfind('\n', 0, found.start()) + 1:found.start()]
+                ]
+                if occurrence:
+                    ranges = ranges[occurrence - 1:occurrence]
                 colored = mark_ranges(colored, ranges, css_class)
 
     # One mark for the type and its parameter, so that the space between them is marked too
@@ -268,7 +299,14 @@ def open_token(colored: str) -> str:
 def mark_ranges(colored: str, ranges: list[tuple[int, int]], css_class: str) -> str:
     """Mark ranges of the text of colored code, splitting the tokens they start or end in."""
     _, positions = plain_text(colored)
-    for start, end in sorted(ranges, reverse=True):
+    # Ranges next to each other are one mark: the brackets of an empty array ([] or array())
+    merged = []
+    for start, end in sorted(ranges):
+        if merged and merged[-1][1] == start:
+            merged[-1] = (merged[-1][0], end)
+        else:
+            merged.append((start, end))
+    for start, end in reversed(merged):
         first = positions[start]
         last = positions[end - 1] + len(re.match(r'&[#\w]+;|.', colored[positions[end - 1]:], re.DOTALL).group(0))
         before, after = open_token(colored[:first]), open_token(colored[:last])
@@ -408,8 +446,8 @@ def php_syntax(code: str, php: str) -> str:
         code = MIXED_PARAMETER.sub(r'\1\2', code)
         code = UNION_PARAMETER.sub(r'\1\2', code)
         code = MIXED_OR_UNION_RETURN.sub(')', code)
-        code = UNDEFINED_KEY.sub(r'// Notice: Undefined index: \1', code)
-        code = ILLEGAL_OFFSET_ISSET.sub('// Warning: Illegal offset type in isset or empty\n// false', code)
+        code = UNDEFINED_KEY.sub(r'// E_NOTICE: Undefined index: \1', code)
+        code = ILLEGAL_OFFSET_ISSET.sub('// E_WARNING: Illegal offset type in isset or empty\n// false', code)
         code = TYPE_ERROR_ARGUMENT.sub(r'\1Argument \3 passed to \2 must be an instance of \4, \5 given', code)
     if version(php) < (7, 4):
         code = closures(code)
@@ -423,8 +461,8 @@ def php_syntax(code: str, php: str) -> str:
     if version(php) < (7, 0):
         code = SCALAR_PARAMETER.sub(r'\1\2', code)
         code = RETURN_TYPE.sub(')', code)
-        code = UNCAUGHT_ERROR.sub('// Fatal error: ', code)
-        code = UNCAUGHT_TYPE_ERROR.sub('// Catchable fatal error: ', code)
+        code = UNCAUGHT_ERROR.sub('// E_ERROR: ', code)
+        code = UNCAUGHT_TYPE_ERROR.sub('// E_RECOVERABLE_ERROR: ', code)
     if version(php) < (5, 4):
         code = long_arrays(calls_on_variable(code))
 
@@ -493,6 +531,12 @@ def process(path: Path) -> bool:
         if uses:
             colored_uses = highlight(uses.group(0), lexer, formatter).rstrip('\n')
             colored = f'<span class="code-uses">{colored_uses}\n\n</span>{colored}'
+
+        colored = COMMENT_LABEL.sub(
+            lambda label: f'{label.group(1)}<span class="code-label code-label-'
+            f'{"warning" if label.group(2) in WARNING_LABELS else "exception"}">{label.group(2)}</span>',
+            colored,
+        )
 
         return opening_tag + colored + match.group(4)
 

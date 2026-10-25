@@ -60,24 +60,24 @@
             <h3 class="example-ok">Option not given</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#options-without-default-values" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Options without Default Values</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L59-L74" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::setOptional() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L100-L114" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::setOptional() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3"><code class="language-php" data-added="setOptional"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="setOptional"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
-<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">));</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">));</span>
 
 <span class="tok-c1">// array()</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
-                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-added="setOptional"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-mark-1="setOptional"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">]);</span>
 
 <span class="tok-c1">// []</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
-                <pre class="code" data-php="8.4"><code class="language-php" data-added="setOptional"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="setOptional"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span><span class="tok-p">]);</span>
 
 <span class="tok-c1">// []</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
@@ -85,152 +85,152 @@
             <h3 class="example-ok">Option given</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#options-without-default-values" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Options without Default Values</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L195-L209" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::resolve() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L214-L237" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::resolve() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3"><code class="language-php" data-added="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
-<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-added"><span class="tok-s1">'email'</span></mark><span class="tok-p">));</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">));</span>
 
-<span class="tok-c1">// array(<mark class="code-added">'email'</mark> =&gt; 'foo@bar.com')</span>
-<span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-added"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">));</span></code></pre>
-                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-added="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+<span class="tok-c1">// array(<mark class="code-mark-1">'email'</mark> =&gt; 'foo@bar.com')</span>
+<span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">));</span></code></pre>
+                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-mark-1="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-added"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
 
-<span class="tok-c1">// [<mark class="code-added">'email'</mark> =&gt; 'foo@bar.com']</span>
-<span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><mark class="code-added"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">]);</span></code></pre>
-                <pre class="code" data-php="8.4"><code class="language-php" data-added="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+<span class="tok-c1">// [<mark class="code-mark-1">'email'</mark> =&gt; 'foo@bar.com']</span>
+<span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">]);</span></code></pre>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-added"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
 
-<span class="tok-c1">// [<mark class="code-added">'email'</mark> =&gt; 'foo@bar.com']</span>
-<span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><mark class="code-added"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">]);</span></code></pre>
+<span class="tok-c1">// [<mark class="code-mark-1">'email'</mark> =&gt; 'foo@bar.com']</span>
+<span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">([</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark> <span class="tok-o">=&gt;</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">]);</span></code></pre>
             </div>
             <h3 class="example-ok">Option given or not</h3>
             <p>An option not given is missing from the result, instead of being <code>null</code>: it tells whether the option was given.</p>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#options-without-default-values" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Options without Default Values</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L59-L74" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::setOptional() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L100-L114" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::setOptional() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3"><code class="language-php" data-added="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
-<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-added"><span class="tok-s1">'email'</span></mark><span class="tok-p">));</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">));</span>
 
 <span class="tok-c1">// array()</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span>
 
 <span class="tok-c1">// false</span>
-<span class="tok-nv">$hasEmail</span> <span class="tok-o">=</span> <span class="tok-nb">array_key_exists</span><span class="tok-p">(</span><mark class="code-added"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
-                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-added="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+<span class="tok-nv">$hasEmail</span> <span class="tok-o">=</span> <span class="tok-nb">array_key_exists</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-mark-1="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-added"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
 
 <span class="tok-c1">// []</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span>
 
 <span class="tok-c1">// false</span>
-<span class="tok-nv">$hasEmail</span> <span class="tok-o">=</span> <span class="tok-nb">array_key_exists</span><span class="tok-p">(</span><mark class="code-added"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
-                <pre class="code" data-php="8.4"><code class="language-php" data-added="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+<span class="tok-nv">$hasEmail</span> <span class="tok-o">=</span> <span class="tok-nb">array_key_exists</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="setOptional 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-added"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">]);</span>
 
 <span class="tok-c1">// []</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span>
 
 <span class="tok-c1">// false</span>
-<span class="tok-nv">$hasEmail</span> <span class="tok-o">=</span> <span class="tok-nb">array_key_exists</span><span class="tok-p">(</span><mark class="code-added"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+<span class="tok-nv">$hasEmail</span> <span class="tok-o">=</span> <span class="tok-nb">array_key_exists</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
             </div>
             <h3 class="example-ok">Then a default value</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#options-without-default-values" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Options without Default Values</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L59-L74" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::setOptional() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L100-L114" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::setOptional() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3"><code class="language-php" data-added="setOptional 'foo'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="setOptional 'foo'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
 <span class="tok-nv">$resolver</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">))</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">))</span>
     <span class="tok-c1">// The option is not missing anymore: it has a default value</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">));</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-mark-1"><span class="tok-s1">'foo'</span></mark><span class="tok-p">));</span>
 
-<span class="tok-c1">// array('key' =&gt; <mark class="code-added">'foo'</mark>)</span>
+<span class="tok-c1">// array('key' =&gt; <mark class="code-mark-1">'foo'</mark>)</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
-                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-added="setOptional 'foo'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-mark-1="setOptional 'foo'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'key'</span><span class="tok-p">])</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'key'</span><span class="tok-p">])</span>
     <span class="tok-c1">// The option is not missing anymore: it has a default value</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-mark-1"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span>
 
-<span class="tok-c1">// ['key' =&gt; <mark class="code-added">'foo'</mark>]</span>
+<span class="tok-c1">// ['key' =&gt; <mark class="code-mark-1">'foo'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
-                <pre class="code" data-php="8.4"><code class="language-php" data-added="setOptional 'foo'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="setOptional 'foo'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'key'</span><span class="tok-p">])</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'key'</span><span class="tok-p">])</span>
     <span class="tok-c1">// The option is not missing anymore: it has a default value</span>
-    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-added"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><span class="tok-na">setDefaults</span><span class="tok-p">([</span><span class="tok-s1">'key'</span> <span class="tok-o">=&gt;</span> <mark class="code-mark-1"><span class="tok-s1">'foo'</span></mark><span class="tok-p">]);</span>
 
-<span class="tok-c1">// ['key' =&gt; <mark class="code-added">'foo'</mark>]</span>
+<span class="tok-c1">// ['key' =&gt; <mark class="code-mark-1">'foo'</mark>]</span>
 <span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
             </div>
             <h3 class="example-warning">Required option</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#options-without-default-values" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Options without Default Values</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L59-L74" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::setOptional() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L100-L114" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::setOptional() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3"><code class="language-php" data-added="setOptional" data-removed="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\MissingOptionsException</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="setOptional" data-removed="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\MissingOptionsException</span><span class="tok-p">;</span>
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
 <span class="tok-nv">$resolver</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">))</span>
     <span class="tok-c1">// The option stays required: setOptional() does not change it</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">));</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">));</span>
 
-<span class="tok-c1">// MissingOptionsException: The required option <mark class="code-removed">"key"</mark> is  missing.</span>
-<span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
-                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-added="setOptional" data-removed="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\MissingOptionsException</span><span class="tok-p">;</span>
+<span class="tok-c1">// <span class="code-label code-label-exception">MissingOptionsException</span>: The required option <mark class="code-removed">"key"</mark> is  missing.</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-mark-1="setOptional" data-removed="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\MissingOptionsException</span><span class="tok-p">;</span>
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">])</span>
     <span class="tok-c1">// The option stays required: setOptional() does not change it</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span>
 
-<span class="tok-c1">// MissingOptionsException: The required option <mark class="code-removed">"key"</mark> is  missing.</span>
-<span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
-                <pre class="code" data-php="8.4"><code class="language-php" data-added="setOptional" data-removed="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\MissingOptionsException</span><span class="tok-p">;</span>
+<span class="tok-c1">// <span class="code-label code-label-exception">MissingOptionsException</span>: The required option <mark class="code-removed">"key"</mark> is  missing.</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="setOptional" data-removed="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\MissingOptionsException</span><span class="tok-p">;</span>
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
     <span class="tok-o">-&gt;</span><span class="tok-na">setRequired</span><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">])</span>
     <span class="tok-c1">// The option stays required: setOptional() does not change it</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span>
 
-<span class="tok-c1">// MissingOptionsException: The required option <mark class="code-removed">"key"</mark> is  missing.</span>
-<span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
+<span class="tok-c1">// <span class="code-label code-label-exception">MissingOptionsException</span>: The required option <mark class="code-removed">"key"</mark> is  missing.</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><span class="tok-na">resolve</span><span class="tok-p">();</span></code></pre>
             </div>
             <h3 class="example-exception">Default value</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#options-without-default-values" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Options without Default Values</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php#L59-L74" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolverInterface::setOptional() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/OptionsResolver.php#L100-L114" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">OptionsResolver::setOptional() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3"><code class="language-php" data-added="setOptional" data-removed="'foo@bar.com'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="setOptional" data-removed="'foo@bar.com'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">();</span>
 
-<span class="tok-c1">// OptionDefinitionException: You should not pass default values to setOptional()</span>
-<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <mark class="code-removed"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">));</span></code></pre>
-                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-added="setOptional" data-removed="'foo@bar.com'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+<span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: You should not pass default values to setOptional()</span>
+<span class="tok-nv">$resolver</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">(</span><span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <mark class="code-removed"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">));</span></code></pre>
+                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-mark-1="setOptional" data-removed="'foo@bar.com'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">())</span>
-    <span class="tok-c1">// OptionDefinitionException: You should not pass default values to setOptional()</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <mark class="code-removed"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">]);</span></code></pre>
-                <pre class="code" data-php="8.4"><code class="language-php" data-added="setOptional" data-removed="'foo@bar.com'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+    <span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: You should not pass default values to setOptional()</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <mark class="code-removed"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">]);</span></code></pre>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="setOptional" data-removed="'foo@bar.com'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\OptionsResolver</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$resolver</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">OptionsResolver</span><span class="tok-p">()</span>
-    <span class="tok-c1">// OptionDefinitionException: You should not pass default values to setOptional()</span>
-    <span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <mark class="code-removed"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">]);</span></code></pre>
+    <span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: You should not pass default values to setOptional()</span>
+    <span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setOptional</span></mark><span class="tok-p">([</span><span class="tok-s1">'email'</span> <span class="tok-o">=&gt;</span> <mark class="code-removed"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">]);</span></code></pre>
             </div>
         </section>
 

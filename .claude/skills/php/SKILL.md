@@ -58,7 +58,7 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
 
 - Write PHP code as `<pre class="code"><code class="language-php">`, without the `<?php` tag:
   `bin/dev/highlight.py` colors it with the Pygments PHP lexer.
-- Show the PHP names that changed with `data-removed` and `data-added`, e.g. `data-removed="setDefault"`.
+- Show the PHP names that changed with `data-removed` and `data-mark-1`, e.g. `data-removed="setDefault"`.
   A marked class used as the type of a parameter of a function or a method marks its parameter too
   in the same mark (`function (Options $options)` marks `Options $options`), and its uses in the body of the
   function too, done by `bin/dev/highlight.py`, but not after `new` (`new Options()` is not marked).
@@ -82,13 +82,22 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
   The end of a message giving a local path (where PHP ran the code) is cut, with the comma before it, e.g.
   `, called in /package/OptionsResolver.php on line 192` or ` in /package/Options.php on line 506`: it depends on
   the machine, not on the package.
-- When the code of a block behaves differently depending on the PHP version (e.g. a warning, then `false`, before
+- A PHP error triggered by a line is shown the same way, the name of its constant first: `E_NOTICE`, `E_WARNING`,
+  `E_DEPRECATED`, `E_ERROR` (a fatal error), `E_RECOVERABLE_ERROR` (a catchable fatal error), e.g.
+  `// E_WARNING: Undefined array key "email"`, never `// Warning: ...`. Also in the texts (e.g. a callout:
+  "An `E_NOTICE`, ..."). `bin/dev/highlight.py` shows the name starting such a comment like the label of the title
+  of its example: amber for `E_NOTICE`, `E_WARNING` and `E_DEPRECATED`, red for an exception, an `Error`, `E_ERROR`
+  and `E_RECOVERABLE_ERROR`.
+- No useless variable: a call is assigned to a variable only when its result is shown (in the comment above it, or
+  used by the next lines). A call throwing an exception is not assigned, e.g.
+  `// OptionDefinitionException: ...` above `$options->all();`, not `$all = $options->all();`.
+- When the code of a block behaves differently depending on the PHP version (e.g. an `E_WARNING`, then `false`, before
   PHP 8.0, a `TypeError` since), the label of the example (`OK`, `Warning` or `Exception`) is the one of the newest
   PHP version offered: `Exception` for the `TypeError` of PHP 8.4. A warning callout gives the behavior of each range
   of versions (see `/app:site:update`).
-  A different level of PHP message is a different behavior too, even when the code goes on the same way: e.g. a
-  `Notice` before PHP 8.0 and a `Warning` since for an undefined array key, a fatal error before PHP 7.0 and an
-  `Error` since, a catchable fatal error before PHP 7.0 and a `TypeError` since.
+  A different level of PHP error is a different behavior too, even when the code goes on the same way: e.g. an
+  `E_NOTICE` before PHP 8.0 and an `E_WARNING` since for an undefined array key, an `E_ERROR` before PHP 7.0 and an
+  `Error` since, an `E_RECOVERABLE_ERROR` before PHP 7.0 and a `TypeError` since.
 - Version of the language in the `code-meta` of a block: `PHP <major>.<minor>`, the minimum PHP version required by
   the oldest version of the package shown in the block (its `php.min`), e.g. `<span>PHP 5.3</span>` for 2.1.
 - Write the code with the syntax of the newest PHP version offered: 8.4, or the `php.max` of the version shown when
@@ -165,10 +174,11 @@ git clone -q --depth 1 -b v<version>.0 https://github.com/<vendor>/<package> <sc
 
 - Each `<pre data-php="...">` runs in the official `php:<version>-cli` Docker image of each of its versions, the
   package installed with the `composer:2` image (`composer install`, its `vendor/` kept in the clone).
-- It prints `$options` at the end of the block (`var_export`), or the exception thrown, written like in the pages.
+- It prints `$options` at the end of the block (`var_export`), or the exception thrown, and the PHP errors with the
+  name of their constant (`E_WARNING: ...`), written like in the pages.
 - The images of PHP 5.3, 5.4 and 5.5 can no longer be pulled (manifest v1 refused by containerd >= 2.1, or a missing
   layer): their code runs with PHP 5.6, which does not check that it only uses what these versions support (e.g.
   `[]` arrays before 5.4): check it by reading the code.
 - The deprecations triggered by the package itself are left out (e.g. the return types of `ArrayAccess` with PHP 8.1+
-  in an old package); a deprecation, a notice or a warning triggered by the block is kept: show it in the page when
+  in an old package); an `E_DEPRECATED`, an `E_NOTICE` or an `E_WARNING` triggered by the block is kept: show it in the page when
   it is part of the example.
