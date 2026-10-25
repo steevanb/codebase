@@ -1483,6 +1483,11 @@ pre.code code {
     background: var(--danger);
 }
 
+/* A name of the code shown like a label (data-label-warning): the color of the label, not the one of its token */
+.code-label > [class^="tok-"] {
+    color: inherit;
+}
+
 mark.code-removed,
 mark.code-mark-1,
 mark.code-mark-2,
