@@ -9,7 +9,8 @@ first with the composer Docker image when it has no vendor/ directory.
 Each block is written to a file of <scratch dir>, run by run-block.php (next to this script): the output is the value
 of the last variable set by the block (var_export, e.g. $options), or the exception (or the Error, PHP >= 7.0) it
 throws, written like in the pages (short name of its class, then its message), to compare with the comment of the
-block: before PHP 7.0, an Error is a fatal error, printed by PHP.
+block. The PHP errors are printed with the name of their constant, like in the pages (E_WARNING: ..., E_ERROR: ...
+for an Error before PHP 7.0).
 The deprecations triggered by the package itself (not by the block) are left out: an old version of a package
 triggers some with a recent PHP version.
 

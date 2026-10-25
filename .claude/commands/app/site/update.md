@@ -127,7 +127,7 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   - `<h2><span><em>BC break</em></span></h2>` (for a BC break, with the tone of its type: `tone-rose`): one block of
     code per syntax (e.g. one for `setDefault()`, one for the fluent `default()`), the old line followed by the new
     one, each line preceded by a comment giving the versions where it works (the language skill gives its syntax),
-    the old names in `data-removed`, the new ones in `data-added`.
+    the old names in `data-removed`, the new ones in `data-mark-1`.
     The old range starts at the version that introduced it (read in the changelog of the package) and ends at the
     last version where it can be used.
     **A deprecated code can still be used**: the deprecation only warns. The old range goes up to the last
@@ -174,17 +174,28 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   the examples of a section are sorted: `OK`, then `Warning`, then `Exception`. Write
   `<h3 class="example-warning">` by hand for a surprising behavior (e.g. a call silently ignored), whether it throws
   an exception or not: its only label is then `Warning`.
-- When an example behaves differently depending on the PHP version (e.g. a warning before PHP 8.0, a `TypeError`
-  since), its label is the one of the newest PHP version offered (see the language skill), and a warning callout
-  between its title and its block of code gives one line per range of versions, with the behavior. A different
-  level of PHP message (e.g. a `Notice` before PHP 8.0, a `Warning` since) is a different behavior too:
+- When an example behaves differently depending on the PHP version (e.g. an `E_WARNING` before PHP 8.0, a
+  `TypeError` since), its label is the one of the newest PHP version offered (see the language skill), and a warning
+  callout between its title and its block of code gives one line per range of versions, with the behavior. A
+  different level of PHP error (e.g. an `E_NOTICE` before PHP 8.0, an `E_WARNING` since) is a different behavior too.
+  A PHP error is named by its constant (`E_NOTICE`, `E_WARNING`, `E_DEPRECATED`, `E_ERROR`, `E_RECOVERABLE_ERROR`),
+  never `notice`, `warning` or `fatal error`:
 
   ```html
   <div class="callout callout-warning">
       <ul class="callout-versions">
-          <li><span class="callout-version">PHP 5.3 – 7.4</span><span>A warning, <code>Illegal offset type in isset or empty</code>, then <code>isKnown()</code> returns <code>false</code>.</span></li>
+          <li><span class="callout-version">PHP 5.3 – 7.4</span><span>An <code>E_WARNING</code>, <code>Illegal offset type in isset or empty</code>, then <code>isKnown()</code> returns <code>false</code>.</span></li>
           <li><span class="callout-version">PHP &gt;= 8.0</span><span>A <code>TypeError</code> is thrown: <code>Cannot access offset of type array in isset or empty</code>.</span></li>
       </ul>
+  </div>
+  ```
+- What the examples of a section share (e.g. the arguments of the closure they all use) is said once, in an
+  information callout just below the title of the section, before its first example, instead of a paragraph under
+  each example:
+
+  ```html
+  <div class="callout callout-info">
+      <p>Its optional second argument, <code>$previousValue</code>, receives the default value set before.</p>
   </div>
   ```
 - Code: **only the code that changed**, a few lines: never a full implementation (no class, no unrelated options).
@@ -239,35 +250,37 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   with Pygments in the HTML itself (no JavaScript, no flicker on load), inside the `codebase-python` Docker image built
   by `bin/dev/start.py` (run it first). It rebuilds every block from its text, so it can be run again.
   Show what changed by listing the names (methods, classes, options...) on the `<code>` tag, separated by spaces:
-  `data-removed="oldMethod"` (red) and `data-added="newMethod"` (green).
+  `data-removed="oldMethod"` (red) and `data-mark-1="newMethod"` (green).
   Mark every call of the method (or function) the page is about, in every block: it is shown in bold blue.
   Mark the values the example changes (e.g. a default value replaced by the given one, a value normalized).
   Colors: red (`data-removed`) for what is an error, i.e. the values causing the exception a block shows, and the old
-  code removed by a BC break; green (`data-added`) for everything else, methods included in a block showing an
+  code removed by a BC break; green (`data-mark-1`) for everything else, methods included in a block showing an
   exception.
-  Mark the strings the example is about (e.g. `data-added="'firstName'"` for an unknown or missing option, the key of
+  Mark the strings the example is about (e.g. `data-mark-1="'firstName'"` for an unknown or missing option, the key of
   an option given to `resolve()`, not its value, unless the example is about the value (e.g. an allowed value, a
   value transformed and the value it becomes)):
   `bin/dev/highlight.py` marks them in the
   code and in the comments showing a result or an
   exception message (`// The option "firstName" does not exist.`).
   When two marked names of a block must be told apart (e.g. two options whose order matters), mark the second one
-  in blue with `data-other` (e.g. `data-added="'firstName'" data-other="'lastName'"`), and a third one in amber with
-  `data-third`.
+  in blue with `data-mark-2` (e.g. `data-mark-1="'firstName'" data-mark-2="'lastName'"`), and a third one in amber with
+  `data-mark-3`.
   When the values of an example follow each other (e.g. a value, then the closures building on it), give each step
   its own color, in this order: green, blue, amber; a `$previousValue` takes the color of the value it receives.
   Mark a single occurrence of a name in the code with `<name>#<number>` (1 for the first, not in the comments):
-  `data-other="$previousValue#3"`, `array_merge([])#2`.
+  `data-mark-2="$previousValue#3"`, `array_merge([])#2`.
   Mark a variable only where a method is called on it with `$<variable>-&gt;<method>` (`>` written `&gt;` in the
-  attribute): `data-added="$clone-&gt;resolve"` marks `$clone` in `$clone->resolve()`, not in
+  attribute): `data-mark-1="$clone-&gt;resolve"` marks `$clone` in `$clone->resolve()`, not in
   `$clone = clone $resolver;`.
   Mark the brackets of an array given to a call when the array itself is the example (e.g. an array given instead of
   a name, a list instead of an array), not what is inside: `data-removed="resolve([])"` marks the `[` and `]` of
   `resolve(['foo'])` (`array(` and `)` before PHP 5.4), also after a name or a variable (`set('roles', ['foo'])`,
   `array_merge($previousValue, ['bar'])`); `fn([])` marks the array returned by a closure
-  (`fn (Options $options): array => ['foo']`).
+  (`fn (Options $options): array => ['foo']`). `[]` marks an empty array in the comments showing a result (`// []`,
+  `// array()` before PHP 5.4). A name with a parenthesis, written without spaces, marks this whole expression in
+  the code, not in the comments: `data-mark-3="strtoupper($value)"`.
   When the paragraph above a block explains one part of its code (e.g. an argument, a variable), mark this part with
-  `data-added`, name it in the paragraph and use it in the code (e.g. `data-added="$previousValue"` for "A second
+  `data-mark-1`, name it in the paragraph and use it in the code (e.g. `data-mark-1="$previousValue"` for "A second
   argument, `$previousValue`, receives...").
 - Sources: documentation of the package (always with the anchor of the section when there is one), pull requests,
   commits, and the `links` of the change.

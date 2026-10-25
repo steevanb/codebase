@@ -126,6 +126,38 @@
                     "pullRequest": "https://github.com/symfony/symfony/pull/4388"
                 },
                 {
+                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
+                },
+                {
+                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "1407f112fcfb6565e69b8040c7ceaae810a8acb3",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "bad4a1f76cb990be742f9dc16cfdb3c1a52c27ab",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
+                },
+                {
+                    "hash": "77839690d9e50c5ffdf714dc5908b50d59185f90",
+                    "pullRequest": null
+                },
+                {
+                    "hash": "610c602b0644e95acc237e92104b54e8d687236f",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/4945"
+                },
+                {
+                    "hash": "d858f7bdf3a99817f822a03d4f68aade0073d3b4",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
+                },
+                {
+                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
+                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
+                },
+                {
                     "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
                     "pullRequest": "https://github.com/symfony/symfony/pull/3968"
                 }
@@ -723,90 +755,6 @@
                 }
             ]
         },
-        "f094c93d-9103-442f-9bd8-0c8e07898327": {
-            "message": "Evaluate the closures typed with `Options` as lazy options, when the option is read",
-            "section": "new-features",
-            "group": "`Options`",
-            "commits": [
-                {
-                    "hash": "256b7081a423caeb404c9ec838b6ee21cc7e5bab",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                },
-                {
-                    "hash": "1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                },
-                {
-                    "hash": "41621e42e9c0ae0745ef3b75c3b589eada2b0385",
-                    "pullRequest": null
-                },
-                {
-                    "hash": "1407f112fcfb6565e69b8040c7ceaae810a8acb3",
-                    "pullRequest": null
-                },
-                {
-                    "hash": "bad4a1f76cb990be742f9dc16cfdb3c1a52c27ab",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4388"
-                },
-                {
-                    "hash": "77839690d9e50c5ffdf714dc5908b50d59185f90",
-                    "pullRequest": null
-                },
-                {
-                    "hash": "610c602b0644e95acc237e92104b54e8d687236f",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/4945"
-                },
-                {
-                    "hash": "d858f7bdf3a99817f822a03d4f68aade0073d3b4",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5067"
-                },
-                {
-                    "hash": "27ab56d8eec3a7ba6ad104a1c5f07db6ecc78d31",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/5102"
-                },
-                {
-                    "hash": "16f7d20dff9ff70418e7c4c19cefe02c8329f6f5",
-                    "pullRequest": "https://github.com/symfony/symfony/pull/3968"
-                }
-            ],
-            "links": [
-                {
-                    "title": "Symfony blog: A Week of Symfony #281",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012"
-                },
-                {
-                    "title": "Symfony blog: Form Goodness in Symfony 2.1",
-                    "url": "https://symfony.com/blog/form-goodness-in-symfony-2-1"
-                },
-                {
-                    "title": "Symfony blog: A Week of Symfony #282",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-282-21-27-may-2012"
-                },
-                {
-                    "title": "Symfony blog: A Week of Symfony #289",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
-                },
-                {
-                    "title": "Symfony blog: A Week of Symfony #290",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-290-16-22-july-2012"
-                },
-                {
-                    "title": "Symfony blog: A Week of Symfony #291",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-291-23-29-july-2012"
-                },
-                {
-                    "title": "Symfony blog: A Week of Symfony #295",
-                    "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
-                }
-            ],
-            "pages": [
-                {
-                    "type": "example",
-                    "slug": "lazy-options"
-                }
-            ],
-            "validated": false
-        },
         "86844843-681d-4051-9369-bd2ab7207de1": {
             "message": "Add `set()` to set the value of an option",
             "section": "new-features",
@@ -938,8 +886,7 @@
                     "type": "example",
                     "slug": "options-replace"
                 }
-            ],
-            "validated": false
+            ]
         },
         "fcd7db24-0fb9-4da4-9b0c-dd25777c045e": {
             "message": "Add `get()` to read the value of an option",

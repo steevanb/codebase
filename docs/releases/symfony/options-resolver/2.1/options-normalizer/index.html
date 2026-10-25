@@ -60,87 +60,87 @@
             <h3 class="example-ok">Option normalized</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#option-normalization" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Option Normalization</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L97-L117" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::setNormalizer() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-added="'foo@bar.com' setNormalizer 'FOO@BAR.COM'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-mark-1="'foo@bar.com' setNormalizer 'FOO@BAR.COM'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">,</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">,</span> <mark class="code-mark-1"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
     <span class="tok-s1">'email'</span><span class="tok-p">,</span>
     <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
         <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
     <span class="tok-p">}</span>
 <span class="tok-p">);</span>
 
-<span class="tok-c1">// <mark class="code-added">'FOO@BAR.COM'</mark></span>
+<span class="tok-c1">// <mark class="code-mark-1">'FOO@BAR.COM'</mark></span>
 <span class="tok-nv">$email</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">);</span></code></pre>
-                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-added="'foo@bar.com' setNormalizer 'FOO@BAR.COM'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-mark-1="'foo@bar.com' setNormalizer 'FOO@BAR.COM'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">,</span> <mark class="code-added"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">,</span> <mark class="code-mark-1"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
     <span class="tok-s1">'email'</span><span class="tok-p">,</span>
     <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)</span>
 <span class="tok-p">);</span>
 
-<span class="tok-c1">// <mark class="code-added">'FOO@BAR.COM'</mark></span>
+<span class="tok-c1">// <mark class="code-mark-1">'FOO@BAR.COM'</mark></span>
 <span class="tok-nv">$email</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">);</span></code></pre>
             </div>
             <h3 class="example-ok">Value of another option</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#option-normalization" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Option Normalization</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L97-L117" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::setNormalizer() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-added="'/bar' setNormalizer 'https://foo.com/bar'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-mark-1="'/bar' setNormalizer 'https://foo.com/bar'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
 <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'host'</span><span class="tok-p">,</span> <span class="tok-s1">'foo.com'</span><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'url'</span><span class="tok-p">,</span> <mark class="code-added"><span class="tok-s1">'/bar'</span></mark><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'url'</span><span class="tok-p">,</span> <mark class="code-mark-1"><span class="tok-s1">'/bar'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
     <span class="tok-s1">'url'</span><span class="tok-p">,</span>
     <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
         <span class="tok-k">return</span> <span class="tok-s1">'https://'</span> <span class="tok-o">.</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><span class="tok-s1">'host'</span><span class="tok-p">)</span> <span class="tok-o">.</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
     <span class="tok-p">}</span>
 <span class="tok-p">);</span>
 
-<span class="tok-c1">// <mark class="code-added">'https://foo.com/bar'</mark></span>
+<span class="tok-c1">// <mark class="code-mark-1">'https://foo.com/bar'</mark></span>
 <span class="tok-nv">$url</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><span class="tok-s1">'url'</span><span class="tok-p">);</span></code></pre>
-                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-added="'/bar' setNormalizer 'https://foo.com/bar'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-mark-1="'/bar' setNormalizer 'https://foo.com/bar'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
 <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'host'</span><span class="tok-p">,</span> <span class="tok-s1">'foo.com'</span><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'url'</span><span class="tok-p">,</span> <mark class="code-added"><span class="tok-s1">'/bar'</span></mark><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'url'</span><span class="tok-p">,</span> <mark class="code-mark-1"><span class="tok-s1">'/bar'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
     <span class="tok-s1">'url'</span><span class="tok-p">,</span>
     <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-s1">'https://'</span> <span class="tok-o">.</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><span class="tok-s1">'host'</span><span class="tok-p">)</span> <span class="tok-o">.</span> <span class="tok-nv">$value</span>
 <span class="tok-p">);</span>
 
-<span class="tok-c1">// <mark class="code-added">'https://foo.com/bar'</mark></span>
+<span class="tok-c1">// <mark class="code-mark-1">'https://foo.com/bar'</mark></span>
 <span class="tok-nv">$url</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><span class="tok-s1">'url'</span><span class="tok-p">);</span></code></pre>
             </div>
             <h3 class="example-exception">Normalizer added after a read</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#option-normalization" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Option Normalization</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L97-L117" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::setNormalizer() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-added="setNormalizer get"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-mark-1="setNormalizer get"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
 <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">,</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">);</span>
-<span class="tok-nv">$email</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">get</span></mark><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">);</span>
+<span class="tok-nv">$email</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">get</span></mark><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">);</span>
 
-<span class="tok-c1">// OptionDefinitionException: Normalizers cannot be added anymore once options have been read.</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
+<span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: Normalizers cannot be added anymore once options have been read.</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
     <span class="tok-s1">'email'</span><span class="tok-p">,</span>
     <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
         <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
     <span class="tok-p">}</span>
 <span class="tok-p">);</span></code></pre>
-                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-added="setNormalizer get"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-mark-1="setNormalizer get"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
 <span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
 <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">,</span> <span class="tok-s1">'foo@bar.com'</span><span class="tok-p">);</span>
-<span class="tok-nv">$email</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">get</span></mark><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">);</span>
+<span class="tok-nv">$email</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">get</span></mark><span class="tok-p">(</span><span class="tok-s1">'email'</span><span class="tok-p">);</span>
 
-<span class="tok-c1">// OptionDefinitionException: Normalizers cannot be added anymore once options have been read.</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-added"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
+<span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: Normalizers cannot be added anymore once options have been read.</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">setNormalizer</span></mark><span class="tok-p">(</span>
     <span class="tok-s1">'email'</span><span class="tok-p">,</span>
     <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)</span>
 <span class="tok-p">);</span></code></pre>

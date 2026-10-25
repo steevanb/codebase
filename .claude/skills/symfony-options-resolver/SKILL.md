@@ -18,6 +18,13 @@ skills `symfony` and `php`.
   $options = $resolver->resolve(array('firstName' => 'bar'));
   ```
 
+  When `resolve()` throws an exception, its result is not assigned (no useless variable, see the `php` skill):
+
+  ```php
+  // MissingOptionsException: The required option "firstName" is  missing.
+  $resolver->resolve();
+  ```
+
 - Define an option with `setRequired()` when its value is given to `resolve()` and its default value plays no part
   in the example: `setDefaults()` only when the example is about the default value (or about `setDefaults()`).
 
@@ -34,6 +41,9 @@ The changes of `symfony/options-resolver` to validate are listed in the issue
 in the order of the settings file of the version.
 When a change is validated (its `"validated": false` removed), check its box in the issue: read its body with
 `gh issue view 9 --json body -q .body`, replace `- [ ] <message>` by `- [x] <message>`, and write it back with
-`gh issue edit 9 --body-file <file>`. A change missing from the issue is added at its place, with the links to its
+`gh issue edit 9 --body-file <file>`.
+The title of each version gives the percentage of its boxes checked, rounded to the nearest integer, e.g.
+`### [2.1](https://codebase.watch/releases/symfony/options-resolver/2.1/) 55%`: update it in the same edit.
+A change missing from the issue is added at its place, with the links to its
 example pages:
 ``- [x] <message> ([`<slug>`](https://codebase.watch/releases/symfony/options-resolver/<version>/<slug>/))``.

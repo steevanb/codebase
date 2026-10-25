@@ -705,6 +705,28 @@ h2::after {
     background: var(--rule);
 }
 
+/* A title alone in its h2 takes the empty space of the title, the line drawn inside it after the text: the text of
+   a flex item is only as wide as itself, so a selection dragged past its end, over the line, jumps back to its start */
+h2 > span:only-child {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+h2 > span:only-child::after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 1px;
+    margin: 0 -100% 0 12px;
+    background: var(--rule);
+}
+
+h2:has(> span:only-child)::after {
+    content: none;
+}
+
 h2 code {
     font-size: 0.75em;
 }
@@ -1382,6 +1404,12 @@ pre.code code {
     border-color: var(--warning);
 }
 
+/* An information about the examples of a section, just below its title */
+.callout-info {
+    background: var(--blue-50);
+    border-color: var(--blue);
+}
+
 .callout-versions {
     margin: 0;
     padding: 0;
@@ -1437,10 +1465,28 @@ pre.code code {
     font-style: var(--tok-comment-style);
 }
 
+/* The PHP error or the exception starting a comment (// E_WARNING: ...), colored like the label of the title of its
+   example (section > h3.example-warning::before, section > h3.example-exception::before) */
+.code-label {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--surface);
+    padding: 1px 5px;
+    border-radius: var(--radius-sm);
+}
+
+.code-label-warning {
+    background: var(--warning);
+}
+
+.code-label-exception {
+    background: var(--danger);
+}
+
 mark.code-removed,
-mark.code-added,
-mark.code-other,
-mark.code-third {
+mark.code-mark-1,
+mark.code-mark-2,
+mark.code-mark-3 {
     color: inherit;
     padding: 1px 2px;
     border-radius: 1.5px;
@@ -1451,34 +1497,34 @@ mark.code-removed {
     box-shadow: inset 0 -2px 0 var(--danger);
 }
 
-mark.code-added {
+mark.code-mark-1 {
     background: var(--secondary-50);
     box-shadow: inset 0 -2px 0 var(--secondary);
 }
 
 /* A second name marked beside the green ones, to tell them apart (e.g. two options): same background, only the
    underline changes */
-mark.code-other {
+mark.code-mark-2 {
     background: var(--secondary-50);
     box-shadow: inset 0 -2px 0 var(--blue);
 }
 
 /* A third name, beside the green and the blue ones: same background, only the underline changes */
-mark.code-third {
+mark.code-mark-3 {
     background: var(--secondary-50);
     box-shadow: inset 0 -2px 0 var(--accent);
 }
 
 /* The method or the function an example is about: in bold blue, the values it changes keeping their mark */
-mark.code-added:has(> .tok-na),
-mark.code-added:has(> .tok-nb) {
+mark.code-mark-1:has(> .tok-na),
+mark.code-mark-1:has(> .tok-nb) {
     padding: 0;
     background: none;
     box-shadow: none;
     font-weight: 700;
 }
 
-mark.code-added > .tok-na,
-mark.code-added > .tok-nb {
+mark.code-mark-1 > .tok-na,
+mark.code-mark-1 > .tok-nb {
     color: var(--blue);
 }
