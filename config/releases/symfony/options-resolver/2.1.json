@@ -929,8 +929,7 @@
                     "type": "example",
                     "slug": "options-get"
                 }
-            ],
-            "validated": false
+            ]
         },
         "b29f5672-53ba-4393-a10a-82929333dfbd": {
             "message": "Add `has()` to check whether an option is set",

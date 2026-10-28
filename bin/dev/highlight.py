@@ -182,7 +182,9 @@ def run_in_docker():
 def mark(colored: str, opening_tag: str) -> str:
     for attribute, css_class in MARKS.items():
         names = re.search(rf'data-{attribute}="([^"]*)"', opening_tag)
-        for name in (html.unescape(names.group(1)).split() if names else []):
+        # An expression with spaces is written between backticks: `uniqid() . '_' . strtoupper($value)`
+        for name in (re.findall(r'`[^`]+`|\S+', html.unescape(names.group(1))) if names else []):
+            name = name.strip('`')
             # name#2: only the second occurrence of the name in the code, not in the comments
             name, occurrence = re.fullmatch(r'(.+?)(?:#(\d+))?', name).groups()
             occurrence = int(occurrence) if occurrence else None
@@ -253,7 +255,8 @@ def mark(colored: str, opening_tag: str) -> str:
                 if occurrence:
                     ranges = ranges[2 * occurrence - 2:2 * occurrence]
                 colored = mark_ranges(colored, ranges, css_class)
-            # An expression (strtoupper($value), Closure::class): its whole text in the code, not in the comments
+            # An expression (strtoupper($value), Closure::class, `uniqid() . '_' . strtoupper($value)`): its whole text
+            # in the code, not in the comments
             elif '(' in name or '::' in name:
                 text, _ = plain_text(colored)
                 ranges = [

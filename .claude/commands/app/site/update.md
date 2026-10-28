@@ -283,7 +283,8 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   (`fn (Options $options): array => ['foo']`). `[]` marks an empty array in the comments showing a result (`// []`,
   `// array()` before PHP 5.4). A name with a parenthesis or `::`, written without spaces, marks this whole
   expression in the code, not in the comments: `data-mark-3="strtoupper($value)"`,
-  `data-label-warning="Closure::class 'Closure'"` (`'Closure'` before PHP 5.5).
+  `data-label-warning="Closure::class 'Closure'"` (`'Closure'` before PHP 5.5). An expression with spaces is written
+  between backticks: ``data-mark-3="`uniqid() . '_' . strtoupper($value)`"``.
   When the paragraph above a block explains one part of its code (e.g. an argument, a variable), mark this part with
   `data-mark-1`, name it in the paragraph and use it in the code (e.g. `data-mark-1="$previousValue"` for "A second
   argument, `$previousValue`, receives...").
