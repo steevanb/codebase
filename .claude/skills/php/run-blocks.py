@@ -4,8 +4,8 @@
 
 Every <pre class="code" data-php="<versions>"> of the page (colored or not by bin/dev/highlight.py) is run once per
 version of its data-php attribute, in the official php:<version>-cli Docker image, with the package installed in
-<package dir> (a clone of its repository at the tag of the version shown): its dependencies are installed there
-first with the composer Docker image when it has no vendor/ directory.
+<package dir> (a clone of its repository at the latest patch release of the version shown, e.g. v2.1.13 for 2.1):
+its dependencies are installed there first with the composer Docker image when it has no vendor/ directory.
 Each block is written to a file of <scratch dir>, run by run-block.php (next to this script): the output is the value
 of the last variable set by the block (var_export, e.g. $options), or the exception (or the Error, PHP >= 7.0) it
 throws, written like in the pages (short name of its class, then its message), to compare with the comment of the

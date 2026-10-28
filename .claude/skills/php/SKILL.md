@@ -165,11 +165,14 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
 ## Testing the code of the pages
 
 Run every block of a page with each PHP version it offers, after `bin/dev/highlight.py` (it writes the code of the
-older versions), and compare the output with the comment of the block (result or exception):
+older versions), and compare the output with the comment of the block (result or exception).
+Always test with the latest patch release of the version shown (e.g. `v2.1.13` for 2.1, never `v2.1.0`): it is the one
+the users install. Find it with `git ls-remote --tags`:
 
 ```bash
-git clone -q --depth 1 -b v<version>.0 https://github.com/<vendor>/<package> <scratchpad>/<package>-<version>
-.claude/skills/php/run-blocks.py <page> <scratchpad>/<package>-<version> <scratchpad>/blocks
+git ls-remote --tags https://github.com/<vendor>/<package> 'v<version>.*' | sed 's/.*tags\///; s/\^{}//' | sort -uV | tail -1
+git clone -q --depth 1 -b <latest tag> https://github.com/<vendor>/<package> <scratchpad>/<package>-<latest tag>
+.claude/skills/php/run-blocks.py <page> <scratchpad>/<package>-<latest tag> <scratchpad>/blocks
 ```
 
 - Each `<pre data-php="...">` runs in the official `php:<version>-cli` Docker image of each of its versions, the
