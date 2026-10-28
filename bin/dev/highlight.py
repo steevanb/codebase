@@ -54,7 +54,7 @@ One <pre class="code" data-php="<versions>"> per different code, from the oldest
 last one being the source of the others (the same <pre> for every version when the code does not change).
 The versions are listed on the code-block (data-php-versions), /assets/js/main.js shows the chosen one.
 
-Runs inside the docker/python image, which provides Pygments: run bin/dev/start.py first to build it.
+Runs inside the docker/python image, which provides Pygments: run bin/docker/build.py first to build it.
 
 Usage: bin/dev/highlight.py [file.html ...]   (default: every page in docs/)
 """
@@ -167,7 +167,7 @@ USES = re.compile(r'(?:use [^\n]+;\n)+\n*')
 def run_in_docker():
     image_exists = subprocess.run(['docker', 'image', 'inspect', IMAGE], capture_output=True).returncode == 0
     if not image_exists:
-        sys.exit(f'Docker image "{IMAGE}" not found: run bin/dev/start.py first to build it.')
+        sys.exit(f'Docker image "{IMAGE}" not found: run bin/docker/build.py first to build it.')
 
     paths = [str(Path(p).resolve().relative_to(ROOT_DIR)) for p in sys.argv[1:]]
     command = [
