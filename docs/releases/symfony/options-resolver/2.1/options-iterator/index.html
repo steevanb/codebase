@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Options implements Iterator · symfony/options-resolver 2.1 · codebase.watch</title>
+    <meta name="description" content="symfony/options-resolver 2.1 makes Options implement Iterator, to loop over the options.">
+    <link rel="canonical" href="https://codebase.watch/releases/symfony/options-resolver/2.1/options-iterator/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <a class="brand" href="/">
+                <span class="brand-glyph" aria-hidden="true">&lt;/&gt;</span>
+                <span class="brand-wordmark">
+                    <span class="brand-name">codebase<span>.watch</span></span>
+                    <span class="brand-sub">what is new in your dependencies</span>
+                </span>
+            </a>
+            <input class="nav-toggle" id="nav-toggle" type="checkbox" aria-label="Menu">
+            <label class="nav-burger burger" for="nav-toggle" aria-hidden="true"><span></span></label>
+            <nav class="nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link nav-link-active" href="/releases/">Releases</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">codebase.watch</a> /
+            <a href="/releases/">releases</a> /
+            <a href="/releases/symfony/">symfony</a> /
+            <a href="/releases/symfony/options-resolver/">options-resolver</a> /
+            <a href="/releases/symfony/options-resolver/2.1/">2.1</a> /
+            options-iterator
+        </nav>
+
+        <h1><code>Options</code> implements <code>Iterator</code></h1>
+
+        <section id="overview" class="tone-amber">
+            <h2><span>At a <em>glance</em></span></h2>
+            <div class="stats">
+                <div class="stat tone-emerald">
+                    <div class="stat-label">Type</div>
+                    <div class="stat-value">New feature</div>
+                </div>
+                <div class="stat tone-blue">
+                    <div class="stat-label"><code>Iterator</code> added</div>
+                    <div class="stat-value">2.1</div>
+                </div>
+            </div>
+            <p class="section-note">Since <a href="/releases/symfony/options-resolver/2.1/">symfony/options-resolver 2.1</a>, <code>Options</code> implements <code>Iterator</code>: a <code>foreach</code> loops over the options, reading each of them with <code>get()</code>.</p>
+        </section>
+
+        <section id="loop" class="tone-emerald">
+            <h2><span><em>Loop</em> over the options</span></h2>
+            <h3 class="example-ok">No option</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L419-L422" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::rewind() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L411-L414" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::valid() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L403-L406" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::key() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L395-L398" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::next() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="iterator_to_array"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// array()</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="iterator_to_array"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-ok">Options looped</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L419-L422" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::rewind() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L411-L414" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::valid() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L403-L406" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::key() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L395-L398" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::next() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="iterator_to_array 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// Loops over the options, like a foreach</span>
+<span class="tok-c1">// array(<mark class="code-mark-1">'firstName'</mark> =&gt; 'foo', <mark class="code-mark-2">'key'</mark> =&gt; 'bar')</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="iterator_to_array 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// Loops over the options, like a foreach</span>
+<span class="tok-c1">// [<mark class="code-mark-1">'firstName'</mark> =&gt; 'foo', <mark class="code-mark-2">'key'</mark> =&gt; 'bar']</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-ok">Key and value</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L419-L422" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::rewind() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L411-L414" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::valid() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L403-L406" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::key() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L395-L398" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::next() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="foreach 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-nv">$lines</span> <span class="tok-o">=</span> <span class="tok-k">array</span><span class="tok-p">();</span>
+<span class="tok-c1">// array('firstName: foo', 'key: bar')</span>
+<mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$key</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-nv">$lines</span><span class="tok-p">[]</span> <span class="tok-o">=</span> <span class="tok-nv">$key</span> <span class="tok-o">.</span> <span class="tok-s1">': '</span> <span class="tok-o">.</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+<span class="tok-p">}</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="foreach 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-nv">$lines</span> <span class="tok-o">=</span> <span class="tok-p">[];</span>
+<span class="tok-c1">// ['firstName: foo', 'key: bar']</span>
+<mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$key</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-nv">$lines</span><span class="tok-p">[]</span> <span class="tok-o">=</span> <span class="tok-nv">$key</span> <span class="tok-o">.</span> <span class="tok-s1">': '</span> <span class="tok-o">.</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+<span class="tok-p">}</span></code></pre>
+            </div>
+            <h3 class="example-ok">Lazy option evaluated</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#default-values-that-depend-on-another-option" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Default Values that Depend on another Option</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L419-L422" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::rewind() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L411-L414" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::valid() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L403-L406" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::key() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L395-L398" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::next() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="iterator_to_array 'firstName'" data-mark-2="'key'" data-mark-3="strtoupper 'FOO'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <mark class="code-mark-3"><span class="tok-nb">strtoupper</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">));</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-2">'key'</mark>): the lazy option is evaluated</span>
+<span class="tok-c1">// array(<mark class="code-mark-1">'firstName'</mark> =&gt; 'foo', <mark class="code-mark-2">'key'</mark> =&gt; <mark class="code-mark-3">'FOO'</mark>)</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="5.6"><code class="language-php" data-mark-1="iterator_to_array 'firstName'" data-mark-2="'key'" data-mark-3="strtoupper 'FOO'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <mark class="code-mark-3"><span class="tok-nb">strtoupper</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">));</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-2">'key'</mark>): the lazy option is evaluated</span>
+<span class="tok-c1">// [<mark class="code-mark-1">'firstName'</mark> =&gt; 'foo', <mark class="code-mark-2">'key'</mark> =&gt; <mark class="code-mark-3">'FOO'</mark>]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-mark-1="iterator_to_array 'firstName'" data-mark-2="'key'" data-mark-3="strtoupper 'FOO'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <mark class="code-mark-3"><span class="tok-nb">strtoupper</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">))</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-2">'key'</mark>): the lazy option is evaluated</span>
+<span class="tok-c1">// [<mark class="code-mark-1">'firstName'</mark> =&gt; 'foo', <mark class="code-mark-2">'key'</mark> =&gt; <mark class="code-mark-3">'FOO'</mark>]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-ok">Option normalized</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#option-normalization" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Option Normalization</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L419-L422" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::rewind() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L411-L414" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::valid() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L403-L406" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::key() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L395-L398" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::next() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="iterator_to_array 'email'" data-mark-2="'foo@bar.com'" data-mark-3="strtoupper($value) 'FOO@BAR.COM'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <mark class="code-mark-3"><span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)</span></mark><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-1">'email'</mark>): the option is normalized</span>
+<span class="tok-c1">// array(<mark class="code-mark-1">'email'</mark> =&gt; <mark class="code-mark-3">'FOO@BAR.COM'</mark>)</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="5.6"><code class="language-php" data-mark-1="iterator_to_array 'email'" data-mark-2="'foo@bar.com'" data-mark-3="strtoupper($value) 'FOO@BAR.COM'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <mark class="code-mark-3"><span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)</span></mark><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-1">'email'</mark>): the option is normalized</span>
+<span class="tok-c1">// [<mark class="code-mark-1">'email'</mark> =&gt; <mark class="code-mark-3">'FOO@BAR.COM'</mark>]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-mark-1="iterator_to_array 'email'" data-mark-2="'foo@bar.com'" data-mark-3="strtoupper($value) 'FOO@BAR.COM'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <mark class="code-mark-3"><span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)</span></mark>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-1">'email'</mark>): the option is normalized</span>
+<span class="tok-c1">// [<mark class="code-mark-1">'email'</mark> =&gt; <mark class="code-mark-3">'FOO@BAR.COM'</mark>]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-warning">Normalizer without value</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#option-normalization" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Option Normalization</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L419-L422" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::rewind() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L411-L414" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::valid() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L403-L406" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::key() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L395-L398" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::next() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="iterator_to_array 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Not looped over: a normalizer does not create the option</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// array()</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="5.6"><code class="language-php" data-mark-1="iterator_to_array 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Not looped over: a normalizer does not create the option</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="7.4"><code class="language-php" data-mark-1="iterator_to_array 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Not looped over: a normalizer does not create the option</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="iterator_to_array 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Not looped over: a normalizer does not create the option</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">mixed</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">mixed</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">iterator_to_array</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-warning">Nested loops</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L419-L422" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::rewind() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L411-L414" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::valid() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L403-L406" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::key() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L395-L398" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::next() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="foreach 'firstName'" data-mark-2="'lastName'" data-label-warning="`2 iterations instead of 4`"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'lastName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-nv">$pairs</span> <span class="tok-o">=</span> <span class="tok-k">array</span><span class="tok-p">();</span>
+<span class="tok-c1">// <mark class="code-label code-label-warning">2 iterations instead of 4</mark>: the options have a single pointer, moved to the end by the inner loop</span>
+<span class="tok-c1">// array('firstName firstName', 'firstName lastName')</span>
+<mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$outer</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$outerValue</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$inner</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$innerValue</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-nv">$pairs</span><span class="tok-p">[]</span> <span class="tok-o">=</span> <span class="tok-nv">$outer</span> <span class="tok-o">.</span> <span class="tok-s1">' '</span> <span class="tok-o">.</span> <span class="tok-nv">$inner</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="foreach 'firstName'" data-mark-2="'lastName'" data-label-warning="`2 iterations instead of 4`"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'lastName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-nv">$pairs</span> <span class="tok-o">=</span> <span class="tok-p">[];</span>
+<span class="tok-c1">// <mark class="code-label code-label-warning">2 iterations instead of 4</mark>: the options have a single pointer, moved to the end by the inner loop</span>
+<span class="tok-c1">// ['firstName firstName', 'firstName lastName']</span>
+<mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$outer</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$outerValue</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$inner</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$innerValue</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-nv">$pairs</span><span class="tok-p">[]</span> <span class="tok-o">=</span> <span class="tok-nv">$outer</span> <span class="tok-o">.</span> <span class="tok-s1">' '</span> <span class="tok-o">.</span> <span class="tok-nv">$inner</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+            </div>
+            <h3 class="example-exception">Set inside a loop</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L59-L80" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::set() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="foreach 'key'" data-removed="'firstName'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+<span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+
+<mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$key</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: Options cannot be set anymore once options have been read.</span>
+    <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+<span class="tok-p">}</span></code></pre>
+            </div>
+        </section>
+
+        <section id="read-only" class="tone-blue">
+            <h2><span><em>Read-only</em> once read</span></h2>
+            <div class="callout callout-warning">
+                <p>A loop reads each option: the options cannot be set anymore.</p>
+            </div>
+            <h3 class="example-ok">Set after a loop without option</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L411-L414" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::valid() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="foreach 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// No option: nothing is read</span>
+<mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{}</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// array(<mark class="code-mark-1">'key'</mark> =&gt; 'foo')</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="foreach 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// No option: nothing is read</span>
+<mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{}</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// [<mark class="code-mark-1">'key'</mark> =&gt; 'foo']</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-exception">Set after a loop</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L387-L390" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::current() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L59-L80" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::set() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="foreach 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+<span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-c1">// Reads each option</span>
+<mark class="code-mark-1"><span class="tok-k">foreach</span></mark> <span class="tok-p">(</span><span class="tok-nv">$options</span> <span class="tok-k">as</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{}</span>
+
+<span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: Options cannot be set anymore once options have been read.</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span></code></pre>
+            </div>
+        </section>
+
+        <section id="sources">
+            <h2><span>The <em>sources</em></span></h2>
+            <ul class="sources">
+                <li><a href="https://github.com/symfony/symfony/commit/256b7081a423caeb404c9ec838b6ee21cc7e5bab" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 256b7081a4</a></li>
+                <li><a href="https://github.com/symfony/symfony/commit/9c76750cb8aea89ea51b28fbda8fb6081a50f434" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 9c76750cb8</a></li>
+                <li><a href="https://github.com/symfony/symfony/commit/610c602b0644e95acc237e92104b54e8d687236f" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 610c602b06</a></li>
+                <li><a href="https://github.com/symfony/symfony/pull/3968" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Pull request #3968</a></li>
+                <li><a href="https://github.com/symfony/symfony/pull/4945" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Pull request #4945</a></li>
+                <li><a href="https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: A Week of Symfony #281</a></li>
+                <li><a href="https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: A Week of Symfony #292</a></li>
+            </ul>
+        </section>
+
+        <footer>
+            Last checked on 2026-10-30.
+        </footer>
+    </div>
+</body>
+</html>

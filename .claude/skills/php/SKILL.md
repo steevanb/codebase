@@ -103,7 +103,8 @@ Official case of the names (see the `changes` skill): `PHP`, `PHPDoc`, `PHPUnit`
 - Write the code with the syntax of the newest PHP version offered: 8.4, or the `php.max` of the version shown when
   it is lower (e.g. 7.4). `bin/dev/highlight.py` derives the code of the older versions offered (the minimum PHP
   version of the package, 5.6, 7.4), chosen in a menu of the `code-meta`, removing what they do not support: `new`
-  without parentheses (8.4), `mixed` and union types (8.0), arrow functions (7.4), `void`, nullable and `iterable`
+  without parentheses (8.4), the `never` type (8.1), `mixed` and union types and an arrow function throwing an
+  exception (8.0, a closure with a `throw` statement before), arrow functions (7.4), `void`, nullable and `iterable`
   types (7.1), scalar and return types (7.0), `[]` arrays and calls on `new` (5.4), also in the comments showing a
   result. Write this code as the last `<pre>` of the block (the other ones are rebuilt from it).
   Chain from `new` every call returning `$this`. `new` is always on its own line, every call (even a single one) on

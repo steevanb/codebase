@@ -64,6 +64,12 @@
                     "title": "Symfony blog: A Week of Symfony #295",
                     "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
                 }
+            ],
+            "code": [
+                {
+                    "title": "Code of symfony/options-resolver in v2.1.0",
+                    "url": "https://github.com/symfony/symfony/tree/v2.1.0/src/Symfony/Component/OptionsResolver"
+                }
             ]
         },
         "b8442802-46e6-424e-8529-d9463dc919e6": {
@@ -968,8 +974,7 @@
                     "type": "example",
                     "slug": "options-has"
                 }
-            ],
-            "validated": false
+            ]
         },
         "052ee8e3-bf69-4fbf-9317-a489640fa5b3": {
             "message": "Add `all()` to read the values of all the options",
@@ -1008,8 +1013,7 @@
                     "type": "example",
                     "slug": "options-all"
                 }
-            ],
-            "validated": false
+            ]
         },
         "faa0cb74-ad7e-4405-92ec-41d651443971": {
             "message": "Implement `Countable` to count the options",
@@ -1036,8 +1040,7 @@
                     "type": "example",
                     "slug": "options-count"
                 }
-            ],
-            "validated": false
+            ]
         },
         "30885320-d0e9-489d-9689-483a5110759f": {
             "message": "Add `remove()` to remove an option",
@@ -1076,8 +1079,7 @@
                     "type": "example",
                     "slug": "options-remove"
                 }
-            ],
-            "validated": false
+            ]
         },
         "7f48e1c1-b866-4e3f-9a6c-3345f70680e1": {
             "message": "Add `clear()` to remove all the options",
@@ -1116,8 +1118,7 @@
                     "type": "example",
                     "slug": "options-clear"
                 }
-            ],
-            "validated": false
+            ]
         },
         "384e4435-a627-48a1-b789-76c9ebc14542": {
             "message": "Implement `ArrayAccess` to read and write the options as an array",
@@ -1155,7 +1156,12 @@
                     "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
                 }
             ],
-            "validated": false
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-array-access"
+                }
+            ]
         },
         "59cbe315-6e36-482d-babe-068c8ee631f7": {
             "message": "Implement `Iterator` to loop over the options",
@@ -1185,7 +1191,12 @@
                     "url": "https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012"
                 }
             ],
-            "validated": false
+            "pages": [
+                {
+                    "type": "example",
+                    "slug": "options-iterator"
+                }
+            ]
         },
         "abbb65b3-02bb-4e5d-b970-602b30c62fbf": {
             "message": "Add `setNormalizer()` to transform the value of an option with a closure",
@@ -1254,7 +1265,12 @@
                     "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
                 }
             ],
-            "validated": false
+            "code": [
+                {
+                    "title": "Declaration of ExceptionInterface in v2.1.0",
+                    "url": "https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Exception/ExceptionInterface.php#L14-L21"
+                }
+            ]
         },
         "32323141-3652-4c9a-925c-4f8fd37ce4c6": {
             "message": "Add `InvalidOptionsException`, thrown for an unknown option or a value not allowed",
@@ -1296,7 +1312,12 @@
                     "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
                 }
             ],
-            "validated": false
+            "code": [
+                {
+                    "title": "Declaration of InvalidOptionsException in v2.1.0",
+                    "url": "https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Exception/InvalidOptionsException.php#L14-L21"
+                }
+            ]
         },
         "b0fcbf84-6595-4a1c-b79a-02cc307aef03": {
             "message": "Add `MissingOptionsException`, thrown when a required option is missing",
@@ -1338,7 +1359,12 @@
                     "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
                 }
             ],
-            "validated": false
+            "code": [
+                {
+                    "title": "Declaration of MissingOptionsException in v2.1.0",
+                    "url": "https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Exception/MissingOptionsException.php#L14-L21"
+                }
+            ]
         },
         "fe874c12-e33c-4b39-b645-558f7fe7c4e5": {
             "message": "Add `OptionDefinitionException`, thrown when options are defined in a wrong way",
@@ -1380,7 +1406,12 @@
                     "url": "https://symfony.com/blog/a-week-of-symfony-295-20-26-august-2012"
                 }
             ],
-            "validated": false
+            "code": [
+                {
+                    "title": "Declaration of OptionDefinitionException in v2.1.0",
+                    "url": "https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Exception/OptionDefinitionException.php#L14-L21"
+                }
+            ]
         },
         "3636cbb3-1d25-45cc-a283-3b93a37fae6e": {
             "message": "Require PHP `>= 5.3.3`",
@@ -1417,7 +1448,12 @@
                     "url": "https://symfony.com/blog/a-week-of-symfony-289-9-15-july-2012"
                 }
             ],
-            "validated": false
+            "code": [
+                {
+                    "title": "composer.json in v2.1.0",
+                    "url": "https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/composer.json#L19"
+                }
+            ]
         },
         "2d367796-7c64-4bc4-9521-d83dd489e5eb": {
             "hidden": true,

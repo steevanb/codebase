@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Options implements ArrayAccess · symfony/options-resolver 2.1 · codebase.watch</title>
+    <meta name="description" content="symfony/options-resolver 2.1 makes Options implement ArrayAccess, to read and write the options as an array.">
+    <link rel="canonical" href="https://codebase.watch/releases/symfony/options-resolver/2.1/options-array-access/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/js/main.js"></script>
+</head>
+<body>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <a class="brand" href="/">
+                <span class="brand-glyph" aria-hidden="true">&lt;/&gt;</span>
+                <span class="brand-wordmark">
+                    <span class="brand-name">codebase<span>.watch</span></span>
+                    <span class="brand-sub">what is new in your dependencies</span>
+                </span>
+            </a>
+            <input class="nav-toggle" id="nav-toggle" type="checkbox" aria-label="Menu">
+            <label class="nav-burger burger" for="nav-toggle" aria-hidden="true"><span></span></label>
+            <nav class="nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link nav-link-active" href="/releases/">Releases</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">codebase.watch</a> /
+            <a href="/releases/">releases</a> /
+            <a href="/releases/symfony/">symfony</a> /
+            <a href="/releases/symfony/options-resolver/">options-resolver</a> /
+            <a href="/releases/symfony/options-resolver/2.1/">2.1</a> /
+            options-array-access
+        </nav>
+
+        <h1><code>Options</code> implements <code>ArrayAccess</code></h1>
+
+        <section id="overview" class="tone-amber">
+            <h2><span>At a <em>glance</em></span></h2>
+            <div class="stats">
+                <div class="stat tone-emerald">
+                    <div class="stat-label">Type</div>
+                    <div class="stat-value">New feature</div>
+                </div>
+                <div class="stat tone-blue">
+                    <div class="stat-label"><code>ArrayAccess</code> added</div>
+                    <div class="stat-value">2.1</div>
+                </div>
+            </div>
+            <p class="section-note">Since <a href="/releases/symfony/options-resolver/2.1/">symfony/options-resolver 2.1</a>, <code>Options</code> implements <code>ArrayAccess</code>: <code>$options['key']</code> reads, writes, checks and removes an option, calling <code>get()</code>, <code>set()</code>, <code>has()</code> and <code>remove()</code>.</p>
+        </section>
+
+        <section id="array-syntax" class="tone-emerald">
+            <h2><span><em>Array</em> syntax</span></h2>
+            <h3 class="example-ok">Option set</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L353-L366" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetSet() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L59-L80" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::set() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="'key'" data-mark-2="'foo'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Calls $options-&gt;set(<mark class="code-mark-1">'key'</mark>, <mark class="code-mark-2">'foo'</mark>)</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]</span> <span class="tok-o">=</span> <mark class="code-mark-2"><span class="tok-s1">'foo'</span></mark><span class="tok-p">;</span>
+
+<span class="tok-c1">// array(<mark class="code-mark-1">'key'</mark> =&gt; <mark class="code-mark-2">'foo'</mark>)</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="'key'" data-mark-2="'foo'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Calls $options-&gt;set(<mark class="code-mark-1">'key'</mark>, <mark class="code-mark-2">'foo'</mark>)</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]</span> <span class="tok-o">=</span> <mark class="code-mark-2"><span class="tok-s1">'foo'</span></mark><span class="tok-p">;</span>
+
+<span class="tok-c1">// [<mark class="code-mark-1">'key'</mark> =&gt; <mark class="code-mark-2">'foo'</mark>]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-ok">Option read</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L335-L348" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetGet() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L209-L222" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::get() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="'key'" data-mark-2="'foo'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-1">'key'</mark>)</span>
+<span class="tok-c1">// <mark class="code-mark-2">'foo'</mark></span>
+<span class="tok-nv">$key</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">];</span></code></pre>
+            </div>
+            <h3 class="example-ok">Option checked</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L321-L330" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetExists() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L241-L248" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::has() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="isset 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;has(<mark class="code-mark-1">'key'</mark>)</span>
+<span class="tok-c1">// true</span>
+<span class="tok-nv">$hasKey</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">isset</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span></code></pre>
+            </div>
+            <h3 class="example-ok">Option removed</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L371-L382" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetUnset() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="unset 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-c1">// Calls $options-&gt;remove(<mark class="code-mark-1">'key'</mark>)</span>
+<mark class="code-mark-1"><span class="tok-nb">unset</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span>
+
+<span class="tok-c1">// array()</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="unset 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-c1">// Calls $options-&gt;remove(<mark class="code-mark-1">'key'</mark>)</span>
+<mark class="code-mark-1"><span class="tok-nb">unset</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-ok">Option read by a lazy option</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#default-values-that-depend-on-another-option" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Default Values that Depend on another Option</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L335-L348" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetGet() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L209-L222" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::get() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-mark-1="'firstName'" data-mark-2="'key'" data-mark-3="strtoupper 'FOO'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-1">'firstName'</mark>)</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <mark class="code-mark-3"><span class="tok-nb">strtoupper</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">]);</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-2">'key'</mark>)</span>
+<span class="tok-c1">// <mark class="code-mark-3">'FOO'</mark></span>
+<span class="tok-nv">$key</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">];</span></code></pre>
+                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-mark-1="'firstName'" data-mark-2="'key'" data-mark-3="strtoupper 'FOO'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-1">'firstName'</mark>)</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <mark class="code-mark-3"><span class="tok-nb">strtoupper</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">])</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-2">'key'</mark>)</span>
+<span class="tok-c1">// <mark class="code-mark-3">'FOO'</mark></span>
+<span class="tok-nv">$key</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">];</span></code></pre>
+            </div>
+            <h3 class="example-warning">Null value with <code>isset()</code></h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L321-L330" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetExists() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L241-L248" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::has() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="isset 'key'" data-mark-2="null"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-k">null</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// Calls $options-&gt;has(<mark class="code-mark-1">'key'</mark>): true, unlike with an array</span>
+<span class="tok-c1">// true</span>
+<span class="tok-nv">$hasKey</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">isset</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span></code></pre>
+            </div>
+            <h3 class="example-warning">Option without a key</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L353-L366" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetSet() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L59-L80" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::set() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="'foo'" data-label-warning="''"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Calls $options-&gt;set(null, <mark class="code-mark-1">'foo'</mark>): the key of the option is ''</span>
+<span class="tok-nv">$options</span><span class="tok-p">[]</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-s1">'foo'</span></mark><span class="tok-p">;</span>
+
+<span class="tok-c1">// array('' =&gt; <mark class="code-mark-1">'foo'</mark>)</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="'foo'" data-label-warning="''"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Calls $options-&gt;set(null, <mark class="code-mark-1">'foo'</mark>): the key of the option is ''</span>
+<span class="tok-nv">$options</span><span class="tok-p">[]</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-s1">'foo'</span></mark><span class="tok-p">;</span>
+
+<span class="tok-c1">// ['' =&gt; <mark class="code-mark-1">'foo'</mark>]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-warning">Array value modified</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L335-L348" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetGet() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L209-L222" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::get() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="'roles'" data-mark-2="'foo'" data-removed="'bar'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'roles'</span></mark><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-k">array</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'foo'</span></mark><span class="tok-p">);</span>
+<span class="tok-c1">// <span class="code-label code-label-warning">E_NOTICE</span>: Indirect modification of overloaded element of Symfony\Component\OptionsResolver\Options has no effect</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'roles'</span></mark><span class="tok-p">][]</span> <span class="tok-o">=</span> <mark class="code-removed"><span class="tok-s1">'bar'</span></mark><span class="tok-p">;</span>
+
+<span class="tok-c1">// array(<mark class="code-mark-1">'roles'</mark> =&gt; array(<mark class="code-mark-2">'foo'</mark>))</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="'roles'" data-mark-2="'foo'" data-removed="'bar'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'roles'</span></mark><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">[</span><mark class="code-mark-2"><span class="tok-s1">'foo'</span></mark><span class="tok-p">];</span>
+<span class="tok-c1">// <span class="code-label code-label-warning">E_NOTICE</span>: Indirect modification of overloaded element of Symfony\Component\OptionsResolver\Options has no effect</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'roles'</span></mark><span class="tok-p">][]</span> <span class="tok-o">=</span> <mark class="code-removed"><span class="tok-s1">'bar'</span></mark><span class="tok-p">;</span>
+
+<span class="tok-c1">// [<mark class="code-mark-1">'roles'</mark> =&gt; [<mark class="code-mark-2">'foo'</mark>]]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-exception">Option missing</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L335-L348" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetGet() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L209-L222" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::get() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-removed="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// Unlike with an array, an exception is thrown</span>
+<span class="tok-c1">// <span class="code-label code-label-exception">OutOfBoundsException</span>: The option <mark class="code-removed">"key"</mark> does not exist.</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-removed"><span class="tok-s1">'key'</span></mark><span class="tok-p">];</span></code></pre>
+            </div>
+        </section>
+
+        <section id="read-only" class="tone-blue">
+            <h2><span><em>Read-only</em> once read</span></h2>
+            <div class="callout callout-warning">
+                <p>Reading an offset reads the option: the options cannot be set anymore, with the array syntax or not.</p>
+            </div>
+            <h3 class="example-exception">Set after a read</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L353-L366" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetSet() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L59-L80" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::set() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+<span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-s1">'foo'</span><span class="tok-p">;</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">];</span>
+
+<span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: Options cannot be set anymore once options have been read.</span>
+<span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-s1">'bar'</span><span class="tok-p">;</span></code></pre>
+            </div>
+        </section>
+
+        <section id="sources">
+            <h2><span>The <em>sources</em></span></h2>
+            <ul class="sources">
+                <li><a href="https://github.com/symfony/symfony/commit/256b7081a423caeb404c9ec838b6ee21cc7e5bab" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 256b7081a4</a></li>
+                <li><a href="https://github.com/symfony/symfony/commit/6ce68b1b05e7da6b2f7f495e03b0d2915bc9a719" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 6ce68b1b05</a></li>
+                <li><a href="https://github.com/symfony/symfony/commit/1c5f6c76c10fe5daadeea11150ebf3c606c4f3e7" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 1c5f6c76c1</a></li>
+                <li><a href="https://github.com/symfony/symfony/commit/41621e42e9c0ae0745ef3b75c3b589eada2b0385" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 41621e42e9</a></li>
+                <li><a href="https://github.com/symfony/symfony/commit/16f7d20dff9ff70418e7c4c19cefe02c8329f6f5" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Commit 16f7d20dff</a></li>
+                <li><a href="https://github.com/symfony/symfony/pull/3968" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Pull request #3968</a></li>
+                <li><a href="https://symfony.com/blog/a-week-of-symfony-281-14-20-may-2012" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: A Week of Symfony #281</a></li>
+                <li><a href="https://symfony.com/blog/a-week-of-symfony-292-30-july-5-august-2012" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony blog: A Week of Symfony #292</a></li>
+            </ul>
+        </section>
+
+        <footer>
+            Last checked on 2026-10-30.
+        </footer>
+    </div>
+</body>
+</html>
