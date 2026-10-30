@@ -57,8 +57,106 @@
 
         <section id="count" class="tone-emerald">
             <h2><span><em>Count</em> the options</span></h2>
+            <h3 class="example-ok">No option</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="count"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// 0</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
             <h3 class="example-ok">Options counted</h3>
-            <p><code>Options</code> implements <code>Countable</code>.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="count 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// 2</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-ok">Method call</h3>
+            <p><code>count($options)</code> calls the <code>count()</code> method.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="count 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// 2</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">count</span></mark><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-ok">Null value</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="count 'key'" data-mark-2="null"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-k">null</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-ok">Value replaced</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="count 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-ok">Lazy value not evaluated</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4"><code class="language-php" data-mark-1="count 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-c1">// Not called by count()</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">throw</span> <span class="tok-k">new</span> <span class="tok-nx">LogicException</span><span class="tok-p">(</span><span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="count 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-c1">// Not called by count()</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">never</span> <span class="tok-o">=&gt;</span> <span class="tok-k">throw</span> <span class="tok-k">new</span> <span class="tok-nx">LogicException</span><span class="tok-p">(</span><span class="tok-s1">'foo'</span><span class="tok-p">)</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-ok">Option removed</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="count 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">remove</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-ok">Options cleared</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
                 <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="count"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
@@ -66,9 +164,133 @@
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
 <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'firstName'</span><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
 <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">clear</span><span class="tok-p">();</span>
 
-<span class="tok-c1">// 2</span>
+<span class="tok-c1">// 0</span>
 <span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-warning">Normalizer without value</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-mark-1="count 'email'" data-label-warning="0"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// A normalizer does not create the option</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// <mark class="code-label code-label-warning">0</mark></span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-mark-1="count 'email'" data-label-warning="0"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// A normalizer does not create the option</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)</span>
+<span class="tok-p">);</span>
+
+<span class="tok-c1">// <mark class="code-label code-label-warning">0</mark></span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-warning">Recursive count</h3>
+            <p><code>COUNT_RECURSIVE</code> is ignored for a <code>Countable</code> object: the values of the options are not counted, unlike with an array.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="count 'roles'" data-label-warning="COUNT_RECURSIVE"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'roles'</span></mark><span class="tok-p">,</span> <span class="tok-k">array</span><span class="tok-p">(</span><span class="tok-s1">'foo'</span><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">));</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">,</span> <mark class="code-label code-label-warning"><span class="tok-nx">COUNT_RECURSIVE</span></mark><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="count 'roles'" data-label-warning="COUNT_RECURSIVE"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'roles'</span></mark><span class="tok-p">,</span> <span class="tok-p">[</span><span class="tok-s1">'foo'</span><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">]);</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">,</span> <mark class="code-label code-label-warning"><span class="tok-nx">COUNT_RECURSIVE</span></mark><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-warning">Normalizer without value counted after <code>all()</code></h3>
+            <p><a href="/releases/symfony/options-resolver/2.1/options-all/"><code>all()</code></a> calls the normalizer of an option that does not exist: its result creates the option, which is then counted.</p>
+            <div class="callout callout-warning">
+                <ul class="callout-versions">
+                    <li><span class="callout-version">PHP 5.3 – 7.4</span><span>An <code>E_NOTICE</code>, <code>Undefined index: email</code>, then the option is created and counted.</span></li>
+                    <li><span class="callout-version">PHP &gt;= 8.0</span><span>An <code>E_WARNING</code>, <code>Undefined array key "email"</code>, then the option is created and counted.</span></li>
+                </ul>
+            </div>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L291-L298" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::all() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-mark-1="count 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+<span class="tok-c1">// <span class="code-label code-label-warning">E_NOTICE</span>: Undefined index: email</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="7.4"><code class="language-php" data-mark-1="count 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span>
+<span class="tok-p">);</span>
+<span class="tok-c1">// <span class="code-label code-label-warning">E_NOTICE</span>: Undefined index: email</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="count 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">mixed</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">mixed</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span>
+<span class="tok-p">);</span>
+<span class="tok-c1">// <span class="code-label code-label-warning">E_WARNING</span>: Undefined array key <mark class="code-mark-1">"email"</mark></span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span>
+
+<span class="tok-c1">// 1</span>
+<span class="tok-nv">$count</span> <span class="tok-o">=</span> <mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span></code></pre>
+            </div>
+        </section>
+
+        <section id="not-a-read" class="tone-blue">
+            <h2><span>Not a <em>read</em></span></h2>
+            <h3 class="example-ok">Set after <code>count()</code></h3>
+            <p><code>count()</code> does not read the options: they can still be set.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L427-L430" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::count() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="count 'key'" data-mark-2="'foo'" data-mark-3="'bar'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo'</span></mark><span class="tok-p">);</span>
+<mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <mark class="code-mark-3"><span class="tok-s1">'bar'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// array(<mark class="code-mark-1">'key'</mark> =&gt; <mark class="code-mark-3">'bar'</mark>)</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="count 'key'" data-mark-2="'foo'" data-mark-3="'bar'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo'</span></mark><span class="tok-p">);</span>
+<mark class="code-mark-1"><span class="tok-nb">count</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <mark class="code-mark-3"><span class="tok-s1">'bar'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// [<mark class="code-mark-1">'key'</mark> =&gt; <mark class="code-mark-3">'bar'</mark>]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
             </div>
         </section>
 
@@ -83,7 +305,7 @@
         </section>
 
         <footer>
-            Last checked on 2026-10-21.
+            Last checked on 2026-10-30.
         </footer>
     </div>
 </body>

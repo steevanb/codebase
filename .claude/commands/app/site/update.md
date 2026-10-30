@@ -285,13 +285,18 @@ Use `docs/releases/symfony/options-resolver/8.0/nested-options/index.html` as th
   expression in the code, not in the comments: `data-mark-3="strtoupper($value)"`,
   `data-label-warning="Closure::class 'Closure'"` (`'Closure'` before PHP 5.5). An expression with spaces is written
   between backticks: ``data-mark-3="`uniqid() . '_' . strtoupper($value)`"``.
+  Words of a comment (without parenthesis nor `::`) are written between backticks too, and marked in the comments
+  only, e.g. ``data-label-warning="`2 iterations instead of 4`"`` for a surprising result explained in a comment.
   When the paragraph above a block explains one part of its code (e.g. an argument, a variable), mark this part with
   `data-mark-1`, name it in the paragraph and use it in the code (e.g. `data-mark-1="$previousValue"` for "A second
   argument, `$previousValue`, receives...").
 - Sources: documentation of the package (always with the anchor of the section when there is one), pull requests,
   commits, and the `links` of the change.
 
-The release page links to its example pages from the row of the change (built by the script).
+The release page links to its example pages from the row of the change (built by the script). The other links of
+the row are in a menu, opened by the link icon of the blocks of code, even for a single link: the pull requests of
+the change, then, for a change without example page, its `code` (see `/app:release:update`), each link starting with
+its favicon.
 
 ## Checks
 

@@ -1085,7 +1085,7 @@ a.commit-main:hover {
     display: none;
 }
 
-/* Several links of the same kind in a row: a menu (see .code-menu) */
+/* Several examples of a change, or the links of a change: a menu (see .code-menu) */
 .icon-menu {
     display: flex;
 }

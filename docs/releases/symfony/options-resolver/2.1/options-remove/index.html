@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Options::remove() · symfony/options-resolver 2.1 · codebase.watch</title>
-    <meta name="description" content="symfony/options-resolver 2.1 adds remove() to Options, to remove an option.">
+    <meta name="description" content="symfony/options-resolver 2.1 adds remove() to Options, to remove an option, its lazy value and its normalizer.">
     <link rel="canonical" href="https://codebase.watch/releases/symfony/options-resolver/2.1/options-remove/">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/css/main.css">
@@ -52,7 +52,7 @@
                     <div class="stat-value">2.1</div>
                 </div>
             </div>
-            <p class="section-note">Since <a href="/releases/symfony/options-resolver/2.1/">symfony/options-resolver 2.1</a>, <code>Options::remove()</code> removes an option.</p>
+            <p class="section-note">Since <a href="/releases/symfony/options-resolver/2.1/">symfony/options-resolver 2.1</a>, <code>Options::remove()</code> removes an option, with its lazy value and its normalizer.</p>
         </section>
 
         <section id="remove" class="tone-emerald">
@@ -60,24 +60,292 @@
             <h3 class="example-ok">Option removed</h3>
             <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
                 <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
-                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="'bar' remove"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="remove 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'firstName'</span><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">,</span> <mark class="code-mark-1"><span class="tok-s1">'bar'</span></mark><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span>
 
-<span class="tok-c1">// array('firstName' =&gt; 'foo')</span>
+<span class="tok-c1">// array(<mark class="code-mark-1">'firstName'</mark> =&gt; 'foo')</span>
 <span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
-                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="'bar' remove"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="remove 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
 
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'firstName'</span><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">,</span> <mark class="code-mark-1"><span class="tok-s1">'bar'</span></mark><span class="tok-p">);</span>
-<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span>
 
-<span class="tok-c1">// ['firstName' =&gt; 'foo']</span>
+<span class="tok-c1">// [<mark class="code-mark-1">'firstName'</mark> =&gt; 'foo']</span>
 <span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-ok">Array syntax</h3>
+            <p><code>Options</code> implements <code>ArrayAccess</code>: unsetting an offset calls <code>remove()</code>.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L371-L382" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetUnset() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="unset 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-c1">// Calls $options-&gt;remove(<mark class="code-mark-1">'key'</mark>)</span>
+<mark class="code-mark-1"><span class="tok-nb">unset</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span>
+
+<span class="tok-c1">// array()</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="unset 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-c1">// Calls $options-&gt;remove(<mark class="code-mark-1">'key'</mark>)</span>
+<mark class="code-mark-1"><span class="tok-nb">unset</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-ok">Lazy option removed</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="remove 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-c1">// Never called: the option is removed before being read</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">throw</span> <span class="tok-k">new</span> <span class="tok-nx">LogicException</span><span class="tok-p">(</span><span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// array()</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4"><code class="language-php" data-mark-1="remove 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-c1">// Never called: the option is removed before being read</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">throw</span> <span class="tok-k">new</span> <span class="tok-nx">LogicException</span><span class="tok-p">(</span><span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="remove 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span>
+    <span class="tok-c1">// Never called: the option is removed before being read</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">never</span> <span class="tok-o">=&gt;</span> <span class="tok-k">throw</span> <span class="tok-k">new</span> <span class="tok-nx">LogicException</span><span class="tok-p">(</span><span class="tok-s1">'foo'</span><span class="tok-p">)</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-warning">Option missing</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="remove 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Does nothing: the option does not exist</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// array()</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="remove 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-c1">// Does nothing: the option does not exist</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-warning">Set again</h3>
+            <p>An option set again after its removal comes after the other options.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="remove 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'baz'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// array(<mark class="code-mark-2">'key'</mark> =&gt; 'bar', <mark class="code-mark-1">'firstName'</mark> =&gt; 'baz')</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6 7.4 8.4"><code class="language-php" data-mark-1="remove 'firstName'" data-mark-2="'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-2"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'baz'</span><span class="tok-p">);</span>
+
+<span class="tok-c1">// [<mark class="code-mark-2">'key'</mark> =&gt; 'bar', <mark class="code-mark-1">'firstName'</mark> =&gt; 'baz']</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-exception">Option read by a lazy option</h3>
+            <p>The lazy option is only evaluated when it is read: the option it reads no longer exists.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L209-L222" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::get() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6"><code class="language-php" data-mark-1="remove" data-removed="'firstName'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <span class="tok-s1">'key'</span><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">));</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// <span class="code-label code-label-exception">OutOfBoundsException</span>: The option <mark class="code-removed">"firstName"</mark> does not exist.</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">);</span></code></pre>
+                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-mark-1="remove" data-removed="'firstName'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span>
+    <span class="tok-s1">'key'</span><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">))</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// <span class="code-label code-label-exception">OutOfBoundsException</span>: The option <mark class="code-removed">"firstName"</mark> does not exist.</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><span class="tok-s1">'key'</span><span class="tok-p">);</span></code></pre>
+            </div>
+        </section>
+
+        <section id="normalizer" class="tone-blue">
+            <h2><span>Its <em>normalizer</em></span></h2>
+            <h3 class="example-ok">Normalizer removed</h3>
+            <p><code>remove()</code> also removes the normalizer of the option: the value set again is not normalized.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#option-normalization" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Option Normalization</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="remove 'email'" data-mark-2="'foo@bar.com'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// array(<mark class="code-mark-1">'email'</mark> =&gt; <mark class="code-mark-2">'foo@bar.com'</mark>)</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6"><code class="language-php" data-mark-1="remove 'email'" data-mark-2="'foo@bar.com'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">);</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// [<mark class="code-mark-1">'email'</mark> =&gt; <mark class="code-mark-2">'foo@bar.com'</mark>]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="7.4 8.4"><code class="language-php" data-mark-1="remove 'email'" data-mark-2="'foo@bar.com'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">string</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">string</span> <span class="tok-o">=&gt;</span> <span class="tok-nb">strtoupper</span><span class="tok-p">(</span><span class="tok-nv">$value</span><span class="tok-p">)</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo@bar.com'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// [<mark class="code-mark-1">'email'</mark> =&gt; <mark class="code-mark-2">'foo@bar.com'</mark>]</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+            <h3 class="example-ok">Normalizer without value removed</h3>
+            <p>Without <code>remove()</code>, <a href="/releases/symfony/options-resolver/2.1/options-all/"><code>all()</code></a> would call the normalizer and create the option.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://symfony.com/doc/2.x/components/options_resolver.html#option-normalization" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/symfony.com.svg" alt="" width="16" height="16">Symfony 2.x documentation: Option Normalization</a></li><li class="code-menu-separated"><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3"><code class="language-php" data-mark-1="remove 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// array()</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="5.6"><code class="language-php" data-mark-1="remove 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">return</span> <span class="tok-nv">$value</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="7.4"><code class="language-php" data-mark-1="remove 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nv">$value</span><span class="tok-p">)</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+                <pre class="code" data-php="8.4"><code class="language-php" data-mark-1="remove 'email'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">setNormalizer</span><span class="tok-p">(</span>
+    <mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">,</span>
+    <span class="tok-nx">fn</span> <span class="tok-p">(</span><span class="tok-nx">Options</span> <span class="tok-nv">$options</span><span class="tok-p">,</span> <span class="tok-nx">mixed</span> <span class="tok-nv">$value</span><span class="tok-p">)</span><span class="tok-o">:</span> <span class="tok-nx">mixed</span> <span class="tok-o">=&gt;</span> <span class="tok-nv">$value</span>
+<span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'email'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// []</span>
+<span class="tok-nv">$all</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">all</span><span class="tok-p">();</span></code></pre>
+            </div>
+        </section>
+
+        <section id="read-only" class="tone-indigo">
+            <h2><span><em>Read-only</em> once read</span></h2>
+            <div class="callout callout-warning">
+                <p>Once an option is read, the options cannot be removed anymore.</p>
+            </div>
+            <h3 class="example-exception">Removed after a read</h3>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L253-L262" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::remove() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="remove 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+<span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">get</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span>
+
+<span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: Options cannot be removed anymore once options have been read.</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">remove</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">);</span></code></pre>
             </div>
         </section>
 
@@ -96,7 +364,7 @@
         </section>
 
         <footer>
-            Last checked on 2026-10-21.
+            Last checked on 2026-10-30.
         </footer>
     </div>
 </body>

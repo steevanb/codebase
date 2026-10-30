@@ -89,6 +89,7 @@
 </span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
 <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><span class="tok-na">set</span><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <mark class="code-mark-2"><span class="tok-s1">'foo'</span></mark><span class="tok-p">);</span>
 
+<span class="tok-c1">// Calls $options-&gt;get(<mark class="code-mark-1">'key'</mark>)</span>
 <span class="tok-c1">// <mark class="code-mark-2">'foo'</mark></span>
 <span class="tok-nv">$key</span> <span class="tok-o">=</span> <span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">];</span></code></pre>
             </div>
@@ -334,6 +335,22 @@
 
 <span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: Options cannot be set anymore once options have been read.</span>
 <span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">set</span></mark><span class="tok-p">(</span><mark class="code-removed"><span class="tok-s1">'firstName'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span></code></pre>
+            </div>
+            <h3 class="example-warning">Set after <code>empty()</code></h3>
+            <p><code>empty()</code> on an offset calls <code>offsetExists()</code>, then <code>offsetGet()</code> when the option exists, which calls <code>get()</code>.</p>
+            <p>Unlike <code>isset()</code>, it reads the option: the options are locked.</p>
+            <div class="code-block" data-php-versions="5.3 5.6 7.4 8.4">
+                <div class="code-meta"><details class="code-menu"><summary title="Links" aria-label="Links"><svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg></summary><ul><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L321-L330" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetExists() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L335-L348" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::offsetGet() in v2.1.0</a></li><li><a href="https://github.com/symfony/symfony/blob/v2.1.0/src/Symfony/Component/OptionsResolver/Options.php#L209-L222" target="_blank" rel="noopener"><img class="favicon" src="/assets/favicons/github.com.svg" alt="" width="16" height="16">Declaration of Options::get() in v2.1.0</a></li></ul></details><span>PHP 5.3</span></div>
+                <pre class="code" data-php="5.3 5.6 7.4 8.4"><code class="language-php" data-mark-1="empty set 'key'"><span class="code-uses"><span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Exception\OptionDefinitionException</span><span class="tok-p">;</span>
+<span class="tok-k">use</span> <span class="tok-nx">Symfony\Component\OptionsResolver\Options</span><span class="tok-p">;</span>
+
+</span><span class="tok-nv">$options</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Options</span><span class="tok-p">();</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">set</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'foo'</span><span class="tok-p">);</span>
+<span class="tok-c1">// Calls $options-&gt;has(<mark class="code-mark-1">'key'</mark>), then $options-&gt;get(<mark class="code-mark-1">'key'</mark>)</span>
+<mark class="code-mark-1"><span class="tok-k">empty</span></mark><span class="tok-p">(</span><span class="tok-nv">$options</span><span class="tok-p">[</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">]);</span>
+
+<span class="tok-c1">// <span class="code-label code-label-exception">OptionDefinitionException</span>: Options cannot be set anymore once options have been read.</span>
+<span class="tok-nv">$options</span><span class="tok-o">-&gt;</span><mark class="code-mark-1"><span class="tok-na">set</span></mark><span class="tok-p">(</span><mark class="code-mark-1"><span class="tok-s1">'key'</span></mark><span class="tok-p">,</span> <span class="tok-s1">'bar'</span><span class="tok-p">);</span></code></pre>
             </div>
             <h3 class="example-exception">Set after a read</h3>
             <p>The order of the calls matters: <code>set()</code> works before the first <code>get()</code>, not after.</p>

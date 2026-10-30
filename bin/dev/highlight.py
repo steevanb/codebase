@@ -20,6 +20,7 @@ data-mark-2="$previousValue#3" marks the third $previousValue only, array_merge(
 A string ('firstName') is also marked in the comments, between ' or ": // The option "firstName" does not exist.
 So is a constant (null, true, false) or a number, as a whole word: // ['key' => null]
 A variable followed by a call ($clone->resolve) marks the variable only where this method is called on it.
+Words between backticks, without parenthesis nor ::, are marked in the comments only: `2 iterations instead of 4`.
 A call followed by ([]) marks the brackets of the array given to this call, not what is inside: resolve([]) marks
 the [ and ] of resolve(['foo']), or array( and ) before PHP 5.4, also after a name: set('roles', ['foo']).
 fn([]) marks the array returned by a closure: fn (Options $options): array => ['foo'].
@@ -39,7 +40,8 @@ A PHP block is written with the syntax of the newest PHP version offered (see be
 allows. The code-meta gives the minimum PHP version of the package (<span>PHP 5.3</span>): the offered versions are this
 one and the last minor version of each newer major version of PHP allowed by the package (5.6, 7.4, 8.4, up to the
 php.max of its settings file). The code of the older versions is derived from the newest one, removing what they do
-not support: new without parentheses (8.4), mixed and union types (8.0), arrow functions (7.4), void, nullable and
+not support: new without parentheses (8.4), the never type (8.1), mixed and union types and an arrow function
+throwing an exception (8.0, a closure with a throw statement before), arrow functions (7.4), void, nullable and
 iterable types (7.1), scalar and return types (7.0), ::class (5.5, the name of the class as a string), [] arrays and
 calls on new (5.4). The messages shown in the comments are the ones of each version, the PHP errors named by their
 constant: the E_WARNING of an undefined array key is an E_NOTICE before PHP 8.0, an Error is an E_ERROR before PHP
@@ -86,6 +88,8 @@ SCALAR_TYPES = 'string|int|float|bool'
 # PHP 5.5: the name of a class with ::class, a string before
 CLASS_CONSTANT = re.compile(r'\b([A-Z]\w*)::class\b')
 NEW_WITHOUT_PARENTHESES = re.compile(r'^(\$\w+ = )new (\w+\([^()\n]*\))(?=->|\n(?: *//[^\n]*\n)* +->)', re.MULTILINE)
+# PHP 8.1: the never type, returned by a function that always throws an exception
+NEVER_RETURN = re.compile(r'\): never(?= \{| =>)')
 # PHP 8.0: mixed type and union types, of a parameter or returned
 MIXED_PARAMETER = re.compile(r'(\(|, )mixed (\$\w+)')
 UNION_PARAMETER = re.compile(r'(\(|, )\??[\w\\]+(?:\|[\w\\]+)+ (\$\w+)')
@@ -267,6 +271,14 @@ def mark(colored: str, opening_tag: str) -> str:
                 if occurrence:
                     ranges = ranges[occurrence - 1:occurrence]
                 colored = mark_ranges(colored, ranges, css_class)
+            # Words of a comment (`2 iterations instead of 4`): their text in the comments only
+            elif ' ' in name:
+                colored = COMMENT.sub(
+                    lambda comment: comment.group(0).replace(
+                        html.escape(name, quote=False), f'<mark class="{css_class}">{html.escape(name, quote=False)}</mark>'
+                    ),
+                    colored,
+                )
 
     # One mark for the type and its parameter, so that the space between them is marked too
     colored = TYPED_PARAMETER.sub(
@@ -408,13 +420,20 @@ def expression_end(code: str, start: int) -> int:
 
     return position
 
-def closures(code: str) -> str:
-    """fn (...) => expression becomes a closure returning the expression, on 3 lines."""
-    while (arrow := ARROW_FUNCTION.search(code)) is not None:
+def closures(code: str, throwing_only: bool = False) -> str:
+    """fn (...) => expression becomes a closure returning the expression, on 3 lines: fn (...) => throw ... a closure
+    with a throw statement (only these ones with throwing_only, a throw expression needing PHP 8.0)."""
+    position = 0
+    while (arrow := ARROW_FUNCTION.search(code, position)) is not None:
+        throwing = code.startswith('throw ', arrow.end())
+        if throwing_only and not throwing:
+            position = arrow.end()
+            continue
         end = expression_end(code, arrow.end())
         indentation = re.match(r' *', code[code.rfind('\n', 0, arrow.start()) + 1:]).group(0)
+        statement = code[arrow.end():end] if throwing else f'return {code[arrow.end():end]}'
         code = (
-            f'{code[:arrow.start()]}function {arrow.group(1)} {{\n{indentation}    return {code[arrow.end():end]};'
+            f'{code[:arrow.start()]}function {arrow.group(1)} {{\n{indentation}    {statement};'
             f'\n{indentation}}}{code[end:]}'
         )
 
@@ -474,7 +493,10 @@ def php_syntax(code: str, php: str) -> str:
     """The code written for the newest PHP version offered, written for an older one."""
     if version(php) < (8, 4):
         code = NEW_WITHOUT_PARENTHESES.sub(r'\1(new \2)', code)
+    if version(php) < (8, 1):
+        code = NEVER_RETURN.sub(')', code)
     if version(php) < (8, 0):
+        code = closures(code, throwing_only=True)
         code = MIXED_PARAMETER.sub(r'\1\2', code)
         code = UNION_PARAMETER.sub(r'\1\2', code)
         code = MIXED_OR_UNION_RETURN.sub(')', code)

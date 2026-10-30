@@ -44,7 +44,8 @@ SECTIONS = [
 ]
 
 ICON_EXAMPLE = '<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4 1.5 8l4 4M10.5 4l4 4-4 4"/></svg>'
-ICON_PR = '<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="3.5" r="1.75"/><circle cx="4" cy="12.5" r="1.75"/><circle cx="12" cy="12.5" r="1.75"/><path d="M4 5.25v5.5M12 10.75V6.5a2 2 0 0 0-2-2H7.5M9 3l-1.5 1.5L9 6"/></svg>'
+# The icon of the menu of the links of a change, the same as the menu of the links of the blocks of code
+ICON_LINKS = '<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 4.5H5a3.5 3.5 0 0 0 0 7h1.5M9.5 4.5H11a3.5 3.5 0 0 1 0 7H9.5M5.5 8h5"/></svg>'
 
 def escape(text: str) -> str:
     return html.escape(text, quote=False)
@@ -182,6 +183,31 @@ def icon_links(links: list, icon: str, single_title: str | None, plural: str) ->
         f'{icon}<span class="icon-link-label">{title}</span></summary><ul>{items}</ul></details>'
     )
 
+def links_menu(change: dict, has_examples: bool) -> str:
+    """The menu of the links of a change, opened by the link icon, even for a single link: its pull requests, then,
+    without example page, its code (the declarations it adds or changes), each link starting with its favicon."""
+    pull_requests = [
+        (url, f'Pull request #{url.rsplit("/", 1)[1]}')
+        for url in dict.fromkeys(commit['pullRequest'] for commit in change['commits'] if commit.get('pullRequest'))
+    ]
+    code = [] if has_examples else [(link['url'], link['title']) for link in change.get('code', [])]
+    if not pull_requests and not code:
+        return ''
+    items = ''.join(
+        ('<li class="code-menu-separated">' if index == 0 and pull_requests else '<li>')
+        + f'<a href="{html.escape(url)}" target="_blank" rel="noopener"><img class="favicon" src="{favicon(url)}" alt="" width="16" height="16">{escape(title)}</a></li>'
+        for index, (url, title) in enumerate(code)
+    )
+    items = ''.join(
+        f'<li><a href="{html.escape(url)}" target="_blank" rel="noopener"><img class="favicon" src="{favicon(url)}" alt="" width="16" height="16">{escape(title)}</a></li>'
+        for url, title in pull_requests
+    ) + items
+
+    return (
+        '                        <details class="code-menu icon-menu"><summary class="icon-link" title="Links" aria-label="Links">'
+        f'{ICON_LINKS}<span class="icon-link-label">Links</span></summary><ul>{items}</ul></details>'
+    )
+
 def example_url(version: Version, page: dict) -> str:
     anchor = f'#{page["anchor"]}' if 'anchor' in page else ''
 
@@ -211,11 +237,7 @@ def commit_row(version: Version, change: dict) -> str:
     ]
     examples_links = [(example_url(version, page), f'Example: {page["slug"]}', False) for page in examples]
     lines.append(icon_links(examples_links, ICON_EXAMPLE, 'Example', 'examples'))
-    pull_requests = [
-        (url, f'Pull request #{url.rsplit("/", 1)[1]}', True)
-        for url in dict.fromkeys(commit['pullRequest'] for commit in change['commits'] if commit.get('pullRequest'))
-    ]
-    lines.append(icon_links(pull_requests, ICON_PR, None, 'pull requests'))
+    lines.append(links_menu(change, bool(examples)))
     lines = [line for line in lines if line]
     lines += ['                    </div>', '                </li>']
 

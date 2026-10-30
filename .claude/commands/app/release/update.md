@@ -153,7 +153,7 @@ config/releases/
 ```
 
 Keys whose value is the default are omitted: `"hidden": false`, `"validated": true`, `"lts": false`, `"links": []`,
-`"pages": []`.
+`"pages": []`, `"code": []`.
 
 - `previous`: the version it is compared to, given by the vendor skill; omitted for the first version of the package.
 - `release`: `ref` is the tag of the first release (`v8.1.0`) and `date` its date (`YYYY-MM-DD`). For a version in
@@ -202,6 +202,15 @@ change has:
   separated by `-`). The only type for now is `example`: a page showing the change with code, written by
   `/app:site:update`. Add one only when the user asks for it. When the page shows several changes (e.g. the methods
   of a class), `anchor` is the `id` of the section of the page about this change, which the release page links to.
+- `code`: for a change without example page, the links to its code on GitHub, at the tag of the version, as
+  `{"title": "...", "url": "..."}`, shown in the menu of the links of its row on the release page, after its pull
+  requests (a change with an example page links to its code from the blocks of the page instead):
+  - a class, an interface, a method or a function added or changed: its declaration, from its PHPDoc to the end of
+    its body (`Declaration of OptionDefinitionException in v2.1.0`, `Declaration of Options::get() in v2.1.0`);
+  - a dependency: its line in `composer.json` (`composer.json in v2.1.0`);
+  - the creation of the package: its directory (`Code of symfony/options-resolver in v2.1.0`).
+
+  Check that each URL answers `200` (`curl -sL`).
 - `validated`: `false` until the user has checked the change (message, section, pages) with `/app:changes:review`,
   which removes it. Write `"validated": false` on every new change, except the hidden ones.
 
